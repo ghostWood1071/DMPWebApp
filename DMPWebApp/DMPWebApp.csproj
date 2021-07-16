@@ -123,6 +123,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -200,6 +201,7 @@
     <Content Include="Assets\javascripts\tables\examples.datatables.editable.js" />
     <Content Include="Assets\javascripts\tables\examples.datatables.row.with.details.js" />
     <Content Include="Assets\javascripts\tables\examples.datatables.tabletools.js" />
+    <Content Include="Assets\javascripts\tables\order.with.detail.js" />
     <Content Include="Assets\javascripts\theme.admin.extension.js" />
     <Content Include="Assets\javascripts\theme.custom.js" />
     <Content Include="Assets\javascripts\theme.init.js" />
@@ -1682,7 +1684,6 @@
     <Content Include="Assets\vendor\summernote\summernote.css" />
     <Content Include="Assets\vendor\summernote\summernote.js" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Assets\ajax\ajax-datatables-sample.json" />
     <Content Include="Assets\ajax\ajax-treeview-children.json" />
@@ -1960,11 +1961,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\AddOrder.cshtml" />
+    <Content Include="Views\Order\UpdateOrder.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

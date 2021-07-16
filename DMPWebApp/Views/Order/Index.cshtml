@@ -1,12 +1,11 @@
 ﻿
 @{
-    ViewBag.Title = "Quản lý thành viên";
+    ViewBag.Title = "Quản lý hóa đơn";
 }
-
 
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Quản lý thành viên</h2>
+        <h2>Quản lý hóa đơn</h2>
 
         <div class="right-wrapper pull-right">
             <ol class="breadcrumbs">
@@ -15,7 +14,7 @@
                         <i class="fa fa-home"></i>
                     </a>
                 </li>
-                <li><span>Quản lý thành viên</span></li>
+                <li><span>Quản lý hóa đơn</span></li>
             </ol>
 
             <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
@@ -27,53 +26,41 @@
         <header class="panel-heading">
             <div class="panel-actions">
                 <a href="#" class="fa fa-caret-down"></a>
+                <a href="#" class="fa fa-times"></a>
             </div>
-
-            <h2 class="panel-title">Danh sách thành viên</h2>
+            <h2 class="panel-title">Danh sách hóa đơn</h2>
         </header>
         <div class="panel-body">
             <div class="row">
                 <div class="col-sm-6">
                     <div class="mb-md">
-                        <button id="addToTable" class="btn btn-primary">Thêm thành viên <i class="fa fa-plus"></i></button>
+                        <button id="addToTable" class="btn btn-primary">Thêm hóa đơn <i class="fa fa-plus"></i></button>
                     </div>
                 </div>
             </div>
-            <table class="table table-bordered table-striped mb-none" id="datatable-editable">
+            <table class="table table-bordered table-striped mb-none" id="datatable-details">
                 <thead>
                     <tr>
-                        <th>Mã thành viên</th>
-                        <th>Họ tên</th>
-                        <th>Địa chỉ</th>
-                        <th>Ngày sinh</th>
-                        <th>Giới tính</th>
-                        <th>CMND</th>
-                        <th>Ngày cấp</th>
-                        <th>Nơi cấp</th>
-                        <th>Email</th>
-                        <th>Điện thoại</th>
+                        <th>Mã DH</th>
+                        <th>Thành Viên</th>
+                        <th>Ngày thành toán</th>
+                        <th>Điểm sử dụng</th>
+                        <th>Tổng giá</th>
+                        <th>Tác vụ</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="gradeA">
-                        <td>TV000201</td>
-                        <td>Mai Ăn Tiêm</td>
-                        <td>Khoái Châu, Hưng Yên</td>
-                        <td>01/04/2001</td>
-                        <td>Nam</td>
-                        <td>0333948284912</td>
-                        <td>06/12</td>
-                        <td>Công An Khoái Châu</td>
-                        <td>bagiangson2001@gmaill.com</td>
-                        <td>0968324981</td>
-                        <td class="actions">
-                            <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                            <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
+                        <td>HD001</td>
+                        <td>Nguyễn Văn A</td>
+                        <td>16/7/2021</td>
+                        <td class="right">4</td>
+                        <td class="right">12000000</td>
+                        <td class="actions center">
                             <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
                             <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
                         </td>
                     </tr>
-
                 </tbody>
             </table>
         </div>
@@ -81,7 +68,7 @@
     <!-- end: page -->
 </section>
 
-@section div{
+@section div {
     <div id="dialog" class="modal-block mfp-hide">
         <section class="panel">
             <header class="panel-heading">
@@ -90,7 +77,7 @@
             <div class="panel-body">
                 <div class="modal-wrapper">
                     <div class="modal-text">
-                        <p>Bạn có chắc chắn muốn xóa sản phẩm này?</p>
+                        <p>Bạn có chắc chắn muốn xóa đơn hàng này?</p>
                     </div>
                 </div>
             </div>
@@ -106,15 +93,7 @@
     </div>
 }
 
-@section script{
-    <script src="~/Assets/javascripts/tables/examples.datatables.editable.js"></script>
-    <script>
-        ((function ($) {
-            $(function () {
-                EditableTable.initialize(10);
-            });
-        }).apply(this, [jQuery])
-    </script>
+@section script {
+    <script src="~/Assets/javascripts/tables/order.with.detail.js"></script>
 }
-
 
