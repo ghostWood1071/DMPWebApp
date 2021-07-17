@@ -6,28 +6,27 @@ using System.Web.Mvc;
 
 namespace DMPWebApp.Controllers
 {
-    public class MemberController : Controller
+    public class ProfileController : Controller
     {
-        // GET: Member
+        // GET: Profile
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Member/Details/5
+        // GET: Profile/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Member/Create
+        // GET: Profile/Create
         public ActionResult Create()
         {
             return View();
         }
 
-
-        // POST: Member/Create
+        // POST: Profile/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -43,13 +42,13 @@ namespace DMPWebApp.Controllers
             }
         }
 
-        // GET: Member/Edit/5
+        // GET: Profile/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Member/Edit/5
+        // POST: Profile/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -65,13 +64,13 @@ namespace DMPWebApp.Controllers
             }
         }
 
-        // GET: Member/Delete/5
+        // GET: Profile/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Member/Delete/5
+        // POST: Profile/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

@@ -1,4 +1,339 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Trang chủ";
 }
 
+<section role="main" class="content-body">
+    <header class="page-header">
+        <h2>Trang chủ</h2>
+
+        <div class="right-wrapper pull-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li><span>Trang chủ</span></li>
+            </ol>
+
+            <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
+        </div>
+    </header>
+
+    <!-- start: page -->
+    <div class="row">
+        <div class="col-md-6 col-lg-12 col-xl-6">
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="chart-data-selector" id="salesSelectorWrapper">
+                                <h2>
+                                    Dữ liệu:
+                                    <strong>
+                                        <select class="form-control" id="salesSelector">
+                                            <option value="JSOFT Admin" selected>Điểm doanh số</option>
+                                            <option value="JSOFT Drupal">Số thành viên</option>
+                                            <option value="JSOFT Wordpress">Số đơn hàng</option>
+                                        </select>
+                                    </strong>
+                                </h2>
+                                <p></p>
+                                <h2>
+                                    Năm:
+                                    <strong>
+                                        <select class="form-control" id="salesSelector2">
+                                            <option value="2021" selected>2021</option>
+                                            <option value="2020">2020</option>
+                                            <option value="2019">2019</option>
+                                        </select>
+                                    </strong>
+                                </h2>
+
+                                <div id="salesSelectorItems" class="chart-data-selector-items mt-sm">
+                                    <!-- Flot: Sales JSOFT Admin -->
+                                    <div class="chart chart-sm" data-sales-rel="JSOFT Admin" id="flotDashSales1" class="chart-active"></div>
+                                    <script>
+                                        var flotDashSales1Data = [{
+                                            data: [
+                                                ["Jan", 200],
+                                                ["Feb", 200],
+                                                ["Mar", 190],
+                                                ["Apr", 140],
+                                                ["May", 250],
+                                                ["Jun", 320],
+                                                ["Jul", 270],
+                                                ["Aug", 180]
+                                            ],
+                                            color: "#0088cc"
+                                        }];
+
+                                        var flotDashSales2Data = [{
+                                            data: [
+                                                ["Jan", 140],
+                                                ["Feb", 240],
+                                                ["Mar", 190],
+                                                ["Apr", 140],
+                                                ["May", 180],
+                                                ["Jun", 320],
+                                                ["Jul", 270],
+                                                ["Aug", 180]
+                                            ],
+                                            color: "#0088cc"
+                                        }];
+
+                                        var flotDashSales3Data = [{
+                                            data: [
+                                                ["Jan", 240],
+                                                ["Feb", 240],
+                                                ["Mar", 190],
+                                                ["Apr", 300],
+                                                ["May", 280],
+                                                ["Jun", 320],
+                                                ["Jul", 170],
+                                                ["Aug", 180]
+                                            ],
+                                            color: "#0088cc"
+                                        }];
+                                                                                                                                                                    // See: ~/Assets/javascripts/dashboard/examples.dashboard.js for more settings.
+                                    </script>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-6 col-lg-12 col-xl-6">
+            <div class="row">
+                <div class="col-md-12 col-lg-6 col-xl-6">
+                    <section class="panel panel-featured-left panel-featured-secondary">
+                        <div class="panel-body">
+                            <div class="widget-summary">
+                                <div class="widget-summary-col widget-summary-col-icon">
+                                    <div class="summary-icon bg-secondary">
+                                        <i class="fa fa-usd"></i>
+                                    </div>
+                                </div>
+                                <div class="widget-summary-col">
+                                    <div class="summary">
+                                        <h4 class="title">Tổng lợi nhuận</h4>
+                                        <div class="info">
+                                            <strong class="amount">14,890,000,000 VND</strong>
+                                        </div>
+                                    </div>
+                                    <div class="summary-footer">
+                                        <a class="text-muted text-uppercase">Tổng lợi nhuận trong các năm</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-12 col-lg-6 col-xl-6">
+                    <section class="panel panel-featured-left panel-featured-tertiary">
+                        <div class="panel-body">
+                            <div class="widget-summary">
+                                <div class="widget-summary-col widget-summary-col-icon">
+                                    <div class="summary-icon bg-tertiary">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </div>
+                                </div>
+                                <div class="widget-summary-col">
+                                    <div class="summary">
+                                        <h4 class="title">Đơn hàng trong tháng</h4>
+                                        <div class="info">
+                                            <strong class="amount">500</strong>
+                                        </div>
+                                    </div>
+                                    <div class="summary-footer">
+                                        <a class="text-muted text-uppercase">Tổng số lượng đơn hàng trong tháng</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-12 col-lg-6 col-xl-6">
+                    <section class="panel panel-featured-left panel-featured-quartenary">
+                        <div class="panel-body">
+                            <div class="widget-summary">
+                                <div class="widget-summary-col widget-summary-col-icon">
+                                    <div class="summary-icon bg-quartenary">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                </div>
+                                <div class="widget-summary-col">
+                                    <div class="summary">
+                                        <h4 class="title">Số thành viên mới</h4>
+                                        <div class="info">
+                                            <strong class="amount">50</strong>
+                                        </div>
+                                    </div>
+                                    <div class="summary-footer">
+                                        <a class="text-muted text-uppercase">Số thành viên mới trong tháng</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-12 col-lg-6 col-xl-6">
+                    <section class="panel panel-featured-left panel-featured-primary">
+                        <div class="panel-body">
+                            <div class="widget-summary">
+                                <div class="widget-summary-col widget-summary-col-icon">
+                                    <div class="summary-icon bg-primary">
+                                        <i class="fa fa-life-ring"></i>
+                                    </div>
+                                </div>
+                                <div class="widget-summary-col">
+                                    <div class="summary">
+                                        <h4 class="title">Tổng điểm</h4>
+                                        <div class="info">
+                                            <strong class="amount">1281</strong>
+                                        </div>
+                                    </div>
+                                    <div class="summary-footer">
+                                        <a class="text-muted text-uppercase">Điểm trong tháng</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-12 col-xl-6">
+            <section class="panel">
+                <header class="panel-heading">
+                    <div class="panel-actions">
+                        <a href="#" class="fa fa-caret-down"></a>
+                        <a href="#" class="fa fa-times"></a>
+                    </div>
+                    <h2 class="panel-title">Thống kê</h2>
+
+                    <div style="margin-top: 20px; display: flex; width: 30%; justify-content: space-between;">
+                        <div>
+                            <label for="year">Năm</label>
+                            <select name="year" id="year">
+                                <option value="">2021</option>
+                                <option value="">2020</option>
+                                <option value="">2019</option>
+                                <option value="">2018</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="year">Quý</label>
+                            <select name="quater" id="quater">
+                                <option value="">1</option>
+                                <option value="">2</option>
+                                <option value="">3</option>
+                                <option value="">4</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="year">Tháng</label>
+                            <select name="month" id="month">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </header>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered mb-none">
+                            <thead>
+                                <tr>
+                                    <th>Tổng doanh thu</th>
+                                    <th>Tổng điểm DS</th>
+                                    <th>Số thành viên</th>
+                                    <th>Số đơn hàng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>100000000</td>
+                                    <td>500000</td>
+                                    <td>200</td>
+                                    <td>5000</td>
+                                </tr>
+                                <tr>
+                                    <td>100000000</td>
+                                    <td>500000</td>
+                                    <td>200</td>
+                                    <td>5000</td>
+                                </tr>
+                                <tr>
+                                    <td>100000000</td>
+                                    <td>500000</td>
+                                    <td>200</td>
+                                    <td>5000</td>
+                                </tr>
+                                <tr>
+                                    <td>100000000</td>
+                                    <td>500000</td>
+                                    <td>200</td>
+                                    <td>5000</td>
+                                </tr>
+                                <tr>
+                                    <td>100000000</td>
+                                    <td>500000</td>
+                                    <td>200</td>
+                                    <td>5000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- end: page -->
+</section>
+
+@section script{
+    <script src="~/Assets/vendor/jquery-ui/js/jquery-ui-1.10.4.custom.js"></script>
+    <script src="~/Assets/vendor/jquery-ui-touch-punch/jquery.ui.touch-punch.js"></script>
+    <script src="~/Assets/vendor/jquery-appear/jquery.appear.js"></script>
+    <script src="~/Assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+    <script src="~/Assets/vendor/jquery-easypiechart/jquery.easypiechart.js"></script>
+    <script src="~/Assets/vendor/flot/jquery.flot.js"></script>
+    <script src="~/Assets/vendor/flot-tooltip/jquery.flot.tooltip.js"></script>
+    <script src="~/Assets/vendor/flot/jquery.flot.pie.js"></script>
+    <script src="~/Assets/vendor/flot/jquery.flot.categories.js"></script>
+    <script src="~/Assets/vendor/flot/jquery.flot.resize.js"></script>
+    <script src="~/Assets/vendor/jquery-sparkline/jquery.sparkline.js"></script>
+    <script src="~/Assets/vendor/raphael/raphael.js"></script>
+    <script src="~/Assets/vendor/morris/morris.js"></script>
+    <script src="~/Assets/vendor/gauge/gauge.js"></script>
+    <script src="~/Assets/vendor/snap-svg/snap.svg.js"></script>
+    <script src="~/Assets/vendor/liquid-meter/liquid.meter.js"></script>
+    <script src="~/Assets/vendor/jqvmap/jquery.vmap.js"></script>
+    <script src="~/Assets/vendor/jqvmap/data/jquery.vmap.sampledata.js"></script>
+    <script src="~/Assets/vendor/jqvmap/maps/jquery.vmap.world.js"></script>
+    <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.africa.js"></script>
+    <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.asia.js"></script>
+    <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.australia.js"></script>
+    <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.europe.js"></script>
+    <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.north-america.js"></script>
+    <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.south-america.js"></script>
+
+
+    <script src="~/Assets/javascripts/dashboard/examples.dashboard.js"></script>
+}

@@ -22,6 +22,9 @@
     <!-- Specific Page Vendor CSS -->
     <link rel="stylesheet" href="~/Assets/vendor/select2/select2.css" />
     <link rel="stylesheet" href="~/Assets/vendor/jquery-datatables-bs3/assets/css/datatables.css" />
+    <link rel="stylesheet" href="~/assets/vendor/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css" />
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap-multiselect/bootstrap-multiselect.css" />
+    <link rel="stylesheet" href="~/assets/vendor/morris/morris.css" />
 
     <!-- Theme CSS -->
     <link rel="stylesheet" href="~/Assets/stylesheets/theme.css" />
@@ -31,6 +34,8 @@
 
     <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="~/Assets/stylesheets/theme-custom.css">
+
+    @RenderSection("css", false)
 
     <!-- Head Libs -->
     <script src="~/Assets/vendor/modernizr/modernizr.js"></script>
@@ -135,7 +140,7 @@
                         <ul class="list-unstyled">
                             <li class="divider"></li>
                             <li>
-                                <a role="menuitem" tabindex="-1" href="pages-user-profile.html"><i class="fa fa-user"></i> Hồ sơ</a>
+                                <a role="menuitem" tabindex="-1" href="/Profile"><i class="fa fa-user"></i> Hồ sơ</a>
                             </li>
                             <li>
                                 <a role="menuitem" tabindex="-1" href="pages-signin.html"><i class="fa fa-power-off"></i> Đăng xuất</a>
@@ -166,7 +171,7 @@
                         <nav id="menu" class="nav-main" role="navigation">
                             <ul class="nav nav-main">
                                 <li>
-                                    <a href="index.html">
+                                    <a href="/">
                                         <i class="fa fa-home" aria-hidden="true"></i>
                                         <span>Trang chủ</span>
                                     </a>
@@ -178,19 +183,19 @@
                                     </a>
                                     <ul class="nav nav-children">
                                         <li>
-                                            <a href="index.html">
+                                            <a href="/Product">
                                                 <i class="fa fa-th-large" aria-hidden="true"></i>
                                                 <span>Quản lý sản phẩm</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="index.html">
+                                            <a href="/Member">
                                                 <i class="fa fa-user" aria-hidden="true"></i>
                                                 <span>Quản lý thành viên</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="index.html">
+                                            <a href="/Order">
                                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                                 <span>Quản lý đơn hàng</span>
                                             </a>
