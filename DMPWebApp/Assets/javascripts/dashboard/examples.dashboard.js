@@ -51,15 +51,15 @@
 	*/
 	$('#salesSelector').themePluginMultiSelect().on('change', function () {
 		Plot('#flotDashSales1', flotDashSales1Data, 0);
+		Plot('#flotDashSales2', flotDashSales2Data, 0);
+		Plot('#flotDashSales3', flotDashSales3Data, 0);
+		Plot('#flotDashSales4', flotDashSales4Data, 0);
+		console.log("helo");
 	});
 
-	$('#salesSelector2').themePluginMultiSelect().on('change', function () {
-		Plot('#flotDashSales1', flotDashSales1Data, 0);
-	});
 
 	$('#salesSelector').trigger('change');
 
-	$('#salesSelector2').trigger('change');
 
 	$('#salesSelectorWrapper').addClass('ready');
 
