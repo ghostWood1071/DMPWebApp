@@ -10,7 +10,12 @@ namespace DMPWebApp.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            HttpCookie cookie = Request.Cookies.Get("userID");
+            if (cookie != null)
+            {
+                return View();
+            }
+            return Redirect("/Login");
         }
 
         public ActionResult About()

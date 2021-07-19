@@ -19,9 +19,7 @@ body {
 	overflow-y: scroll;
 }
 
-[node-id]{
-	background-color: #3f923f !important;
-}
+
 
 a {
 	color: #cccccc;

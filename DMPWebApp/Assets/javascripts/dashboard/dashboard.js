@@ -1,7 +1,5 @@
-
+﻿
 (function ($) {
-
-	'use strict';
 
 	var Plot = function (id, data, min) {
 		$.plot(id, data, {
@@ -54,7 +52,6 @@
 		Plot('#flotDashSales2', flotDashSales2Data, 0);
 		Plot('#flotDashSales3', flotDashSales3Data, 0);
 		Plot('#flotDashSales4', flotDashSales4Data, 0);
-		console.log("helo");
 	});
 
 
@@ -62,11 +59,6 @@
 
 
 	$('#salesSelectorWrapper').addClass('ready');
-
-	/*
-	Flot: Sales 1
-	*/
-
 
 
 }).apply(this, [jQuery]);

@@ -184,7 +184,7 @@
     <Content Include="Assets\images\projects\project-7.jpg" />
     <Content Include="Assets\images\projects\project.jpg" />
     <Content Include="Assets\images\widget-twitter-profile.jpg" />
-    <Content Include="Assets\javascripts\dashboard\examples.dashboard.js" />
+    <Content Include="Assets\javascripts\dashboard\dashboard.js" />
     <Content Include="Assets\javascripts\forms\examples.advanced.form.js" />
     <Content Include="Assets\javascripts\forms\examples.validation.js" />
     <Content Include="Assets\javascripts\forms\examples.wizard.js" />

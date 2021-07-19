@@ -32,9 +32,15 @@ namespace DMPWebApp.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                string Account = collection.GetValue("Account").ConvertTo(typeof(string)).ToString();
+                string Password = collection.GetValue("Password").ConvertTo(typeof(string)).ToString();
+                if (Account == "admin" && Password == "Dmphd@123")
+                {
+                    HttpCookie cookie = new HttpCookie("UserID", "1234567890");
+                    Response.Cookies.Add(cookie);
+                    return Redirect("/Home");
+                }
+                else return RedirectToAction("Index");
             }
             catch
             {
