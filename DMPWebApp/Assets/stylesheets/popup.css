@@ -1,0 +1,287 @@
+﻿.card {
+    background-color: #fff;
+    padding: 0px 40px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    border: none !important;
+    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2)
+}
+
+.mx-auto.workform {
+    position: fixed;
+    z-index: 10000;
+    top: 12px;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+@media only screen and (min-width: 100px) {
+    .col-m-1 {
+        width: 5%;
+    }
+
+    .col-m-2 {
+        width: 10%;
+    }
+
+    .col-m-3 {
+        width: 15%;
+    }
+
+    .col-m-4 {
+        width: 20%;
+    }
+
+    .col-m-5 {
+        width: 25%;
+    }
+
+    .col-m-6 {
+        width: 30%;
+    }
+
+    .col-m-7 {
+        width: 35%;
+    }
+
+    .col-m-8 {
+        width: 40%;
+    }
+
+    .col-m-9 {
+        width: 45%;
+    }
+
+    .col-m-10 {
+        width: 50%;
+    }
+
+    .col-m-11 {
+        width: 55%;
+    }
+
+    .col-m-12 {
+        width: 60%;
+    }
+
+    .col-m-13 {
+        width: 65%;
+    }
+
+    .col-m-14 {
+        width: 70%;
+    }
+
+    .col-m-15 {
+        width: 75%;
+    }
+
+    .col-m-16 {
+        width: 80%;
+    }
+
+    .col-m-17 {
+        width: 85%;
+    }
+
+    .col-m-19 {
+        width: 95%;
+    }
+
+    .col-m-20 {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .col-1 {
+        width: 5%;
+    }
+
+    .col-2 {
+        width: 10%;
+    }
+
+    .col-3 {
+        width: 15%;
+    }
+
+    .col-4 {
+        width: 20%;
+    }
+
+    .col-5 {
+        width: 25%;
+    }
+
+    .col-6 {
+        width: 30%;
+    }
+
+    .col-7 {
+        width: 35%;
+    }
+
+    .col-8 {
+        width: 40%;
+    }
+
+    .col-9 {
+        width: 45%;
+    }
+
+    .col-10 {
+        width: 50%;
+    }
+
+    .col-11 {
+        width: 55%;
+    }
+
+    .col-12 {
+        width: 60%;
+    }
+
+    .col-13 {
+        width: 65%;
+    }
+
+    .col-14 {
+        width: 70%;
+        display: table;
+    }
+
+    .col-15 {
+        width: 75%;
+    }
+
+    .col-16 {
+        width: 80%;
+    }
+
+    .col-17 {
+        width: 85%;
+    }
+
+    .col-19 {
+        width: 95%;
+    }
+
+    .col-20 {
+        width: 100%;
+    }
+}
+
+.d-flex {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+}
+
+.justify-content-center {
+    -webkit-box-pack: center !important;
+    -ms-flex-pack: center !important;
+    justify-content: center !important;
+}
+
+.card {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.mb-4, .my-4 {
+    margin-bottom: 1.5rem !important;
+}
+
+.justify-content-between {
+    -webkit-box-pack: justify !important;
+    -ms-flex-pack: justify !important;
+    justify-content: space-between !important;
+}
+
+.flex-column {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+    -ms-flex-direction: column !important;
+    flex-direction: column !important;
+}
+
+.pl-3, .px-3 {
+    padding-left: 1rem !important;
+}
+
+.pr-3, .px-3 {
+    padding-right: 1rem !important;
+}
+
+.blue-text {
+    color: #00BCD4
+}
+
+.form-control-label {
+    margin-bottom: 0
+}
+
+input,
+textarea,
+button {
+    padding: 8px 15px;
+    border-radius: 5px !important;
+    margin: 5px 0px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    font-size: 14px !important;
+    font-weight: 300;
+}
+
+    input:focus,
+    textarea:focus {
+        -moz-box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        border: 1px solid #00BCD4;
+        outline-width: 0;
+        font-weight: 400
+    }
+
+.btn-block {
+    text-transform: uppercase;
+    font-size: 15px !important;
+    font-weight: 400;
+    height: 43px;
+    cursor: pointer
+}
+
+    .btn-block:hover {
+        color: #fff !important
+    }
+
+button:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline-width: 0
+}
+
+.row.j {
+    justify-content: center;
+    margin-top: 20px;
+    display: flex;
+}
+
+.form-group .fileupload .uneditable-input {
+    width: calc(100% - 157.8px);
+}

@@ -215,6 +215,7 @@
     <Content Include="Assets\javascripts\ui-elements\examples.treeview.js" />
     <Content Include="Assets\javascripts\ui-elements\examples.widgets.js" />
     <Content Include="Assets\stylesheets\invoice-print.css" />
+    <Content Include="Assets\stylesheets\popup.css" />
     <Content Include="Assets\stylesheets\skins\default.css" />
     <Content Include="Assets\stylesheets\skins\extension.css" />
     <Content Include="Assets\stylesheets\theme-admin-extension.css" />

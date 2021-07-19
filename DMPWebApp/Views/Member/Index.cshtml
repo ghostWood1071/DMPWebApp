@@ -23,6 +23,10 @@
     </header>
 
     <!-- start: page -->
+
+
+
+
     <section class="panel">
         <header class="panel-heading">
             <div class="panel-actions">
@@ -35,7 +39,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="mb-md">
-                        <button id="addToTable" class="btn btn-primary">Thêm thành viên <i class="fa fa-plus"></i></button>
+                        <button id="addToTablee" class="btn btn-primary">Thêm thành viên <i class="fa fa-plus"></i></button>
                     </div>
                 </div>
             </div>
@@ -48,38 +52,41 @@
                         <th>Ngày sinh</th>
                         <th>Giới tính</th>
                         <th>CMND</th>
-                        <th>Ngày cấp</th>
-                        <th>Nơi cấp</th>
+                        <th>Chức vụ</th>
+                        <th>Vị trí</th>
                         <th>Email</th>
                         <th>Điện thoại</th>
+                        <th>Tác vụ</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="gradeA">
-                        <td>TV000201</td>
-                        <td>Mai Ăn Tiêm</td>
-                        <td>Khoái Châu, Hưng Yên</td>
-                        <td>01/04/2001</td>
+                        <td>TV000001</td>
+                        <td>Dương Quá</td>
+                        <td>đỉnh Hoa Sơn</td>
+                        <td>19/05/1832</td>
                         <td>Nam</td>
-                        <td>0333948284912</td>
-                        <td>06/12</td>
-                        <td>Công An Khoái Châu</td>
-                        <td>bagiangson2001@gmaill.com</td>
-                        <td>0968324981</td>
+                        <td>0333948273178</td>
+                        <td>Giám đốc</td>
+                        <td>Thành viên tích cực</td>
+                        <td>amduongphong@gmail.com</td>
+                        <td>0983794729</td>
                         <td class="actions">
                             <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
                             <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                            <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                            <a href="#" class="on-default editt-row"><i class="fa fa-pencil"></i></a>
                             <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
                         </td>
                     </tr>
-
                 </tbody>
             </table>
         </div>
     </section>
     <!-- end: page -->
 </section>
+			</div>
+		</section>
+
 
 @section div{
     <div id="dialog" class="modal-block mfp-hide">
@@ -90,7 +97,7 @@
             <div class="panel-body">
                 <div class="modal-wrapper">
                     <div class="modal-text">
-                        <p>Bạn có chắc chắn muốn xóa sản phẩm này?</p>
+                        <p>Bạn có chắc chắn muốn xóa thành viên này?</p>
                     </div>
                 </div>
             </div>
@@ -104,16 +111,135 @@
             </footer>
         </section>
     </div>
+
 }
 
+<div class="mx-auto workform" style="display: none;">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+            <div class="card">
+                <h3 class="text-center mb-4">Nhập thông tin</h3>
+                <form class="form-card" onsubmit="event.preventDefault()">
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Mã thành viên<span class="text-danger"> *</span></label> <input type="text" id="fid" name="fid" placeholder="Nhập mã" onblur="validate(1)"> </div>
+                        <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Họ tên<span class="text-danger"> *</span></label> <input type="text" id="fname" name="fname" placeholder="Nhập Tên" onblur="validate(2)"> </div>
+                        <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label> <input type="text" id="email" name="email" placeholder="" onblur="validate(3)"> </div>
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Địa chỉ<span class="text-danger"> *</span></label> <input type="text" id="address" name="address" placeholder="" onblur="validate(5)"> </div>
+                        <div class="form-group col-sm-4 flex-column d-flex">
+                            <label class="form-control-label px-3">Ngày sinh<span class="text-danger"> *</span></label>
+                            <input type="" data-plugin-datepicker name="OrderDate" id="dob">
+                        </div>
+                        <div class="form-group col-sm-4 flex-column d-flex">
+                            <label class="form-control-label px-3">Active<span class="text-danger"> *</span></label>
+                            <select class="selectpicker" style="border: 1px solid #ccc; font-size: 14px;" id="isactive">
+                                <option>Đã active</option>
+                                <option>Chưa active</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Mã người giới thiệu<span class="text-danger"> *</span></label> <input type="text" id="referralID" name="referralID" placeholder="" onblur="validate(5)"> </div>
+                        <div class="form-group col-sm-4 flex-column d-flex">
+                            <label class="form-control-label px-3">Mật khẩu<span class="text-danger"> *</span></label>
+                            <input type="text" id="password" name="password" placeholder="" onblur="validate(5)">
+                        </div>
+                        <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Số điện thoại<span class="text-danger"> *</span></label> <input type="text" id="phone" name="phone" placeholder="" onblur="validate(4)"> </div>
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-4 flex-column d-flex">
+                            <label class="form-control-label px-3">Giới tính<span class="text-danger"> *</span></label>
+                            <select id="gender" class="selectpicker" style="border: 1px solid #ccc; font-size: 14px;">
+                                <option>Nam</option>
+                                <option>Nữ</option>
+                                <option>Khác</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-4 flex-column d-flex">
+                            <label class="form-control-label px-3">Vị trí<span class="text-danger"> *</span></label>
+                            <select id="position" class="selectpicker" style="border: 1px solid #ccc; font-size: 14px;">
+                                <option>Thành viên</option>
+                                <option>Thành viên tích cực</option>
+                                <option>Trưởng phòng</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-4 flex-column d-flex">
+                            <label class="form-control-label px-3">Chức vụ<span class="text-danger"> *</span></label>
+                            <select id="role" class="selectpicker" style="border: 1px solid #ccc; font-size: 14px;">
+                                <option>Giám đốc</option>
+                                <option>Thành viên</option>
+                                <option>Siêu giám đốc</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-4 flex-column d-flex">
+                            <label class="form-control-label px-3">Số CMND<span class="text-danger"> *</span></label> <input type="text" id="IDCard" name="IDCard" placeholder="" onblur="validate(5)">
+                        </div>
+                        <div class="form-group col-sm-4 flex-column d-flex">
+                            <label class="form-control-label px-3">Nơi cấp<span class="text-danger"> *</span></label> <input type="text" id="IDCard_PlaceIssue" name="IDCard_PlaceIssue" placeholder="" onblur="validate(5)">
+                        </div>
+                        <div class="form-group col-sm-4 flex-column d-flex">
+                            <label class="form-control-label px-3">Ngày cấp<span class="text-danger"> *</span></label>
+                            <input id="IDCard_DateIssue" type="" data-plugin-datepicker name="OrderDate">
+                        </div>
+                    </div>
+
+
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-12 flex-column d-flex">
+                            <label class="form-control-label px-3">Ảnh<span class="text-danger"> *</span></label>
+                            <div class="fileupload fileupload-new" data-provides="fileupload" style="width: 100%;">
+                                <div class="input-append">
+                                    <div class="uneditable-input">
+                                        <span class="fileupload-preview"></span>
+                                    </div>
+                                    <span class="btn btn-default btn-file">
+                                        <span class="fileupload-exists">Thay đổi</span>
+                                        <span class="fileupload-new">Chọn ảnh</span>
+                                        <input id="avatar" type="file" accept="image/*">
+                                    </span>
+                                    <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row j">
+                        <div class="form-group col-sm-6 save"> <button type="submit" class="btn-block btn-primary">Lưu</button> </div>
+                        <div class="form-group col-sm-2 exit"> <button type="submit" class="btn-danger btn-primary">Bỏ qua</button> </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 @section script{
     <script src="~/Assets/javascripts/tables/examples.datatables.editable.js"></script>
     <script>
-        ((function ($) {
+        $('#addToTablee').click(function () {
+            $('.workform').show();
+        });
+        $('a.on-default.editt-row').click(function () {
+            $('.workform').show();
+        });
+        $('.save').click(function () {
+            $('.workform').hide();
+        });
+        $('.exit').click(function () {
+            $('.workform').hide();
+        });
+    </script>
+    <script>
+        (function ($) {
             $(function () {
                 EditableTable.initialize(10);
             });
-        }).apply(this, [jQuery])
+        }).apply(this, [jQuery]);
     </script>
 }
 
