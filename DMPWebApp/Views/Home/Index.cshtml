@@ -1,4 +1,375 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Trang chủ";
 }
 
+<section role="main" class="content-body">
+    <header class="page-header">
+        <h2>Trang chủ</h2>
+
+        <div class="right-wrapper pull-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li><span>Trang chủ</span></li>
+            </ol>
+
+            <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
+        </div>
+    </header>
+
+    <!-- start: page -->
+    <div class="row">
+        <!--part 1-->
+        <div class="col-md-6 col-lg-12 col-xl-6">
+            <div class="row" style="padding: 0 15px 15px 15px;">
+                <header class="panel-heading">
+                    <h3>Thời gian</h3>
+                    <div style="margin-top: 20px; display: flex; width: 23%; justify-content: space-between;">
+                        <div>
+                            <select name="year" id="year">
+                                <option value="">Năm 2021</option>
+                                <option value="">Năm 2020</option>
+                                <option value="">Năm 2019</option>
+                                <option value="">Năm 2018</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <select name="month" id="month">
+                                <option value="">Quý 1</option>
+                                <option value="1">Tháng 1</option>
+                                <option value="2">Tháng 2</option>
+                                <option value="3">Tháng 3</option>
+                                <option value="">Quý 2</option>
+                                <option value="4">Tháng 4</option>
+                                <option value="5">Tháng 5</option>
+                                <option value="6">Tháng 6</option>
+                                <option value="">Quý 3</option>
+                                <option value="7">Tháng 7</option>
+                                <option value="8">Tháng 8</option>
+                                <option value="9">Tháng 9</option>
+                                <option value="">Quý 4</option>
+                                <option value="10">Tháng 10</option>
+                                <option value="11">Tháng 11</option>
+                                <option value="12">Tháng 12</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </header>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-6 col-xl-6">
+                    <section class="panel panel-featured-left panel-featured-secondary">
+                        <div class="panel-body">
+                            <div class="widget-summary">
+                                <div class="widget-summary-col widget-summary-col-icon">
+                                    <div class="summary-icon bg-secondary">
+                                        <i class="fa fa-usd"></i>
+                                    </div>
+                                </div>
+                                <div class="widget-summary-col">
+                                    <div class="summary">
+                                        <div class="info">
+                                            <strong class="amount">14,890,000,000 VND</strong>
+                                        </div>
+                                    </div>
+                                    <div class="summary-footer">
+                                        <a class="text-muted text-uppercase">Tổng lợi nhuận</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-12 col-lg-6 col-xl-6">
+                    <section class="panel panel-featured-left panel-featured-tertiary">
+                        <div class="panel-body">
+                            <div class="widget-summary">
+                                <div class="widget-summary-col widget-summary-col-icon">
+                                    <div class="summary-icon bg-tertiary">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </div>
+                                </div>
+                                <div class="widget-summary-col">
+                                    <div class="summary">
+
+                                        <div class="info">
+                                            <strong class="amount">500</strong>
+                                        </div>
+                                    </div>
+                                    <div class="summary-footer">
+                                        <a class="text-muted text-uppercase">Tổng số lượng đơn hàng</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-12 col-lg-6 col-xl-6">
+                    <section class="panel panel-featured-left panel-featured-quartenary">
+                        <div class="panel-body">
+                            <div class="widget-summary">
+                                <div class="widget-summary-col widget-summary-col-icon">
+                                    <div class="summary-icon bg-quartenary">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                </div>
+                                <div class="widget-summary-col">
+                                    <div class="summary">
+                                        <div class="info">
+                                            <strong class="amount">50</strong>
+                                        </div>
+                                    </div>
+                                    <div class="summary-footer">
+                                        <a class="text-muted text-uppercase">Số thành viên mới</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-12 col-lg-6 col-xl-6">
+                    <section class="panel panel-featured-left panel-featured-primary">
+                        <div class="panel-body">
+                            <div class="widget-summary">
+                                <div class="widget-summary-col widget-summary-col-icon">
+                                    <div class="summary-icon bg-primary">
+                                        <i class="fa fa-life-ring"></i>
+                                    </div>
+                                </div>
+                                <div class="widget-summary-col">
+                                    <div class="summary">
+                                        <div class="info">
+                                            <strong class="amount">1281</strong>
+                                        </div>
+                                    </div>
+                                    <div class="summary-footer">
+                                        <a class="text-muted text-uppercase">Tổng điểm doanh thu</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <!--part 2-->
+        <div class="col-md-6 col-lg-12 col-xl-6">
+            <section class="panel">
+                <header class="panel-heading">
+                    <h2 class="panel-title">Thống kê</h2>
+                </header>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered mb-none">
+                            <thead>
+                                <tr>
+                                    <th>Tổng doanh thu</th>
+                                    <th>Tổng điểm DS</th>
+                                    <th>Số thành viên</th>
+                                    <th>Số đơn hàng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>100000000</td>
+                                    <td>500000</td>
+                                    <td>200</td>
+                                    <td>5000</td>
+                                </tr>
+                                <tr>
+                                    <td>100000000</td>
+                                    <td>500000</td>
+                                    <td>200</td>
+                                    <td>5000</td>
+                                </tr>
+                                <tr>
+                                    <td>100000000</td>
+                                    <td>500000</td>
+                                    <td>200</td>
+                                    <td>5000</td>
+                                </tr>
+                                <tr>
+                                    <td>100000000</td>
+                                    <td>500000</td>
+                                    <td>200</td>
+                                    <td>5000</td>
+                                </tr>
+                                <tr>
+                                    <td>100000000</td>
+                                    <td>500000</td>
+                                    <td>200</td>
+                                    <td>5000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!--part 3-->
+        <div class="col-md-6 col-lg-12 col-xl-6">
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="chart-data-selector" id="salesSelectorWrapper">
+                                <h2>
+                                    Năm:
+                                    <strong>
+                                        <select class="form-control" id="salesSelector">
+                                            <option selected>2021</option>
+                                            <option>2020</option>
+                                            <option>2019</option>
+                                        </select>
+                                    </strong>
+                                </h2>
+
+
+                                <div id="salesSelectorItems" class="chart-data-selector-items mt-sm row">
+                                    <!-- Flot: Sales JSOFT Admin -->
+                                    <div class="col-lg-6 col-md-6 col-xl-6">
+                                        <div class="text-center chart-custom">
+                                            <label for="flotDashSales1">Điểm doanh số</label>
+                                            <div class="chart chart-sm chart-active" data-sales-rel="JSOFT Admin" id="flotDashSales1"></div>
+                                        </div>
+                                        <div class="text-center chart-custom">
+                                            <label for="flotDashSales2">Lợi nhuận</label>
+                                            <div class="chart chart-sm chart-active" data-sales-rel="JSOFT Admin" id="flotDashSales2"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-xl-6">
+                                        <div class="text-center chart-custom">
+                                            <label for="flotDashSales3">Số đơn hàng</label>
+                                            <div class="chart chart-sm chart-active" data-sales-rel="JSOFT Admin" id="flotDashSales3" ></div>
+                                        </div>
+                                        <div class="text-center chart-custom">
+                                            <label for="flotDashSales4">Số thành viên</label>
+                                            <div class="chart chart-sm chart-active" data-sales-rel="JSOFT Admin" id="flotDashSales4"></div>
+                                        </div>
+                                    </div>
+
+                                    <script>
+                                        var flotDashSales1Data = [{
+                                            data: [
+                                                ["Jan", 200],
+                                                ["Feb", 200],
+                                                ["Mar", 190],
+                                                ["Apr", 140],
+                                                ["May", 250],
+                                                ["Jun", 320],
+                                                ["Jul", 270],
+                                                ["Aug", 180],
+                                                ["Sep", 190],
+                                                ["Oct", 200],
+                                                ["Nov", 210],
+                                                ["Dec", 220]
+                                            ],
+                                            color: "#3f923f"
+                                        }];
+
+                                        var flotDashSales2Data = [{
+                                            data: [
+                                                ["Jan", 140],
+                                                ["Feb", 240],
+                                                ["Mar", 190],
+                                                ["Apr", 140],
+                                                ["May", 180],
+                                                ["Jun", 320],
+                                                ["Jul", 270],
+                                                ["Aug", 180],
+                                                ["Sep", 190],
+                                                ["Oct", 200],
+                                                ["Nov", 210],
+                                                ["Dec", 220]
+                                            ],
+                                            color: "#e36159"
+                                        }];
+
+                                        var flotDashSales3Data = [{
+                                            data: [
+                                                ["Jan", 240],
+                                                ["Feb", 240],
+                                                ["Mar", 190],
+                                                ["Apr", 300],
+                                                ["May", 280],
+                                                ["Jun", 320],
+                                                ["Jul", 170],
+                                                ["Aug", 180],
+                                                ["Sep", 190],
+                                                ["Oct", 200],
+                                                ["Nov", 210],
+                                                ["Dec", 220]
+                                            ],
+                                            color: "#2baab1"
+                                        }];
+
+                                        var flotDashSales4Data = [{
+                                            data: [
+                                                ["Jan", 240],
+                                                ["Feb", 240],
+                                                ["Mar", 190],
+                                                ["Apr", 300],
+                                                ["May", 280],
+                                                ["Jun", 320],
+                                                ["Jul", 170],
+                                                ["Aug", 180],
+                                                ["Sep", 190],
+                                                ["Oct", 200],
+                                                ["Nov", 210],
+                                                ["Dec", 220]
+                                            ],
+                                            color: "#734ba9"
+                                        }];
+                                                                                                                                                        // See: ~/Assets/javascripts/dashboard/examples.dashboard.js for more settings.
+                                    </script>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+    <!-- end: page -->
+</section>
+
+@section script{
+    <script src="~/Assets/vendor/jquery-ui/js/jquery-ui-1.10.4.custom.js"></script>
+    <script src="~/Assets/vendor/jquery-ui-touch-punch/jquery.ui.touch-punch.js"></script>
+    <script src="~/Assets/vendor/jquery-appear/jquery.appear.js"></script>
+    <script src="~/Assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+    <script src="~/Assets/vendor/jquery-easypiechart/jquery.easypiechart.js"></script>
+    <script src="~/Assets/vendor/flot/jquery.flot.js"></script>
+    <script src="~/Assets/vendor/flot-tooltip/jquery.flot.tooltip.js"></script>
+    <script src="~/Assets/vendor/flot/jquery.flot.pie.js"></script>
+    <script src="~/Assets/vendor/flot/jquery.flot.categories.js"></script>
+    <script src="~/Assets/vendor/flot/jquery.flot.resize.js"></script>
+    <script src="~/Assets/vendor/jquery-sparkline/jquery.sparkline.js"></script>
+    <script src="~/Assets/vendor/raphael/raphael.js"></script>
+    <script src="~/Assets/vendor/morris/morris.js"></script>
+    <script src="~/Assets/vendor/gauge/gauge.js"></script>
+    <script src="~/Assets/vendor/snap-svg/snap.svg.js"></script>
+    <script src="~/Assets/vendor/liquid-meter/liquid.meter.js"></script>
+    <script src="~/Assets/vendor/jqvmap/jquery.vmap.js"></script>
+    <script src="~/Assets/vendor/jqvmap/data/jquery.vmap.sampledata.js"></script>
+    <script src="~/Assets/vendor/jqvmap/maps/jquery.vmap.world.js"></script>
+    <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.africa.js"></script>
+    <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.asia.js"></script>
+    <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.australia.js"></script>
+    <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.europe.js"></script>
+    <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.north-america.js"></script>
+    <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.south-america.js"></script>
+
+
+    <script src="~/Assets/javascripts/dashboard/examples.dashboard.js"></script>
+}

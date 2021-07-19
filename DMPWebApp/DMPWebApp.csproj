@@ -125,6 +125,7 @@
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1584,6 +1585,7 @@
     <Content Include="Assets\vendor\morris\morris.min.js" />
     <Content Include="Assets\vendor\nanoscroller\nanoscroller.css" />
     <Content Include="Assets\vendor\nanoscroller\nanoscroller.js" />
+    <Content Include="Assets\vendor\orgchart\orgchart.js" />
     <Content Include="Assets\vendor\owl-carousel\AjaxLoader.gif" />
     <Content Include="Assets\vendor\owl-carousel\grabbing.png" />
     <Content Include="Assets\vendor\owl-carousel\owl.carousel.css" />
@@ -1966,6 +1968,7 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\AddOrder.cshtml" />
     <Content Include="Views\Order\UpdateOrder.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
