@@ -2,7 +2,9 @@
 @{
     ViewBag.Title = "Quản lý thành viên";
 }
-
+@section css{
+    <link rel="stylesheet" href="~/Assets/stylesheets/popup.css">
+}
 
 <section role="main" class="content-body">
     <header class="page-header">
@@ -23,16 +25,12 @@
     </header>
 
     <!-- start: page -->
-
-
-
-
     <section class="panel">
         <header class="panel-heading">
             <div class="panel-actions">
                 <a href="#" class="fa fa-caret-down"></a>
+                <a href="#" class="fa fa-times"></a>
             </div>
-
             <h2 class="panel-title">Danh sách thành viên</h2>
         </header>
         <div class="panel-body">
@@ -43,7 +41,7 @@
                     </div>
                 </div>
             </div>
-            <table class="table table-bordered table-striped mb-none" id="datatable-editable">
+            <table class="table table-bordered table-striped mb-none" id="datatable-details">
                 <thead>
                     <tr>
                         <th>Mã thành viên</th>
@@ -51,10 +49,8 @@
                         <th>Địa chỉ</th>
                         <th>Ngày sinh</th>
                         <th>Giới tính</th>
-                        <th>CMND</th>
                         <th>Chức vụ</th>
                         <th>Vị trí</th>
-                        <th>Email</th>
                         <th>Điện thoại</th>
                         <th>Tác vụ</th>
                     </tr>
@@ -66,16 +62,26 @@
                         <td>đỉnh Hoa Sơn</td>
                         <td>19/05/1832</td>
                         <td>Nam</td>
-                        <td>0333948273178</td>
                         <td>Giám đốc</td>
                         <td>Thành viên tích cực</td>
-                        <td>amduongphong@gmail.com</td>
                         <td>0983794729</td>
                         <td class="actions">
-                            <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                            <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
                             <a href="#" class="on-default editt-row"><i class="fa fa-pencil"></i></a>
-                            <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                            <a href="#" class="on-default removeMember"><i class="fa fa-trash-o"></i></a>
+                        </td>
+                    </tr>
+                    <tr class="gradeA">
+                        <td>TV000002</td>
+                        <td>Dương Quá</td>
+                        <td>đỉnh Hoa Sơn</td>
+                        <td>19/05/1832</td>
+                        <td>Nam</td>
+                        <td>Giám đốc</td>
+                        <td>Thành viên tích cực</td>
+                        <td>0983794729</td>
+                        <td class="actions">
+                            <a href="#" class="on-default editt-row"><i class="fa fa-pencil"></i></a>
+                            <a href="#" class="on-default removeMember"><i class="fa fa-trash-o"></i></a>
                         </td>
                     </tr>
                 </tbody>
@@ -87,34 +93,7 @@
 			</div>
 		</section>
 
-
-@section div{
-    <div id="dialog" class="modal-block mfp-hide">
-        <section class="panel">
-            <header class="panel-heading">
-                <h2 class="panel-title">Bạn có chắc chắn muốn xóa?</h2>
-            </header>
-            <div class="panel-body">
-                <div class="modal-wrapper">
-                    <div class="modal-text">
-                        <p>Bạn có chắc chắn muốn xóa thành viên này?</p>
-                    </div>
-                </div>
-            </div>
-            <footer class="panel-footer">
-                <div class="row">
-                    <div class="col-md-12 text-right">
-                        <button id="dialogConfirm" class="btn btn-primary">Xác nhận</button>
-                        <button id="dialogCancel" class="btn btn-default">Hủy</button>
-                    </div>
-                </div>
-            </footer>
-        </section>
-    </div>
-
-}
-
-<div class="mx-auto workform" style="display: none;">
+<div class="mx-auto workform" id="dialogAddmember" style="display: none;">
     <div class="row d-flex justify-content-center">
         <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
             <div class="card">
@@ -218,7 +197,34 @@
         </div>
     </div>
 </div>
+
+@section div{
+    <div id="dialog" class="modal-block mfp-hide">
+        <section class="panel">
+            <header class="panel-heading">
+                <h2 class="panel-title">Bạn có chắc chắn muốn xóa?</h2>
+            </header>
+            <div class="panel-body">
+                <div class="modal-wrapper">
+                    <div class="modal-text">
+                        <p>Bạn có chắc chắn muốn xóa thành viên này?</p>
+                    </div>
+                </div>
+            </div>
+            <footer class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button id="dialogConfirm" class="btn btn-primary">Xác nhận</button>
+                        <button id="dialogCancel" class="btn btn-default">Hủy</button>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </div>
+}
+
 @section script{
+    <script src="~/Assets/javascripts/tables/member.with.detail.js"></script>
     <script src="~/Assets/javascripts/tables/examples.datatables.editable.js"></script>
     <script>
         $('#addToTablee').click(function () {
@@ -237,7 +243,7 @@
     <script>
         (function ($) {
             $(function () {
-                EditableTable.initialize(10);
+                EditableTable.initialize(6);
             });
         }).apply(this, [jQuery]);
     </script>

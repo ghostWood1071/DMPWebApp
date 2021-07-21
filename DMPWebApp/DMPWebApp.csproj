@@ -202,6 +202,7 @@
     <Content Include="Assets\javascripts\tables\examples.datatables.editable.js" />
     <Content Include="Assets\javascripts\tables\examples.datatables.row.with.details.js" />
     <Content Include="Assets\javascripts\tables\examples.datatables.tabletools.js" />
+    <Content Include="Assets\javascripts\tables\member.with.detail.js" />
     <Content Include="Assets\javascripts\tables\order.with.detail.js" />
     <Content Include="Assets\javascripts\theme.admin.extension.js" />
     <Content Include="Assets\javascripts\theme.custom.js" />
