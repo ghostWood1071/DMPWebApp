@@ -202,7 +202,7 @@
     <Content Include="Assets\javascripts\tables\examples.datatables.editable.js" />
     <Content Include="Assets\javascripts\tables\examples.datatables.row.with.details.js" />
     <Content Include="Assets\javascripts\tables\examples.datatables.tabletools.js" />
-    <Content Include="Assets\javascripts\tables\member.with.detail.js" />
+    <Content Include="Assets\javascripts\tables\member.with.detail.edit.js" />
     <Content Include="Assets\javascripts\tables\order.with.detail.js" />
     <Content Include="Assets\javascripts\theme.admin.extension.js" />
     <Content Include="Assets\javascripts\theme.custom.js" />
@@ -1965,11 +1965,13 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\javascripts\tables\member.with.detail.js" />
     <None Include="packages.config" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\AddOrder.cshtml" />
     <Content Include="Views\Order\UpdateOrder.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Member\LowerMember.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

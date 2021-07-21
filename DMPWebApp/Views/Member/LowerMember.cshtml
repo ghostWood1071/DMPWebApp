@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Danh sách cấp dưới";
+}
+
+<section role="main" class="content-body">
+    <header class="page-header">
+        <h2>Danh sách cấp dưới</h2>
+
+        <div class="right-wrapper pull-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li><span>Danh sách cấp dưới</span></li>
+            </ol>
+
+            <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
+        </div>
+    </header>
+
+    <!-- start: page -->
+    <section class="panel">
+        <header class="panel-heading">
+            <div class="panel-actions">
+                <a href="#" class="fa fa-caret-down"></a>
+                <a href="#" class="fa fa-times"></a>
+            </div>
+            <h2 class="panel-title">Danh sách cấp dưới</h2>
+        </header>
+        <div class="panel-body">
+            <table class="table table-bordered table-striped mb-none" id="datatable-details">
+                <thead>
+                    <tr>
+                        <th>Mã thành viên</th>
+                        <th>Họ tên</th>
+                        <th>Địa chỉ</th>
+                        <th>Ngày sinh</th>
+                        <th>Giới tính</th>
+                        <th>Chức vụ</th>
+                        <th>Vị trí</th>
+                        <th>Điện thoại</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="gradeA">
+                        <td>TV000001</td>
+                        <td>Dương Quá</td>
+                        <td>đỉnh Hoa Sơn</td>
+                        <td>19/05/1832</td>
+                        <td>Nam</td>
+                        <td>Giám đốc</td>
+                        <td>Thành viên tích cực</td>
+                        <td>0983794729</td>
+                    </tr>
+                    <tr class="gradeA">
+                        <td>TV000002</td>
+                        <td>Dương Quá</td>
+                        <td>đỉnh Hoa Sơn</td>
+                        <td>19/05/1832</td>
+                        <td>Nam</td>
+                        <td>Giám đốc</td>
+                        <td>Thành viên tích cực</td>
+                        <td>0983794729</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <!-- end: page -->
+</section>
+
+
+@section script{
+    <script src="~/Assets/javascripts/tables/member.with.detail.js"></script>
+    <script>
+        (function ($) {
+            $(function () {
+                EditableTable.initialize(5);
+            });
+        }).apply(this, [jQuery]);
+    </script>
+}

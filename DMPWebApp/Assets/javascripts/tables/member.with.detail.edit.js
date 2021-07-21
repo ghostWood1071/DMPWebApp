@@ -23,9 +23,12 @@
             detailContents.push(`
                 <tr>
                     <td>${details[i].Email}</td>
+                    <td>${details[i].Password}</td>
+                    <td>${details[i].ReferralID}</td>
                     <td>${details[i].IDCard}</td>
                     <td>${details[i].IDCard_DateIssue}</td>
                     <td>${details[i].IDCard_PlaceIssue}</td>
+                    <td>${details[i].IsActive}</td>
                 </tr>
             `);
         }
@@ -44,9 +47,12 @@
                         <thead>
                             <tr>
                                 <th>Email</th>
+                                <th>Password</th>
+                                <th>Mã TVGT</th>
                                 <th>CMND</th>
                                 <th>Ngày cấp</th>
                                 <th>Nơi cấp</th>
+                                <th>Kích hoạt</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -146,6 +152,50 @@
         });
         return false;
     }
+
+    $('.removeMember').click(function () {
+        var _self = {
+            $cancel: $('#dialogCancel'),
+            $confirm: $("#dialogConfirm"),
+            $wrapper: $("#dialog")
+        };
+        var row = $('.editt-row').parent().parent().children('td')[1];
+        var hang = $(this).parent().parent()
+        var data = $(row).text();
+        // $.post("./google.com", data ,function(response){
+
+        // }, 'json')
+        $.magnificPopup.open({
+            items: {
+                src: '#dialog',
+                type: 'inline'
+            },
+            preloader: false,
+            modal: true,
+            callbacks: {
+                change: function () {
+                    _self.$confirm.on('click', function (e) {
+                        e.preventDefault();
+                        hang.detach();
+                        //ajax
+                        $.magnificPopup.close();
+                    });
+
+                    _self.$cancel.on('click', function (e) {
+                        e.preventDefault();
+                        $.magnificPopup.close();
+                    });
+                },
+                close: function () {
+                    _self.$cancel.on('click', function (e) {
+                        e.preventDefault();
+                        $.magnificPopup.close();
+                    });
+                }
+            }
+        });
+        return false;
+    });
 
 
     $(function () {
