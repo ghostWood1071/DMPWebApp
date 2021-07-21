@@ -90,7 +90,6 @@
 							change: function() {
 								_self.dialog.$confirm.on( 'click', function( e ) {
 									e.preventDefault();
-
 									_self.rowRemove( $row );
 									$.magnificPopup.close();
 								});
