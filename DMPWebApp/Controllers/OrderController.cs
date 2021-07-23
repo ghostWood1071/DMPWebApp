@@ -14,6 +14,11 @@ namespace DMPWebApp.Controllers
             return View();
         }
 
+        public ActionResult ImpportHistory()
+        {
+            return View();
+        }
+
         // GET: Order/Details/5
         public ActionResult Details()
         {

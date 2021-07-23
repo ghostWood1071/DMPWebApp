@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Cây phân cấp thành viên";
+}
+
+<div id="tree"></div>
+
+@section script{
+    <script src="~/assets/vendor/orgchart/orgchart.js"></script>
+    <script>
+        var editForm = function () {
+            this.nodeId = null;
+        }
+
+        editForm.prototype.init = function (obj) {
+            var that = this;
+            this.obj = obj;
+        };
+
+        editForm.prototype.show = function (node) {
+
+        }
+
+
+        editForm.prototype.hide = function (showldUpdateTheNode) {
+
+        }
+
+        var chart = new OrgChart(document.getElementById("tree"), {
+            mouseScrool: OrgChart.action.none,
+            enableSearch: false,
+            collapse: {
+                level: 2,
+                allChildren: true
+            },
+            nodeBinding: {
+                field_0: "name",
+                field_1: "role",
+                field_2: "lol",
+                img_0: "img"
+            },
+            editUI: new editForm(),
+            nodes: [
+                { id: 1, name: "Amber McKenzie", role: 'trưởng phòng', lol: "abc", img: '/assets/images/logo.jpg' },
+                { id: 2, pid: 1, name: "Ava Field" },
+                { id: 3, pid: 1, name: "Peter Stevens" },
+                { id: 4, pid: 2, name: "Ava Field" },
+                { id: 5, pid: 2, name: "Peter Stevens" },
+                { id: 6, pid: 3, name: "Ava Field" },
+                { id: 7, pid: 3, name: "Peter Stevens" },
+            ]
+        });
+    </script>
+}

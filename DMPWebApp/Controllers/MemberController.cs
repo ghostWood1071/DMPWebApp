@@ -24,6 +24,16 @@ namespace DMPWebApp.Controllers
             return View();
         }
 
+        public ActionResult Salary()
+        {
+            return View();
+        }
+
+        public ActionResult OrgChartMember()
+        {
+            return View();
+        }
+
         // GET: Member/Create
         public ActionResult Create()
         {

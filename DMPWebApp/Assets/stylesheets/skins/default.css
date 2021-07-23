@@ -3,17 +3,16 @@ a,
 .btn-link {
 	color: #3f923f;
 }
-
 	a:hover,
 	a:focus,
 	.btn-link:hover,
 	.btn-link:focus {
-		color: #0099e6;
+		color: #106939;
 	}
 
 	a:active,
 	.btn-link:active {
-		color: #0077b3;
+		color: #8ac350;
 	}
 /* Sidebar Left */
 .sidebar-left .sidebar-header .sidebar-toggle:hover i {
@@ -62,7 +61,7 @@ a,
 }
 
 	.mailbox .mailbox-mail .mailbox-close-mail:hover {
-		color: #0099e6;
+		color: #106939;
 	}
 
 .mailbox .mailbox-mail .panel .panel-heading .panel-actions a:hover {
@@ -122,7 +121,7 @@ blockquote.primary {
 
 .open > .dropdown-toggle.btn-primary {
 	background: #3f923f;
-	border-color: #0077b3;
+	border-color: #8ac350;
 }
 
 body .btn-primary.dropdown-toggle {
@@ -137,14 +136,14 @@ body .btn-primary {
 }
 
 	body .btn-primary:hover {
-		border-color: #0099e6 !important;
-		background-color: #0099e6;
+		border-color: #106939 !important;
+		background-color: #106939;
 	}
 
 	body .btn-primary:active,
 	body .btn-primary:focus {
-		border-color: #0077b3 !important;
-		background-color: #0077b3;
+		border-color: #8ac350 !important;
+		background-color: #8ac350;
 	}
 
 	body .btn-primary[disabled] {
@@ -349,7 +348,7 @@ html.no-overflowscrolling .nano > .nano-pane > .nano-slider {
 
 	.pagination > li a:hover,
 	.pagination > li a:focus {
-		color: #0099e6;
+		color: #106939;
 	}
 
 .pagination > li.active a,
@@ -743,7 +742,7 @@ html.dark .search-content .search-toolbar .nav-pills li.active a:focus {
 html.dark .checkbox-primary label:before,
 .checkbox-primary label:before {
 	background: #3f923f;
-	border-color: #0077b3;
+	border-color: #8ac350;
 }
 
 html.dark .checkbox-text-primary input[type="checkbox"]:checked + label:after,
@@ -838,7 +837,7 @@ html.dark .datepicker.datepicker-primary table tbody tr td.day.active,
 	}
 
 .datepicker.datepicker-primary table thead tr:last-child {
-	background-color: #0099e6;
+	background-color: #106939;
 }
 
 	.datepicker.datepicker-primary table thead tr:last-child th:hover {

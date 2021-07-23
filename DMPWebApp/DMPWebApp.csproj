@@ -1972,6 +1972,9 @@
     <Content Include="Views\Order\UpdateOrder.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Member\LowerMember.cshtml" />
+    <Content Include="Views\Order\ImpportHistory.cshtml" />
+    <Content Include="Views\Member\Salary.cshtml" />
+    <Content Include="Views\Member\OrgChartMember.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

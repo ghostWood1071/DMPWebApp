@@ -28,42 +28,26 @@
                 <a href="#" class="fa fa-caret-down"></a>
                 <a href="#" class="fa fa-times"></a>
             </div>
-            <h2 class="panel-title">Lịch sử nhập hàng</h2>
+            <h2 class="panel-title">Danh sách hóa đơn</h2>
         </header>
         <div class="panel-body">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="mb-md">
-                        <button id="addToOrder" class="btn btn-primary">Thêm hóa đơn <i class="fa fa-plus"></i></button>
-                    </div>
-                </div>
-            </div>
+            
             <table class="table table-bordered table-striped mb-none" id="datatable-details">
                 <thead>
                     <tr>
-                        <th>Mã HD</th>
-                        <th>Mã thành viên</th>
-                        <th>Thành viên</th>
-                        <th>Ngày nhập</th>
+                        <th>Mã DH</th>
+                        <th>Ngày thành toán</th>
                         <th>Điểm sử dụng</th>
-                        <th>Chiết khấu</th>
                         <th>Tổng giá</th>
-                        <th>Tác vụ</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="gradeA">
                         <td>HD001</td>
-                        <td>TV0001</td>
-                        <td>Nguyễn Văn A</td>
                         <td>16/7/2021</td>
                         <td class="right">4</td>
-                        <td class="right">40</td>
-                        <td class="right">12.000.000</td>
-                        <td class="actions center">
-                            <a href="#" class="on-default editOrder"><i class="fa fa-pencil"></i></a>
-                            <a href="#" class="on-default removeOrder"><i class="fa fa-trash-o"></i></a>
-                        </td>
+                        <td class="right">12000000</td>
+
                     </tr>
                 </tbody>
             </table>
@@ -89,7 +73,7 @@
                 <div class="row">
                     <div class="col-md-12 text-right">
                         <button id="dialogConfirm" class="btn btn-primary">Xác nhận</button>
-                        <button id="dialogCancel" class="btn btn-default">Đóng</button>
+                        <button id="dialogCancel" class="btn btn-default">Hủy</button>
                     </div>
                 </div>
             </footer>
@@ -119,17 +103,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Họ tên thành viên</label>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="MemberID">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
                         <label class="col-md-3 control-label" for="inputDefault">Điểm sử dụng</label>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="UsedMark" id="usedinput">
-                            <label for="usedinput">Tối đa sử dụng 40 điểm</label>
+                            <input type="text" class="form-control" name="UsedMark">
                         </div>
                     </div>
 
@@ -151,7 +127,7 @@
                 <div class="row">
                     <div class="col-md-12 text-right">
                         <button id="btnSaveOrder" class="btn btn-primary">Xác nhận</button>
-                        <button id="btnCancelOrder" class="btn btn-default">Đóng</button>
+                        <button id="btnCancelOrder" class="btn btn-default">Hủy</button>
                     </div>
                 </div>
             </footer>
@@ -331,7 +307,7 @@
                 <div class="row">
                     <div class="col-md-12 text-right">
                         <button id="btnSaveDetail" class="btn btn-primary">Xác nhận</button>
-                        <button id="btnCancelDetail" class="btn btn-default">Đóng</button>
+                        <button id="btnCancelDetail" class="btn btn-default">Hủy</button>
                     </div>
                 </div>
             </footer>
@@ -341,25 +317,16 @@
 
 @section script {
     <script src="~/assets/javascripts/tables/order.with.detail.js"></script>
-    <script src="~/assets/javascripts/tables/examples.datatables.editable.js"></script>
+    
     <script>
         (function ($) {
-            $(function () {
-                EditableTable.initialize(6);
-            });
-            //var header = $('.table th');
-            //$(header[0]).width("100px");
-            //$(header[1]).width("320px");
-            //$(header[2]).width("150px");
-            //$(header[3]).width("150px");
-            //$(header[4]).width("70px");
 
-            //var rows = $('.table tr');
-            //for (var i = 1; i < rows.length; i++) {
-            //    var cells = $(rows[i]).children('td');
-            //    for (var j = 2; j < 6; j++)
-            //        $(cells[j]).css('text-align', 'right');
-            //}
+            var rows = $('.table tr');
+            for (var i = 1; i < rows.length; i++) {
+                var cells = $(rows[i]).children('td');
+                for (var j = 2; j < 6; j++)
+                    $(cells[j]).css('text-align', 'right');
+            }
         }).apply(this, [jQuery]);
     </script>
 }
