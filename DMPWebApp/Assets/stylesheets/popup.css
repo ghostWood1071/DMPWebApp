@@ -262,7 +262,6 @@ button {
     }
 
 .btn-block {
-    text-transform: uppercase;
     font-size: 15px !important;
     font-weight: 400;
     height: 43px;
@@ -284,6 +283,8 @@ button:focus {
     justify-content: center;
     margin-top: 20px;
     display: flex;
+    width: 30%;
+    float: right;
 }
 
 .form-group .fileupload .uneditable-input {

@@ -1,0 +1,14 @@
+﻿h2.panel-title span {
+    font-size: 13px;
+    background: #0f760f;
+    color: white;
+    padding: 5px;
+    border: 1px solid;
+    border-radius: 10px;
+    margin-left: 15px;
+}
+
+h2.panel-title {
+    display: flex;
+    align-items: center;
+}

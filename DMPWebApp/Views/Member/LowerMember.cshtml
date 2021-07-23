@@ -2,6 +2,10 @@
     ViewBag.Title = "Danh sách cấp dưới";
 }
 
+@section css{
+    <link href="~/Assets/stylesheets/lowermember.css" rel="stylesheet" />
+} 
+
 <section role="main" class="content-body">
     <header class="page-header">
         <h2>Danh sách cấp dưới</h2>
@@ -27,7 +31,7 @@
                 <a href="#" class="fa fa-caret-down"></a>
                 <a href="#" class="fa fa-times"></a>
             </div>
-            <h2 class="panel-title">Danh sách cấp dưới</h2>
+            <h2 class="panel-title">Danh sách cấp dưới <span>Số lượng: 2 cấp dưới</span></h2>
         </header>
         <div class="panel-body">
             <table class="table table-bordered table-striped mb-none" id="datatable-details">
@@ -38,7 +42,6 @@
                         <th>Địa chỉ</th>
                         <th>Ngày sinh</th>
                         <th>Giới tính</th>
-                        <th>Chức vụ</th>
                         <th>Vị trí</th>
                         <th>Điện thoại</th>
                     </tr>
@@ -50,7 +53,6 @@
                         <td>đỉnh Hoa Sơn</td>
                         <td>19/05/1832</td>
                         <td>Nam</td>
-                        <td>Giám đốc</td>
                         <td>Thành viên tích cực</td>
                         <td>0983794729</td>
                     </tr>
@@ -60,7 +62,6 @@
                         <td>đỉnh Hoa Sơn</td>
                         <td>19/05/1832</td>
                         <td>Nam</td>
-                        <td>Giám đốc</td>
                         <td>Thành viên tích cực</td>
                         <td>0983794729</td>
                     </tr>

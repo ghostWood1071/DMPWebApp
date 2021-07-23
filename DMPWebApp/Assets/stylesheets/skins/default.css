@@ -137,14 +137,14 @@ body .btn-primary {
 }
 
 	body .btn-primary:hover {
-		border-color: #0099e6 !important;
-		background-color: #0099e6;
+		border-color: #106939 !important;
+		background-color: #106939;
 	}
 
 	body .btn-primary:active,
 	body .btn-primary:focus {
-		border-color: #0077b3 !important;
-		background-color: #0077b3;
+		border-color: #106939 !important;
+		background-color: #106939;
 	}
 
 	body .btn-primary[disabled] {
