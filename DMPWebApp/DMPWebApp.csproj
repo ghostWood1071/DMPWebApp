@@ -144,6 +144,7 @@
     <Content Include="Assets\images\blog-image-2.jpg" />
     <Content Include="Assets\images\blog-image-3.jpg" />
     <Content Include="Assets\images\device.png" />
+    <Content Include="Assets\images\dmpHD.png" />
     <Content Include="Assets\images\favicon.ico" />
     <Content Include="Assets\images\icon.png" />
     <Content Include="Assets\images\invoice-logo.png" />
@@ -217,6 +218,7 @@
     <Content Include="Assets\javascripts\ui-elements\examples.treeview.js" />
     <Content Include="Assets\javascripts\ui-elements\examples.widgets.js" />
     <Content Include="Assets\stylesheets\invoice-print.css" />
+    <Content Include="Assets\stylesheets\lowermember.css" />
     <Content Include="Assets\stylesheets\popup.css" />
     <Content Include="Assets\stylesheets\skins\default.css" />
     <Content Include="Assets\stylesheets\skins\extension.css" />

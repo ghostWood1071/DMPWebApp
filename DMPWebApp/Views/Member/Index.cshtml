@@ -49,7 +49,6 @@
                         <th>Địa chỉ</th>
                         <th>Ngày sinh</th>
                         <th>Giới tính</th>
-                        <th>Chức vụ</th>
                         <th>Vị trí</th>
                         <th>Điện thoại</th>
                         <th>Tác vụ</th>
@@ -62,7 +61,6 @@
                         <td>đỉnh Hoa Sơn</td>
                         <td>19/05/1832</td>
                         <td>Nam</td>
-                        <td>Giám đốc</td>
                         <td>Thành viên tích cực</td>
                         <td>0983794729</td>
                         <td class="actions">
@@ -76,7 +74,6 @@
                         <td>đỉnh Hoa Sơn</td>
                         <td>19/05/1832</td>
                         <td>Nam</td>
-                        <td>Giám đốc</td>
                         <td>Thành viên tích cực</td>
                         <td>0983794729</td>
                         <td class="actions">
@@ -102,13 +99,26 @@
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Mã thành viên<span class="text-danger"> *</span></label> <input type="text" id="fid" name="fid" placeholder="Nhập mã" onblur="validate(1)"> </div>
                         <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Họ tên<span class="text-danger"> *</span></label> <input type="text" id="fname" name="fname" placeholder="Nhập Tên" onblur="validate(2)"> </div>
-                        <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label> <input type="text" id="email" name="email" placeholder="" onblur="validate(3)"> </div>
+                        <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Mã người giới thiệu<span class="text-danger"> *</span></label> <input type="text" id="referralID" name="referralID" placeholder="" onblur="validate(5)"> </div>
                     </div>
                     <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Địa chỉ<span class="text-danger"> *</span></label> <input type="text" id="address" name="address" placeholder="" onblur="validate(5)"> </div>
+
                         <div class="form-group col-sm-4 flex-column d-flex">
-                            <label class="form-control-label px-3">Ngày sinh<span class="text-danger"> *</span></label>
-                            <input type="" data-plugin-datepicker name="OrderDate" id="dob">
+                            <label class="form-control-label px-3">Vị trí<span class="text-danger"> *</span></label>
+                            <select id="position" class="selectpicker" style="border: 1px solid #ccc; font-size: 14px;">
+                                <option>Thành viên</option>
+                                <option>Thành viên tích cực</option>
+                                <option>Trưởng phòng</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-sm-4 flex-column d-flex">
+                            <label class="form-control-label px-3">Chức vụ<span class="text-danger"> *</span></label>
+                            <select id="role" class="selectpicker" style="border: 1px solid #ccc; font-size: 14px;">
+                                <option>Giám đốc</option>
+                                <option>Thành viên</option>
+                                <option>Siêu giám đốc</option>
+                            </select>
                         </div>
                         <div class="form-group col-sm-4 flex-column d-flex">
                             <label class="form-control-label px-3">Active<span class="text-danger"> *</span></label>
@@ -119,7 +129,7 @@
                         </div>
                     </div>
                     <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Mã người giới thiệu<span class="text-danger"> *</span></label> <input type="text" id="referralID" name="referralID" placeholder="" onblur="validate(5)"> </div>
+                        <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label> <input type="text" id="email" name="email" placeholder="" onblur="validate(3)"> </div>
                         <div class="form-group col-sm-4 flex-column d-flex">
                             <label class="form-control-label px-3">Mật khẩu<span class="text-danger"> *</span></label>
                             <input type="text" id="password" name="password" placeholder="" onblur="validate(5)">
@@ -136,21 +146,11 @@
                             </select>
                         </div>
                         <div class="form-group col-sm-4 flex-column d-flex">
-                            <label class="form-control-label px-3">Vị trí<span class="text-danger"> *</span></label>
-                            <select id="position" class="selectpicker" style="border: 1px solid #ccc; font-size: 14px;">
-                                <option>Thành viên</option>
-                                <option>Thành viên tích cực</option>
-                                <option>Trưởng phòng</option>
-                            </select>
+                            <label class="form-control-label px-3">Ngày sinh<span class="text-danger"> *</span></label>
+                            <input type="" data-plugin-datepicker name="OrderDate" id="dob">
                         </div>
-                        <div class="form-group col-sm-4 flex-column d-flex">
-                            <label class="form-control-label px-3">Chức vụ<span class="text-danger"> *</span></label>
-                            <select id="role" class="selectpicker" style="border: 1px solid #ccc; font-size: 14px;">
-                                <option>Giám đốc</option>
-                                <option>Thành viên</option>
-                                <option>Siêu giám đốc</option>
-                            </select>
-                        </div>
+                        <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Địa chỉ<span class="text-danger"> *</span></label> <input type="text" id="address" name="address" placeholder="" onblur="validate(5)"> </div>
+
                     </div>
 
                     <div class="row justify-content-between text-left">
@@ -190,7 +190,7 @@
 
                     <div class="row j">
                         <div class="form-group col-sm-6 save"> <button type="submit" class="btn-block btn-primary">Lưu</button> </div>
-                        <div class="form-group col-sm-2 exit"> <button type="submit" class="btn-danger btn-primary">Bỏ qua</button> </div>
+                        <div class="form-group col-sm-6	 exit"> <button type="submit" class="btn-block btn-danger btn-primary">Đóng</button> </div>
                     </div>
                 </form>
             </div>
@@ -215,7 +215,7 @@
                 <div class="row">
                     <div class="col-md-12 text-right">
                         <button id="dialogConfirm" class="btn btn-primary">Xác nhận</button>
-                        <button id="dialogCancel" class="btn btn-default">Hủy</button>
+                        <button id="dialogCancel" class="btn btn-default">Đóng</button>
                     </div>
                 </div>
             </footer>
