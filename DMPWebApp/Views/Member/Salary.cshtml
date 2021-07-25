@@ -50,7 +50,7 @@
                         <th>Điểm doanh số trực tiếp</th>
                         <th>Điểm doanh số gián tiếp</th>
                         <th>Điểm doanh số đã sử dụng</th>
-                        <th>Tổng điểm doanh só</th>
+                        <th>Tổng điểm doanh số</th>
                         <th>Tổng lương</th>
                     </tr>
                 </thead>
@@ -80,3 +80,22 @@
     <!-- end: page -->
 </section>
 
+@section script{
+    <script>
+            (function( $ ) {
+                $(function() {
+                    EditableTable.initialize(6);
+                });
+				var header = $('.table th');
+
+				var rows = $('.table tr');
+				for (var i = 1; i < rows.length; i++) {
+					var cells = $(rows[i]).children('td');
+					$(cells[0]).css('text-align', 'center');
+					for (var j = 1; j < 7; j++)
+						$(cells[j]).css('text-align', 'right');
+				}
+
+            }).apply( this, [ jQuery ]);
+</script>
+}
