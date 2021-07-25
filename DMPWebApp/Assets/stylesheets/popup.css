@@ -17,6 +17,7 @@
 }
 
 .form-group.col-sm-4.flex-column.d-flex {
+    margin-top: 7px;
     margin-bottom: 0px;
 }
 
@@ -288,5 +289,28 @@ button:focus {
 }
 
 .form-group .fileupload .uneditable-input {
+    padding: 5px 15px;
+    height: 33.6px;
+    border-top-left-radius: 5px;
     width: calc(100% - 157.8px);
+    border-bottom-left-radius: 5px;
+}
+
+.form-group.col-sm-12.flex-column.d-flex {
+    margin-top: 7px;
+}
+
+a.btn.btn-default.fileupload-exists {
+    height: 33.6px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.form-group .selectpicker {
+    height: 33.6px;
+    padding: 5px 15px;
+}
+
+span.btn.btn-default.btn-file {
+    height: 33.6px;
 }
