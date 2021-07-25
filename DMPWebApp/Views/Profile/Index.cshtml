@@ -3,9 +3,12 @@
     ViewBag.Title = "Thông tin cá nhân";
 }
 
+@section css{
+    <link rel="stylesheet" href="~/Assets/stylesheets/tree.css" />
+}
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>User Profile</h2>
+        <h2>Trang cá nhân</h2>
 
         <div class="right-wrapper pull-right">
             <ol class="breadcrumbs">
@@ -101,8 +104,10 @@
                             </fieldset>
                             <hr class="dotted tall">
                             <h4 class="mb-xlg">Cấp dưới</h4>
-                            <div id="tree">
+                            <div id=body genealogy-body genealogy-scroll">
+                                <ul  class="genealogy-tree">
 
+                                </ul>
                             </div>
                         </form>
                     </div>
@@ -197,53 +202,54 @@
 </section>
 
 @section script{
-    <script src="~/assets/vendor/orgchart/orgchart.js"></script>
+    <script src="~/assets/javascripts/tree/tree.js"></script>
     <script>
-
-        var editForm = function () {
-            this.nodeId = null;
-        }
-
-        editForm.prototype.init = function (obj) {
-            var that = this;
-            this.obj = obj;
-        };
-
-        editForm.prototype.show = function (node) {
-
-        }
-
-
-        editForm.prototype.hide = function (showldUpdateTheNode) {
-
-        }
-
-
-
-        var chart = new OrgChart(document.getElementById("tree"), {
-            mouseScrool: OrgChart.action.none,
-            enableSearch: false,
-            collapse: {
-                level: 2,
-                allChildren: true
+        var data = [
+            {
+                "id": "1",
+                "pid": "",
+                "name": "Vũ Khắc Tiệp",
+                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
             },
-            nodeBinding: {
-                field_0: "name",
-                field_1: "role",
-                field_2: "lol",
-                img_0: "img"
+            {
+                "id": "2",
+                "pid": "1",
+                "name": "Vũ Khắc Tiệp",
+                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
             },
-            editUI: new editForm(),
-            nodes: [
-                { id: 1, name: "Amber McKenzie", role: 'trưởng phòng', lol: "abc", img: '/assets/images/logo.jpg' },
-                { id: 2, pid: 1, name: "Ava Field" },
-                { id: 3, pid: 1, name: "Peter Stevens" },
-                { id: 4, pid: 2, name: "Ava Field" },
-                { id: 5, pid: 2, name: "Peter Stevens" },
-                { id: 6, pid: 3, name: "Ava Field" },
-                { id: 7, pid: 3, name: "Peter Stevens" },
-            ]
-        });
+            {
+                "id": "3",
+                "pid": "1",
+                "name": "Vũ Khắc Tiệp",
+                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
+            },
+            {
+                "id": "4",
+                "pid": "2",
+                "name": "Vũ Khắc Tiệp",
+                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
+            },
+            {
+                "id": "5",
+                "pid": "2",
+                "name": "Vũ Khắc Tiệp",
+                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
+            },
+            {
+                "id": "6",
+                "pid": "3",
+                "name": "Vũ Khắc Tiệp",
+                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
+            },
+            {
+                "id": "7",
+                "pid": "3",
+                "name": "Vũ Khắc Tiệp",
+                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
+            }
+        ];
+        var orgTree = new OrgTree();
+        orgTree.init(data);
     </script>
 }
 

@@ -8,31 +8,31 @@
             ProductID: "SP001",
             ProductName: "Kem đánh răng",
             Quantity: 150,
-            UnitPrice: 15000000
+            UnitPrice: "15.000.000"
         },
         {
             ProductID: "SP001",
             ProductName: "Kem đánh răng",
             Quantity: 150,
-            UnitPrice: 15000000
+            UnitPrice: "15.000.000"
         },
         {
             ProductID: "SP001",
             ProductName: "Kem đánh răng",
             Quantity: 150,
-            UnitPrice: 15000000
+            UnitPrice: "15.000.000"
         },
         {
             ProductID: "SP001",
             ProductName: "Kem đánh răng",
             Quantity: 150,
-            UnitPrice: 15000000
+            UnitPrice: "15.000.000"
         },
         {
             ProductID: "SP001",
             ProductName: "Kem đánh răng",
             Quantity: 150,
-            UnitPrice: 15000000
+            UnitPrice: "15.000.000"
         }
     ]
 
@@ -67,7 +67,7 @@
                                 <th>Mã SP</th>
                                 <th>Tên SP</th>
                                 <th>Số lượng</th>
-                                <th>Đơn giá</th>
+                                <th>Đơn giá(VNĐ)</th>
                             </tr>
                         </thead>
                         <tbody>

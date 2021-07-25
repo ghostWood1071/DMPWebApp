@@ -2,3 +2,12 @@
 .chart-custom {
     margin-top: 30px;
 }
+
+.mfp-content .modal-block .panel .panel-footer .row div button:first-child{
+    margin-right: 15px;
+}
+
+.mfp-content .modal-block .panel .panel-footer .row div button:nth-child(2) {
+    background-color: #bd2d29;
+    color: white;
+}

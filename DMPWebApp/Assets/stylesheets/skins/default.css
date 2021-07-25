@@ -147,8 +147,8 @@ body .btn-primary {
 	}
 
 	body .btn-primary[disabled] {
-		border-color: #33bbff !important;
-		background-color: #33bbff;
+		border-color: #8ac350 !important;
+		background-color: #8ac350;
 	}
 
 body .btn-success {
@@ -304,7 +304,7 @@ p.drop-caps.colored.secundary:first-child:first-letter {
 }
 /* Form */
 .form-control:focus {
-	border-color: #33bbff;
+	border-color: #8ac350;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(0, 136, 204, 0.3);
 }
 /* Header */
