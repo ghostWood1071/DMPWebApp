@@ -65,22 +65,22 @@
             </div>
             <div class="row">
                 <div class="col-md-12 col-lg-6 col-xl-6">
-                    <section class="panel panel-featured-left panel-featured-secondary">
+                    <section class="panel panel-featured-left panel-featured-quartenary">
                         <div class="panel-body">
                             <div class="widget-summary">
                                 <div class="widget-summary-col widget-summary-col-icon">
-                                    <div class="summary-icon bg-secondary">
-                                        <i class="fa fa-usd"></i>
+                                    <div class="summary-icon bg-quartenary">
+                                        <i class="fa fa-user"></i>
                                     </div>
                                 </div>
                                 <div class="widget-summary-col">
                                     <div class="summary">
                                         <div class="info">
-                                            <strong class="amount">14,890,000,000 VND</strong>
+                                            <strong class="amount">50</strong>
                                         </div>
                                     </div>
                                     <div class="summary-footer">
-                                        <a class="text-muted text-uppercase">Tổng doanh thu</a>
+                                        <a class="text-muted text-uppercase">Số thành viên</a>
                                     </div>
                                 </div>
                             </div>
@@ -111,29 +111,7 @@
                         </div>
                     </section>
                 </div>
-                <div class="col-md-12 col-lg-6 col-xl-6">
-                    <section class="panel panel-featured-left panel-featured-quartenary">
-                        <div class="panel-body">
-                            <div class="widget-summary">
-                                <div class="widget-summary-col widget-summary-col-icon">
-                                    <div class="summary-icon bg-quartenary">
-                                        <i class="fa fa-user"></i>
-                                    </div>
-                                </div>
-                                <div class="widget-summary-col">
-                                    <div class="summary">
-                                        <div class="info">
-                                            <strong class="amount">50</strong>
-                                        </div>
-                                    </div>
-                                    <div class="summary-footer">
-                                        <a class="text-muted text-uppercase">Số thành viên</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
+
                 <div class="col-md-12 col-lg-6 col-xl-6">
                     <section class="panel panel-featured-left panel-featured-primary">
                         <div class="panel-body">
@@ -157,6 +135,33 @@
                         </div>
                     </section>
                 </div>
+
+                <div class="col-md-12 col-lg-6 col-xl-6">
+                    <section class="panel panel-featured-left panel-featured-secondary">
+                        <div class="panel-body">
+                            <div class="widget-summary">
+                                <div class="widget-summary-col widget-summary-col-icon">
+                                    <div class="summary-icon bg-secondary">
+                                        <i class="fa fa-usd"></i>
+                                    </div>
+                                </div>
+                                <div class="widget-summary-col">
+                                    <div class="summary">
+                                        <div class="info">
+                                            <strong class="amount">14,890,000,000 VND</strong>
+                                        </div>
+                                    </div>
+                                    <div class="summary-footer">
+                                        <a class="text-muted text-uppercase">Tổng doanh thu</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+
+
             </div>
         </div>
 
@@ -279,23 +284,25 @@
                                     <!-- Flot: Sales JSOFT Admin -->
                                     <div class="col-lg-6 col-md-6 col-xl-6">
                                         <div class="text-center chart-custom">
+                                            <label for="flotDashSales4">Số thành viên</label>
+                                            <div class="chart chart-sm chart-active" data-sales-rel="JSOFT Admin" id="flotDashSales4"></div>
+                                        </div>
+                                        
+                                        <div class="text-center chart-custom">
                                             <label for="flotDashSales1">Điểm doanh số</label>
                                             <div class="chart chart-sm chart-active" data-sales-rel="JSOFT Admin" id="flotDashSales1"></div>
-                                        </div>
-                                        <div class="text-center chart-custom">
-                                            <label for="flotDashSales2">Doanh thu</label>
-                                            <div class="chart chart-sm chart-active" data-sales-rel="JSOFT Admin" id="flotDashSales2"></div>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-xl-6">
                                         <div class="text-center chart-custom">
                                             <label for="flotDashSales3">Số đơn hàng</label>
-                                            <div class="chart chart-sm chart-active" data-sales-rel="JSOFT Admin" id="flotDashSales3" ></div>
+                                            <div class="chart chart-sm chart-active" data-sales-rel="JSOFT Admin" id="flotDashSales3"></div>
                                         </div>
+
                                         <div class="text-center chart-custom">
-                                            <label for="flotDashSales4">Số thành viên</label>
-                                            <div class="chart chart-sm chart-active" data-sales-rel="JSOFT Admin" id="flotDashSales4"></div>
+                                            <label for="flotDashSales2">Doanh thu</label>
+                                            <div class="chart chart-sm chart-active" data-sales-rel="JSOFT Admin" id="flotDashSales2"></div>
                                         </div>
                                     </div>
 
@@ -370,8 +377,7 @@
                                                 ["Dec", 220]
                                             ],
                                             color: "#734ba9"
-                                        }];
-                                                                                                                                                        // See: ~/Assets/javascripts/dashboard/examples.dashboard.js for more settings.
+                                        }];                                                                                                              // See: ~/Assets/javascripts/dashboard/examples.dashboard.js for more settings.
                                     </script>
                                 </div>
 

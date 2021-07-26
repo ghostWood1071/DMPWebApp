@@ -17,8 +17,7 @@
                         <i class="fa fa-home"></i>
                     </a>
                 </li>
-                <li><span>Pages</span></li>
-                <li><span>User Profile</span></li>
+                <li><span>Hồ sơ cá nhân</span></li>
             </ol>
 
             <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
@@ -27,35 +26,10 @@
 
     <!-- start: page -->
 
-    <div class="row">
-        <div class="col-md-4 col-lg-3">
+    <div class="row justify-content-center">
+        
 
-            <section class="panel">
-                <div class="panel-body">
-                    <div class="thumb-info mb-md">
-                        <img src="~/assets/images/!logged-user.jpg" class="rounded img-responsive" alt="John Doe">
-                        <div class="thumb-info-title">
-                            <span class="thumb-info-inner">Vũ Khắc Tiệp</span>
-                            <span class="thumb-info-type">CEO</span>
-                        </div>
-                    </div>
-
-                    <div class="widget-toggle-expand mb-md">
-                        <div class="widget-content-expanded">
-                            <ul class="simple-todo-list">
-                                <li>Họ tên: Vuc Khắc Tiệp</li>
-                                <li>Ngày sinh: 22/11/1997</li>
-                                <li>Quê quán: Quận Đống Đa, Hà Nội</li>
-                                <li>SĐT: 0123456789</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-        </div>
-        <div class="col-md-8 col-lg-6">
+        <div class="col-md-10 col-lg-11">
 
             <div class="tabs">
                 <ul class="nav nav-tabs tabs-primary">
@@ -70,41 +44,47 @@
                     <div id="overview" class="tab-pane active">
                         <form class="form-horizontal" method="get">
                             <h4 class="mb-xlg">Thông tin cá nhân</h4>
-                            <fieldset>
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">Họ tên:</label>
-                                    <div class="col-md-8">
-                                        <label class="control-label">Vũ Khắc Tiệp</label>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3">
+                                    <div class="thumb-info mb-md">
+                                        <img src="~/assets/images/!logged-user.jpg" class="rounded img-responsive" alt="John Doe">
+                                        <div class="thumb-info-title">
+                                            <span class="thumb-info-inner">Vũ Khắc Tiệp</span>
+                                            <span class="thumb-info-type">CEO</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">Quê quán:</label>
-                                    <div class="col-md-8">
-                                        <label class="control-label">Quận Đống Đa, Hà Nội</label>
+                                <fieldset class="col-lg-7 col-md-7">
+                                    <div class="row">
+                                        <label class="col-md-3">Họ Tên:</label>
+                                        <label class="col-md-9">Vũ Khắc Tiệp</label>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">Ngày sinh:</label>
-                                    <div class="col-md-8">
-                                        <label class="control-label">22/11/1997</label>
+                                    <div class="row">
+                                        <label class="col-md-3">Ngày sinh:</label>
+                                        <label class="col-md-9">15/7/1994</label>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">Số điện thoại:</label>
-                                    <div class="col-md-8">
-                                        <label class="control-label">0123456789</label>
+                                    <div class="row">
+                                        <label class="col-md-3">Địa chỉ:</label>
+                                        <label class="col-md-9">Quận Đống Đa, Thành phố Hà Nội</label>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">Số CMND:</label>
-                                    <div class="col-md-8">
-                                        <label class="control-label">033200111122</label>
+                                    <div class="row">
+                                        <label class="col-md-3">Số CMND</label>
+                                        <label class="col-md-9">1234567890</label>
                                     </div>
-                                </div>
-                            </fieldset>
+                                    <div class="row">
+                                        <label class="col-md-3">Số điện thoại:</label>
+                                        <label class="col-md-9">1234567890</label>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-md-3">Tên đăng nhập:</label>
+                                        <label class="col-md-9">1234567890</label>
+                                    </div>
+                                </fieldset>
+
+                            </div>
                             <hr class="dotted tall">
                             <h4 class="mb-xlg">Cấp dưới</h4>
-                            <div id=body genealogy-body genealogy-scroll">
+                            <div id=body genealogy-body genealogy-scroll class="justify-content-center">
                                 <ul  class="genealogy-tree">
 
                                 </ul>
@@ -146,10 +126,24 @@
                                     </div>
                                 </div>
                             </fieldset>
-                            <hr class="dotted tall">
-
-                            <h4 class="mb-xlg">Đổi mật khẩu</h4>
+                            <div class="panel-footer">
+                                <div class="row">
+                                    <div class="col-md-9 col-md-offset-3">
+                                        <button type="submit" class="btn btn-primary">Lưu</button>
+                                        <button type="reset" class="btn btn-default">Xóa thông tin</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <form class="form-horizontal form-change-password">
+                            <h4 class="mb-xlg">Thông tin tài khoản</h4>
                             <fieldset class="mb-xl">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="profileNewPassword">Mật khẩu cũ</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" id="profileNewPassword">
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="profileNewPassword">Mật khẩu mới</label>
                                     <div class="col-md-8">
@@ -173,30 +167,10 @@
                             </div>
 
                         </form>
-
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-12 col-lg-3">
-
-            <h4 class="mb-md">Thông tin kinh doanh</h4>
-            <ul class="simple-card-list mb-xlg">
-                <li class="primary">
-                    <h3>488</h3>
-                    <p>Tổng đơn hàng</p>
-                </li>
-                <li class="primary">
-                    <h3>189,000,000 VND</h3>
-                    <p>Tổng thu nhập</p>
-                </li>
-                <li class="primary">
-                    <h3>16</h3>
-                    <p>Thành viên cấp dưới</p>
-                </li>
-            </ul>
-        </div>
-
     </div>
     <!-- end: page -->
 </section>

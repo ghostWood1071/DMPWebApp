@@ -123,9 +123,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
+    <Compile Include="Controllers\NotifyController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\SystemConfigController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1978,6 +1980,8 @@
     <Content Include="Views\Order\ImpportHistory.cshtml" />
     <Content Include="Views\Member\Salary.cshtml" />
     <Content Include="Views\Member\OrgChartMember.cshtml" />
+    <Content Include="Views\SystemConfig\Index.cshtml" />
+    <Content Include="Views\Notify\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

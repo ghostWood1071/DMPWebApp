@@ -60,6 +60,7 @@
 
         // format function for row details
         var fnFormatDetails = function (datatable, tr) {
+            //ajax chỗ này nhé
             var data = getDetail(details);
             return `<table class="table mb-none">
                         <thead>

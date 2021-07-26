@@ -11,3 +11,34 @@
     background-color: #bd2d29;
     color: white;
 }
+
+.justify-content-center{
+    display: flex;
+    justify-content: center;
+}
+
+.form-change-password{
+    margin-top: 50px;
+}
+
+.label-config-change {
+    padding-top: 7px;
+    margin-bottom: 0px;
+}
+
+.control-config{
+    width: 32.5%;
+    padding-top: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: end;
+    margin-top: 10px;
+}
+
+.control-config a:nth-child(2){
+    margin-left: 10px;
+}
+
+.config-control-hidden{
+    display: none;
+}
