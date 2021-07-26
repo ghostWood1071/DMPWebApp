@@ -209,6 +209,7 @@
     <Content Include="Assets\javascripts\theme.custom.js" />
     <Content Include="Assets\javascripts\theme.init.js" />
     <Content Include="Assets\javascripts\theme.js" />
+    <Content Include="Assets\javascripts\tree\tree.js" />
     <Content Include="Assets\javascripts\ui-elements\examples.charts.js" />
     <Content Include="Assets\javascripts\ui-elements\examples.lightbox.js" />
     <Content Include="Assets\javascripts\ui-elements\examples.modals.js" />
@@ -225,6 +226,7 @@
     <Content Include="Assets\stylesheets\theme-admin-extension.css" />
     <Content Include="Assets\stylesheets\theme-custom.css" />
     <Content Include="Assets\stylesheets\theme.css" />
+    <Content Include="Assets\stylesheets\tree.css" />
     <Content Include="Assets\vendor\bootstrap-colorpicker\css\bootstrap-colorpicker.css" />
     <Content Include="Assets\vendor\bootstrap-colorpicker\css\bootstrap-colorpicker.min.css" />
     <Content Include="Assets\vendor\bootstrap-colorpicker\img\bootstrap-colorpicker\alpha-horizontal.png" />
@@ -1588,7 +1590,6 @@
     <Content Include="Assets\vendor\morris\morris.min.js" />
     <Content Include="Assets\vendor\nanoscroller\nanoscroller.css" />
     <Content Include="Assets\vendor\nanoscroller\nanoscroller.js" />
-    <Content Include="Assets\vendor\orgchart\orgchart.js" />
     <Content Include="Assets\vendor\owl-carousel\AjaxLoader.gif" />
     <Content Include="Assets\vendor\owl-carousel\grabbing.png" />
     <Content Include="Assets\vendor\owl-carousel\owl.carousel.css" />
