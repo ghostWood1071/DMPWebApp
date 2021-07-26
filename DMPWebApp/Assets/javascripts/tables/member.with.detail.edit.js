@@ -6,7 +6,7 @@
     var details = [
         {
             Email: "duongcoco@gmail.com",
-            Password: "cocod1234",
+            Password: "Ni34ndN.getlink",
             ReferralID: "TV000001",
             IDCard: "0333485849321",
             IDCard_DateIssue: "01/12/2000",
@@ -23,7 +23,7 @@
             detailContents.push(`
                 <tr>
                     <td>${details[i].Email}</td>
-                    <td>${details[i].Password}</td>
+                    <td><a style="cursor:pointer;" class="pas">${details[i].Password}</a></td>
                     <td>${details[i].ReferralID}</td>
                     <td>${details[i].IDCard}</td>
                     <td>${details[i].IDCard_DateIssue}</td>
@@ -59,6 +59,7 @@
                             ${data.join(' ')}
                         </tbody>
                     </table>`
+
         };
 
         // insert the expand/collapse column
@@ -150,6 +151,7 @@
                 }
             }
         });
+
         return false;
     }
 
@@ -197,10 +199,54 @@
         return false;
     });
 
+    $(document).on('click', '.pas', function () {
+        var _self = {
+            $cancel: $('#dialogCancel'),
+            $confirm: $("#dialogConfirm"),
+            $wrapper: $("#dialog")
+        };
+        var row = $('.editt-row').parent().parent().children('td')[1];
+        var hang = $(this).parent().parent()
+        var data = $(row).text();
+        // $.post("./google.com", data ,function(response){
+
+        // }, 'json')
+        $.magnificPopup.open({
+            items: {
+                src: '#dialog2',
+                type: 'inline'
+            },
+            preloader: false,
+            modal: true,
+            callbacks: {
+                change: function () {
+                    _self.$confirm.on('click', function (e) {
+                        e.preventDefault();
+                        hang.detach();
+                        //ajax
+                        $.magnificPopup.close();
+                    });
+
+                    _self.$cancel.on('click', function (e) {
+                        e.preventDefault();
+                        $.magnificPopup.close();
+                    });
+                },
+                close: function () {
+                    _self.$cancel.on('click', function (e) {
+                        e.preventDefault();
+                        $.magnificPopup.close();
+                    });
+                }
+            }
+        });
+        return false;
+    });
+
+
 
     $(function () {
         datatableInit();
-
     });
 
     $('#datepick').click(function () {

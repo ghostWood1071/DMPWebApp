@@ -54,7 +54,7 @@
                         <th>Tác vụ</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="ttable">
                     <tr class="gradeA">
                         <td>TV000001</td>
                         <td>Dương Quá</td>
@@ -70,7 +70,7 @@
                     </tr>
                     <tr class="gradeA">
                         <td>TV000002</td>
-                        <td>Dương Quá</td>
+                        <td>Cô Cô</td>
                         <td>đỉnh Hoa Sơn</td>
                         <td>19/05/1832</td>
                         <td>Nam</td>
@@ -201,6 +201,29 @@
         </div>
     </div>
 </div>
+
+<div id="dialog2" class="modal-block mfp-hide">
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">Bạn có chắc chắn muốn khởi tại mật khẩu</h2>
+        </header>
+        <div class="panel-body">
+            <div class="modal-wrapper">
+                <div class="modal-text">
+                    <p>Bạn có chắc chắn muốn khởi tạo lại mật khẩu cho thành viên ABC không?</p>
+                </div>
+            </div>
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button id="dialogConfirm1" class="btn btn-primary">Xác nhận</button>
+                    <button id="dialogCancel1" class="btn btn-default">Đóng</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
 @section div{
     <div id="dialog" class="modal-block mfp-hide">
         <section class="panel">
@@ -230,25 +253,32 @@
     <script src="~/Assets/javascripts/tables/member.with.detail.edit.js"></script>
     <script src="~/Assets/javascripts/tables/examples.datatables.editable.js"></script>
     <script>
-        $('#addToTablee').click(function () {
-            $('.workform').show();
-        });
-        $('a.on-default.editt-row').click(function () {
-            $('.workform').show();
-        });
-        $('.save').click(function () {
-            $('.workform').hide();
-        });
-        $('.exit').click(function () {
-            $('.workform').hide();
-        });
-    </script>
-    <script>
-        (function ($) {
-            $(function () {
-                EditableTable.initialize(6);
+        $(document).ready(function () {
+            name = "";
+            $('#addToTablee').click(function () {
+                $('.workform').show();
             });
-        }).apply(this, [jQuery]);
+            $('a.on-default.editt-row').click(function () {
+                $('.workform').show();
+            });
+            $('.save').click(function () {
+                $('.workform').hide();
+            });
+            $('.exit').click(function () {
+                $('.workform').hide();
+            });
+
+            $(document).on('click', '.pas', function () {
+                var nodes = Array.prototype.slice.call(document.getElementById('ttable').children);
+                thistr = $(this).parent().parent().parent().parent().parent().parent('tr')[0]
+
+                index = nodes.indexOf(thistr);
+                name = $($('#ttable').children()[index - 1]).find('td')[2].textContent
+                console.log(name);
+
+
+            });
+        });
     </script>
 }
 

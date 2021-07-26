@@ -8,31 +8,31 @@
             ProductID: "SP001",
             ProductName: "Kem đánh răng",
             Quantity: 150,
-            UnitPrice: 15000000
+            UnitPrice:"15.000.000"
         },
         {
             ProductID: "SP001",
             ProductName: "Kem đánh răng",
             Quantity: 150,
-            UnitPrice: 15000000
+            UnitPrice: "15.000.000"
         },
         {
             ProductID: "SP001",
             ProductName: "Kem đánh răng",
             Quantity: 150,
-            UnitPrice: 15000000
+            UnitPrice: "15.000.000"
         },
         {
             ProductID: "SP001",
             ProductName: "Kem đánh răng",
             Quantity: 150,
-            UnitPrice: 15000000
+            UnitPrice: "15.000.000"
         },
         {
             ProductID: "SP001",
             ProductName: "Kem đánh răng",
             Quantity: 150,
-            UnitPrice: 15000000
+            UnitPrice:"15.000.000"
         }
     ]
 
