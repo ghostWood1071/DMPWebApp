@@ -31,7 +31,7 @@
                     <h2 class="panel-title">Thông báo</h2>
                 </header>
                 <div class="panel-body">
-                    <form class="form-horizontal form-bordered" method="get">
+                    <div class="form-horizontal form-bordered">
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="inputDefault">Tiêu đề</label>
                             <div class="col-md-6">
@@ -60,7 +60,7 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </section>
 
@@ -71,3 +71,11 @@
    
     <!-- end: page -->
 </section>
+
+@section script{
+    <script>
+        $('.btn-primary').click(function () {
+            location.href = '/Notify/';
+        });
+    </script>
+}

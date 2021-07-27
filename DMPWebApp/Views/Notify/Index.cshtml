@@ -33,7 +33,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="mb-md">
-                        <button id="addToTable" class="btn btn-primary">Thêm Thông báo<i class="fa fa-plus"></i></button>
+                        <button id="addToTable" class="btn btn-primary">Thêm Thông báo <i class="fa fa-plus"></i></button>
                     </div>
                 </div>
             </div>
@@ -72,6 +72,15 @@
         $('.remove-row').click(function (e) {
             e.preventDefault();
             $(this).parent().parent().remove();
+        });
+
+        $('#addToTable').click(function () {
+            location.href = "/Notify/Create";
+        });
+
+        $('.edit-row').click(function () {
+            var param = $(this).parent().parent().children(".center").text();
+            location.href = `/Notify/Details/${param}`;
         });
     </script>
 }
