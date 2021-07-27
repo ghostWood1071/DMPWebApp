@@ -1971,6 +1971,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\javascripts\tables\member.with.detail.js" />
+    <Content Include="Assets\javascripts\tables\notify.with.detail.js" />
     <None Include="packages.config" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\AddOrder.cshtml" />
@@ -1982,6 +1983,8 @@
     <Content Include="Views\Member\OrgChartMember.cshtml" />
     <Content Include="Views\SystemConfig\Index.cshtml" />
     <Content Include="Views\Notify\Index.cshtml" />
+    <Content Include="Views\Notify\Details.cshtml" />
+    <Content Include="Views\Notify\Create.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

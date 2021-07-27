@@ -1,7 +1,77 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Quản lý thông báo";
 }
 
 
+<section role="main" class="content-body">
+    <header class="page-header">
+        <h2>Quản lý sản phẩm</h2>
 
+        <div class="right-wrapper pull-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li><span>Quản lý thông báo</span></li>
+            </ol>
+
+            <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
+        </div>
+    </header>
+
+    <section class="panel">
+        <header class="panel-heading">
+            <div class="panel-actions">
+                <a href="#" class="fa fa-caret-down"></a>
+            </div>
+
+            <h2 class="panel-title">Danh sách thông báo</h2>
+        </header>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="mb-md">
+                        <button id="addToTable" class="btn btn-primary">Thêm Thông báo<i class="fa fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered table-striped mb-none" id="datatable-editable">
+                <thead>
+                    <tr>
+                        <th class="center">Mã thông báo</th>
+                        <th class="center">Tiêu đề</th>
+                        <th class="center">Nội dung</th>
+                        <th class="center">Người nhận</th>
+                        <th class="center">Ngày đăng</th>
+                        <th class="center">Tác vụ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="gradeA">
+                        <td class="center">1</td>
+                        <td>Kem đánh răng</td>
+                        <td>Kem đánh răng mới siêu sạch</td>
+                        <td>ALL</td>
+                        <td>20/7/2021</td>
+                        <td class="actions center">
+                            <a href="#" class="on-default edit-row"><i class="fa fa-eye"></i></a>
+                            <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                            <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</section>
+
+@section script{
+    <script>
+        $('.remove-row').click(function (e) {
+            e.preventDefault();
+            $(this).parent().parent().remove();
+        });
+    </script>
+}
