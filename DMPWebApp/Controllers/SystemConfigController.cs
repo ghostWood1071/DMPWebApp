@@ -21,7 +21,7 @@ namespace DMPWebApp.Controllers
         }
 
         // GET: SystemConfig/Create
-        public ActionResult Create()
+        public ActionResult Decentralization()
         {
             return View();
         }
