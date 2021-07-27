@@ -195,6 +195,7 @@
     <Content Include="Assets\javascripts\maps\examples.map.builder.js" />
     <Content Include="Assets\javascripts\maps\examples.vector.maps.js" />
     <Content Include="Assets\javascripts\maps\snazzy.themes.js" />
+    <Content Include="Assets\javascripts\pages\decentralization.js" />
     <Content Include="Assets\javascripts\pages\examples.calendar.js" />
     <Content Include="Assets\javascripts\pages\examples.lockscreen.js" />
     <Content Include="Assets\javascripts\pages\examples.mediagallery.js" />
@@ -220,6 +221,7 @@
     <Content Include="Assets\javascripts\ui-elements\examples.portlets.js" />
     <Content Include="Assets\javascripts\ui-elements\examples.treeview.js" />
     <Content Include="Assets\javascripts\ui-elements\examples.widgets.js" />
+    <Content Include="Assets\stylesheets\decentralization.css" />
     <Content Include="Assets\stylesheets\invoice-print.css" />
     <Content Include="Assets\stylesheets\lowermember.css" />
     <Content Include="Assets\stylesheets\popup.css" />
@@ -1985,6 +1987,7 @@
     <Content Include="Views\Notify\Index.cshtml" />
     <Content Include="Views\Notify\Details.cshtml" />
     <Content Include="Views\Notify\Create.cshtml" />
+    <Content Include="Views\SystemConfig\Decentralization.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

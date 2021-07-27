@@ -201,8 +201,8 @@
 
     $(document).on('click', '.pas', function () {
         var _self = {
-            $cancel: $('#dialogCancel'),
-            $confirm: $("#dialogConfirm"),
+            $cancel: $('#dialogCancel1'),
+            $confirm: $("#dialogConfirm1"),
             $wrapper: $("#dialog")
         };
         var row = $('.editt-row').parent().parent().children('td')[1];
@@ -222,7 +222,6 @@
                 change: function () {
                     _self.$confirm.on('click', function (e) {
                         e.preventDefault();
-                        hang.detach();
                         //ajax
                         $.magnificPopup.close();
                     });

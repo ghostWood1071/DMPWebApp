@@ -1,0 +1,137 @@
+﻿/* DIRTY Responsive pricing table CSS */
+
+/* 
+- make mobile switch sticky
+*/
+#decentralization article {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    height: 1000px;
+    position: relative;
+}
+
+article#decentralization tbody {
+    background-color: white;
+}
+
+#decentralization ul {
+    display: flex;
+    top: 0px;
+    z-index: 10;
+    padding-left: 0px;
+    padding-bottom: 14px;
+}
+
+#decentralization li {
+    list-style: none;
+    flex: 1;
+}
+
+    #decentralization li:last-child {
+        border-right: 1px solid #DDD;
+    }
+
+#decentralization button {
+    width: 100%;
+    border: 1px solid #DDD;
+    border-right: 0;
+    border-top: 0;
+    padding: 10px;
+    background: #FFF;
+    font-size: 14px;
+    font-weight: bold;
+    height: 60px;
+    color: #999
+}
+
+#decentralization li.active button {
+    background: #F5F5F5;
+    color: #000;
+}
+
+#decentralization table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+}
+
+#decentralization th {
+    background: #F5F5F5;
+    display: none;
+}
+
+#decentralization td, th {
+    height: 53px
+}
+
+#decentralization td, th {
+    border: 1px solid #DDD;
+    padding: 10px;
+    empty-cells: show;
+}
+
+#decentralization td, th {
+    text-align: left;
+}
+
+    #decentralization td + td, th + th {
+        text-align: center;
+        display: none;
+    }
+
+    #decentralization td.default {
+        display: table-cell;
+    }
+
+#decentralization .bg-purple {
+    border-top: 3px solid #3da323;
+}
+
+#decentralization .bg-blue {
+    border-top: 3px solid #0097CF;
+}
+
+#decentralization .sep {
+    background: #F5F5F5;
+    font-weight: bold;
+}
+
+#decentralization .txt-l {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#decentralization .txt-top {
+    position: relative;
+    top: -9px;
+    left: -2px;
+}
+
+#decentralization .tick {
+    font-size: 18px;
+    color: #2CA01C;
+}
+
+#decentralization .hidee {
+    border: 0;
+    background: none;
+}
+
+@media (min-width: 640px) {
+    #decentralization ul {
+        display: none;
+    }
+
+    #decentralization td, th {
+        display: table-cell !important;
+    }
+
+    #decentralization td, th {
+        width: 330px;
+    }
+
+        #decentralization td + td, th + th {
+            width: auto;
+        }
+}
