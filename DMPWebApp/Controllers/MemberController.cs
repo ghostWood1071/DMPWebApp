@@ -35,7 +35,7 @@ namespace DMPWebApp.Controllers
         }
 
         // GET: Member/Create
-        public ActionResult Create()
+        public ActionResult StatisticsMember()
         {
             return View();
         }

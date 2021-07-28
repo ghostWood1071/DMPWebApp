@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "Thống kê cấp dưới";
+}
+@section css{
+    <link rel="stylesheet" href="~/Assets/vendor/morris/morris.css" />
+    <style>
+        #bar-chart {
+            min-height: 250px;
+        }
+
+        .row.position h3 {
+            font-weight: bold;
+            margin: 0px;
+            font-size: 30px;
+        }
+
+        .row.position h4 {
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            margin: 15px 0px;
+        }
+
+        .row.position .col-md-3 {
+            color: #101412;
+            font-weight: bold;
+            height: 129px;
+            padding: 20px;
+            box-sizing: border-box;
+            border: 10px solid #ecedf0;
+        }
+
+        .col-md-3.tvtc {
+            background-color: antiquewhite;
+        }
+
+        .col-md-3.tpkv {
+            background-color: aqua;
+        }
+
+        .col-md-3.gdkv {
+            background-color: blueviolet;
+        }
+
+        .col-md-3.tv {
+            background-color: yellowgreen;
+        }
+
+        .col-md-3.tpdb {
+            background-color: burlywood;
+        }
+    </style>
+}
+<section role="main" class="content-body">
+    <header class="page-header">
+        <h2>Thống kê cấp dưới</h2>
+
+        <div class="right-wrapper pull-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li><span>Thống kê cấp dưới</span></li>
+            </ol>
+
+            <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
+        </div>
+    </header>
+
+    <!-- start: page -->
+    <div class="row position">
+        <div class="col-md-3 tvtc"><h3 class="text-center">10</h3><h4>Thành viên tích cực</h4></div>
+        <div class="col-md-3 tpkv"><h3 class="text-center">2</h3><h4>Trưởng phòng khu vực</h4></div>
+        <div class="col-md-3 gdkv"><h3 class="text-center">0</h3><h4>Giám đốc khu vực</h4></div>
+        <div class="col-md-3 tv"><h3 class="text-center">14</h3><h4>Thành viên</h4></div>
+    </div>
+    <div class="row position">
+        <div class="col-md-3 tpdb"><h3 class="text-center">0</h3><h4>Trưởng phòng dự bị</h4></div>
+        <div class="col-md-3 tv"><h3 class="text-center">14</h3><h4>Thành viên</h4></div>
+        <div class="col-md-3 tv"><h3 class="text-center">14</h3><h4>Thành viên</h4></div>
+        <div class="col-md-3 tv"><h3 class="text-center">14</h3><h4>Thành viên</h4></div>
+    </div>
+    <h3 class="text-primary text-center">
+        Thống kê theo cấp bậc
+    </h3>
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <div id="bar-chart"></div>
+        </div>
+        <!-- end: page -->
+</section>
+
+@section script{
+
+    <script src="~/Assets/vendor/raphael/raphael.js"></script>
+    <script src="~/Assets/vendor/morris/morris.js"></script>
+    <script>
+        var data = [
+            { y: 'TV cấp 1', a: 7 },
+            { y: 'TV cấp 2', a: 4 },
+            { y: 'TV cấp 3', a: 6 },
+            { y: 'TV cấp 4', a: 7 },
+            { y: 'TV cấp 5', a: 8 },
+            { y: 'TV cấp 6', a: 9 },
+            { y: 'TV cấp 7', a: 10 },
+            { y: 'TV cấp 8', a: 11 },
+            { y: 'TV cấp 9', a: 10 },
+            { y: 'TV cấp 10', a: 5 }
+        ]
+        config = {
+            data: data,
+            xLabelMargin: 1,
+            xkey: 'y',
+            ykeys: 'a',
+            barSizeRatio: 0.4,
+            labels: ['Số lượng', 'Total Outcome'],
+            fillOpacity: 0.9,
+            hideHover: 'auto',
+            behaveLikeLine: true,
+            resize: true,
+            pointFillColors: ['#ffffff'],
+            pointStrokeColors: ['black'],
+            lineColors: ['gray', 'red']
+        };
+        config.element = 'bar-chart';
+        Morris.Bar(config);
+    </script>
+}
+
