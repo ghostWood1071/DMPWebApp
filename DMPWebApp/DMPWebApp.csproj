@@ -1989,6 +1989,7 @@
     <Content Include="Views\Notify\Details.cshtml" />
     <Content Include="Views\Notify\Create.cshtml" />
     <Content Include="Views\SystemConfig\Decentralization.cshtml" />
+    <Content Include="Views\Member\StatisticsMember.cshtml" />
     <Content Include="Views\Profile\Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
