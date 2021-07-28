@@ -32,18 +32,13 @@
         <div class="col-md-10 col-lg-11">
 
             <div class="tabs">
-                <ul class="nav nav-tabs tabs-primary">
-                    <li class="active">
-                        <a href="#overview" data-toggle="tab">Thông tin chi tiết</a>
-                    </li>
-                    <li>
-                        <a href="#edit" data-toggle="tab">Chỉnh sửa thông tin</a>
-                    </li>
-                </ul>
                 <div class="tab-content">
                     <div id="overview" class="tab-pane active">
                         <form class="form-horizontal" method="get">
-                            <h4 class="mb-xlg">Thông tin cá nhân</h4>
+                            <div class="justify-space-between">
+                                <h4 class="mb-xlg">Thông tin cá nhân</h4>
+                                <a href="/Profile/Edit/1"><i class="fa fa-pencil"></i></a>
+                            </div>
                             <div class="row">
                                 <div class="col-lg-3 col-md-3">
                                     <div class="thumb-info mb-md">
@@ -56,118 +51,40 @@
                                 </div>
                                 <fieldset class="col-lg-7 col-md-7">
                                     <div class="row">
-                                        <label class="col-md-3">Họ Tên:</label>
-                                        <label class="col-md-9">Vũ Khắc Tiệp</label>
+                                        <label class="col-md-4">Mã thành viên:</label>
+                                        <label class="col-md-8">TV001</label>
                                     </div>
                                     <div class="row">
-                                        <label class="col-md-3">Ngày sinh:</label>
-                                        <label class="col-md-9">15/7/1994</label>
+                                        <label class="col-md-4">Họ Tên:</label>
+                                        <label class="col-md-8">Vũ Khắc Tiệp</label>
                                     </div>
                                     <div class="row">
-                                        <label class="col-md-3">Địa chỉ:</label>
-                                        <label class="col-md-9">Quận Đống Đa, Thành phố Hà Nội</label>
+                                        <label class="col-md-4">Ngày sinh:</label>
+                                        <label class="col-md-8">15/7/1994</label>
                                     </div>
                                     <div class="row">
-                                        <label class="col-md-3">Số CMND</label>
-                                        <label class="col-md-9">1234567890</label>
+                                        <label class="col-md-4">Địa chỉ:</label>
+                                        <label class="col-md-8">Quận Đống Đa, Thành phố Hà Nội</label>
                                     </div>
                                     <div class="row">
-                                        <label class="col-md-3">Số điện thoại:</label>
-                                        <label class="col-md-9">1234567890</label>
+                                        <label class="col-md-4">Số CMND</label>
+                                        <label class="col-md-8">1234567890</label>
                                     </div>
                                     <div class="row">
-                                        <label class="col-md-3">Tên đăng nhập:</label>
-                                        <label class="col-md-9">1234567890</label>
+                                        <label class="col-md-4">Số điện thoại:</label>
+                                        <label class="col-md-8">1234567890</label>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-md-4">Tên đăng nhập:</label>
+                                        <label class="col-md-8">1234567890</label>
                                     </div>
                                 </fieldset>
 
                             </div>
-                            <hr class="dotted tall">
-                            <h4 class="mb-xlg">Cấp dưới</h4>
-                            <div id=body genealogy-body genealogy-scroll class="justify-content-center">
-                                <ul  class="genealogy-tree">
-
-                                </ul>
-                            </div>
+                            
                         </form>
                     </div>
-                    <div id="edit" class="tab-pane">
-                        <form class="form-horizontal" method="get">
-                            <h4 class="mb-xlg">Thông tin cá nhân</h4>
-                            <fieldset>
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label" for="profileFirstName">Họ tên</label>
-                                    <div class="col-md-8">
-                                        <input type="text" class="form-control" id="profileFirstName">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label" for="profileLastName">Quê quán</label>
-                                    <div class="col-md-8">
-                                        <input type="text" class="form-control" id="profileLastName">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label" for="profileAddress">Số điện thoại</label>
-                                    <div class="col-md-8">
-                                        <input type="text" class="form-control" id="profileAddress">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label" for="profileCompany">Số CMND</label>
-                                    <div class="col-md-8">
-                                        <input type="text" class="form-control" id="profileCompany">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label" for="profileCompany">Ngày sinh</label>
-                                    <div class="col-md-8">
-                                        <input type="text" class="form-control" id="profileCompany">
-                                    </div>
-                                </div>
-                            </fieldset>
-                            <div class="panel-footer">
-                                <div class="row">
-                                    <div class="col-md-9 col-md-offset-3">
-                                        <button type="submit" class="btn btn-primary">Lưu</button>
-                                        <button type="reset" class="btn btn-default">Xóa thông tin</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <form class="form-horizontal form-change-password">
-                            <h4 class="mb-xlg">Thông tin tài khoản</h4>
-                            <fieldset class="mb-xl">
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label" for="profileNewPassword">Mật khẩu cũ</label>
-                                    <div class="col-md-8">
-                                        <input type="text" class="form-control" id="profileNewPassword">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label" for="profileNewPassword">Mật khẩu mới</label>
-                                    <div class="col-md-8">
-                                        <input type="text" class="form-control" id="profileNewPassword">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label" for="profileNewPasswordRepeat">Nhập lại mật khẩu mới</label>
-                                    <div class="col-md-8">
-                                        <input type="text" class="form-control" id="profileNewPasswordRepeat">
-                                    </div>
-                                </div>
-                            </fieldset>
-                            <div class="panel-footer">
-                                <div class="row">
-                                    <div class="col-md-9 col-md-offset-3">
-                                        <button type="submit" class="btn btn-primary">Lưu</button>
-                                        <button type="reset" class="btn btn-default">Xóa thông tin</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </form>
-                    </div>
+                   
                 </div>
             </div>
         </div>

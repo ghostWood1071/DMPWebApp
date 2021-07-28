@@ -42,3 +42,8 @@
 .config-control-hidden{
     display: none;
 }
+
+.justify-space-between{
+    display: flex;
+    justify-content: space-between;
+}

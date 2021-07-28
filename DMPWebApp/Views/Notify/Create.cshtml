@@ -3,11 +3,21 @@
     ViewBag.Title = "Thêm thông báo";
 }
 
-
+@section css{
+    <!-- Specific Page Vendor CSS -->
+    <link rel="stylesheet" href="~/assets/vendor/summernote/summernote.css" />
+    <link rel="stylesheet" href="~/assets/vendor/summernote/summernote-bs3.css" />
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="~/assets/stylesheets/theme.css" />
+    <!-- Skin CSS -->
+    <link rel="stylesheet" href="~/assets/stylesheets/skins/default.css" />
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="~/assets/stylesheets/theme-custom.css">
+}
 
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Chi tiết thông báo</h2>
+        <h2>Thêm thông báo</h2>
         <div class="right-wrapper pull-right">
             <ol class="breadcrumbs">
                 <li>
@@ -31,7 +41,7 @@
                     <h2 class="panel-title">Thông báo</h2>
                 </header>
                 <div class="panel-body">
-                    <div class="form-horizontal form-bordered" method="get" action="/Notify/">
+                    <div class="form-horizontal form-bordered">
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="inputDefault">Tiêu đề</label>
                             <div class="col-md-6">
@@ -40,16 +50,21 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="textareaDefault">Nội dung</label>
-                            <div class="col-md-6">
-                                <textarea class="form-control" rows="3" id="textareaDefault"></textarea>
+                            <label class="col-md-3 control-label">Nội dung</label>
+                            <div class="col-md-9">
+                                <div class="summernote" data-plugin-summernote data-plugin-options='{ "height": 180, "codemirror": { "theme": "ambiance" }, "lang":"vi-VN"}'></div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Người nhận</label>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" id="inputDefault">
+                            <div class="col-md-12">
+                                <label class="col-md-3 control-label" for="inputDefault">Người nhận</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="inputDefault">
+                                    <br />
+                                    <input type="checkbox" id="checked-receiver"/>
+                                    <label for="checked-receiver">Gửi cho tất cả</label>
+                                </div>
                             </div>
                         </div>
 
@@ -72,10 +87,21 @@
     <!-- end: page -->
 </section>
 
+    
 @section script{
+
+    <script src="~/assets/vendor/summernote/summernote.js"></script>
+    <script src="~/Assets/vendor/summernote/summernote-vi-VN.js"></script>
+    <script src="~/assets/vendor/bootstrap-maxlength/bootstrap-maxlength.js"></script>
+    <script src="~/assets/vendor/ios7-switch/ios7-switch.js"></script>
+
+    <script src="~/assets/javascripts/theme.init.js"></script>
+    <script src="~/assets/javascripts/forms/examples.advanced.form.js"></script>
     <script>
         $('.btn-primary').click(function () {
             location.href = "/Notify";
         })
     </script>
+
+   
 }

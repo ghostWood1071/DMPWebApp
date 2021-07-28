@@ -1692,6 +1692,7 @@
     <Content Include="Assets\vendor\style-switcher\style-switcher.css" />
     <Content Include="Assets\vendor\style-switcher\style.switcher.js" />
     <Content Include="Assets\vendor\summernote\summernote-bs3.css" />
+    <Content Include="Assets\vendor\summernote\summernote-vi-VN.js" />
     <Content Include="Assets\vendor\summernote\summernote.css" />
     <Content Include="Assets\vendor\summernote\summernote.js" />
     <Content Include="favicon.ico" />
@@ -1988,6 +1989,7 @@
     <Content Include="Views\Notify\Details.cshtml" />
     <Content Include="Views\Notify\Create.cshtml" />
     <Content Include="Views\SystemConfig\Decentralization.cshtml" />
+    <Content Include="Views\Profile\Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
