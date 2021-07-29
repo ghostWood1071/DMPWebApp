@@ -96,3 +96,7 @@
 .avartar-container img{
     width: 100%;
 }
+
+button{
+    min-width: 100px;
+}

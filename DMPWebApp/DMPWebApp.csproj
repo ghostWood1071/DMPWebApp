@@ -142,6 +142,7 @@
     <Content Include="Assets\images\!sample-user.jpg" />
     <Content Include="Assets\images\apple-touch-icon-precomposed.png" />
     <Content Include="Assets\images\arrows.png" />
+    <Content Include="Assets\images\avt.jpg" />
     <Content Include="Assets\images\blog-image-1.jpg" />
     <Content Include="Assets\images\blog-image-2.jpg" />
     <Content Include="Assets\images\blog-image-3.jpg" />
