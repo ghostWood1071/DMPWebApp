@@ -28,19 +28,19 @@
             height: 129px;
             padding: 20px;
             box-sizing: border-box;
-            border: 10px solid #ecedf0;
+            border: 10px solid whitesmoke;
         }
 
         .col-md-3.tvtc {
-            background-color: antiquewhite;
+            background-color: #f4a53d;
         }
 
         .col-md-3.tpkv {
-            background-color: aqua;
+            background-color: #69c0c0;
         }
 
         .col-md-3.gdkv {
-            background-color: blueviolet;
+            background-color: #5685e3;
         }
 
         .col-md-3.tv {
@@ -49,6 +49,22 @@
 
         .col-md-3.tpdb {
             background-color: burlywood;
+        }
+
+        .boxcontent {
+            background-color: whitesmoke;
+            padding: 10px 0px;
+            box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
+            margin: 30px 0px;
+        }
+
+        .row.position {
+            margin-left: 0px !important;
+            margin-right: 0px !important;
+        }
+        .morris-chart text {
+            fill: #343434;
+            font-weight: 700 !important;
         }
     </style>
 }
@@ -71,44 +87,43 @@
     </header>
 
     <!-- start: page -->
-    <div class="row position">
-        <div class="col-md-3 tvtc"><h3 class="text-center">10</h3><h4>Thành viên tích cực</h4></div>
-        <div class="col-md-3 tpkv"><h3 class="text-center">2</h3><h4>Trưởng phòng khu vực</h4></div>
-        <div class="col-md-3 gdkv"><h3 class="text-center">0</h3><h4>Giám đốc khu vực</h4></div>
-        <div class="col-md-3 tv"><h3 class="text-center">14</h3><h4>Thành viên</h4></div>
-    </div>
-    <div class="row position">
-        <div class="col-md-3 tpdb"><h3 class="text-center">0</h3><h4>Trưởng phòng dự bị</h4></div>
-        <div class="col-md-3 tv"><h3 class="text-center">14</h3><h4>Thành viên</h4></div>
-        <div class="col-md-3 tv"><h3 class="text-center">14</h3><h4>Thành viên</h4></div>
-        <div class="col-md-3 tv"><h3 class="text-center">14</h3><h4>Thành viên</h4></div>
-    </div>
-    <h3 class="text-primary text-center">
-        Thống kê theo cấp bậc
-    </h3>
-    <div class="row">
-        <div class="col-sm-12 text-center">
-            <div id="bar-chart"></div>
+    <div class="boxcontent">
+        <div class="row position">
+            <div class="col-md-3 tvtc"><h3 class="text-center">10</h3><h4>Thành viên tích cực</h4></div>
+            <div class="col-md-3 tpkv"><h3 class="text-center">2</h3><h4>Trưởng phòng khu vực</h4></div>
+            <div class="col-md-3 gdkv"><h3 class="text-center">0</h3><h4>Giám đốc khu vực</h4></div>
+            <div class="col-md-3 tv"><h3 class="text-center">14</h3><h4>Thành viên</h4></div>
         </div>
-        <!-- end: page -->
+        <div class="row position">
+            <div class="col-md-3 tpdb"><h3 class="text-center">0</h3><h4>Trưởng phòng dự bị</h4></div>
+            <div class="col-md-3 tv"><h3 class="text-center">14</h3><h4>Thành viên</h4></div>
+            <div class="col-md-3 tv"><h3 class="text-center">14</h3><h4>Thành viên</h4></div>
+            <div class="col-md-3 tv"><h3 class="text-center">14</h3><h4>Thành viên</h4></div>
+        </div>
+    </div>
+    <div class="boxcontent">
+        <h3 class="text-primary text-center" style="font-weight: 600;">
+            Thống kê theo cấp bậc
+        </h3>
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <div id="bar-chart" class="morris-chart"></div>
+            </div>
+            <!-- end: page -->
+        </div>
 </section>
-
 @section script{
 
     <script src="~/Assets/vendor/raphael/raphael.js"></script>
     <script src="~/Assets/vendor/morris/morris.js"></script>
     <script>
         var data = [
-            { y: 'TV cấp 1', a: 7 },
-            { y: 'TV cấp 2', a: 4 },
-            { y: 'TV cấp 3', a: 6 },
-            { y: 'TV cấp 4', a: 7 },
-            { y: 'TV cấp 5', a: 8 },
-            { y: 'TV cấp 6', a: 9 },
-            { y: 'TV cấp 7', a: 10 },
-            { y: 'TV cấp 8', a: 11 },
-            { y: 'TV cấp 9', a: 10 },
-            { y: 'TV cấp 10', a: 5 }
+            { y: 'TV', a: 7 },
+            { y: 'TVTC', a: 4 },
+            { y: 'TVĐC', a: 6 },
+            { y: 'Trưởng nhóm', a: 7 },
+            { y: 'TP dự bị', a: 8 },
+            { y: 'TP', a: 9 }
         ]
         config = {
             data: data,
