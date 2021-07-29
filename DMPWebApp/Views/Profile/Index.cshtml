@@ -34,57 +34,177 @@
             <div class="tabs">
                 <div class="tab-content">
                     <div id="overview" class="tab-pane active">
-                        <form class="form-horizontal" method="get">
+                        <div class="form-horizontal">
                             <div class="justify-space-between">
-                                <h4 class="mb-xlg">Thông tin cá nhân</h4>
-                                <a href="/Profile/Edit/1"><i class="fa fa-pencil"></i></a>
+                                <h4 class="mb-xlg">Thông tin tài khoản</h4>
+                                <a class="edit-infor" href=""><i class="fa fa-pencil"></i></a>
                             </div>
                             <div class="row">
                                 <div class="col-lg-3 col-md-3">
-                                    <div class="thumb-info mb-md">
-                                        <img src="~/assets/images/!logged-user.jpg" class="rounded img-responsive" alt="John Doe">
+                                    <div class="thumb-info mb-md avatar-container">
+                                        <img id="avatar" src="~/assets/images/!logged-user.jpg" class="rounded img-responsive" alt="John Doe">
                                         <div class="thumb-info-title">
                                             <span class="thumb-info-inner">Vũ Khắc Tiệp</span>
                                             <span class="thumb-info-type">CEO</span>
                                         </div>
+                                        <div class="edit-avatar">
+                                            <input accept="image/*" type="file" class="img-load" onchange="previewAvatar()"/>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <fieldset class="col-lg-7 col-md-7">
-                                    <div class="row">
-                                        <label class="col-md-4">Mã thành viên:</label>
-                                        <label class="col-md-8">TV001</label>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Họ tên</label>
+                                        <div class="col-md-9">
+                                            <input value="Vũ Khắc Tiệp" type="text" class="form-control">
+                                        </div>
                                     </div>
-                                    <div class="row">
-                                        <label class="col-md-4">Họ Tên:</label>
-                                        <label class="col-md-8">Vũ Khắc Tiệp</label>
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Ngày sinh</label>
+                                        <div class="col-md-9">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </span>
+                                                <input value="17/2/1998" type="text" data-plugin-datepicker class="form-control">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="row">
-                                        <label class="col-md-4">Ngày sinh:</label>
-                                        <label class="col-md-8">15/7/1994</label>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Giới tính</label>
+                                        <div class="col-md-3">
+                                            <select class="form-control" data-plugin-multiselect id="ms_example1">
+                                                <option value="1" selected>Nam</option>
+                                                <option value="0">Nữ</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="row">
-                                        <label class="col-md-4">Địa chỉ:</label>
-                                        <label class="col-md-8">Quận Đống Đa, Thành phố Hà Nội</label>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Địa chỉ</label>
+                                        <div class="col-md-9" style="padding-left:0; padding-right:0">
+                                            <div class="col-md-6">
+
+                                                <select data-plugin-selectTwo class="form-control populate">
+                                                    <option>Hưng Yên</option>
+                                                    <option>Hải Phòng</option>
+                                                    <option>Hà Nội</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <select data-plugin-selectTwo class="form-control populate">
+                                                    <option>Huyện Khoái Châu</option>
+                                                    <option>Huyện Thanh Oai</option>
+                                                    <option>Quận Đống Đa</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <div class="row">
-                                        <label class="col-md-4">Số CMND</label>
-                                        <label class="col-md-8">1234567890</label>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Số CMND</label>
+                                        <div class="col-md-9">
+                                            <input value="1234567890" type="text" class="form-control">
+                                        </div>
                                     </div>
-                                    <div class="row">
-                                        <label class="col-md-4">Số điện thoại:</label>
-                                        <label class="col-md-8">1234567890</label>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Ngày cấp(CMND)</label>
+                                        <div class="col-md-9">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </span>
+                                                <input value="17/2/2019" type="text" data-plugin-datepicker class="form-control">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="row">
-                                        <label class="col-md-4">Tên đăng nhập:</label>
-                                        <label class="col-md-8">1234567890</label>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Nơi cấp(CMND)</label>
+                                        <div class="col-md-9">
+                                            <input value="Công an Hà Nội" type="text" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Số điện thoại</label>
+                                        <div class="col-md-9">
+                                            <input value="1234567890" type="tel" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Email</label>
+                                        <div class="col-md-9">
+                                            <input value="123@gmail.com" type="email" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="row btn-save">
+                                        <div class="col-md-9 col-md-offset-3">
+                                            <button type="submit" class="btn btn-primary">Lưu</button>
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+
+                            </div>
+
+                        </div>
+                        <hr class="dotted" />
+                        <div class="form-horizontal" >
+                            <div class="justify-space-between">
+                                <h4 class="mb-xlg">Thông tin tài khoản</h4>
+                                <a class="edit-infor" href=""><i class="fa fa-pencil"></i></a>
+                            </div>
+                            <div class="row">
+                                <fieldset class="col-lg-9 col-md-9">
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Tên đăng nhập</label>
+                                        <div class="col-md-9">
+                                            <input value="vkt@123" type="text" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Mật khẩu cũ</label>
+                                        <div class="col-md-9">
+                                            <input type="password" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Mật khẩu mới</label>
+                                        <div class="col-md-9">
+                                            <input type="password" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Mật khẩu mới(nhắc lại)</label>
+                                        <div class="col-md-9">
+                                            <input type="password" class="form-control">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row btn-save">
+                                        <div class="col-md-9 col-md-offset-3">
+                                            <button type="submit" class="btn btn-primary">Lưu</button>
+                                        </div>
                                     </div>
                                 </fieldset>
 
                             </div>
-                            
-                        </form>
+                        </div>
                     </div>
-                   
+                    
                 </div>
             </div>
         </div>
@@ -93,54 +213,56 @@
 </section>
 
 @section script{
-    <script src="~/assets/javascripts/tree/tree.js"></script>
     <script>
-        var data = [
-            {
-                "id": "1",
-                "pid": "",
-                "name": "Vũ Khắc Tiệp",
-                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
-            },
-            {
-                "id": "2",
-                "pid": "1",
-                "name": "Vũ Khắc Tiệp",
-                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
-            },
-            {
-                "id": "3",
-                "pid": "1",
-                "name": "Vũ Khắc Tiệp",
-                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
-            },
-            {
-                "id": "4",
-                "pid": "2",
-                "name": "Vũ Khắc Tiệp",
-                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
-            },
-            {
-                "id": "5",
-                "pid": "2",
-                "name": "Vũ Khắc Tiệp",
-                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
-            },
-            {
-                "id": "6",
-                "pid": "3",
-                "name": "Vũ Khắc Tiệp",
-                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
-            },
-            {
-                "id": "7",
-                "pid": "3",
-                "name": "Vũ Khắc Tiệp",
-                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
+        var disable = function () {
+            $('.tabs').find('input').prop('disabled', true);
+            $('select').prop('disabled', true);
+        };
+        var enable = function (edit) {
+            var parent = $(edit).parent().next();
+            console.log(parent);
+            parent.find('input').prop('disabled', false);
+            parent.find('select').prop('disabled', false);
+        }
+        disable();
+        $('.img-load').hide();
+        $('.btn-save').hide();
+        var state = false;
+        $('.edit-infor').click(function (e) {
+            e.preventDefault();
+
+            var $this = $(this);
+            var btnSave = $this.parent().next().find('fieldset').find('.btn-save');
+            var fileInput = $this.parent().next().find('.img-load');
+            if (!state) {
+                enable($this);
+                fileInput.show();
+                btnSave.show();
+                state = true;
             }
-        ];
-        var orgTree = new OrgTree();
-        orgTree.init(data);
+            else {
+                disable();
+                fileInput.hide();
+                btnSave.hide();
+                state = false;
+            }
+
+        });
+
+        function previewAvatar() {
+            var avatar = $('#avatar');
+            var file = $(".img-load")[0].files[0];
+            var reader = new FileReader();
+            reader.addEventListener('load', function () {
+                avatar.attr('src', reader.result);
+            }, false);
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+
+
     </script>
 }
 
