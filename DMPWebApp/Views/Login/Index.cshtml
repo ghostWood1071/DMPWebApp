@@ -40,7 +40,13 @@
 
     <!-- Head Libs -->
     <script src="~/Assets/vendor/modernizr/modernizr.js"></script>
-
+    <style>
+        a.txcenter {
+            padding-top: 10px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+    </style>
 </head>
 <body>
     <!-- start: page -->
@@ -68,7 +74,6 @@
                         <div class="form-group mb-lg">
                             <div class="clearfix">
                                 <label class="pull-left">Mật khẩu</label>
-                                <a href="pages-recover-password.html" class="pull-right">Quên mật khẩu?</a>
                             </div>
                             <div class="input-group input-group-icon">
                                 <input name="Password" type="password" class="form-control input-lg" />
@@ -90,6 +95,10 @@
                             <div class="col-sm-4 text-right">
                                 <button type="submit" class="btn btn-primary hidden-xs">Đăng nhập</button>
                             </div>
+                        </div>
+
+                        <div class="row">
+                            <a href="#" class="txcenter">Bạn quên mật khẩu?</a>
                         </div>
                     </form>
                 </div>
