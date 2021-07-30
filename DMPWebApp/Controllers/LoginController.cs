@@ -11,6 +11,7 @@ namespace DMPWebApp.Controllers
         // GET: Login
         public ActionResult Index()
         {
+            Response.Cookies.Remove("UserID");
             return View();
         }
 
