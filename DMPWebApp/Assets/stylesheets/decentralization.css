@@ -85,7 +85,7 @@ article#decentralization tbody {
     }
 
 #decentralization .bg-purple {
-    border-top: 3px solid #3da323;
+    border-top: 3px solid #3da323 !important;
 }
 #decentralization .bg-blue {
     border-top: 3px solid #0097CF;
