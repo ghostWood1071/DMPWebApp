@@ -72,12 +72,30 @@
             },
             {
                 "id": "6",
+                "pid": "5",
+                "name": "Lê Đức Hiếu",
+                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
+            },
+            {
+                "id": "7",
+                "pid": "5",
+                "name": "Ngô Minh Thuận",
+                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
+            },
+            {
+                "id": "8",
+                "pid": "5",
+                "name": "Tạ Kỳ Anh",
+                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
+            },
+            {
+                "id": "9",
                 "pid": "3",
                 "name": "Nguyễn Việt Anh",
                 "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
             },
             {
-                "id": "7",
+                "id": "10",
                 "pid": "3",
                 "name": "Vũ Khắc Tiệp",
                 "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
@@ -85,6 +103,8 @@
         ];
         var orgTree = new OrgTree();
         orgTree.init(data);
+        var bac2 = $($($(".genealogy-tree ul")[0]).find("ul")[0]).addClass("active");
+        bac2.css("display", "block");
     </script>
 
 }

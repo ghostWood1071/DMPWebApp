@@ -208,6 +208,7 @@
     <Content Include="Assets\javascripts\tables\examples.datatables.row.with.details.js" />
     <Content Include="Assets\javascripts\tables\examples.datatables.tabletools.js" />
     <Content Include="Assets\javascripts\tables\member.with.detail.edit.js" />
+    <Content Include="Assets\javascripts\tables\order.details.editable.js" />
     <Content Include="Assets\javascripts\tables\order.with.detail.js" />
     <Content Include="Assets\javascripts\theme.admin.extension.js" />
     <Content Include="Assets\javascripts\theme.custom.js" />
@@ -1992,6 +1993,7 @@
     <Content Include="Views\SystemConfig\Decentralization.cshtml" />
     <Content Include="Views\Member\StatisticsMember.cshtml" />
     <Content Include="Views\Profile\Edit.cshtml" />
+    <Content Include="Views\Login\Reset.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

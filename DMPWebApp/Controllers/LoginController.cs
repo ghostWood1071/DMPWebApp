@@ -26,6 +26,11 @@ namespace DMPWebApp.Controllers
             return View();
         }
 
+        public ActionResult Reset()
+        {
+            return View();
+        }
+
         // POST: Login/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)

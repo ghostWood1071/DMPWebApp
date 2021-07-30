@@ -46,8 +46,8 @@
                         <th class="center">Họ và tên</th>
                         <th class="center">Ngày nhập</th>
                         <th class="center">Điểm sử dụng</th>
-                        <th class="center">Chiết khấu(%)</th>
-                        <th class="center">Tổng giá(VNĐ)</th>
+                        <th class="center">Chiết khấu (%)</th>
+                        <th class="center">Tổng giá (VNĐ)</th>
                         <th class="center">Tác vụ</th>
                     </tr>
                 </thead>
@@ -57,9 +57,9 @@
                         <td>TV0001</td>
                         <td>Nguyễn Văn A</td>
                         <td>16/7/2021</td>
-                        <td class="right">4</td>
+                        <td class="right">0</td>
                         <td class="right">40</td>
-                        <td class="right">12.000.000</td>
+                        <td class="right">12.900.000</td>
                         <td class="actions center">
                             <a href="#" class="on-default editOrder"><i class="fa fa-pencil"></i></a>
                             <a href="#" class="on-default removeOrder"><i class="fa fa-trash-o"></i></a>
@@ -74,6 +74,29 @@
 
 @section div {
     <div id="dialog" class="modal-block mfp-hide">
+        <section class="panel">
+            <header class="panel-heading">
+                <h2 class="panel-title">Bạn có chắc chắn muốn xóa?</h2>
+            </header>
+            <div class="panel-body">
+                <div class="modal-wrapper">
+                    <div class="modal-text">
+                        <p>Bạn có chắc chắn muốn xóa đơn hàng này?</p>
+                    </div>
+                </div>
+            </div>
+            <footer class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button id="dialogConfirm" class="btn btn-primary">Xác nhận</button>
+                        <button id="dialogCancel" class="btn btn-default">Đóng</button>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </div>
+
+    <div id="dialogDeleteDetail" class="modal-block mfp-hide">
         <section class="panel">
             <header class="panel-heading">
                 <h2 class="panel-title">Bạn có chắc chắn muốn xóa?</h2>
@@ -150,8 +173,8 @@
             <footer class="panel-footer">
                 <div class="row">
                     <div class="col-md-12 text-right">
-                        <button id="btnSaveOrder" class="btn btn-primary">Xác nhận</button>
-                        <button id="btnCancelOrder" class="btn btn-default">Đóng</button>
+                        <button class="btnSaveOrder btn btn-primary">Xác nhận</button>
+                        <button class="btnCancelOrder btn btn-default">Đóng</button>
                     </div>
                 </div>
             </footer>
@@ -171,7 +194,7 @@
                         </div>
                     </div>
                 </div>
-                <table class="table table-bordered table-striped mb-none" id="datatable-editable">
+                <table class="table table-bordered table-striped mb-none" id="table-add">
                     <thead>
                         <tr>
                             <th class="center">Mã sản phẩm</th>
@@ -184,28 +207,117 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="gradeA">
-                            <td>SP0001</td>
-                            <td>Kem đánh răng</td>
-                            <td class="right">150.000</td>
-                            <td class="right">130.000</td>
-                            <td class="right">20</td>
-                            <td class="right">2.000</td>
-                            <td class="actions">
-                                <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                                <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
             <footer class="panel-footer">
                 <div class="row">
                     <div class="col-md-12 text-right">
-                        <button id="btnSaveDetail" class="btn btn-primary">Xác nhận</button>
-                        <button id="btnCancelDetail" class="btn btn-default">Đóng</button>
+                        <button class="btnSaveDetail btn btn-primary">Xác nhận</button>
+                        <button class="btnCancelDetail btn btn-default">Đóng</button>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </div>
+
+    <div id="dialogUpdateDetail" class="modal-block mfp-hide">
+        <section class="panel">
+            <header class="panel-heading">
+                <h2 class="panel-title">Thông tin chi tiết đơn hàng</h2>
+            </header>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="mb-md">
+                            <button id="addToTable" class="btn btn-primary">Thêm sản phẩm <i class="fa fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-bordered table-striped mb-none" id="table-update">
+                    <thead>
+                        <tr>
+                            <th class="center">Mã sản phẩm</th>
+                            <th class="center">Tên sản phẩm</th>
+                            <th class="center">Giá bán lẻ</th>
+                            <th class="center">Giá cơ sở thu nhập</th>
+                            <th class="center">Điểm doanh số</th>
+                            <th class="center">Số lượng</th>
+                            <th class="center">Tác vụ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--add detail here-->
+                    </tbody>
+                </table>
+            </div>
+            <footer class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button class="btnSaveDetail btn btn-primary">Xác nhận</button>
+                        <button class="btnCancelDetail btn btn-default">Đóng</button>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </div>
+
+    <div id="dialogUpdateOrder" class="modal-block mfp-hide">
+        <section class="panel">
+            <header class="panel-heading">
+                <h2 class="panel-title">Thông tin đơn hàng</h2>
+            </header>
+            <div class="panel-body">
+                <form class="form-horizontal form-bordered">
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Mã đơn hàng</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="OrderID">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Mã thành viên</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="MemberID">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Họ tên thành viên</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="MemberID">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="inputDefault">Điểm sử dụng</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="UsedMark" id="usedinput">
+                            <label for="usedinput">Tối đa sử dụng 40 điểm</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Ngày nhập</label>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                                <input id="datepick" type="text" data-plugin-datepicker class="form-control" name="OrderDate">
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <footer class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button class="btnSaveOrder btn btn-primary">Xác nhận</button>
+                        <button class="btnCancelOrder btn btn-default">Đóng</button>
                     </div>
                 </div>
             </footer>
@@ -214,27 +326,15 @@
 }
 
 @section script {
+    <script src="~/Assets/javascripts/tables/order.details.editable.js"></script>
     <script src="~/assets/javascripts/tables/order.with.detail.js"></script>
-    <script src="~/assets/javascripts/tables/examples.datatables.editable.js"></script>
     <script>
-        (function ($) {
-            $(function () {
-                EditableTable.initialize(6);
-            });
-            //var header = $('.table th');
-            //$(header[0]).width("100px");
-            //$(header[1]).width("320px");
-            //$(header[2]).width("150px");
-            //$(header[3]).width("150px");
-            //$(header[4]).width("70px");
+        var tableAdd = new EditableDetailTable("#table-add");
+        tableAdd.initialize(6);
 
-            //var rows = $('.table tr');
-            //for (var i = 1; i < rows.length; i++) {
-            //    var cells = $(rows[i]).children('td');
-            //    for (var j = 2; j < 6; j++)
-            //        $(cells[j]).css('text-align', 'right');
-            //}
-        }).apply(this, [jQuery]);
+        var tableUpdate = new EditableDetailTable("#table-update");
+        tableUpdate.initialize(6);
+
     </script>
 }
 
