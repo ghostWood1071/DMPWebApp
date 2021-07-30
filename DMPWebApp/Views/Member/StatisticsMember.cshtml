@@ -91,15 +91,15 @@
     <!-- start: page -->
     <div class="boxcontent">
         <div class="row position">
-            <div class="col-md-3 tvtc"><h3 class="text-center">0</h3><h4>Trưởng phòng</h4></div>
+            <div class="col-md-3 tvtc"><h3 class="text-center">1</h3><h4>Trưởng phòng</h4></div>
             <div class="col-md-3 tpkv"><h3 class="text-center">0</h3><h4>Trưởng phòng dự bị</h4></div>
-            <div class="col-md-3 gdkv"><h3 class="text-center">0</h3><h4>Trưởng nhóm</h4></div>
-            <div class="col-md-3 tv"><h3 class="text-center">0</h3><h4>Thành viên DC</h4></div>
+            <div class="col-md-3 gdkv"><h3 class="text-center">2</h3><h4>Trưởng nhóm</h4></div>
+            <div class="col-md-3 tv"><h3 class="text-center">10</h3><h4>Thành viên DC</h4></div>
         </div>
         <div class="row position">
-            <div class="col-md-3 tpdb"><h3 class="text-center">2</h3><h4>Thành viên TC</h4></div>
-            <div class="col-md-3 tv300"><h3 class="text-center">0</h3><h4>Thành viên 300Đ</h4></div>
-            <div class="col-md-3 tv"><h3 class="text-center">4</h3><h4>Thành viên</h4></div>
+            <div class="col-md-3 tpdb"><h3 class="text-center">21</h3><h4>Thành viên TC</h4></div>
+            <div class="col-md-3 tv300"><h3 class="text-center">10</h3><h4>Thành viên 300Đ</h4></div>
+            <div class="col-md-3 tv"><h3 class="text-center">24</h3><h4>Thành viên</h4></div>
         </div>
     </div>
     <div class="boxcontent">
@@ -120,16 +120,16 @@
     <script src="~/Assets/vendor/morris/morris.js"></script>
     <script>
         var data = [
-            { y: 'TV cấp 1', a: 0 },
-            { y: 'TV cấp 2', a: 0 },
-            { y: 'TV cấp 3', a: 1 },    
-            { y: 'TV cấp 4', a: 0 },
-            { y: 'TV cấp 5', a: 0 },
-            { y: 'TV cấp 6', a: 1 },
-            { y: 'TV cấp 7', a:  2},
-            { y: 'TV cấp 8', a: 1 },
-            { y: 'TV cấp 9', a: 0 },
-            { y: 'TV cấp 10', a: 0 }
+            { y: 'TV cấp 1', a: 23 },
+            { y: 'TV cấp 2', a: 15 },
+            { y: 'TV cấp 3', a: 14 },    
+            { y: 'TV cấp 4', a: 20 },
+            { y: 'TV cấp 5', a: 9 },
+            { y: 'TV cấp 6', a: 4 },
+            { y: 'TV cấp 7', a: 4},
+            { y: 'TV cấp 8', a: 2 },
+            { y: 'TV cấp 9', a: 1 },
+            { y: 'TV cấp 10', a: 1 }
         ]
         config = {
             data: data,
@@ -144,7 +144,10 @@
             resize: true,
             pointFillColors: ['#ffffff'],
             pointStrokeColors: ['black'],
-            lineColors: ['gray', 'red']
+            lineColors: ['gray', 'red'],
+            yLabelFormat: function (y) {
+                return y = Math.round(y);
+            }
         };
         config.element = 'bar-chart';
         Morris.Bar(config);
