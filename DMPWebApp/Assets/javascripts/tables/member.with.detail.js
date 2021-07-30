@@ -5,7 +5,7 @@
 
     var details = [
         {
-            Email: "duongcoco@gmail.com",
+            Email: "phamvtict@gmail.com",
             Password: "cocod1234",
             ReferralID: "TV000001",
             IDCard: "0333485849321",
