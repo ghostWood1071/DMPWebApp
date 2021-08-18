@@ -215,8 +215,10 @@
     <Content Include="Assets\javascripts\tables\examples.datatables.row.with.details.js" />
     <Content Include="Assets\javascripts\tables\examples.datatables.tabletools.js" />
     <Content Include="Assets\javascripts\tables\member.with.detail.edit.js" />
+    <Content Include="Assets\javascripts\tables\members.datatables.editable.js" />
     <Content Include="Assets\javascripts\tables\order.details.editable.js" />
     <Content Include="Assets\javascripts\tables\order.with.detail.js" />
+    <Content Include="Assets\javascripts\tables\test.js" />
     <Content Include="Assets\javascripts\theme.admin.extension.js" />
     <Content Include="Assets\javascripts\theme.custom.js" />
     <Content Include="Assets\javascripts\theme.init.js" />
