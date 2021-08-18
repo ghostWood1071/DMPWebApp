@@ -149,6 +149,44 @@
 		</section>
 
 @section script{
+    <script>
+        function template(data) {
+            pos = '';
+            if (data.PositionID == 0) { pos = "Chủ sở hữu" } else if (data.PositionID == 1) { pos = "Trưởng phòng" } else if (data.PositionID == 2) { pos = "Trưởng phòng dự bị" } else if (data.PositionID == 3) { pos = "TVĐC" } else if (data.PositionID == 4) { pos = "TVTC" } else if (data.PositionID == 5) { pos = "TV300" } else pos = "Thành viên"
+            birth = data.Birthday.split('T')[0];
+            birthday = birth.substring(8) + '/' + birth.substring(5, 7) + '/' + birth.substring(0, 4)
+            gender = ''
+            if (data.Gender)
+                gender = 'Nam'
+            else
+                gender = 'Nữ'
+
+            temp = `
+    <tr class="gradeA">
+                        <td>${data.MemberID}</td>
+                                    <td>${data.FullName}</td>
+                                    <td>${gender}</td>
+                                    <td>${birthday}</td>
+
+                        <td>${pos}</td>
+                                    <td>${data.Phone}</td>
+                                    <td>${data.Address}</td>
+                    </tr>`
+            return temp
+        }
+        function LoadData() {
+            $.get(`http://localhost:57133/GetLowerMembers?id=TV000001`).done(
+                function (data) {
+                    //for (var row of data) {
+                    //    $('tbody').append(template(row))
+                    //}
+                    console.log(data)
+                }
+            )
+        }
+        LoadData()
+    </script>
+
     <script src="~/Assets/javascripts/tables/member.with.detail.js"></script>
     <script>
         (function ($) {
