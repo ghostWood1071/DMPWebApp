@@ -3,6 +3,10 @@
     ViewBag.Title = "Quản lý hóa đơn";
 }
 
+@section css{
+    <link href="~/Assets/vendor/toast/toastr.css" />    
+}
+
 <section role="main" class="content-body">
     <header class="page-header">
         <h2>Quản lý hóa đơn</h2>
@@ -116,73 +120,48 @@
         </section>
     </div>
 
-    <div id="dialogAddOrder" class="modal-block mfp-hide">
-        <section class="panel">
+    <div id="dialogAddDetail" class="modal-block mfp-hide" style="margin:auto !important; max-width: none">
+        <section class="panel" style="width: 900px; height: 500px; margin: auto; margin-top: 40px">
             <header class="panel-heading">
                 <h2 class="panel-title">Thông tin đơn hàng</h2>
             </header>
             <div class="panel-body">
-                <form class="form-horizontal form-bordered">
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-12">
+                        <div class="mb-md">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Mã thành viên</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="txtMemberIDAdd">
+                                    </div>
+                                </div>
 
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Mã đơn hàng</label>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="OrderID">
-                        </div>
-                    </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Họ tên thành viên</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="txtFullNameAdd">
+                                    </div>
+                                </div>
+                            </div>
 
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Mã thành viên</label>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="MemberID">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Họ tên thành viên</label>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="MemberID">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Ngày nhập</label>
-                        <div class="col-md-6">
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                </span>
-                                <input id="datepick" type="text" data-plugin-datepicker class="form-control" name="OrderDate">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Ngày nhập</label>
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </span>
+                                            <input id="datepick" type="text" data-plugin-datepicker class="form-control" name="OrderDate">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                </form>
-            </div>
-            <footer class="panel-footer">
-                <div class="row">
-                    <div class="col-md-12 text-right">
-                        <button class="btnSaveOrder btn btn-primary">Xác nhận</button>
-                        <button class="btnCancelOrder btn btn-default">Đóng</button>
-                    </div>
                 </div>
-            </footer>
-        </section>
-    </div>
-
-    <div id="dialogAddDetail" class="modal-block mfp-hide" style="margin: auto">
-        <section class="panel" style="width: 900px; height: 500px;">
-            <header class="panel-heading">
-                <h2 class="panel-title">Thông tin chi tiết đơn hàng</h2>
-            </header>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="mb-md">
-                            <button id="addToTable" class="btn btn-primary">Thêm sản phẩm <i class="fa fa-plus"></i></button>
-                        </div>
-                    </div>
-                </div>
+                <hr />
                 <table class="table table-bordered table-striped mb-none" id="table-add">
                     <thead>
                         <tr>
@@ -191,11 +170,13 @@
                             <th class="center">Giá bán lẻ</th>
                             <th class="center">Giá cơ sở thu nhập</th>
                             <th class="center">Điểm doanh số</th>
-                            <th class="center">Số lượng</th>
+                            <th class="center">Số lượng tồn</th>
+                            <th class="center">Số lượng mua</th>
                             <th class="center">Tác vụ</th>
                         </tr>
                     </thead>
                     <tbody>
+
                     </tbody>
                 </table>
             </div>
@@ -280,7 +261,7 @@
                         </div>
                     </div>
 
-                   
+
 
                     <div class="form-group">
                         <label class="col-md-3 control-label">Ngày nhập</label>
@@ -309,8 +290,8 @@
 }
 
 @section script {
-    <script src="~/Assets/javascripts/tables/order.with.detail.js">
-        
-    </script>
+    <script src="~/Assets/vendor/toast/toastr.min.js"></script>
+    <script src="~/Assets/javascripts/tables/order.with.detail.js"></script>
+    <script src="~/Assets/javascripts/tables/orderdetails.table.js"></script>
 }
 

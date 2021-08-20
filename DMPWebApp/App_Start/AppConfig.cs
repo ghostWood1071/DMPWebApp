@@ -7,6 +7,6 @@ namespace DMPWebApp.App_Start
 {
     public class AppConfig
     {
-        public const string API_DOMAIN = "http://localhost:57133";
+        public const string API_DOMAIN = "http://api.duocmyphamhaiduong.com";
     }
 }

@@ -1,34 +1,3 @@
-var showDialogAddOrder = function (_self) {
-        $.magnificPopup.open({
-            items: {
-                src: '#dialogAddOrder',
-                type: 'inline'
-            },
-            preloader: false,
-            modal: true,
-            callbacks: {
-                change: function () {
-                    _self.$confirm.on('click', function (e) {
-                        e.preventDefault();
-                        $.magnificPopup.close();
-                        ShowAddDetailDialog();
-                    });
-
-                    _self.$cancel.on('click', function (e) {
-                        e.preventDefault();
-                        $.magnificPopup.close();
-                    });
-                },
-                close: function () {
-                    _self.$cancel.on('click', function (e) {
-                        e.preventDefault();
-                        $.magnificPopup.close();
-                    });
-                }
-            }
-        });
-    }
-
 var showDialogUpdateOrder = function (_self) {
         $.magnificPopup.open({
             items: {
@@ -66,40 +35,16 @@ var ShowAddDetailDialog = function () {
             $cancel: $('.btnCancelDetail'),
             $confirm: $(".btnSaveDetail"),
             $wrapper: $("#dialogAddDetail")
-        };
-        var row = $('.editOrder').parent().parent().children('td')[1];
-        var data = $(row).text();
-        // $.post("./google.com", data ,function(response){
+    };
 
-        // }, 'json')
         $.magnificPopup.open({
             items: {
                 src: '#dialogAddDetail',
                 type: 'inline'
             },
             preloader: false,
-            modal: true,
-            callbacks: {
-                change: function () {
-                    _self.$confirm.on('click', function (e) {
-                        e.preventDefault();
-
-
-                        $.magnificPopup.close();
-                    });
-
-                    _self.$cancel.on('click', function (e) {
-                        e.preventDefault();
-                        $.magnificPopup.close();
-                    });
-                },
-                close: function () {
-                    _self.$cancel.on('click', function (e) {
-                        e.preventDefault();
-                        $.magnificPopup.close();
-                    });
-                }
-            }
+            modal: true
+            
         });
         return false;
     }
@@ -180,10 +125,9 @@ var datatableInit = function () {
 
     var $table = $('#tableOrder');
 
-        
     var fnFormatDetails = function (table, tr, orderID) {
             //ajax chỗ này nhé
-            $.get(`http://localhost:57133/GetOrderDetails?orderID=${orderID}`)
+            $.get(`http://api.duocmyphamhaiduong.com/GetOrderDetails?orderID=${orderID}`)
                 .done(function (details) {
                     var data = getDetail(details);
                     var subtable = `<table class="table mb-none">
@@ -206,12 +150,11 @@ var datatableInit = function () {
 
                 });
         };
-
-        
+  
     var datatable = $table.dataTable({
 
         ajax: {
-                url: 'http://localhost:57133/api/Order',
+                url: 'http://api.duocmyphamhaiduong.com/api/Order',
                 dataSrc: ''
 
         },
@@ -244,8 +187,6 @@ var datatableInit = function () {
 
     });
 
-        
-
     $table.on('click', 'i[data-toggle]', function () {
             var $this = $(this), tr = $(this).closest('tr').get(0);
             var orderID = $($(tr).children('td')[1]).text();
@@ -260,7 +201,7 @@ var datatableInit = function () {
 };
 
 var getMembers = function () {
-    $.get(`http://localhost:57133/GetMembers`)
+    $.get(`http://api.duocmyphamhaiduong.com/GetMembers`)
         .done(function (data) {
             var subData = data.map(x =>
             {
@@ -335,22 +276,16 @@ $('.removeOrder').click(function () {
     });
 
 $('#addToOrder').click(function () {
-        var _self = {
-            $cancel: $('.btnCancelOrder'),
-            $confirm: $(".btnSaveOrder"),
-            $wrapper: $("#dialogAddOrder")
-        };
-        var row = $('.editOrder').parent().parent().children('td')[1];
-        var data = $(row).text();
-        showDialogAddOrder(_self);
-        return false;
-    });
+    ShowAddDetailDialog();
+    return false;
+});
 
 $('#datepick').click(function () {
-   $('.datepicker').css('z-index', '10000000000');
+   $('.datepicker').css('z-index', '100000000000');
 })
 
 $(function () {
+    console.log("hello");
     getMembers();
     datatableInit();
 });

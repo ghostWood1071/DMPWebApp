@@ -93,7 +93,7 @@
     <script>
 
         var userID = sessionStorage.getItem("userID");
-        var link = `http://localhost:57133/GetProducts?memberID=${userID}`;
+        var link = `http://api.duocmyphamhaiduong.com/GetProducts?memberID=${userID}`;
         var header = $('.table th');
         $(header[0]).width("100px");
         $(header[1]).width("230px");
@@ -106,7 +106,7 @@
         var getExchangeRate = function () {
             if (sessionStorage.getItem("exchange") != null)
                 return;
-            $.get("http://localhost:57133/ExchangeRate")
+            $.get("http://api.duocmyphamhaiduong.com/ExchangeRate")
                 .done(function (data) {
                     sessionStorage.setItem("exchange", data);
                     console.log("lien quan");
@@ -161,7 +161,7 @@
         var editRow = function (info) {
             console.log(info);
             $.ajax({
-                url: `http://localhost:57133/UpdateProduct`,
+                url: `http://api.duocmyphamhaiduong.com/UpdateProduct`,
                 data: info,
                 type: 'PUT',
                 success: function () {
@@ -176,7 +176,7 @@
         var deleteRow = function (id, callback) {
 
             var request = new XMLHttpRequest();
-            request.open("DELETE", `http://localhost:57133/DeleteProduct?productID=${id}`);
+            request.open("DELETE", `http://api.duocmyphamhaiduong.com/DeleteProduct?productID=${id}`);
             request.send();
             request.onload = function () {
                 if (request.status == 200) {
@@ -190,7 +190,7 @@
         }
 
         var addRow = function (info, row) {
-            $.post(`http://localhost:57133/InsertProduct`, info)
+            $.post(`http://api.duocmyphamhaiduong.com/InsertProduct`, info)
                 .done(function (data) {
                     toastr.success("Thêm thông tin sản phẩm thành công");
                     console.log(data);
@@ -212,7 +212,7 @@
             {
                 ajax:
                 {
-                        url: `http://localhost:57133/GetProducts?memberID=${userID}`,
+                        url: `http://api.duocmyphamhaiduong.com/GetProducts?memberID=${userID}`,
                         dataSrc: ''
                 },
                 columns: [
