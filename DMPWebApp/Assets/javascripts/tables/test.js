@@ -3,58 +3,27 @@
 
     'use strict';
 
-    var details = [
-        {
-            Email: "phamvtict@gmail.com",
-            Password: "Ni34ndN.getlink",
-            ReferralID: "TV000001",
-            IDCard: "0333485849321",
-            IDCard_DateIssue: "01/12/2000",
-            IDCard_PlaceIssue: "Công an huyện Khoái Châu",
-            IsActive: "OK"
-        }
-    ]
-
-    var getDetail = function (details) {
-        var detailContents = [];
-        for (var i = 0; i < details.length; i++) {
-            detailContents.push(`
-                <tr>
-                    <td>${details[i].Email}</td>
-                    <td><a style="cursor:pointer;" class="pas">${details[i].Password}</a></td>
-                    <td>${details[i].ReferralID}</td>
-                    <td>${details[i].IDCard}</td>
-                    <td>${details[i].IDCard_DateIssue}</td>
-                    <td>${details[i].IDCard_PlaceIssue}</td>
-                    <td>${details[i].IsActive}</td>
-                </tr>
-            `);
-        }
-        return detailContents;
-    }
-
   
 
     var datatableInit = function () {
         var $table = $('#datatable-details');
 
         // format function for row details
-        var fnFormatDetails = function (datatable, tr) {
-            var data = getDetail(details);
+        var fnFormatDetails = function (datatable, tr,id) {
             return `<table class="table mb-none">
                         <thead>
                             <tr>
-                                <th>Email</th>
-                                <th>Password</th>
-                                <th>Mã TVGT</th>
-                                <th style="width:140px  ">CMND</th>
+                                <th style="width: 196.51px;">Email</th>
+                                <th style="width: 120px;">Password</th>
+                                <th style="width: 140px;">Mã TVGT</th>
+                                <th style="width:140px">CMND</th>
                                 <th>Ngày cấp</th>
                                 <th>Nơi cấp</th>
                                 <th>Kích hoạt</th>
                             </tr>
                         </thead>
                         <tbody>
-                            ${data.join(' ')}
+                            <tr id=${id}><td></td><td><a style="cursor:pointer;" class="pas">Reset</a></td><td></td><td></td><td></td><td></td><td></td></tr>
                         </tbody>
                     </table>`
 
@@ -110,14 +79,26 @@
         // add a listener
         $table.on('click', 'i[data-toggle]', function () {
             var $this = $(this),
-                tr = $(this).closest('tr').get(0);
+                tr = $(this).closest('tr').get(0),
+                id = $(this).parent().siblings()[0].textContent;
 
             if (datatable.fnIsOpen(tr)) {
                 $this.removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
                 datatable.fnClose(tr);
             } else {
                 $this.removeClass('fa-plus-square-o').addClass('fa-minus-square-o');
-                datatable.fnOpen(tr, fnFormatDetails(datatable, tr), 'details');
+                datatable.fnOpen(tr, fnFormatDetails(datatable, tr, id), 'details');
+
+                $.get(`http://localhost:57133/GetMember?id=${id}`).done(
+                    function (details) {
+                        $('#'+id).children()[0].textContent = details[0].Email;
+                        $('#' + id).children()[2].textContent = details[0].ReferralID;
+                        $('#' + id).children()[3].textContent = details[0].IDCard;
+                        $('#' + id).children()[4].textContent = details[0].IDCard_DateIssue;
+                        $('#' + id).children()[5].textContent = details[0].IDCard_PlaceIssue;
+                        $('#' + id).children()[6].textContent = details[0].IsActive;
+                    }
+                )
             }
         });
     };
@@ -240,7 +221,7 @@
             var IDCard_DateIssue = ($('#IDCard_DateIssue')[0]).value    
             var password = ($('#password')[0]).value
             var position = ($('#position')[0]).value
-            if (position == "Chủ sở hữu") { position = 0 } else if (position == "Trưởng phòng") { position = 1 } else if (position == "Trưởng phòng dự bị") { position =  2} else if (position == "Thành viên đạt chuẩn") { position = 3 } else if (position == "Thành viên tích cực") { position = 4 } else if (position == "Thành viên 300") { position = 6 } else position = 5
+            if (position == "Chủ sở hữu") { position = 0 } else if (position == "Trưởng phòng") { position = 1 } else if (position == "Trưởng phòng dự bị") { position =  2} else if (position == "Thành viên đạt chuẩn") { position = 3 } else if (position == "Thành viên tích cực") { position = 4 } else if (position == "Thành viên 300đ") { position = 5 } else position = 6
             var role = ($('#role')[0]).value
             if (role = "Thành viên") role = 3; else if (role = "Quản trị viên") role = 2; else role = 1;
             var isactive = ($('#isactive')[0]).value
