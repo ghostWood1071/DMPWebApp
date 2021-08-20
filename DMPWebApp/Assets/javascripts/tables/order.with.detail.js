@@ -1,9 +1,4 @@
-
-(function ($) {
-
-    'use strict';
-
-    var showDialogAddOrder = function (_self) {
+var showDialogAddOrder = function (_self) {
         $.magnificPopup.open({
             items: {
                 src: '#dialogAddOrder',
@@ -34,7 +29,7 @@
         });
     }
 
-    var showDialogUpdateOrder = function (_self) {
+var showDialogUpdateOrder = function (_self) {
         $.magnificPopup.open({
             items: {
                 src: '#dialogUpdateOrder',
@@ -66,7 +61,7 @@
         });
     }
 
-    function ShowAddDetailDialog() {
+var ShowAddDetailDialog = function () {
         var _self = {
             $cancel: $('.btnCancelDetail'),
             $confirm: $(".btnSaveDetail"),
@@ -109,7 +104,7 @@
         return false;
     }
 
-    function ShowUpdateDetailDialog() {
+var ShowUpdateDetailDialog = function () {
         var _self = {
             $cancel: $('.btnCancelDetail'),
             $confirm: $(".btnSaveDetail"),
@@ -152,7 +147,7 @@
         return false;
     }
 
-    var details = [
+var details = [
         {
             ProductID: "SP0001",
             ProductName: "HDKIDS",
@@ -161,7 +156,7 @@
         }
     ]
 
-    var getDetail = function (details) {
+var getDetail = function (details) {
         var detailContents = [];
         for (var i = 0; i < details.length; i++) {
             detailContents.push(`
@@ -176,14 +171,22 @@
         return detailContents;
     }
 
-    var datatableInit = function () {
-        var $table = $('#datatable-details');
+var datatableInit = function () {
 
-        // format function for row details
-        var fnFormatDetails = function (datatable, tr) {
+    var optionCols = function () {
+            return `<a href="#" class="on-default editOrder"><i class="fa fa-pencil"></i></a>
+                            <a href="#" class="on-default removeOrder"><i class="fa fa-trash-o"></i></a>`;
+        }
+
+    var $table = $('#tableOrder');
+
+        
+    var fnFormatDetails = function (table, tr, orderID) {
             //ajax chỗ này nhé
-            var data = getDetail(details);
-            return `<table class="table mb-none">
+            $.get(`http://localhost:57133/GetOrderDetails?orderID=${orderID}`)
+                .done(function (details) {
+                    var data = getDetail(details);
+                    var subtable = `<table class="table mb-none">
                         <thead>
                             <tr>
                                 <th>Mã SP</th>
@@ -196,57 +199,84 @@
                             ${data.join(' ')}
                         </tbody>
                     </table>`
+
+                    table.fnOpen(tr, subtable, 'details')
+                })
+                .fail(function () {
+
+                });
         };
 
-        // insert the expand/collapse column
-        var th = document.createElement('th');
-        var td = document.createElement('td');
-        td.innerHTML = '<i data-toggle class="fa fa-plus-square-o text-primary h5 m-none" style="cursor: pointer;"></i>';
-        td.className = "text-center";
+        
+    var datatable = $table.dataTable({
 
-        $table.find('thead tr').each(function () {
-                this.insertBefore(th, this.childNodes[0]);
-        });
+        ajax: {
+                url: 'http://localhost:57133/api/Order',
+                dataSrc: ''
 
-        $table.find('tbody tr').each(function () {
-                this.insertBefore(td.cloneNode(true), this.childNodes[0]);
-        });
+        },
+        columns: [
+                { data: null, defaultContent: '<i data-toggle class="fa fa-plus-square-o text-primary h5 m-none" style="cursor: pointer;"></i>' },
+                { data: "OrderID" },
+                { data: "MemberID" },
+                { data: "FullName" },
+                { data: "OrderDate" },
+                { data: "Discount" },
+                { data: null, defaultContent: optionCols(), className: 'actions center' }
 
-        // initialize
-        var datatable = $table.dataTable({
-            aoColumnDefs: [{
+        ],
+        aoColumnDefs: [{
                 bSortable: false,
                 aTargets: [0]
-            }],
-            aaSorting: [
+
+        }],
+        aaSorting: [
                 [1, 'asc']
-            ],
-            "language": {
+
+        ],
+        language: {
                 "lengthMenu": "Hiển thị _MENU_ bản ghi trên trang",
                 "zeroRecords": "Không có bản ghi nào",
                 "info": "Trang _PAGE_ trong _PAGES_ trang",
                 "infoEmpty": "Không có bản ghi nào",
                 "infoFiltered": "(lọc từ _MAX_ bản ghi)"
-            }
-        });
+        }
 
-        // add a listener
-        $table.on('click', 'i[data-toggle]', function () {
-            var $this = $(this),
-                tr = $(this).closest('tr').get(0);
+    });
 
+        
+
+    $table.on('click', 'i[data-toggle]', function () {
+            var $this = $(this), tr = $(this).closest('tr').get(0);
+            var orderID = $($(tr).children('td')[1]).text();
             if (datatable.fnIsOpen(tr)) {
                 $this.removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
                 datatable.fnClose(tr);
             } else {
                 $this.removeClass('fa-plus-square-o').addClass('fa-minus-square-o');
-                datatable.fnOpen(tr, fnFormatDetails(datatable, tr), 'details');
+                fnFormatDetails(datatable, tr, orderID);
             }
         });
-    };
+};
 
+var getMembers = function () {
+    $.get(`http://localhost:57133/GetMembers`)
+        .done(function (data) {
+            var subData = data.map(x =>
+            {
+                return {
+                    MemberID: x.MemberID,
+                    FullName: x.FullName
+                }
+            });
+            sessionStorage.setItem("members", JSON.stringify(subData));
+        })
+        .fail(function () {
 
-    $('.editOrder').click(function () {
+        });
+}
+
+$('.editOrder').click(function () {
         var _self = {
             $cancel: $('.btnCancelOrder'),
             $confirm: $(".btnSaveOrder"),
@@ -261,7 +291,7 @@
         return false;
     });
 
-    $('.removeOrder').click(function () {
+$('.removeOrder').click(function () {
         var _self = {
             $cancel: $('#dialogCancel'),
             $confirm: $("#dialogConfirm"),
@@ -304,7 +334,7 @@
         return false;
     });
 
-    $('#addToOrder').click(function () {
+$('#addToOrder').click(function () {
         var _self = {
             $cancel: $('.btnCancelOrder'),
             $confirm: $(".btnSaveOrder"),
@@ -312,19 +342,15 @@
         };
         var row = $('.editOrder').parent().parent().children('td')[1];
         var data = $(row).text();
-        // $.post("./google.com", data ,function(response){
-
-        // }, 'json')
         showDialogAddOrder(_self);
         return false;
     });
 
-    $(function () {
-        datatableInit();
-    });
+$('#datepick').click(function () {
+   $('.datepicker').css('z-index', '10000000000');
+})
 
-    $('#datepick').click(function () {
-        $('.datepicker').css('z-index', '10000000000');
-    })
-
-}).apply(this, [jQuery]);
+$(function () {
+    getMembers();
+    datatableInit();
+});

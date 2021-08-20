@@ -10,25 +10,10 @@ namespace DMPWebApp.Controllers
     {
         public ActionResult Index()
         {
-            HttpCookie cookie = Request.Cookies.Get("userID");
-            if (cookie != null)
+            if (!Auth.Authenthicate(Session))
             {
-                return View();
+                return Redirect("/Login");
             }
-            return Redirect("/Login");
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

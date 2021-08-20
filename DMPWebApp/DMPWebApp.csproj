@@ -117,9 +117,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AppConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Auth.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
@@ -131,6 +133,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\UserResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -188,7 +192,9 @@
     <Content Include="Assets\images\projects\project-7.jpg" />
     <Content Include="Assets\images\projects\project.jpg" />
     <Content Include="Assets\images\widget-twitter-profile.jpg" />
+    <Content Include="Assets\javascripts\auth.js" />
     <Content Include="Assets\javascripts\dashboard\dashboard.js" />
+    <Content Include="Assets\javascripts\product.editable.js" />
     <Content Include="Assets\javascripts\forms\examples.advanced.form.js" />
     <Content Include="Assets\javascripts\forms\examples.validation.js" />
     <Content Include="Assets\javascripts\forms\examples.wizard.js" />
@@ -202,6 +208,7 @@
     <Content Include="Assets\javascripts\pages\examples.mediagallery.js" />
     <Content Include="Assets\javascripts\pages\examples.session.timeout.js" />
     <Content Include="Assets\javascripts\pages\examples.timeline.js" />
+    <Content Include="Assets\javascripts\product.handler.js" />
     <Content Include="Assets\javascripts\tables\examples.datatables.ajax.js" />
     <Content Include="Assets\javascripts\tables\examples.datatables.default.js" />
     <Content Include="Assets\javascripts\tables\examples.datatables.editable.js" />
@@ -1699,6 +1706,9 @@
     <Content Include="Assets\vendor\summernote\summernote-vi-VN.js" />
     <Content Include="Assets\vendor\summernote\summernote.css" />
     <Content Include="Assets\vendor\summernote\summernote.js" />
+    <Content Include="Assets\vendor\toast\toastr.css" />
+    <Content Include="Assets\vendor\toast\toastr.min.css" />
+    <Content Include="Assets\vendor\toast\toastr.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Assets\ajax\ajax-datatables-sample.json" />
@@ -1974,18 +1984,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\javascripts\tables\member.with.detail.js" />
     <Content Include="Assets\javascripts\tables\notify.with.detail.js" />
+    <Content Include="Assets\vendor\toast\toastr.js.map" />
     <None Include="packages.config" />
     <Content Include="Views\Order\Index.cshtml" />
-    <Content Include="Views\Order\AddOrder.cshtml" />
-    <Content Include="Views\Order\UpdateOrder.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Member\LowerMember.cshtml" />
-    <Content Include="Views\Order\ImpportHistory.cshtml" />
     <Content Include="Views\Member\Salary.cshtml" />
     <Content Include="Views\Member\OrgChartMember.cshtml" />
     <Content Include="Views\SystemConfig\Index.cshtml" />

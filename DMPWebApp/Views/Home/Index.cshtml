@@ -372,7 +372,11 @@
     <script src="~/Assets/vendor/morris/morris.js"></script>
     <script src="~/Assets/vendor/gauge/gauge.js"></script>
     <script src="~/Assets/vendor/snap-svg/snap.svg.js"></script>
-
-
     <script src="~/Assets/javascripts/dashboard/dashboard.js"></script>
+    <script>
+
+                sessionStorage.setItem("userID", "@TempData["userID"]");
+                sessionStorage.setItem("avatar", "@TempData["avatar"]");
+                sessionStorage.setItem("position", "@TempData["position"]");
+    </script>
 }

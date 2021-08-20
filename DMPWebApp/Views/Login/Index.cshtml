@@ -38,6 +38,8 @@
     <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="~/Assets/stylesheets/theme-custom.css">
 
+    <link rel="stylesheet"  href="~/Assets/vendor/toast/toastr.min.css"/>
+
     <!-- Head Libs -->
     <script src="~/Assets/vendor/modernizr/modernizr.js"></script>
     <style>
@@ -49,6 +51,8 @@
     </style>
 </head>
 <body>
+
+
     <!-- start: page -->
     <section class="body-sign">
         <div class="center-sign">
@@ -57,12 +61,12 @@
                 <div class="panel-title-sign mt-xl text-right">
                     <h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Đăng Nhập</h2>
                 </div>
-                <div class="panel-body">
-                    <form action="/Login/Create" method="post">
+                <form class="panel-body" action="/Login/Create" method="post" onsubmit="login()">
+                    <div>
                         <div class="form-group mb-lg">
                             <label>Tên đăng nhập</label>
                             <div class="input-group input-group-icon">
-                                <input name="Account" type="text" class="form-control input-lg" />
+                                <input name="Account" type="text" class="form-control input-lg account" />
                                 <span class="input-group-addon">
                                     <span class="icon icon-lg">
                                         <i class="fa fa-user"></i>
@@ -77,7 +81,7 @@
 
                             </div>
                             <div class="input-group input-group-icon">
-                                <input name="Password" type="password" class="form-control input-lg" />
+                                <input name="Password" type="password" class="form-control input-lg password" />
                                 <span class="input-group-addon">
                                     <span class="icon icon-lg">
                                         <i class="fa fa-lock"></i>
@@ -94,13 +98,13 @@
                                 </div>
                             </div>
                             <div class="col-sm-4 text-right" style="float:right">
-                                <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                                <button type="submit" class="btn btn-primary login">Đăng nhập</button>
                             </div>
                         </div>
 
-                    </form>
-                    
-                </div>
+                    </div>
+
+                </form>
             </div>
 
 
@@ -115,16 +119,38 @@
     <script src="~/Assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
     <script src="~/Assets/vendor/magnific-popup/magnific-popup.js"></script>
     <script src="~/Assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
-
-    <!-- Theme Base, Components and Settings -->
-    <script src="~/Assets/javascripts/theme.js"></script>
+    <script src="~/Assets/vendor/toast/toastr.min.js"></script>
 
     <!-- Theme Custom -->
     <script src="~/Assets/javascripts/theme.custom.js"></script>
 
     <!-- Theme Initialization Files -->
     <script src="~/Assets/javascripts/theme.init.js"></script>
+    <script>
+        @{
+            if (TempData["loginfail"] != null)
+            {
+                @:toastr.error("@TempData["loginfail"]");
+            }
+        }
 
+
+        function login() {
+            var userID = $('.account').val().trim();
+            var password = $('.password').val().trim();
+            if (userID == "") {
+                toastr.error("Tên đăng nhập không được để trống");
+                return false;
+            }
+            if (password == "") {
+                toastr.error("Mật khẩu không được để trống");
+                return false;
+            }
+            return true;
+        }
+    </script>
+    
+        
 </body>
 </html>
 
