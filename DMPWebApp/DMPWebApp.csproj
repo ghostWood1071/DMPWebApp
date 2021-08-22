@@ -194,7 +194,6 @@
     <Content Include="Assets\images\widget-twitter-profile.jpg" />
     <Content Include="Assets\javascripts\auth.js" />
     <Content Include="Assets\javascripts\dashboard\dashboard.js" />
-    <Content Include="Assets\javascripts\product.editable.js" />
     <Content Include="Assets\javascripts\forms\examples.advanced.form.js" />
     <Content Include="Assets\javascripts\forms\examples.validation.js" />
     <Content Include="Assets\javascripts\forms\examples.wizard.js" />
@@ -208,7 +207,7 @@
     <Content Include="Assets\javascripts\pages\examples.mediagallery.js" />
     <Content Include="Assets\javascripts\pages\examples.session.timeout.js" />
     <Content Include="Assets\javascripts\pages\examples.timeline.js" />
-    <Content Include="Assets\javascripts\product.handler.js" />
+    <Content Include="Assets\javascripts\tables\product.handler.js" />
     <Content Include="Assets\javascripts\tables\examples.datatables.ajax.js" />
     <Content Include="Assets\javascripts\tables\examples.datatables.default.js" />
     <Content Include="Assets\javascripts\tables\examples.datatables.editable.js" />
@@ -2004,6 +2003,7 @@
     <Content Include="Views\Member\StatisticsMember.cshtml" />
     <Content Include="Views\Profile\Edit.cshtml" />
     <Content Include="Views\Login\Reset.cshtml" />
+    <Content Include="Views\Order\ImpportHistory.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

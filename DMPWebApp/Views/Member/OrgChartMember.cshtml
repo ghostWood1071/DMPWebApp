@@ -39,72 +39,30 @@
 @section script{
     <script src="~/Assets/javascripts/tree/tree.js"></script>
     <script>
-        var data = [
-            {
-                "id": "1",
-                "pid": "",
-                "name": "Phạm Văn Thành",
-                "img": "/Assets/images/avt.jpg"
-            },
-            {
-                "id": "2",
-                "pid": "1",
-                "name": "Nguyễn Hữu Lộc",
-                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
-            },
-            {
-                "id": "3",
-                "pid": "1",
-                "name": "Nguyễn Văn Đa",
-                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
-            },
-            {
-                "id": "4",
-                "pid": "2",
-                "name": "Ngô Mai Anh",
-                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
-            },
-            {
-                "id": "5",
-                "pid": "2",
-                "name": "Lê Trọng Đại",
-                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
-            },
-            {
-                "id": "6",
-                "pid": "5",
-                "name": "Lê Đức Hiếu",
-                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
-            },
-            {
-                "id": "7",
-                "pid": "5",
-                "name": "Ngô Minh Thuận",
-                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
-            },
-            {
-                "id": "8",
-                "pid": "5",
-                "name": "Tạ Kỳ Anh",
-                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
-            },
-            {
-                "id": "9",
-                "pid": "3",
-                "name": "Nguyễn Việt Anh",
-                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
-            },
-            {
-                "id": "10",
-                "pid": "3",
-                "name": "Vũ Khắc Tiệp",
-                "img": "https://image.flaticon.com/icons/svg/145/145867.svg"
-            }
-        ];
-        var orgTree = new OrgTree();
-        orgTree.init(data);
-        var bac2 = $($($(".genealogy-tree ul")[0]).find("ul")[0]).addClass("active");
-        bac2.css("display", "block");
+        $.get(`http://localhost:57133/GetMember?id=${sessionStorage.getItem('userID')}`, function (boss) {
+            
+            $.get(`http://localhost:57133/GetOrg?memberID=TV000001`, function (employees) {
+                console.log(boss);
+                console.log(employees);
+                employees.splice(0, 0, boss[0])
+                var data = employees.map(x => {
+                    return {
+                        id: x.MemberID,
+                        pid: x.ReferralID,
+                        name: x.FullName,
+                        img: x.Avatar
+                    }
+                });
+                console.log(data);
+                var orgTree = new OrgTree();
+                orgTree.init(data);
+                var bac2 = $($($(".genealogy-tree ul")[0]).find("ul")[0]).addClass("active");
+                bac2.css("display", "block");
+
+            });
+
+        });
+        
     </script>
 
 }

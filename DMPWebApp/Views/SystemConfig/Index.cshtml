@@ -3,7 +3,9 @@
     ViewBag.Title = "Index";
 }
 
-
+@section css{
+    <link rel="stylesheet" href="~/Assets/vendor/toast/toastr.min.css"/>
+}
 
 <section role="main" class="content-body">
     <header class="page-header">
@@ -24,7 +26,7 @@
     </header>
 
     <!-- start: page -->
-    <div class="row">
+    <div class="row discount">
         <div class="col-lg-12">
             <section class="panel">
                 <header class="panel-heading">
@@ -32,7 +34,7 @@
                         <a href="#" class="fa fa-caret-down"></a>
 
                     </div>
-                    <h2 class="panel-title">Mức chiết khấu(%)</h2>
+                    <h2 class="panel-title">Mức chiết khấu(x100)</h2>
                 </header>
                 <div class="panel-body">
                     <form class="form-horizontal form-bordered" method="get">
@@ -44,7 +46,7 @@
                             <a href="javascript:void(0);" class="col-md-4 label-config-change" for="inputDefault">Sửa</a>
                             <br>
                             <div class="control-config config-control-hidden">
-                                <a href="javascript:void(0);">Lưu</a>
+                                <a data-discount="7" href="javascript:void(0);">Lưu</a>
                                 <a href="javascript:void(0);">Hủy</a>
                             </div>
                         </div>
@@ -57,7 +59,7 @@
                             <a href="javascript:void(0);" class="col-md-4 label-config-change" for="inputDefault">Sửa</a>
                             <br>
                             <div class="control-config config-control-hidden">
-                                <a href="javascript:void(0);">Lưu</a>
+                                <a data-discount="6" href="javascript:void(0);">Lưu</a>
                                 <a href="javascript:void(0);">Hủy</a>
                             </div>
                         </div>
@@ -70,7 +72,7 @@
                             <a href="javascript:void(0);" class="col-md-4 label-config-change" for="inputDefault">Sửa</a>
                             <br>
                             <div class="control-config config-control-hidden">
-                                <a href="javascript:void(0);">Lưu</a>
+                                <a data-discount="5" href="javascript:void(0);">Lưu</a>
                                 <a href="javascript:void(0);">Hủy</a>
                             </div>
                         </div>
@@ -83,7 +85,7 @@
                             <a href="javascript:void(0);" class="col-md-4 label-config-change" for="inputDefault">Sửa</a>
                             <br>
                             <div class="control-config config-control-hidden">
-                                <a href="javascript:void(0);">Lưu</a>
+                                <a data-discount="4" href="javascript:void(0);">Lưu</a>
                                 <a href="javascript:void(0);">Hủy</a>
                             </div>
                         </div>
@@ -96,7 +98,7 @@
                             <a href="javascript:void(0);" class="col-md-4 label-config-change" for="inputDefault">Sửa</a>
                             <br>
                             <div class="control-config config-control-hidden">
-                                <a href="javascript:void(0);">Lưu</a>
+                                <a data-discount="3" href="javascript:void(0);">Lưu</a>
                                 <a href="javascript:void(0);">Hủy</a>
                             </div>
                         </div>
@@ -109,7 +111,7 @@
                             <a href="javascript:void(0);" class="col-md-4 label-config-change" for="inputDefault">Sửa</a>
                             <br>
                             <div class="control-config config-control-hidden">
-                                <a href="javascript:void(0);">Lưu</a>
+                                <a data-discount="2" href="javascript:void(0);">Lưu</a>
                                 <a href="javascript:void(0);">Hủy</a>
                             </div>
                         </div>
@@ -122,7 +124,7 @@
                             <a href="javascript:void(0);" class="col-md-4 label-config-change" for="inputDefault">Sửa</a>
                             <br>
                             <div class="control-config config-control-hidden">
-                                <a href="javascript:void(0);">Lưu</a>
+                                <a data-discount="1" href="javascript:void(0);">Lưu</a>
                                 <a href="javascript:void(0);">Hủy</a>
                             </div>
                         </div>
@@ -147,91 +149,91 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="inputDefault">Thành viên</label>
                             <div class="col-md-5">
-                                <input type="text" value="100" class="form-control" id="inputDefault" disabled>
+                                <input type="text"  class="form-control" id="tv" disabled>
                             </div>
                             <a href="javascript:void(0);" class="col-md-4 label-config-change" for="inputDefault">Sửa</a>
                             <br>
                             <div class="control-config config-control-hidden">
-                                <a href="javascript:void(0);">Lưu</a>
-                                <a href="javascript:void(0);">Hủy</a>
+                                <a data-config="STANDARD_MEMBER" href="">Lưu</a>
+                                <a href="">Hủy</a>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="inputDefault">Thành viên(300)</label>
                             <div class="col-md-5">
-                                <input type="text" value="300" class="form-control" id="inputDefault" disabled>
+                                <input type="text"  class="form-control" id="tv300" disabled>
                             </div>
                             <a href="javascript:void(0);" class="col-md-4 label-config-change" for="inputDefault">Sửa</a>
                             <br>
                             <div class="control-config config-control-hidden">
-                                <a href="javascript:void(0);">Lưu</a>
-                                <a href="javascript:void(0);">Hủy</a>
+                                <a data-config="STANDARD_BEGIN_MEMBER" href="">Lưu</a>
+                                <a href="">Hủy</a>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="inputDefault">Thành viên TC</label>
                             <div class="col-md-5">
-                                <input type="text" value="500" class="form-control" id="inputDefault" disabled>
+                                <input type="text"  class="form-control" id="tvtc" disabled>
                             </div>
                             <a href="javascript:void(0);" class="col-md-4 label-config-change" for="inputDefault">Sửa</a>
                             <br>
                             <div class="control-config config-control-hidden">
-                                <a href="javascript:void(0);">Lưu</a>
-                                <a href="javascript:void(0);">Hủy</a>
+                                <a data-config="STANDARD_TC_MEMBER" href="">Lưu</a>
+                                <a href="">Hủy</a>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="inputDefault">Thành viên ĐC</label>
                             <div class="col-md-5">
-                                <input type="text" value="1000" class="form-control" id="inputDefault" disabled>
+                                <input type="text"  class="form-control" id="tvdc" disabled>
                             </div>
                             <a href="javascript:void(0);" class="col-md-4 label-config-change" for="inputDefault">Sửa</a>
                             <br>
                             <div class="control-config config-control-hidden">
-                                <a href="javascript:void(0);">Lưu</a>
-                                <a href="javascript:void(0);">Hủy</a>
+                                <a data-config="STANDARD_DC_MEMBER" href="">Lưu</a>
+                                <a href="">Hủy</a>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="inputDefault">Trưởng nhóm</label>
                             <div class="col-md-5">
-                                <input type="text" value="3000" class="form-control" id="inputDefault" disabled>
+                                <input type="text"  class="form-control" id="tn" disabled>
                             </div>
                             <a href="javascript:void(0);" class="col-md-4 label-config-change" for="inputDefault">Sửa</a>
                             <br>
                             <div class="control-config config-control-hidden">
-                                <a href="javascript:void(0);">Lưu</a>
-                                <a href="javascript:void(0);">Hủy</a>
+                                <a data-config="STANDARD_LEADER" href="">Lưu</a>
+                                <a href="">Hủy</a>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="inputDefault">Trưởng phòng dự bị</label>
                             <div class="col-md-5">
-                                <input type="text" value="5000" class="form-control" id="inputDefault" disabled>
+                                <input type="text"  class="form-control" id="tpdb" disabled>
                             </div>
                             <a href="javascript:void(0);" class="col-md-4 label-config-change" for="inputDefault">Sửa</a>
                             <br>
                             <div class="control-config config-control-hidden">
-                                <a href="javascript:void(0);">Lưu</a>
-                                <a href="javascript:void(0);">Hủy</a>
+                                <a data-config ="STANDARD_RESERVE_MANAGER" href="">Lưu</a>
+                                <a href="">Hủy</a>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="inputDefault">Trưởng phòng</label>
                             <div class="col-md-5">
-                                <input type="text" value="3500" class="form-control" id="inputDefault" disabled>
+                                <input type="text"  class="form-control" id="tp" disabled>
                             </div>
                             <a href="javascript:void(0);" class="col-md-4 label-config-change" for="inputDefault">Sửa</a>
                             <br>
                             <div class="control-config config-control-hidden">
-                                <a href="javascript:void(0);">Lưu</a>
-                                <a href="javascript:void(0);">Hủy</a>
+                                <a data-config ="STANDARD_MANAGER" href="">Lưu</a>
+                                <a href="">Hủy</a>
                             </div>
                         </div>
                     </form>
@@ -255,13 +257,13 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="inputDefault">1 điểm = </label>
                             <div class="col-md-5">
-                                <input type="text" value="21.500" class="form-control" id="inputDefault" disabled>
+                                <input type="text"  class="form-control" id="ex" disabled>
                             </div>
                             <a href="javascript:void(0);" class="col-md-4 label-config-change" for="inputDefault">Sửa</a>
                             <br>
                             <div class="control-config config-control-hidden">
-                                <a href="javascript:void(0);">Lưu</a>
-                                <a href="javascript:void(0);">Hủy</a>
+                                <a data-config=EXCHANGE_RATE href="#">Lưu</a>
+                                <a href="#">Hủy</a>
                             </div>
                         </div>
                     </form>
@@ -275,23 +277,128 @@
 </section>
 
 @section script{
+    <script src="~/Assets/vendor/toast/toastr.min.js"></script>
     <script>
-        $('.label-config-change').click(function () {
-            var btnUpdate = $(this);
-            var input = btnUpdate.prev().children('input');
-            var control = btnUpdate.next().next();
-            input.prop("disabled", false);
-            console.log(control);
-            control.removeClass("config-control-hidden");
-        });
 
-        $('.control-config a:nth-child(2)').click(function () {
-            var btnCancel = $(this);
-            var control = btnCancel.parent();
-            var input = control.prev().prev().prev().children('input');
-            control.addClass("config-control-hidden");
-            input.prop('disabled', true);
-        });
+        var getDiscount = function () {
+            return new Promise(function (resolve, reject) {
+                $.get('http://localhost:57133/GetDiscounts')
+                    .done(function (data) {
+                        resolve(data);
+                    })
+                    .fail(function (err) {
+                        reject(err);
+                    });
+            });
+        }
 
+        var getConfigs = function () {
+            return new Promise(function (resolve, reject) {
+                $.get('http://localhost:57133/GetConfigs')
+                    .done(function (data) {
+                        var result = {}
+                        for (var i = 0; i < data.length; i++) {
+                            result[data[i].ParameterID.trim()] = data[i].Value;
+                        }
+                        resolve(result);
+                    })
+                    .fail(function (error) {
+                        reject(error);
+                    });
+            });
+        }
+
+        var setConfigValue = function (data) {
+            $('#tv').val(data.STANDARD_MEMBER);
+            $('#tv300').val(data.STANDARD_BEGIN_MEMBER);
+            $('#tvtc').val(data.STANDARD_TC_MEMBER);
+            $('#tvdc').val(data.STANDARD_DC_MEMBER);
+            $('#tn').val(data.STANDARD_LEADER);
+            $('#tpdb').val(data.STANDARD_RESERVE_MANAGER);
+            $('#tp').val(data.STANDARD_MANAGER);
+            $('#ex').val(data.EXCHANGE_RATE);
+        }
+
+        var setDiscount = function (data) {
+            var template = $('.discount').find('input');
+            data = data.reverse()
+            for (var i = template.length - 1; i >=0; i--) {
+                $(template[i]).val(data[i].Discount);
+            }
+        }
+        async function main() {
+
+            var configData = await getConfigs();
+
+            setConfigValue(configData);
+
+            var discountData = await getDiscount();
+            console.log(discountData);
+            setDiscount(discountData);
+
+            $('.label-config-change').click(function () {
+                var btnUpdate = $(this);
+                var input = btnUpdate.prev().children('input');
+                var control = btnUpdate.next().next();
+                input.prop("disabled", false);
+                console.log(control);
+                control.removeClass("config-control-hidden");
+            });
+
+            $('.control-config a:nth-child(2)').click(function () {
+                var btnCancel = $(this);
+                var control = btnCancel.parent();
+                var input = control.prev().prev().prev().children('input');
+                control.addClass("config-control-hidden");
+                input.prop('disabled', true);
+            });
+
+            $('a[data-config]').click(function (e) {
+                e.preventDefault();
+                var id = $(this).data('config');
+                var input = $(this).parent().parent().find('input');
+                var val = input.val();
+                $.ajax({
+                    type: 'PUT',
+                    url: 'http://localhost:57133/SetConfig',
+                    data: {
+                        ID: id,
+                        Value: val
+                    },
+                    success: function () {
+                        toastr.success("Cập nhật thành công");
+                        input.parent().next().next().next().addClass('config-control-hidden');
+                        input.prop('disabled', true);
+                    },
+                    error: function () {
+                        toastr.error("Cập nhật thất bại");
+                    }
+                })
+            })
+
+            $('a[data-discount]').click(function (e) {
+                e.preventDefault();
+                var id = Number($(this).data('discount'));
+                var input = $(this).parent().parent().find('input');
+                var val = input.val();
+                $.ajax({
+                    type: 'PUT',
+                    url: 'http://localhost:57133/SetDiscount',
+                    data: {
+                        ID: id,
+                        Discount: val
+                    },
+                    success: function () {
+                        toastr.success("Cập nhật thành công");
+                        input.parent().next().next().next().addClass('config-control-hidden');
+                        input.prop('disabled', true);
+                    },
+                    error: function () {
+                        toastr.error("Cập nhật thất bại");
+                    }
+                })
+            });
+        }
+        main();
     </script>
 }

@@ -1,16 +1,27 @@
 ﻿$('#txtMemberIDAdd').on('input', function () {
     var val = $(this).val();
     if (val.length == 8) {
-        var members = JSON.parse(sessionStorage.getItem("members"));
-        var searchedName = members.filter(x => x.MemberID === val)
-        if (searchedName.length <=0) {
-            toastr.error("không tìm thấy thành viên nào");
-            return;
-        }
-        $("#txtFullNameAdd").val(searchedName[0].FullName);
-        toastr.success("find");
+        $.get(`http://localhost:57133/GetMember?id=${val}`)
+            .done(function (data) {
+                if (data != null) {
+                    $("#txtFullNameAdd").val(data[0].FullName);
+                    return;
+                }
+                toastr.error("không tìm thấy thành viên nào")
+            })
+            .fail(function () {
+                toastr.error("không tìm thấy thành viên nào");
+            });
     }
 });
+
+var getMark = function (details) {
+    var sum = 0;
+    for (var i = 0; i < details.length; i++) {
+        sum += details[i].Mark;
+    }
+    return sum;
+}
 
 var getDetailRowData = function (selector) {
     var cell = $(selector).children('td');
@@ -36,45 +47,73 @@ var getDetailsFromTable = function (selector) {
     return results;
 }
 
-var addOrder = function (order) {
-    $.post('', order)
-     .done(function (orderID) {
-
-     })
-     .fail(function () {
-
-     });
+var getOrderFromTable = function () {
+    return {
+        MemberID: $('#txtMemberIDAdd').val(),
+        OrderDate: (new Date($("#datepick").val())).toISOString(),
+        Discount: 0
+    }
 }
 
-var addOrderDetails = function (orderID, orderDetails) {
+var addOrder = function (order) {
+    var detailslist = getDetailsFromTable("#table-add");
+    if (detailslist.length == 0 || detailslist == null) {
+        toastr.error("Không có sản phẩm nào được chọn");
+        return;
+    }
+    $.post('http://localhost:57133/api/Order', order)
+        .done(function (orderRel) {
+            console.log(orderRel)
+            addOrderDetails(orderRel, getDetailsFromTable("#table-add"));
+        })
+        .fail(function () {
+            console.log("Thêm đơn hàng thất bại")
+        });
+}
+
+var addOrderDetails = function (order ,orderDetails) {
+    var sumMark = getMark(orderDetails);
+    console.log(orderDetails);
     var data = orderDetails.map(x => {
         return {
-            OrderID: orderID,
+            OrderID: order.OrderID,
             ProductID: x.ProductID,
             ProductName: x.ProductName,
             Quantity: x.Quantity,
             UnitPrice: x.UnitPrice
         }
     });
-    $.post('', data)
+    console.log(data);
+    if (data != null)
+        $.post(`http://localhost:57133/InsertOrderDetails?memberID=${sessionStorage.getItem('userID')}`, { Details: data })
         .done(function () {
-
+            addSalePoint(order, sumMark);
         }).fail(function () {
-
+            toastr.error("Thêm đơn hàng thất bại, chi tiết đơn hàng không được lưu");
         });
 }
 
-var addSalePoint = function (orderID, MemberID, Mark) {
-    $.post('', {
-        OrderID: orderID,
-        MemberID: MemberID,
+var addSalePoint = function (order, Mark) {
+    $.post('http://localhost:57133/api/SalePoint', {
+        OrderID: order.OrderID,
+        MemberID: order.MemberID,
         Mark: Mark
     })
         .done(function () {
-
+            toastr.success("Thêm đơn hàng thành công");
+            $.magnificPopup.close();
+            datatable.fnAddData({
+                plus: '<i data-toggle class="fa fa-plus-square-o text-primary h5 m-none" style="cursor: pointer;"></i>',
+                OrderID: order.OrderID,
+                MemberID: $('#txtMemberIDAdd').val(),
+                FullName: $('#txtFullNameAdd').val(),
+                OrderDate: order.OrderDate,
+                Discount: order.Discount,
+                action: optionCols()
+            }, true)
         })
         .fail(function () {
-
+            toastr.error("Thêm đơn hàng thất bại, điểm không được tính");
         });
 }
 
@@ -82,7 +121,7 @@ var addTable = $('#table-add').DataTable(
     {
         ajax:
         {
-            url: `http://api.duocmyphamhaiduong.com//GetProducts?memberID=${sessionStorage.getItem("userID")}`,
+            url: `http://localhost:57133/GetProducts?memberID=${sessionStorage.getItem("userID")}`,
             dataSrc: ''
         },
         columns: [
@@ -105,15 +144,25 @@ var addTable = $('#table-add').DataTable(
     }
 );
 
-
 $('#table-add').on('input', '.val-quantity', function () {
-    if (isNaN($(this).text()))
+    if (isNaN($(this).text())) {
         $(this).text("0");
+        return
+    }
+    var thisQuan = Number($(this).text());
+    var thatQuan = Number($($(this).parent().parent().children('td')[5]).text().replaceAll(',', ''))
+    if (thisQuan > thatQuan) {
+        toastr.error("Không đủ số lượng")
+        $(this).text("0");
+
+    }
 })
 
 $('.btnSaveDetail').click(function () {
-    var orderDetails = getDetailsFromTable("#table-add");
-    $.magnificPopup.close();
+    if ($("#datepick").val() == "" || $("#txtMemberIDAdd").val() == "" || $("#txtFullNameAdd").val() == "")
+        toastr.error("Thông tin đơn hàng không được trống");
+    else
+        addOrder(getOrderFromTable());
 });
 
 $('.btnCancelDetail').click(function () {

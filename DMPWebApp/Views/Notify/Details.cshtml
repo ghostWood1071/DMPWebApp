@@ -17,7 +17,7 @@
 
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Chi tiết thông báo</h2>
+        <h2>Thêm thông báo</h2>
         <div class="right-wrapper pull-right">
             <ol class="breadcrumbs">
                 <li>
@@ -26,7 +26,7 @@
                     </a>
                 </li>
                 <li><span>Quản lý thông báo</span></li>
-                <li><span>Chi tiết thông báo</span></li>
+                <li><span>Thêm thông báo</span></li>
             </ol>
 
             <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
@@ -45,22 +45,31 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="inputDefault">Tiêu đề</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" id="inputDefault">
+                                <input type="text" class="form-control" id="title">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-3 control-label">Nội dung</label>
                             <div class="col-md-9">
-                                <div class="summernote" data-plugin-summernote data-plugin-options='{ "height": 180, "codemirror": { "theme": "ambiance" }, "lang":"vi-VN"}'></div>
+                                <textarea id="summernote"></textarea>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputDefault">Mã người nhận</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="txtMemberIDAdd" />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-12">
                                 <label class="col-md-3 control-label" for="inputDefault">Người nhận</label>
-                                <div class="col-md-6" style="padding-left:7px">
-                                    <input type="text" class="form-control" id="inputDefault">
+                                <div class="col-md-6" style="padding-left: 7px">
+                                    <input type="text" class="form-control" id="txtFullNameAdd" disabled>
+
                                     <br />
                                     <input type="checkbox" id="checked-receiver" />
                                     <label for="checked-receiver">Gửi cho tất cả</label>
@@ -96,11 +105,92 @@
     <script src="~/assets/vendor/ios7-switch/ios7-switch.js"></script>
 
     <script src="~/assets/javascripts/theme.init.js"></script>
-    <script src="~/assets/javascripts/forms/examples.advanced.form.js"></script>
+   
     <script>
+
+        var url = window.location.href;
+        var id = url.substring(url.lastIndexOf('/') + 1);
+        console.log(Number(id));
+       
+
+        var postNotify = function (title, content, receiver, isSendAll) {
+            $.ajax({
+                url: 'http://localhost:57133/api/Notify',
+                type: 'PUT',
+                data: {
+                    NotifyID: id,
+                    Sender: sessionStorage.getItem('userID'),
+                    Title: title,
+                    Content: content,
+                    Receiver: receiver,
+                    IsSendAll: isSendAll,
+                    CreateDate: (new Date()).toISOString()
+                },
+                success: function () {
+                    location.href = "/Notify";
+                },
+                fail: function () {
+                    toastr.error("Sửa thông thất bại");
+                }
+            });
+        }
+        var textEdit = $('#summernote').summernote({
+            placeholder: 'Enter content....',
+            tabsize: 2,
+            height: 300,
+            minHeight: 100,
+            maxHeight: 500,
+            focus: true,
+            lang: "vi-VN"
+        });
+
+        $('#txtMemberIDAdd').on('input', function () {
+            var val = $(this).val();
+            if (val.length == 8) {
+                $.get(`http://localhost:57133/GetMember?id=${val}`)
+                    .done(function (data) {
+                        if (data.length > 0) {
+                            console.log(data[0].FullName);
+                            $("#txtFullNameAdd").val(data[0].FullName);
+                            return;
+                        }
+                        toastr.error("không tìm thấy thành viên nào")
+                    })
+                    .fail(function () {
+                        toastr.error("không tìm thấy thành viên nào");
+                    });
+            }
+        });
+
         $('.btn-primary').click(function () {
-            location.href = "/Notify";
+            var title = $('#title').val().trim();
+            var content = textEdit.code();
+            var receiver = $('#txtMemberIDAdd').val().trim();
+            var isSendAll = $('#checked-receiver').is(':checked');
+            if (isSendAll)
+                if (title == '' || content == '')
+                    toastr.error("thông tin trống");
+                else
+                    postNotify(title, content, receiver, isSendAll);
+            else
+                if (title == '' || content == '' || receiver == '')
+                    toastr.error("thông tin trống");
+                else
+                    postNotify(title, content, receiver, isSendAll);
         })
+
+        $.get(`http://localhost:57133/api/Notify/${Number(id)}`)
+            .done(function (data) {
+                console.log(data);
+                $('#title').val(data.Title);
+                textEdit.code(data.Content);
+                $('#txtMemberIDAdd').val(data.Receiver);
+                if (data.Receiver == null)
+                    $('#checked-receiver').prop('checked', 'true');
+            })
+            .fail(function () {
+
+            });
     </script>
 
 

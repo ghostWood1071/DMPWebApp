@@ -2,10 +2,13 @@
     ViewBag.Title = "Quản lý thông báo";
 }
 
+@section css{
+    <link rel="stylesheet" href="~/Assets/vendor/toast/toastr.min.css"/>
+}
 
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Quản lý sản phẩm</h2>
+        <h2>Quản lý thông báo</h2>
 
         <div class="right-wrapper pull-right">
             <ol class="breadcrumbs">
@@ -42,25 +45,13 @@
                     <tr>
                         <th class="center">Mã thông báo</th>
                         <th class="center">Tiêu đề</th>
-                        <th class="center">Nội dung</th>
                         <th class="center">Người nhận</th>
                         <th class="center">Ngày đăng</th>
                         <th class="center">Tác vụ</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="gradeA">
-                        <td class="center">1</td>
-                        <td>Kem đánh răng</td>
-                        <td>Kem đánh răng mới siêu sạch</td>
-                        <td>ALL</td>
-                        <td>20/7/2021</td>
-                        <td class="actions center">
-                            <a href="#" class="on-default edit-row"><i class="fa fa-eye"></i></a>
-                            <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                            <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                        </td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>
@@ -68,17 +59,56 @@
 </section>
 
 @section script{
+    <script src="~/Assets/vendor/toast/toastr.min.js"></script>
     <script>
-        $('.remove-row').click(function (e) {
+        var rowTemplate = function (id, title, receiver, createDate) {
+            return `<tr class="gradeA">
+                        <td class="center">${id}</td>
+                        <td>${title}</td>
+                        <td>${receiver == null ? 'ALL' : receiver}</td>
+                        <td>${createDate}</td>
+                        <td class="actions center">
+                            <a href="#" class="on-default edit-row"><i class="fa fa-eye"></i></a>
+                            <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                            <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                        </td>
+                    </tr>`;
+        }
+
+        $.get('http://localhost:57133/api/Notify')
+            .done(function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    $('tbody').append(rowTemplate(data[i].NotifyID, data[i].Title ,data[i].Receiver, data[i].CreateDate))
+                }
+            })
+            .fail(function () {
+
+            });
+
+        $(document).on('click', '.remove-row', function (e) {
             e.preventDefault();
-            $(this).parent().parent().remove();
+            var row = $(this);
+            var param = $(this).parent().parent().children(".center").text();
+            $.ajax({
+                url: `http://localhost:57133/api/Notify/${param}`,
+                type: 'DELETE',
+                success: function () {
+                    row.parent().parent().remove();
+                    toastr.success("Xóa thông báo thành công");
+                },
+                fail: function () {
+                    toastr.error("Xóa thông báo thất bại")
+                }
+            })
+            
         });
 
         $('#addToTable').click(function () {
             location.href = "/Notify/Create";
         });
 
-        $('.edit-row').click(function () {
+        $(document).on('click', '.edit-row', function (e) {
+            e.preventDefault();
             var param = $(this).parent().parent().children(".center").text();
             location.href = `/Notify/Details/${param}`;
         });

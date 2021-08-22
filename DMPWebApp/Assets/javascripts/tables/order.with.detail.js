@@ -1,34 +1,3 @@
-var showDialogUpdateOrder = function (_self) {
-        $.magnificPopup.open({
-            items: {
-                src: '#dialogUpdateOrder',
-                type: 'inline'
-            },
-            preloader: false,
-            modal: true,
-            callbacks: {
-                change: function () {
-                    _self.$confirm.on('click', function (e) {
-                        e.preventDefault();
-                        //ajax
-                        $.magnificPopup.close();
-                        ShowUpdateDetailDialog();
-                    });
-
-                    _self.$cancel.on('click', function (e) {
-                        e.preventDefault();
-                        $.magnificPopup.close();
-                    });
-                },
-                close: function () {
-                    _self.$cancel.on('click', function (e) {
-                        e.preventDefault();
-                        $.magnificPopup.close();
-                    });
-                }
-            }
-        });
-    }
 
 var ShowAddDetailDialog = function () {
         var _self = {
@@ -49,58 +18,6 @@ var ShowAddDetailDialog = function () {
         return false;
     }
 
-var ShowUpdateDetailDialog = function () {
-        var _self = {
-            $cancel: $('.btnCancelDetail'),
-            $confirm: $(".btnSaveDetail"),
-            $wrapper: $("#dialogUpdateDetail")
-        };
-        var row = $('.editOrder').parent().parent().children('td')[1];
-        var data = $(row).text();
-        // $.post("./google.com", data ,function(response){
-
-        // }, 'json')
-        $.magnificPopup.open({
-            items: {
-                src: '#dialogUpdateDetail',
-                type: 'inline'
-            },
-            preloader: false,
-            modal: true,
-            callbacks: {
-                change: function () {
-                    _self.$confirm.on('click', function (e) {
-                        e.preventDefault();
-
-
-                        $.magnificPopup.close();
-                    });
-
-                    _self.$cancel.on('click', function (e) {
-                        e.preventDefault();
-                        $.magnificPopup.close();
-                    });
-                },
-                close: function () {
-                    _self.$cancel.on('click', function (e) {
-                        e.preventDefault();
-                        $.magnificPopup.close();
-                    });
-                }
-            }
-        });
-        return false;
-    }
-
-var details = [
-        {
-            ProductID: "SP0001",
-            ProductName: "HDKIDS",
-            Quantity: 100,
-            UnitPrice: "21.500.000"
-        }
-    ]
-
 var getDetail = function (details) {
         var detailContents = [];
         for (var i = 0; i < details.length; i++) {
@@ -116,21 +33,18 @@ var getDetail = function (details) {
         return detailContents;
     }
 
-var datatableInit = function () {
+var optionCols = function () {
+    return `<a href="#" class="on-default removeOrder"><i class="fa fa-trash-o"></i></a>`;
+}
 
-    var optionCols = function () {
-            return `<a href="#" class="on-default editOrder"><i class="fa fa-pencil"></i></a>
-                            <a href="#" class="on-default removeOrder"><i class="fa fa-trash-o"></i></a>`;
-        }
+var $table = $('#tableOrder');
 
-    var $table = $('#tableOrder');
-
-    var fnFormatDetails = function (table, tr, orderID) {
-            //ajax chỗ này nhé
-            $.get(`http://api.duocmyphamhaiduong.com/GetOrderDetails?orderID=${orderID}`)
-                .done(function (details) {
-                    var data = getDetail(details);
-                    var subtable = `<table class="table mb-none">
+var fnFormatDetails = function (table, tr, orderID) {
+    //ajax chỗ này nhé
+    $.get(`http://localhost:57133/GetOrderDetails?orderID=${orderID}`)
+        .done(function (details) {
+            var data = getDetail(details);
+            var subtable = `<table class="table mb-none">
                         <thead>
                             <tr>
                                 <th>Mã SP</th>
@@ -144,64 +58,77 @@ var datatableInit = function () {
                         </tbody>
                     </table>`
 
-                    table.fnOpen(tr, subtable, 'details')
-                })
-                .fail(function () {
+            table.fnOpen(tr, subtable, 'details')
+        })
+        .fail(function () {
 
-                });
-        };
-  
-    var datatable = $table.dataTable({
-
-        ajax: {
-                url: 'http://api.duocmyphamhaiduong.com/api/Order',
-                dataSrc: ''
-
-        },
-        columns: [
-                { data: null, defaultContent: '<i data-toggle class="fa fa-plus-square-o text-primary h5 m-none" style="cursor: pointer;"></i>' },
-                { data: "OrderID" },
-                { data: "MemberID" },
-                { data: "FullName" },
-                { data: "OrderDate" },
-                { data: "Discount" },
-                { data: null, defaultContent: optionCols(), className: 'actions center' }
-
-        ],
-        aoColumnDefs: [{
-                bSortable: false,
-                aTargets: [0]
-
-        }],
-        aaSorting: [
-                [1, 'asc']
-
-        ],
-        language: {
-                "lengthMenu": "Hiển thị _MENU_ bản ghi trên trang",
-                "zeroRecords": "Không có bản ghi nào",
-                "info": "Trang _PAGE_ trong _PAGES_ trang",
-                "infoEmpty": "Không có bản ghi nào",
-                "infoFiltered": "(lọc từ _MAX_ bản ghi)"
-        }
-
-    });
-
-    $table.on('click', 'i[data-toggle]', function () {
-            var $this = $(this), tr = $(this).closest('tr').get(0);
-            var orderID = $($(tr).children('td')[1]).text();
-            if (datatable.fnIsOpen(tr)) {
-                $this.removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
-                datatable.fnClose(tr);
-            } else {
-                $this.removeClass('fa-plus-square-o').addClass('fa-minus-square-o');
-                fnFormatDetails(datatable, tr, orderID);
-            }
         });
 };
 
+var deleteOrder = function (orderID, callback) {
+    $.ajax({
+        url: `http://localhost:57133/api/Order?orderID=${orderID}`,
+        type: 'DELETE',
+        success: function () {
+            
+            callback();
+        },
+        error: function () {
+            toastr.error("Xóa đơn hàng thất bại");
+        }
+    })
+}
+
+var datatable = $table.dataTable({
+
+    ajax: {
+        url: 'http://localhost:57133/api/Order',
+        dataSrc: ''
+
+    },
+    columns: [
+        { name: 'plus', data: null, defaultContent: '<i data-toggle class="fa fa-plus-square-o text-primary h5 m-none" style="cursor: pointer;"></i>' },
+        { data: "OrderID" },
+        { data: "MemberID" },
+        { data: "FullName" },
+        { data: "OrderDate" },
+        { data: "Discount" },
+        { name: 'action', data: null, defaultContent: optionCols(), className: 'actions center' }
+
+    ],
+    aoColumnDefs: [{
+        bSortable: false,
+        aTargets: [0]
+
+    }],
+    aaSorting: [
+        [1, 'asc']
+
+    ],
+    language: {
+        "lengthMenu": "Hiển thị _MENU_ bản ghi trên trang",
+        "zeroRecords": "Không có bản ghi nào",
+        "info": "Trang _PAGE_ trong _PAGES_ trang",
+        "infoEmpty": "Không có bản ghi nào",
+        "infoFiltered": "(lọc từ _MAX_ bản ghi)"
+    }
+
+});
+
+$table.on('click', 'i[data-toggle]', function () {
+    var $this = $(this), tr = $(this).closest('tr').get(0);
+    var orderID = $($(tr).children('td')[1]).text();
+    if (datatable.fnIsOpen(tr)) {
+        $this.removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
+        datatable.fnClose(tr);
+    } else {
+        $this.removeClass('fa-plus-square-o').addClass('fa-minus-square-o');
+        fnFormatDetails(datatable, tr, orderID);
+    }
+});
+
 var getMembers = function () {
-    $.get(`http://api.duocmyphamhaiduong.com/GetMembers`)
+    $.get(`http://localhost:57133/GetMembers`)
         .done(function (data) {
             var subData = data.map(x =>
             {
@@ -217,54 +144,42 @@ var getMembers = function () {
         });
 }
 
-$('.editOrder').click(function () {
-        var _self = {
-            $cancel: $('.btnCancelOrder'),
-            $confirm: $(".btnSaveOrder"),
-            $wrapper: $("#dialogUpdateOrder")
-        };
-        var row = $('.editOrder').parent().parent().children('td')[1];
-        var data = $(row).text();
-        // $.post("./google.com", data ,function(response){
-
-        // }, 'json')
-        showDialogUpdateOrder(_self);
-        return false;
-    });
-
-$('.removeOrder').click(function () {
+$('#tableOrder').on('click', '.removeOrder', function (e) {
+    e.preventDefault();
         var _self = {
             $cancel: $('#dialogCancel'),
             $confirm: $("#dialogConfirm"),
             $wrapper: $("#dialog")
-        };
-        var row = $('.editOrder').parent().parent().children('td')[1];
-        var data = $(row).text();
-        // $.post("./google.com", data ,function(response){
+    };
+    var thisRow = $(this).parent().parent();
+    var row = $(this).parent().parent().children('td')[1];
+    var data = $(row).text();
 
-        // }, 'json')
-        $.magnificPopup.open({
-            items: {
+    $.magnificPopup.open({
+        items: {
                 src: '#dialog',
                 type: 'inline'
+        },
+        preloader: false,
+        modal: true,
+        callbacks: {
+            change: function () {
+                _self.$confirm.on('click', function (e) {
+                    e.preventDefault();
+                    deleteOrder(data, () => {
+                        datatable.fnDeleteRow(thisRow, null, true);
+                        toastr.success("Xóa đơn hàng thành công");
+                    });
+                    $.magnificPopup.close();
+                });
+
+
+                _self.$cancel.on('click', function (e) {
+                        e.preventDefault();
+                        $.magnificPopup.close();
+                });
             },
-            preloader: false,
-            modal: true,
-            callbacks: {
-                change: function () {
-                    _self.$confirm.on('click', function (e) {
-                        e.preventDefault();
-
-                        //ajax
-                        $.magnificPopup.close();
-                    });
-
-                    _self.$cancel.on('click', function (e) {
-                        e.preventDefault();
-                        $.magnificPopup.close();
-                    });
-                },
-                close: function () {
+            close: function () {
                     _self.$cancel.on('click', function (e) {
                         e.preventDefault();
                         $.magnificPopup.close();
@@ -276,6 +191,7 @@ $('.removeOrder').click(function () {
     });
 
 $('#addToOrder').click(function () {
+    addTable.ajax.reload();
     ShowAddDetailDialog();
     return false;
 });
@@ -283,9 +199,3 @@ $('#addToOrder').click(function () {
 $('#datepick').click(function () {
    $('.datepicker').css('z-index', '100000000000');
 })
-
-$(function () {
-    console.log("hello");
-    getMembers();
-    datatableInit();
-});
