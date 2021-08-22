@@ -143,24 +143,25 @@
         });
         //Edit Member-----------------------------------------------------------------------------------------
         $(document).on('click', '#dialogEditmember .save', function () {
+            
+            if ($('#frmedit').valid()) {
             $('.workform#dialogEditmember').hide();
-
             var member = {};
             var fid = ($('#efid')[0]).value
             var fname = ($('#efname')[0]).value
             var referralID = ($('#ereferralID')[0]).value
             var gender = ($('#egender')[0]).value
             if (gender == 'Nam') gender = true; else gender = false;
-            var dob = ($('#edob')[0]).value
+            var dob = (new Date(($('#edob')[0]).value)).toISOString()
             var address = ($('#eaddress')[0]).value
             var email = ($('#eemail')[0]).value
             var phone = ($('#ephone')[0]).value
             var IDCard = ($('#eIDCard')[0]).value
             var IDCard_PlaceIssue = ($('#eIDCard_PlaceIssue')[0]).value
-            var IDCard_DateIssue = ($('#eIDCard_DateIssue')[0]).value
+            var IDCard_DateIssue = (new Date(($('#eIDCard_DateIssue')[0]).value)).toISOString()
             var password = ($('#epassword')[0]).value
             var position = ($('#eposition')[0]).value
-            if (position == "Chủ sở hữu") { position = 0 } else if (position == "Trưởng phòng") { position = 1 } else if (position == "Trưởng phòng dự bị") { position = 2 } else if (position == "Thành viên đạt chuẩn") { position = 3 } else if (position == "Thành viên tích cực") { position = 4 } else if (position == "Thành viên 300") { position = 6 } else position = 5
+            if (position == "Chủ sở hữu") { position = 0 } else if (position == "Trưởng phòng") { position = 1 } else if (position == "Trưởng phòng dự bị") { position = 2 } else if (position == "Trưởng nhóm") { position = 3 } else if (position == "Thành viên đạt chuẩn") { position = 4 } else if (position == "Thành viên tích cực") { position = 5 } else if (position == "Thành viên 300") { position = 6 } else position = 7
             var role = ($('#erole')[0]).value
             if (role = "Thành viên") role = 3; else if (role = "Quản trị viên") role = 2; else role = 1;
             var isactive = ($('#eisactive')[0]).value
@@ -184,28 +185,29 @@
             member.RoleID = role;
             member.IsActive = isactive;
             member.Avatar = null;
+           
+                $.ajax({
+                    url: "http://localhost:57133/UpdateMember",
+                    type: "PUT",
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify(member),
+                    dataType: "json",
+                    success: function (response) {
+                        const table = $("#datatable-details").DataTable();
+                        table.ajax.reload(null, false);
+                    },
 
-            $.ajax({
-                url: "http://localhost:57133/UpdateMember",
-                type: "PUT",
-                contentType: "application/json;charset=utf-8",
-                data: JSON.stringify(member),
-                dataType: "json",
-                success: function (response) {
-                    const table = $("#datatable-details").DataTable();
-                    table.ajax.reload(null, false);
-                },
-
-                error: function (x, e) {
-                    alert('Failed');
-                }
-            });
+                    error: function (x, e) {
+                        alert('Failed');
+                    }
+                });
+            }
         });
 
         //Insert Member-----------------------------------------------------------------------------------------
         $(document).on('click', '#dialogAddmember .save', function () {
-            $('.workform#dialogAddmember').hide();
-
+           
+            if ($('#frmadd').valid()) {
             var member = {};
             var fid = ($('#fid')[0]).value
             var fname = ($('#fname')[0]).value
@@ -221,7 +223,7 @@
             var IDCard_DateIssue = ($('#IDCard_DateIssue')[0]).value
             var password = ($('#password')[0]).value
             var position = ($('#position')[0]).value
-            if (position == "Chủ sở hữu") { position = 0 } else if (position == "Trưởng phòng") { position = 1 } else if (position == "Trưởng phòng dự bị") { position = 2 } else if (position == "Thành viên đạt chuẩn") { position = 3 } else if (position == "Thành viên tích cực") { position = 4 } else if (position == "Thành viên 300đ") { position = 5 } else position = 6
+            if (position == "Chủ sở hữu") { position = 0 } else if (position == "Trưởng phòng") { position = 1 } else if (position == "Trưởng phòng dự bị") { position = 2 } else if (position == "Trưởng nhóm") { position = 3 } else if (position == "Thành viên đạt chuẩn") { position = 4 } else if (position == "Thành viên tích cực") { position = 5 } else if (position == "Thành viên 300") { position = 6 } else position = 7
             var role = ($('#role')[0]).value
             if (role = "Thành viên") role = 3; else if (role = "Quản trị viên") role = 2; else role = 1;
             var isactive = ($('#isactive')[0]).value
@@ -245,27 +247,26 @@
             member.RoleID = role;
             member.IsActive = isactive;
             member.Avatar = null;
+            
+                $.ajax({
+                    url: "http://localhost:57133/api/Members",
+                    type: "POST",
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify(member),
+                    dataType: "json",
+                    success: function (response) {
+                        const table = $("#datatable-details").DataTable();
+                        table.ajax.reload(null, false);
+                    },
 
-            $.ajax({
-                url: "http://localhost:57133/api/Members",
-                type: "POST",
-                contentType: "application/json;charset=utf-8",
-                data: JSON.stringify(member),
-                dataType: "json",
-                success: function (response) {
-                    const table = $("#datatable-details").DataTable();
-                    table.ajax.reload(null, false);
-                },
-
-                error: function (x, e) {
-                    alert('Failed');
-                }
-            });
-
-        });
-
-        $(document).on('click', '.exit', function () {
-            $('.workform').hide();
+                    error: function (x, e) {
+                        alert('Failed');
+                    }
+                });
+                $('.workform#dialogAddmember').hide();
+            }
+           
+          
         });
 
 
@@ -279,8 +280,11 @@
         });
 
     });
-
+    $(document).on('click', '.exit', function () {
+        $('.workform').hide();
+    }); 
     $(document).ready(function () {
+
         $(document).on('click', '.removeMember', function () {
             var _self = {
                 $cancel: $('#dialogCancel'),

@@ -194,6 +194,7 @@
     <Content Include="Assets\images\widget-twitter-profile.jpg" />
     <Content Include="Assets\javascripts\auth.js" />
     <Content Include="Assets\javascripts\dashboard\dashboard.js" />
+    <Content Include="Assets\javascripts\jquery.validate.min.js" />
     <Content Include="Assets\javascripts\product.editable.js" />
     <Content Include="Assets\javascripts\forms\examples.advanced.form.js" />
     <Content Include="Assets\javascripts\forms\examples.validation.js" />
@@ -219,6 +220,7 @@
     <Content Include="Assets\javascripts\tables\order.details.editable.js" />
     <Content Include="Assets\javascripts\tables\order.with.detail.js" />
     <Content Include="Assets\javascripts\tables\orderdetails.table.js" />
+    <Content Include="Assets\javascripts\tables\salary.databases.js" />
     <Content Include="Assets\javascripts\tables\test.js" />
     <Content Include="Assets\javascripts\theme.admin.extension.js" />
     <Content Include="Assets\javascripts\theme.custom.js" />

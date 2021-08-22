@@ -15,16 +15,15 @@
             return `<table class="table mb-none">
                         <thead>
                             <tr>
-                                <th style="width: 196.51px;">Email</th>
-                                <th style="width: 140px;">Mã TVGT</th>
-                                <th style="width:140px">CMND</th>
+                                <th>Email</th>
+                                <th>Mã TVGT</th>
+                                <th>CMND</th>
                                 <th>Ngày cấp</th>
                                 <th>Nơi cấp</th>
-                                <th>Kích hoạt</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr id=${id}><td></td><td><a style="cursor:pointer;" class="pas">Reset</a></td><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr id=${id}>  <td></td>   <td></td>   <td></td>   <td></td>   <td></td> </tr>
                         </tbody>
                     </table>`
 
@@ -90,7 +89,6 @@
                         $('#' + id).children()[2].textContent = details[0].IDCard;
                         $('#' + id).children()[3].textContent = details[0].IDCard_DateIssue;
                         $('#' + id).children()[4].textContent = details[0].IDCard_PlaceIssue;
-                        $('#' + id).children()[5].textContent = details[0].IsActive;
                     }
                 )
             }

@@ -34,15 +34,15 @@
             <h2 class="panel-title">Bảng lương</h2>
         </header>
         <div class="panel-body">
-            <div class="form-group col-sm-3" style="display: flex;align-items: center;padding:0px;">
+            <div class="form-group col-sm-3" style="display: flex;align-items: center;padding:0px; position:absolute;z-index:10">
                 <label class="form-control-label px-3">Năm</label>
-                <select id="position" class="selectpicker" style="margin-bottom:10px;">
+                <select id="year" class="selectpicker" style="margin-bottom:10px;">
                     <option>2021</option>
                     <option>2020</option>
                     <option>2019</option>
                 </select>
             </div>
-            <table class="table table-bordered table-striped mb-none">
+            <table class="table table-bordered table-striped mb-none" id="default-table">
                 <thead>
                     <tr>
                         <th>Tháng</th>
@@ -54,26 +54,6 @@
                         <th>Tổng lương</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr class="gradeA">
-                        <td>01</td>
-                        <td>1000</td>
-                        <td>400</td>
-                        <td>200</td>
-                        <td>500</td>
-                        <td>1600</td>
-                        <td>20.000.000</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>02</td>
-                        <td>2000</td>
-                        <td>1000</td>
-                        <td>900</td>
-                        <td>1000</td>
-                        <td>2600</td>
-                        <td>25.000.000</td>
-                    </tr>
-                </tbody>
             </table>
         </div>
     </section>
@@ -83,21 +63,7 @@
 		</section>
 
 @section script{
+    <script src="~/Assets/javascripts/tables/salary.databases.js"></script>
     <script>
-        (function ($) {
-            $(function () {
-                EditableTable.initialize(6);
-            });
-            var header = $('.table th');
-
-            var rows = $('.table tr');
-            for (var i = 1; i < rows.length; i++) {
-                var cells = $(rows[i]).children('td');
-                $(cells[0]).css('text-align', 'center');
-                for (var j = 1; j < 7; j++)
-                    $(cells[j]).css('text-align', 'right');
-            }
-
-        }).apply(this, [jQuery]);
     </script>
 }
