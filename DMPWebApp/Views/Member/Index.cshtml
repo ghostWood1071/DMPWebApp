@@ -215,11 +215,11 @@
             <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
                 <div class="card">
                     <h3 class="text-center mb-4">Nhập thông tin</h3>
-                    <form class="form-card" onsubmit="event.preventDefault()">
+                    <form class="form-card" id="frmadd">
                         <div class="row justify-content-between text-left">
-                            <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Mã thành viên<span class="text-danger"> *</span></label> <input type="text" id="fid" name="fid" placeholder="Nhập mã"> </div>
-                            <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Họ tên<span class="text-danger"> *</span></label> <input type="text" id="fname" name="fname" placeholder="Nhập Tên"> </div>
-                            <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Mã người giới thiệu<span class="text-danger"> *</span></label> <input type="text" id="referralID" name="referralID" placeholder=""> </div>
+                            <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Mã thành viên<span class="text-danger"> *</span></label> <input type="text" id="fid" name="fid" placeholder="Nhập mã" required> </div>
+                            <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Họ tên<span class="text-danger"> *</span></label> <input type="text" id="fname" name="fname" placeholder="Nhập Tên" required> </div>
+                            <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Mã người giới thiệu<span class="text-danger"> *</span></label> <input type="text" id="referralID" name="referralID" placeholder="" required minlength="8" maxlength="8"> </div>
                         </div>
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-4 flex-column d-flex">
@@ -232,31 +232,31 @@
                             </div>
                             <div class="form-group col-sm-4 flex-column d-flex">
                                 <label class="form-control-label px-3">Ngày sinh<span class="text-danger"> *</span></label>
-                                <input type="" data-plugin-datepicker name="OrderDate" id="dob" autocomplete="off"> 
+                                <input data-plugin-datepicker name="dob" id="dob" autocomplete="off" required> 
                             </div>
-                            <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Địa chỉ<span class="text-danger"> *</span></label> <input type="text" id="address" name="address" placeholder=""> </div>
+                            <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Địa chỉ<span class="text-danger"> *</span></label> <input type="text" id="address" name="address" placeholder="" required> </div>
 
                         </div>
                         <div class="row justify-content-between text-left">
-                            <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label> <input type="text" id="email" name="email" placeholder=""> </div>
+                            <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label> <input type="email" id="email" name="email" placeholder=""> </div>
 
-                            <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Số điện thoại<span class="text-danger"> *</span></label> <input type="text" id="phone" name="phone" placeholder=""> </div>
+                            <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Số điện thoại<span class="text-danger"> *</span></label> <input type="text" id="phone" name="phone" placeholder="" number="true" required minlength="10" maxlength="10"> </div>
                             <div class="form-group col-sm-4 flex-column d-flex">
-                                <label class="form-control-label px-3">Số CMND<span class="text-danger"> *</span></label> <input type="text" id="IDCard" name="IDCard" placeholder="">
+                                <label class="form-control-label px-3">Số CMND<span class="text-danger"> *</span></label> <input type="text" id="IDCard" name="IDCard" placeholder="" required minlength="10" maxlength="13">
                             </div>
                         </div>
                         <div class="row justify-content-between text-left">
 
                             <div class="form-group col-sm-4 flex-column d-flex">
-                                <label class="form-control-label px-3">Nơi cấp<span class="text-danger"> *</span></label> <input type="text" id="IDCard_PlaceIssue" name="IDCard_PlaceIssue" placeholder="">
+                                <label class="form-control-label px-3">Nơi cấp<span class="text-danger"> *</span></label> <input type="text" id="IDCard_PlaceIssue" name="IDCard_PlaceIssue" placeholder="" required>
                             </div>
                             <div class="form-group col-sm-4 flex-column d-flex">
                                 <label class="form-control-label px-3">Ngày cấp<span class="text-danger"> *</span></label>
-                                <input id="IDCard_DateIssue" type="" data-plugin-datepicker name="OrderDate" autocomplete="off">
+                                <input id="IDCard_DateIssue"  data-plugin-datepicker name="IDCard_DateIssue" autocomplete="off" required>
                             </div>
                             <div class="form-group col-sm-4 flex-column d-flex">
                                 <label class="form-control-label px-3">Mật khẩu<span class="text-danger"> *</span></label>
-                                <input type="text" id="password" name="password" placeholder="">
+                                <input type="text" id="password" name="password" placeholder="" required>
                             </div>
 
                         </div>
@@ -269,6 +269,7 @@
                                     <option>Thành viên 300đ</option>
                                     <option>Thành viên tích cực</option>
                                     <option>Thành viên đạt chuẩn</option>
+                                    <option>Trưởng nhóm</option>
                                     <option>Trưởng phòng dự bị</option>
                                     <option>Trưởng phòng</option>
                                     <option>Chủ sở hữu</option>
@@ -331,11 +332,11 @@
             <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
                 <div class="card">
                     <h3 class="text-center mb-4">Nhập thông tin</h3>
-                    <form class="form-card" onsubmit="event.preventDefault()">
+                    <form class="form-card" id="frmedit">
                         <div class="row justify-content-between text-left">
-                            <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Mã thành viên<span class="text-danger"> *</span></label> <input type="text" id="efid" name="efid" placeholder="Nhập mã"> </div>
-                            <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Họ tên<span class="text-danger"> *</span></label> <input type="text" id="efname" name="efname" placeholder="Nhập Tên"> </div>
-                            <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Mã người giới thiệu<span class="text-danger"> *</span></label> <input type="text" id="ereferralID" name="ereferralID" placeholder=""> </div>
+                            <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Mã thành viên<span class="text-danger"> *</span></label> <input type="text" id="efid" name="efid" placeholder="Nhập mã" required> </div>
+                            <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Họ tên<span class="text-danger"> *</span></label> <input type="text" id="efname" name="efname" placeholder="Nhập Tên" required> </div>
+                            <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Mã người giới thiệu<span class="text-danger"> *</span></label> <input type="text" id="ereferralID" name="ereferralID" placeholder="" required minlength="8" maxlength="8"> </div>
                         </div>
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-4 flex-column d-flex">
@@ -348,31 +349,31 @@
                             </div>
                             <div class="form-group col-sm-4 flex-column d-flex">
                                 <label class="form-control-label px-3">Ngày sinh<span class="text-danger"> *</span></label>
-                                <input type="" data-plugin-datepicker name="OrderDate" id="edob" autocomplete="off">
+                                <input data-plugin-datepicker name="OrderDate" id="edob" required autocomplete="off">
                             </div>
-                            <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Địa chỉ<span class="text-danger"> *</span></label> <input type="text" id="eaddress" name="eaddress" placeholder=""> </div>
+                            <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Địa chỉ<span class="text-danger"> *</span></label> <input type="text" id="eaddress" name="eaddress" placeholder="" required> </div>
 
                         </div>
                         <div class="row justify-content-between text-left">
-                            <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label> <input type="text" id="eemail" name="eemail" placeholder=""> </div>
+                            <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label> <input type="email"  required id="eemail" name="eemail" placeholder=""> </div>
 
-                            <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Số điện thoại<span class="text-danger"> *</span></label> <input type="text" id="ephone" name="ephone" placeholder=""> </div>
+                            <div class="form-group col-sm-4 flex-column d-flex"> <label class="form-control-label px-3">Số điện thoại<span class="text-danger"> *</span></label> <input type="text" id="ephone" name="ephone" placeholder="" required minlength="10" maxlength="10"> </div>
                             <div class="form-group col-sm-4 flex-column d-flex">
-                                <label class="form-control-label px-3">Số CMND<span class="text-danger"> *</span></label> <input type="text" id="eIDCard" name="eIDCard" placeholder="">
+                                <label class="form-control-label px-3">Số CMND<span class="text-danger"> *</span></label> <input type="text" id="eIDCard" name="eIDCard" placeholder="" required  minlength="10" maxlength="13">
                             </div>
                         </div>
                         <div class="row justify-content-between text-left">
 
                             <div class="form-group col-sm-4 flex-column d-flex">
-                                <label class="form-control-label px-3">Nơi cấp<span class="text-danger"> *</span></label> <input type="text" id="eIDCard_PlaceIssue" name="eIDCard_PlaceIssue" placeholder="">
+                                <label class="form-control-label px-3">Nơi cấp<span class="text-danger"> *</span></label> <input type="text" id="eIDCard_PlaceIssue" name="eIDCard_PlaceIssue" placeholder="" required>
                             </div>
                             <div class="form-group col-sm-4 flex-column d-flex">
                                 <label class="form-control-label px-3">Ngày cấp<span class="text-danger"> *</span></label>
-                                <input id="eIDCard_DateIssue" type="" data-plugin-datepicker name="OrderDate" autocomplete="off">
+                                <input id="eIDCard_DateIssue" data-plugin-datepicker name="OrderDate" autocomplete="off" required> 
                             </div>
                             <div class="form-group col-sm-4 flex-column d-flex">
                                 <label class="form-control-label px-3">Mật khẩu<span class="text-danger"> *</span></label>
-                                <input type="text" id="epassword" name="epassword" placeholder="">
+                                <input type="text" id="epassword" name="epassword" placeholder="" required minlength="8" >
                             </div>
 
                         </div>
@@ -385,6 +386,7 @@
                                     <option>Thành viên 300đ</option>
                                     <option>Thành viên tích cực</option>
                                     <option>Thành viên đạt chuẩn</option>
+                                    <option>Trưởng nhóm</option>
                                     <option>Trưởng phòng dự bị</option>
                                     <option>Trưởng phòng</option>
                                     <option>Chủ sở hữu</option>
@@ -466,6 +468,48 @@
     </div>
 }
 @section script{
+    <script src="~/Assets/javascripts/jquery.validate.min.js"></script>
+    <script>
+        $(document).ready(function () { 
+            $('#frmadd').validate({
+                rule: {
+
+                },
+                messages: {
+                    fid: "",
+                    fname: "Bạn phải nhập tên",
+                    referralID: "Mã người giới thiệu có 8 kí tự",
+                    dob: "Bạn phải nhập ngày sinh",
+                    address: "Bạn phải nhập địa chỉ",
+                    email: "Bạn phải nhập email",
+                    phone: "Bạn phải nhập sđt",
+                    IDCard: "Bạn phải nhập mã thẻ DMND",
+                    IDCard_PlaceIssue: "Bạn phải nhập..",
+                    IDCard_DateIssue: "Bạn phải nhập...",
+                    password: "Bạn phải nhập..."
+                }
+            })
+
+            $('#frmedit').validate({
+                rule: {
+
+                },
+                messages: {
+                    efid: "",
+                    efname: "Bạn phải nhập tên",
+                    ereferralID: "Mã người giới thiệu có 8 kí tự",
+                    edob: "Bạn phải nhập ngày sinh",
+                    eaddress: "Bạn phải nhập địa chỉ",
+                    eemail: "Bạn phải nhập email",
+                    ephone: "Bạn phải nhập sđt",
+                    eIDCard: "Bạn phải nhập mã thẻ DMND",
+                    eIDCard_PlaceIssue: "Bạn phải nhập..",
+                    eIDCard_DateIssue: "Bạn phải nhập...",
+                    epassword: "Bạn phải nhập..."
+                }
+            })
+        })
+    </script>
 
     <script src="~/Assets/javascripts/tables/member.with.detail.edit.js"></script>
 }
