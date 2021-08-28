@@ -282,7 +282,7 @@
 
         var getDiscount = function () {
             return new Promise(function (resolve, reject) {
-                $.get('http://localhost:57133/GetDiscounts')
+                $.get('http://api.duocmyphamhaiduong.com/GetDiscounts')
                     .done(function (data) {
                         resolve(data);
                     })
@@ -294,7 +294,7 @@
 
         var getConfigs = function () {
             return new Promise(function (resolve, reject) {
-                $.get('http://localhost:57133/GetConfigs')
+                $.get('http://api.duocmyphamhaiduong.com/GetConfigs')
                     .done(function (data) {
                         var result = {}
                         for (var i = 0; i < data.length; i++) {
@@ -360,7 +360,7 @@
                 var val = input.val();
                 $.ajax({
                     type: 'PUT',
-                    url: 'http://localhost:57133/SetConfig',
+                    url: 'http://api.duocmyphamhaiduong.com/SetConfig',
                     data: {
                         ID: id,
                         Value: val
@@ -383,7 +383,7 @@
                 var val = input.val();
                 $.ajax({
                     type: 'PUT',
-                    url: 'http://localhost:57133/SetDiscount',
+                    url: 'http://api.duocmyphamhaiduong.com/SetDiscount',
                     data: {
                         ID: id,
                         Discount: val

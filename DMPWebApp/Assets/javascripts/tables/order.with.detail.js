@@ -1,10 +1,12 @@
-
+$('#datepick, #datepickPut').datepicker({
+    language: 'vi'
+});
 var ShowAddDetailDialog = function () {
         var _self = {
             $cancel: $('.btnCancelDetail'),
             $confirm: $(".btnSaveDetail"),
             $wrapper: $("#dialogAddDetail")
-    };
+        };
 
         $.magnificPopup.open({
             items: {
@@ -16,7 +18,26 @@ var ShowAddDetailDialog = function () {
             
         });
         return false;
-    }
+}
+
+var ShowUpdateDialog = function () {
+    var _self = {
+        $cancel: $('.btnCancelDetail'),
+        $confirm: $(".btnSaveDetail"),
+        $wrapper: $("#dialogPutDetail")
+    };
+
+    $.magnificPopup.open({
+        items: {
+            src: '#dialogPutDetail',
+            type: 'inline'
+        },
+        preloader: false,
+        modal: true
+
+    });
+    return false;
+}
 
 var getDetail = function (details) {
         var detailContents = [];
@@ -34,14 +55,15 @@ var getDetail = function (details) {
     }
 
 var optionCols = function () {
-    return `<a href="#" class="on-default removeOrder"><i class="fa fa-trash-o"></i></a>`;
+    return `<a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+            <a href="#" class="on-default removeOrder"><i class="fa fa-trash-o"></i></a>`;
 }
 
 var $table = $('#tableOrder');
 
 var fnFormatDetails = function (table, tr, orderID) {
     //ajax chỗ này nhé
-    $.get(`http://localhost:57133/GetOrderDetails?orderID=${orderID}`)
+    $.get(`http://api.duocmyphamhaiduong.com/GetOrderDetails?orderID=${orderID}`)
         .done(function (details) {
             var data = getDetail(details);
             var subtable = `<table class="table mb-none">
@@ -67,7 +89,7 @@ var fnFormatDetails = function (table, tr, orderID) {
 
 var deleteOrder = function (orderID, callback) {
     $.ajax({
-        url: `http://localhost:57133/api/Order?orderID=${orderID}`,
+        url: `http://api.duocmyphamhaiduong.com/api/Order?orderID=${orderID}`,
         type: 'DELETE',
         success: function () {
             
@@ -82,7 +104,7 @@ var deleteOrder = function (orderID, callback) {
 var datatable = $table.dataTable({
 
     ajax: {
-        url: 'http://localhost:57133/api/Order',
+        url: 'http://api.duocmyphamhaiduong.com/api/Order',
         dataSrc: ''
 
     },
@@ -91,8 +113,8 @@ var datatable = $table.dataTable({
         { data: "OrderID" },
         { data: "MemberID" },
         { data: "FullName" },
-        { data: "OrderDate" },
-        { data: "Discount" },
+        { data: "OrderDate", class: 'center', render: function(data) { return moment(data).format('DD/MM/YYYY') } },
+        { data: "Discount", className: 'right', render: function (data) { return data*100 } },
         { name: 'action', data: null, defaultContent: optionCols(), className: 'actions center' }
 
     ],
@@ -128,7 +150,7 @@ $table.on('click', 'i[data-toggle]', function () {
 });
 
 var getMembers = function () {
-    $.get(`http://localhost:57133/GetMembers`)
+    $.get(`http://api.duocmyphamhaiduong.com/GetMembers`)
         .done(function (data) {
             var subData = data.map(x =>
             {
@@ -188,7 +210,7 @@ $('#tableOrder').on('click', '.removeOrder', function (e) {
             }
         });
         return false;
-    });
+});
 
 $('#addToOrder').click(function () {
     addTable.ajax.reload();
@@ -196,6 +218,22 @@ $('#addToOrder').click(function () {
     return false;
 });
 
-$('#datepick').click(function () {
+$('#datepick, #datepickPut').click(function () {
    $('.datepicker').css('z-index', '100000000000');
 })
+
+$('#tableOrder').on('click', '.edit-row', function (e) {
+    e.preventDefault();
+    var orderID = $($(this).parent().parent().children('td')[1]).text();
+    var memberID = $($(this).parent().parent().children('td')[2]).text();
+    var fullName = $($(this).parent().parent().children('td')[3]).text();
+    var orderDate = $($(this).parent().parent().children('td')[4]).text();
+    $('#txtIDPut').val(memberID);
+    $('#txtNamePut').val(fullName);
+    $('#datepickPut').val(orderDate);
+    $('.order-id').text(orderID);
+    console.log(orderID);
+    ShowUpdateDialog();
+    putTable.ajax.url(`http://localhost:57133/GetDetails?memberID=${sessionStorage.getItem("userID")}&&orderID=${orderID}`).load().draw();
+});
+

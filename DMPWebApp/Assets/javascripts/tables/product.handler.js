@@ -1,5 +1,5 @@
 ﻿var userID = sessionStorage.getItem("userID");
-var link = `http://localhost:57133/GetProducts?memberID=${userID}`;
+var link = `http://api.duocmyphamhaiduong.com/GetProducts?memberID=${userID}`;
 var header = $('.table th');
 $(header[0]).width("100px");
 $(header[1]).width("230px");
@@ -8,18 +8,6 @@ $(header[3]).width("100px");
 $(header[4]).width("100px");
 $(header[5]).width("180px");
 
-//logic function
-var getExchangeRate = function () {
-    if (sessionStorage.getItem("exchange") != null)
-        return;
-    $.get("http://localhost:57133/ExchangeRate")
-        .done(function (data) {
-            sessionStorage.setItem("exchange", data);
-            console.log("lien quan");
-        }).fail(function () {
-            console.log("lol")
-        });
-}
 
 var getRowData = function (row, isPut = false) {
     var cells = row.children('td');
@@ -67,7 +55,7 @@ var optionCols = function (adding = false) {
 var editRow = function (info) {
     console.log(info);
     $.ajax({
-        url: `http://localhost:57133/UpdateProduct`,
+        url: `http://api.duocmyphamhaiduong.com/UpdateProduct`,
         data: info,
         type: 'PUT',
         success: function () {
@@ -82,7 +70,7 @@ var editRow = function (info) {
 var deleteRow = function (id, callback) {
 
     var request = new XMLHttpRequest();
-    request.open("DELETE", `http://localhost:57133/DeleteProduct?productID=${id}`);
+    request.open("DELETE", `http://api.duocmyphamhaiduong.com/DeleteProduct?productID=${id}`);
     request.send();
     request.onload = function () {
         if (request.status == 200) {
@@ -96,7 +84,7 @@ var deleteRow = function (id, callback) {
 }
 
 var addRow = function (info, row) {
-    $.post(`http://localhost:57133/InsertProduct`, info)
+    $.post(`http://api.duocmyphamhaiduong.com/InsertProduct`, info)
         .done(function (data) {
             toastr.success("Thêm thông tin sản phẩm thành công");
             console.log(data);
@@ -118,7 +106,7 @@ var table = $("#table").DataTable(
     {
         ajax:
         {
-            url: `http://localhost:57133/GetProducts?memberID=${userID}`,
+            url: `http://api.duocmyphamhaiduong.com/GetProducts?memberID=${userID}`,
             dataSrc: ''
         },
         columns: [
@@ -178,14 +166,50 @@ $("#table").on('click', ".cancel-row", function (e) {
 
 $("#table").on('click', ".remove-row", function (e) {
     e.preventDefault();
-    if (!$(this).parent().parent().hasClass("adding")) {
-        var id = $($(this).parent().parent().children("td")[0]).text();
-        deleteRow(id, () => {
-            table.row($(this).parent().parent()).remove().draw();
-        });
-        return;
-    }
-    table.row($(this).parent().parent()).remove().draw();
+    var _self = {
+        $cancel: $('#dialogCancel'),
+        $confirm: $("#dialogConfirm"),
+        $wrapper: $("#dialog")
+    };
+    var $this = this;
+    $.magnificPopup.open({
+        items: {
+            src: '#dialog',
+            type: 'inline'
+        },
+        preloader: false,
+        modal: true,
+        callbacks: {
+            change: function () {
+                _self.$confirm.on('click', function (e) {
+                    e.preventDefault();
+                    if (!$($this).parent().parent().hasClass("adding")) {
+                        var id = $($($this).parent().parent().children("td")[0]).text();
+                        deleteRow(id, () => {
+                            table.row($($this).parent().parent()).remove().draw();
+                        });
+
+                    } else {
+                        table.row($($this).parent().parent()).remove().draw();
+                    }
+                    $.magnificPopup.close();
+                });
+
+
+                _self.$cancel.on('click', function (e) {
+                    e.preventDefault();
+                    $.magnificPopup.close();
+                });
+            },
+            close: function () {
+                _self.$cancel.on('click', function (e) {
+                    e.preventDefault();
+                    $.magnificPopup.close();
+                });
+            }
+        }
+    });
+    
 });
 
 $("#addToTable").click(function () {
@@ -205,5 +229,5 @@ $("#addToTable").click(function () {
 
 });
 
-getExchangeRate();
+//getExchangeRate();
 

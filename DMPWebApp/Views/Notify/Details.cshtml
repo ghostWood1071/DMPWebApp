@@ -115,7 +115,7 @@
 
         var postNotify = function (title, content, receiver, isSendAll) {
             $.ajax({
-                url: 'http://localhost:57133/api/Notify',
+                url: 'http://api.duocmyphamhaiduong.com/api/Notify',
                 type: 'PUT',
                 data: {
                     NotifyID: id,
@@ -147,7 +147,7 @@
         $('#txtMemberIDAdd').on('input', function () {
             var val = $(this).val();
             if (val.length == 8) {
-                $.get(`http://localhost:57133/GetMember?id=${val}`)
+                $.get(`http://api.duocmyphamhaiduong.com/GetMember?id=${val}`)
                     .done(function (data) {
                         if (data.length > 0) {
                             console.log(data[0].FullName);
@@ -179,7 +179,7 @@
                     postNotify(title, content, receiver, isSendAll);
         })
 
-        $.get(`http://localhost:57133/api/Notify/${Number(id)}`)
+        $.get(`http://api.duocmyphamhaiduong.com/api/Notify/${Number(id)}`)
             .done(function (data) {
                 console.log(data);
                 $('#title').val(data.Title);

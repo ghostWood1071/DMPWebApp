@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 
 namespace DMPWebApp.Controllers
 {
@@ -70,21 +72,32 @@ namespace DMPWebApp.Controllers
 
         // POST: Profile/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public string Edit()
         {
-            if (!Auth.Authenthicate(Session))
-            {
-                return Redirect("/Login");
-            }
             try
             {
-                // TODO: Add update logic here
+                HttpPostedFileBase file = Request.Files[0];
+                string folderName = Request.Form["personal"];
+                string fileName = file.FileName;
+                string url = Server.MapPath("~/Assets/avatar/")+folderName;
+                if (!Directory.Exists(url))
+                    Directory.CreateDirectory(url);
 
-                return RedirectToAction("Index");
+                if (System.IO.File.Exists(url + '/' + file.FileName))
+                {
+                    int size = Directory.GetFiles(url, file.FileName + "*").Length;
+                    fileName = file.FileName.Substring(0, file.FileName.LastIndexOf(".")) + size + file.FileName.Substring(file.FileName.LastIndexOf("."));
+                }
+
+                file.SaveAs(url + "/" + fileName);
+
+                return "/Assets/avatar/" +folderName+ "/" + fileName;
+
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                Debug.WriteLine(e.Message);
+                return "fail";
             }
         }
 
@@ -115,6 +128,34 @@ namespace DMPWebApp.Controllers
             catch
             {
                 return View();
+            }
+        }
+
+        [HttpPost]
+        public string UploadAvatar(string memberID)
+        {
+            try
+            {
+                string fileName = "";
+                string url = Server.MapPath("~/Asset/avatar/") + memberID;
+                HttpPostedFileBase file = Request.Files[0];
+                if (!Directory.Exists(url))
+                    Directory.CreateDirectory(url);
+
+                if (System.IO.File.Exists(url+'/'+file.FileName))
+                {
+                    int size =  Directory.GetFiles(url, file.FileName + "*").Length;
+                    fileName = file.FileName.Substring(0, file.FileName.LastIndexOf(".")) + size;
+                }
+
+                file.SaveAs(url + "/" + fileName);
+
+                return url + "/" + fileName;
+
+            } catch(Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                return "fail";
             }
         }
     }

@@ -120,7 +120,7 @@
     <script src="~/Assets/vendor/morris/morris.js"></script>
     <script>
         var id='TV000001'
-        $.get(`http://localhost:57133/ReportMemberQuantityByLevel?id=${id}`).done(
+        $.get(`http://api.duocmyphamhaiduong.com/ReportMemberQuantityByLevel?id=${id}`).done(
             function (res) {
                 var level = res[0]
                 var data = [
@@ -156,7 +156,7 @@
                 config.element = 'bar-chart';
                 Morris.Bar(config);
             })
-        $.get(`http://localhost:57133//ReportMemberQuantityByPosition?id=${id}`).done(
+        $.get(`http://api.duocmyphamhaiduong.com//ReportMemberQuantityByPosition?id=${id}`).done(
             function (res) {
                 data = res[0];
                 $('#pos1')[0].textContent = data.TruongPhong

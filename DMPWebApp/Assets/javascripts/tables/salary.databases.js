@@ -9,7 +9,7 @@
 
 		$('#default-table').dataTable({
 			ajax: {
-				"url": `http://localhost:57133/GetSalary?id=${UserID}&year=${year}`,
+				"url": `http://api.duocmyphamhaiduong.com/GetSalary?id=${UserID}&year=${year}`,
 				"dataSrc":""
 			},
 			columns: [

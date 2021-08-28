@@ -136,7 +136,7 @@
         $('#txtMemberIDAdd').on('input', function () {
             var val = $(this).val();
             if (val.length == 8) {
-                $.get(`http://localhost:57133/GetMember?id=${val}`)
+                $.get(`http://api.duocmyphamhaiduong.com/GetMember?id=${val}`)
                     .done(function (data) {
                         if (data.length>0) {
                             console.log(data[0].FullName);

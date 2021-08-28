@@ -4,7 +4,7 @@
 
     <!-- Basic -->
     <meta charset="UTF-8">
-
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>@ViewBag.Title</title>
 
     <!-- Mobile Metas -->
@@ -91,14 +91,14 @@
                                     </li>
                                     <li>
                                         <a href="#" class="clearfix">
-                                           
+
                                             <span class="title">Đơn hàng mới</span>
                                             <span class="message">Hôm nay</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#" class="clearfix">
-                                            
+
                                             <span class="title">Đổi mật khẩu thành công</span>
                                             <span class="message">25/7/2021</span>
                                         </a>
@@ -217,7 +217,7 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        
+
 
                                     </ul>
                                 </li>
@@ -240,29 +240,29 @@
                                             </a>
                                         </li>
 
-                                            <li class="nav-parent">
-                                                <a>
-                                                    <i class="fa fa-users" aria-hidden="true"></i>
-                                                    <span>Quản lý cấp dưới</span>
-                                                </a>
-                                                <ul class="nav nav-children">
-                                                    <li>
-                                                        <a href="/Member/LowerMember">
-                                                            Danh sách cấp dưới
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="/Member/OrgChartMember">
-                                                            Cây phân cấp thành viên
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="/Member/StatisticsMember">
-                                                            Thống kê cấp dưới
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
+                                        <li class="nav-parent">
+                                            <a>
+                                                <i class="fa fa-users" aria-hidden="true"></i>
+                                                <span>Quản lý cấp dưới</span>
+                                            </a>
+                                            <ul class="nav nav-children">
+                                                <li>
+                                                    <a href="/Member/LowerMember">
+                                                        Danh sách cấp dưới
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/Member/OrgChartMember">
+                                                        Cây phân cấp thành viên
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/Member/StatisticsMember">
+                                                        Thống kê cấp dưới
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -280,13 +280,14 @@
 
     <!--dialog-->
     @RenderSection("div", false);
-   
+
     <!-- Vendor -->
     <script src="~/Assets/vendor/jquery/jquery.js"></script>
     <script src="~/Assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
     <script src="~/Assets/vendor/bootstrap/js/bootstrap.js"></script>
     <script src="~/Assets/vendor/nanoscroller/nanoscroller.js"></script>
     <script src="~/Assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="~/Assets/vendor/bootstrap-datepicker/js/locales/bootstrap-datepicker.vi.js"></script>
     <script src="~/Assets/vendor/magnific-popup/magnific-popup.js"></script>
     <script src="~/Assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
 
@@ -294,9 +295,10 @@
     <script src="~/Assets/vendor/select2/select2.js"></script>
     <script src="~/Assets/vendor/jquery-datatables/media/js/jquery.dataTables.js"></script>
     <script src="~/Assets/vendor/jquery-datatables-bs3/assets/js/datatables.js"></script>
+    <script src="~/Assets/vendor/jquery-datatables/media/js/dataTable.date.format.js"></script>
     <script src="~/Assets/vendor/jquery-autosize/jquery.autosize.js"></script>
     <script src="~/Assets/vendor/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
-
+    <script src="~/Assets/vendor/moment/moment.js"></script>
     <!-- Theme Base, Components and Settings -->
     <script src="~/Assets/javascripts/theme.js"></script>
 

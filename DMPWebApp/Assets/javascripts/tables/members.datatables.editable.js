@@ -15,7 +15,7 @@
         }
     ]
     //function LoadData() {   
-    //    $.get(`http://localhost:57133/GetMembers`).done(
+    //    $.get(`http://api.duocmyphamhaiduong.com/GetMembers`).done(
     //        function (data) {
     //            console.log(data);
     //        }

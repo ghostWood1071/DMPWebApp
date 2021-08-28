@@ -5,6 +5,7 @@
 
 @section css{
     <link rel="stylesheet" href="~/Assets/stylesheets/tree.css" />
+    <link rel="stylesheet" href="~/Assets/vendor/toast/toastr.min.css"/>
 }
 <section role="main" class="content-body">
     <header class="page-header">
@@ -44,11 +45,11 @@
                                     <div class="thumb-info mb-md avatar-container">
                                         <img id="avatar" src="~/Assets/images/avt.jpg" class="rounded img-responsive" alt="John Doe">
                                         <div class="thumb-info-title">
-                                            <span class="thumb-info-inner">Phạm Văn Thành</span>
-                                            <span class="thumb-info-type">Giám đốc</span>
+                                            <span class="thumb-info-inner" id="img-name">Phạm Văn Thành</span>
+                                            <span class="thumb-info-type" id="pos">Giám đốc</span>
                                         </div>
                                         <div class="edit-avatar">
-                                            <input accept="image/*" type="file" class="img-load" onchange="previewAvatar()"/>
+                                            <input accept="image/*" type="file" class="img-load" onchange="previewAvatar()" id="img-input"/>
                                         </div>
                                         
                                     </div>
@@ -57,10 +58,9 @@
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Họ tên</label>
                                         <div class="col-md-9">
-                                            <input value="Phạm Văn Thành" type="text" class="form-control">
+                                            <input value="Phạm Văn Thành" type="text" class="form-control" id="name">
                                         </div>
                                     </div>
-
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Ngày sinh</label>
@@ -69,7 +69,7 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </span>
-                                                <input value="28/8/1987" type="text" data-plugin-datepicker class="form-control">
+                                                <input value="28/8/1987" type="text" data-plugin-datepicker class="form-control" id="birth">
                                             </div>
                                         </div>
                                     </div>
@@ -77,8 +77,8 @@
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Giới tính</label>
                                         <div class="col-md-3">
-                                            <select class="form-control" data-plugin-multiselect id="ms_example1">
-                                                <option value="1" selected>Nam</option>
+                                            <select class="form-control" data-plugin-multiselect id="gender" >
+                                                <option value="1">Nam</option>
                                                 <option value="0">Nữ</option>
                                             </select>
                                         </div>
@@ -86,32 +86,15 @@
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Địa chỉ</label>
-                                        <div class="col-md-9" style="padding-left:0; padding-right:0">
-                                            <div class="col-md-6">
-
-                                                <select data-plugin-selectTwo class="form-control populate">
-                                                    <option>Hải Dương</option>
-                                                    <option>Hưng Yên</option>
-                                                    <option>Hải Phòng</option>
-                                                    <option>Hà Nội</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <select data-plugin-selectTwo class="form-control populate">
-                                                    <option>Thành phố Hải Dương</option>
-                                                    <option>Huyện Khoái Châu</option>
-                                                    <option>Huyện Thanh Oai</option>
-                                                    <option>Quận Đống Đa</option>
-                                                </select>
-                                            </div>
+                                        <div class="col-md-9">
+                                            <input value="Phạm Văn Thành" type="text" class="form-control" id="address">
                                         </div>
-
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Số CMND</label>
                                         <div class="col-md-9">
-                                            <input value="030087001720" type="text" class="form-control">
+                                            <input value="030087001720" type="text" class="form-control" id="iden-num">
                                         </div>
                                     </div>
 
@@ -122,7 +105,7 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </span>
-                                                <input value="13/9/2017" type="text" data-plugin-datepicker class="form-control">
+                                                <input value="13/9/2017" type="text" data-plugin-datepicker class="form-control" id="publish-date">
                                             </div>
                                         </div>
                                     </div>
@@ -130,27 +113,27 @@
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Nơi cấp(CMND)</label>
                                         <div class="col-md-9">
-                                            <input value="Cục Cảnh sát ĐKQL cư trú và DLQG về dân cư" type="text" class="form-control">
+                                            <input value="Cục Cảnh sát ĐKQL cư trú và DLQG về dân cư" type="text" class="form-control" id="publish-add">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Số điện thoại</label>
                                         <div class="col-md-9">
-                                            <input value="0987503999" type="tel" class="form-control">
+                                            <input value="0987503999" type="tel" class="form-control" id="phone">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Email</label>
                                         <div class="col-md-9">
-                                            <input value="phamvanthanh@gmail.com" type="email" class="form-control">
+                                            <input value="phamvanthanh@gmail.com" type="email" class="form-control" id="email">
                                         </div>
                                     </div>
 
                                     <div class="row btn-save">
                                         <div class="col-md-9 col-md-offset-3">
-                                            <button type="submit" class="btn btn-primary">Lưu</button>
+                                            <button type="submit" class="btn btn-primary" onclick="saveprofile()">Lưu</button>
                                         </div>
                                     </div>
 
@@ -173,35 +156,35 @@
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Tên đăng nhập</label>
                                         <div class="col-md-9">
-                                            <input value="TV000001" type="text" class="form-control">
+                                            <input value="TV000001" type="text" class="form-control" id="userID">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Mật khẩu cũ</label>
                                         <div class="col-md-9">
-                                            <input type="password" class="form-control">
+                                            <input type="password" class="form-control" id="old-pass">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Mật khẩu mới</label>
                                         <div class="col-md-9">
-                                            <input type="password" class="form-control">
+                                            <input type="password" class="form-control" id="new-pass">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Nhắc lại mật khẩu</label>
                                         <div class="col-md-9">
-                                            <input type="password" class="form-control">
+                                            <input type="password" class="form-control" id="re-pass">
                                         </div>
                                     </div>
 
 
                                     <div class="row btn-save">
                                         <div class="col-md-9 col-md-offset-3">
-                                            <button type="submit" class="btn btn-primary">Lưu</button>
+                                            <button type="submit" class="btn btn-primary" id="btn-change" onclick="chagnePass()">Lưu</button>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -218,21 +201,91 @@
 </section>
 
 @section script{
+    <script src="~/Assets/vendor/toast/toastr.min.js"></script>
     <script>
+        var userID = sessionStorage.getItem('userID');
+       
+        var uploadImg = function (memberID) {
+
+            return new Promise(function (resolve, reject) {
+                var form = new FormData();
+                var fileInput = $('#img-input')[0].files[0];
+                form.append((memberID + "/" + fileInput.name), fileInput);
+                form.append("personal", userID);
+
+                $.ajax({
+                    url: '/Profile/Edit',
+                    type: "POST",
+                    contentType: false, // Not to set any content header  
+                    processData: false, // Not to process data  
+                    data: form,
+                    success: function (result) {
+                        resolve(result);
+                    },
+                    error: function (err) {
+                        reject(err);
+                    }
+                });
+            });
+        }
+
+        var loadInfo = function () {
+            $.get(`http://localhost:57133/GetMember?id=${sessionStorage.getItem('userID')}`, function (data) {
+                var profile = data[0];
+                $('#name').val(profile.FullName);
+                $('#birth').val(profile.Birthday);
+                $('#gender').val(profile.Gender);
+                if (profile.Gender === 'Nam')
+                    $('#gender').val(1);
+                else
+                    $('#gender').val(0);
+                $('#address').val(profile.Address);
+                $('#iden-num').val(profile.IDCard);
+                $('#publish-date').val(profile.IDCard_DateIssue);
+                $('#publish-add').val(profile.IDCard_PlaceIssue);
+                $('#phone').val(profile.Phone);
+                $('#email').val(profile.Email);
+                $('#avatar').attr('src', profile.Avatar);
+                $('#img-name').text(profile.FullName);
+                $('#pos').text(profile.PositionID);
+                $('#userID').val(sessionStorage.getItem('userID'));
+                console.log(profile);
+            })
+        }
+
         var disable = function () {
             $('.tabs').find('input').prop('disabled', true);
             $('select').prop('disabled', true);
         };
+
         var enable = function (edit) {
             var parent = $(edit).parent().next();
             console.log(parent);
             parent.find('input').prop('disabled', false);
             parent.find('select').prop('disabled', false);
         }
+
+        var checkPass = function (uid, pass) {
+            return new Promise(function (resolve, reject) {
+                $.post('http://localhost:57133/CheckPass', { uid: uid, pass: pass })
+                    .done(function (data) {
+                        resolve(data);
+                    })
+                    .fail(function (err) {
+                        reject(err);
+                    });
+            });
+            
+        }
+
         disable();
+
         $('.img-load').hide();
+
         $('.btn-save').hide();
+
         var state = false;
+
         $('.edit-infor').click(function (e) {
             e.preventDefault();
 
@@ -267,7 +320,83 @@
             }
         }
 
+        async function saveprofile() {
+            var src = await uploadImg(userID);
 
+            $.ajax({
+                url: 'http://localhost:57133/UpdateProfile',
+                type: 'PUT',
+                data: {
+                    ID: userID,
+                    FullName: $('#name').val(),
+                    Gender: $('#gender').val() == 0 ? false : true,
+                    Email: $('#email').val(),
+                    BirthDay: (new Date($('#birth').val()).toISOString()),
+                    Phone: $('#phone').val(),
+                    Address: $('#address').val(),
+                    IDCard: $('#iden-num').val(),
+                    IDPlace: $('#publish-add').val(),
+                    IDDate: (new Date($('#publish-date').val()).toISOString()),
+                    Avatar: src
+                },
+                success: function () {
+                    location.reload();
+                },
+                error: function () {
+
+                }
+            })
+        }
+
+        async function chagnePass () {
+            var uid = sessionStorage.getItem('userID');
+            var oldPass = $('#old-pass').val().trim();
+            var newPass = $('#new-pass').val().trim();
+            var repasss = $('#re-pass').val().trim();
+            if (oldPass == "") {
+                toastr.error("Mật khẩu cũ trống!");
+                return;
+            }
+
+            if (repasss == "" || newPass == "") {
+                toastr.error("Mật khẩu mới rỗng")
+                return;
+            }
+
+
+            if (newPass != repasss) {
+                toastr.error("Mật khẩu mới không khớp");
+                return;
+            }
+
+            var check = await checkPass(uid, oldPass);
+            if (!check) {
+                toastr.error("Mật khẩu cũ không khớp");
+                return;
+            }
+
+            $.ajax({
+                url: 'http://localhost:57133/ChangePass',
+                type: 'PUT',
+                data: {
+                    uid: uid,
+                    pass: newPass
+                },
+                success: function () {
+                    toastr.success("Đổi mật khẩu thành công");
+                    $('#old-pass').val("");
+                    $('#new-pass').val("");
+                    $('#re-pass').val("")
+
+                },
+                fail: function () {
+                    toastr.error("Đổi mật khẩu thất bại");
+                }
+            })
+
+        }
+
+        loadInfo();
     </script>
 }
 

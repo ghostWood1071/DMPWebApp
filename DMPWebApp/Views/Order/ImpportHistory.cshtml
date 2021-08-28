@@ -56,7 +56,7 @@
     <script>
         $('#table').DataTable({
             ajax: {
-                url: `http://localhost:57133/GetOrders?memberID=${sessionStorage.getItem('userID')}`,
+                url: `http://api.duocmyphamhaiduong.com/GetOrders?memberID=${sessionStorage.getItem('userID')}`,
                 dataSrc: ''
             },
             columns: [

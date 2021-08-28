@@ -111,7 +111,9 @@
 		$(function() {
 			$('[data-plugin-datepicker]').each(function() {
 				var $this = $( this ),
-					opts = {};
+					opts = {
+						format: 'mm/dd/yyyy'
+					};
 
 				var pluginOptions = $this.data('plugin-options');
 				if (pluginOptions)
