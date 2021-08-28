@@ -23,6 +23,14 @@ namespace DMPWebApp.Controllers
         {
             return View();
         }
+        public ActionResult MemberPoint()
+        {
+            if (!Auth.Authenthicate(Session))
+            {
+                return Redirect("/Login");
+            }
+            return View();
+        }
         public ActionResult LowerMember()
         {
             if (!Auth.Authenthicate(Session))

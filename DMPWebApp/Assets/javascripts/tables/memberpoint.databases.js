@@ -9,27 +9,16 @@
 
 		$('#default-table').dataTable({
 			ajax: {
-				"url": `http://localhost:57133/GetSalary?id=${UserID}&year=${year}`,
-				"dataSrc":""
+				"url": `http://localhost:57133/GetMemberPoint?id=${UserID}&year=${year}`,
+				"dataSrc": ""
 			},
 			columns: [
-				{ data: "Month" }, 
-				{
-					data: "SalaryByLower", render: function (data, type, row) {
-						return data.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-					}},
-				{
-					data: "SalaryByImmediate", render: function (data, type, row) {
-						return data.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-					}},
-				{
-					data: "SalaryByManager", render: function (data, type, row) {
-						return data.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-					}},
-				{
-					data: "SumSalary", render: function (data, type, row) {
-						return data.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-					}}
+				{ data: "Month" },
+				{ data: "AccumulatedMark" },
+				{ data: "ImmediateMark" },
+				{ data: "MediateMark" },
+				{ data: "UsedMark" },
+				{ data: "TotalMark" }
 			],
 			"order": [[1, 'asc']],
 			"paging": false,
@@ -45,11 +34,13 @@
 		});
 
 	};
+
 	$("#year").change(function () {
 		var year = $('#year')[0].value;
 		const table = $('#default-table').DataTable();
-		table.ajax.url(`http://localhost:57133/GetSalary?id=${UserID}&year=${year}`).load();
+		table.ajax.url(`http://localhost:57133/GetMemberPoint?id=${UserID}&year=${year}`).load();
 	});
+
 	$(function () {
 		datatableInit();
 	});
