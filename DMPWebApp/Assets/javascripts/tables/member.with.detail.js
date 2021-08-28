@@ -6,7 +6,7 @@
 
 
     var datatableInit = function () {
-        var UserID = 'TV000001';
+        var UserID = sessionStorage.getItem("userID");
 
         var $table = $('#datatable-details');
 
@@ -69,6 +69,7 @@
                 "infoFiltered": "(lọc từ _MAX_ bản ghi)"
             }
         });
+
         // add a listener
         $table.on('click', 'i[data-toggle]', function () {
             var $this = $(this),

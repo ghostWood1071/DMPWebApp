@@ -2,8 +2,67 @@
 (function ($) {
 
     'use strict';
+    var GetMemberDetail = function (id) {
+        $.get(`http://localhost:57133/GetMember?id=${id}`).done(
+            function (details) {
+                $('#' + id).children()[0].textContent = details[0].Email;
+                $('#' + id).children()[2].textContent = details[0].ReferralID;
+                $('#' + id).children()[3].textContent = details[0].IDCard;
+                $('#' + id).children()[4].textContent = details[0].IDCard_DateIssue;
+                $('#' + id).children()[5].textContent = details[0].IDCard_PlaceIssue;
+                $('#' + id).children()[6].textContent = details[0].IsActive;
+            }
+        )
+    }
 
+    var EditMember = function (member, callback) {
+        $.ajax({
+            url: "http://localhost:57133/UpdateMember",
+            type: "PUT",
+            contentType: "application/json;charset=utf-8",
+            data: JSON.stringify(member),
+            dataType: "json",
+            success: function (response) {
+                callback()
+            },
 
+            error: function (x, e) {
+                alert('Failed');
+            }
+        });
+    }
+
+    var AddMember = function (member, callback) {
+        $.ajax({
+            url: "http://localhost:57133/api/Members",
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            data: JSON.stringify(member),
+            dataType: "json",
+            success: function (response) {
+                callback()
+            },
+
+            error: function (x, e) {
+                alert('Failed');
+            }
+        });
+    }
+
+    var DeleteMember = function (id, callback) {
+        $('.details').remove();
+        $.ajax({
+            url: "http://localhost:57133//api/Members/" + id,
+            type: "DELETE",
+            contentType: "application/json",
+            success: function () {
+                callback()
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("some error");
+            }
+        });
+    }
 
     var datatableInit = function () {
         var $table = $('#datatable-details');
@@ -89,20 +148,11 @@
                 $this.removeClass('fa-plus-square-o').addClass('fa-minus-square-o');
                 datatable.fnOpen(tr, fnFormatDetails(datatable, tr, id), 'details');
 
-                $.get(`http://api.duocmyphamhaiduong.com/GetMember?id=${id}`).done(
-                    function (details) {
-                        $('#' + id).children()[0].textContent = details[0].Email;
-                        $('#' + id).children()[2].textContent = details[0].ReferralID;
-                        $('#' + id).children()[3].textContent = details[0].IDCard;
-                        $('#' + id).children()[4].textContent = details[0].IDCard_DateIssue;
-                        $('#' + id).children()[5].textContent = details[0].IDCard_PlaceIssue;
-                        $('#' + id).children()[6].textContent = details[0].IsActive;
-                    }
-                )
+                GetMemberDetail(id);
             }
         });
     };
-
+    
     //Handle
     $(document).ready(function () {
         name = "";
@@ -185,22 +235,11 @@
             member.RoleID = role;
             member.IsActive = isactive;
             member.Avatar = null;
-           
-                $.ajax({
-                    url: "http://api.duocmyphamhaiduong.com/UpdateMember",
-                    type: "PUT",
-                    contentType: "application/json;charset=utf-8",
-                    data: JSON.stringify(member),
-                    dataType: "json",
-                    success: function (response) {
-                        const table = $("#datatable-details").DataTable();
-                        table.ajax.reload(null, false);
-                    },
 
-                    error: function (x, e) {
-                        alert('Failed');
-                    }
-                });
+                EditMember(member, () => {
+                    const table = $("#datatable-details").DataTable();
+                    table.ajax.reload(null, false);
+                })
             }
         });
 
@@ -248,21 +287,10 @@
             member.IsActive = isactive;
             member.Avatar = null;
             
-                $.ajax({
-                    url: "http://api.duocmyphamhaiduong.com/api/Members",
-                    type: "POST",
-                    contentType: "application/json;charset=utf-8",
-                    data: JSON.stringify(member),
-                    dataType: "json",
-                    success: function (response) {
-                        const table = $("#datatable-details").DataTable();
-                        table.ajax.reload(null, false);
-                    },
-
-                    error: function (x, e) {
-                        alert('Failed');
-                    }
-                });
+                AddMember(member, () => {
+                    const table = $("#datatable-details").DataTable();
+                    table.ajax.reload(null, false);
+                })
                 $('.workform#dialogAddmember').hide();
             }
            
@@ -282,7 +310,8 @@
     });
     $(document).on('click', '.exit', function () {
         $('.workform').hide();
-    }); 
+    });
+
     $(document).ready(function () {
 
         $(document).on('click', '.removeMember', function () {
@@ -291,10 +320,8 @@
                 $confirm: $("#dialogConfirm"),
                 $wrapper: $("#dialog")
             };
-            var row = $('.editt-row').parent().parent().children('td')[1];
             var hang = $(this).parent().parent()
             var id = ($(this).parent().siblings()[1]).textContent
-            var data = $(row).text();
             // $.post("./google.com", data ,function(response){
 
             // }, 'json')
@@ -310,18 +337,11 @@
                         _self.$confirm.on('click', function (e) {
                             e.preventDefault();
                             hang.detach();
-                            $('.details').remove();
 
-                            $.ajax({
-                                url: "http://api.duocmyphamhaiduong.com//api/Members/" + id,
-                                type: "DELETE", // <- Change here
-                                contentType: "application/json",
-                                success: function () {
-                                },
-                                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                                    alert("some error");
-                                }
-                            });
+                            DeleteMember(id, () => {
+                                const table = $("#datatable-details").DataTable();
+                                table.ajax.reload(null, false);
+                            })
 
                             $.magnificPopup.close();
                         });

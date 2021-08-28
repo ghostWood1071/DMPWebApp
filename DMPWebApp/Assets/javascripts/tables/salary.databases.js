@@ -2,10 +2,10 @@
 (function ($) {
 
 	'use strict';
-
+	var UserID = sessionStorage.getItem("userID");
 	var datatableInit = function () {
-		var UserID = 'TV000001';
-		var year = 2020//$('#year')[0].value;
+		
+		var year = $('#year')[0].value;
 
 		$('#default-table').dataTable({
 			ajax: {
@@ -14,12 +14,22 @@
 			},
 			columns: [
 				{ data: "Month" }, 
-				{ data: "AccumulatedMark"},
-				{ data: "ImmediateMark"},
-				{ data: "MediateMark"},
-				{ data: "UsedMark"},
-				{ data: "TotalMark"},
-				{ data: "Salary"}
+				{
+					data: "SalaryByLower", render: function (data, type, row) {
+						return data.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+					}},
+				{
+					data: "SalaryByImmediate", render: function (data, type, row) {
+						return data.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+					}},
+				{
+					data: "SalaryByManager", render: function (data, type, row) {
+						return data.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+					}},
+				{
+					data: "SumSalary", render: function (data, type, row) {
+						return data.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+					}}
 			],
 			"order": [[1, 'asc']],
 			"paging": false,
@@ -35,7 +45,11 @@
 		});
 
 	};
-
+	$("#year").change(function () {
+		var year = $('#year')[0].value;
+		const table = $('#default-table').DataTable();
+		table.ajax.url(`http://localhost:57133/GetSalary?id=${UserID}&year=${year}`).load();
+	});
 	$(function () {
 		datatableInit();
 	});

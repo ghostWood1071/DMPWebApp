@@ -119,8 +119,8 @@
     <script src="~/Assets/vendor/raphael/raphael.js"></script>
     <script src="~/Assets/vendor/morris/morris.js"></script>
     <script>
-        var id='TV000001'
-        $.get(`http://api.duocmyphamhaiduong.com/ReportMemberQuantityByLevel?id=${id}`).done(
+        var id = sessionStorage.getItem("userID");
+        $.get(`http://localhost:57133/ReportMemberQuantityByLevel?id=${id}`).done(
             function (res) {
                 var level = res[0]
                 var data = [

@@ -48,6 +48,9 @@
             display: flex;
             justify-content: space-evenly;
         }
+        .body-sign{
+            max-width:400px !important;
+        }
     </style>
 </head>
 <body>
@@ -61,7 +64,7 @@
                 <div class="panel-title-sign mt-xl text-right">
                     <h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Đăng Nhập</h2>
                 </div>
-                <form class="panel-body" action="/Login/Create" method="post" onsubmit="login()">
+                <form class="panel-body" action="/Login/Create" method="post" onsubmit="login()" autocomplete="on">
                     <div>
                         <div class="form-group mb-lg">
                             <label>Tên đăng nhập</label>
@@ -101,7 +104,9 @@
                             </div>
                             
                         </div>
-
+                        <div class="row" style="text-align: center; padding-top: 10px;">
+                            <a href="#" style=""><label id="ForgetPas" >Quên mật khẩu?</label></a>
+                        </div>
                     </div>
 
                 </form>

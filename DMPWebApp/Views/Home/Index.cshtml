@@ -1,6 +1,9 @@
 ﻿@{
     ViewBag.Title = "Trang chủ";
 }
+@section css{
+    <link rel="stylesheet" href="~/Assets/stylesheets/popup.css">
+}
 
 <section role="main" class="content-body">
     <header class="page-header">
@@ -30,33 +33,31 @@
                     <div style="margin-top: 20px; display: flex; width: 23%; justify-content: space-between;">
                         <div>
                             <select name="year" id="year">
-                                <option value="">Năm 2021</option>
-                                <option value="">Năm 2020</option>
-                                <option value="">Năm 2019</option>
-                                <option value="">Năm 2018</option>
+                                <option value="2021" selected>Năm 2021</option>
+                                <option value="2020">Năm 2020</option>
+                                <option value="2019">Năm 2019</option>
                             </select>
                         </div>
 
                         <div>
                             <select name="month" id="month">
 
-                                <option value="1">Tháng 1</option>
-                                <option value="2">Tháng 2</option>
-                                <option value="3">Tháng 3</option>
-                                <option value="4">Tháng 4</option>
-                                <option value="5">Tháng 5</option>
-                                <option value="6">Tháng 6</option>
-                                <option value="7">Tháng 7</option>
-                                <option value="8">Tháng 8</option>
-                                <option value="9">Tháng 9</option>
-                                <option value="10">Tháng 10</option>
-                                <option value="11">Tháng 11</option>
-                                <option value="12">Tháng 12</option>
-                                <option value="12">Tháng 12</option>
-                                <option value="">Quý 1</option>
-                                <option value="">Quý 2</option>
-                                <option value="">Quý 3</option>
-                                <option value="">Quý 4</option>
+                                <option value="T1">Tháng 1</option>
+                                <option value="T2">Tháng 2</option>
+                                <option value="T3">Tháng 3</option>
+                                <option value="T4">Tháng 4</option>
+                                <option value="T5">Tháng 5</option>
+                                <option value="T6">Tháng 6</option>
+                                <option value="T7">Tháng 7</option>
+                                <option value="T8">Tháng 8</option>
+                                <option value="T9">Tháng 9</option>
+                                <option value="T10">Tháng 10</option>
+                                <option value="T11">Tháng 11</option>
+                                <option value="T12">Tháng 12</option>
+                                <option value="Q1">Quý 1</option>
+                                <option value="Q2">Quý 2</option>
+                                <option value="Q3" selected>Quý 3</option>
+                                <option value="Q4">Quý 4</option>
                             </select>
                         </div>
                     </div>
@@ -76,7 +77,7 @@
                                 <div class="widget-summary-col">
                                     <div class="summary">
                                         <div class="info">
-                                            <strong class="amount">50</strong>
+                                            <strong class="amount" id="CountLowerMembers">0</strong>
                                         </div>
                                     </div>
                                     <div class="summary-footer">
@@ -100,7 +101,7 @@
                                     <div class="summary">
 
                                         <div class="info">
-                                            <strong class="amount">500</strong>
+                                            <strong class="amount" id="CountOrders">0</strong>
                                         </div>
                                     </div>
                                     <div class="summary-footer">
@@ -124,7 +125,7 @@
                                 <div class="widget-summary-col">
                                     <div class="summary">
                                         <div class="info">
-                                            <strong class="amount">1281</strong>
+                                            <strong class="amount" id="Accmulation">0</strong>
                                         </div>
                                     </div>
                                     <div class="summary-footer">
@@ -148,7 +149,7 @@
                                 <div class="widget-summary-col">
                                     <div class="summary">
                                         <div class="info">
-                                            <strong class="amount">14,890,000,000 VND</strong>
+                                            <strong class="amount" id="Salary"> VND</strong>
                                         </div>
                                     </div>
                                     <div class="summary-footer">
@@ -172,69 +173,69 @@
                     <h2 class="panel-title">Thống kê</h2>
                 </header>
                 <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered mb-none">
+                    <div class="table-responsive" style="overflow:hidden">
+                        <table class="table table-bordered mb-none" id="default-table">
                             <thead>
                                 <tr>
-                                    <th  class="center">Tháng</th>
-                                    <th  class="center">Số thành viên</th>
-                                    <th  class="center">Số đơn hàng</th>
-                                    <th  class="center">Tổng điểm doanh số</th>
-                                    <th  class="center">Tổng doanh thu</th>
+                                    <th class="center" width="40px">Tháng</th>
+                                    <th class="center">Số thành viên</th>
+                                    <th class="center">Số đơn hàng</th>
+                                    <th class="center">Tổng điểm doanh số</th>
+                                    <th class="center">Tổng doanh thu (VNĐ)</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="center">1</td>
-                                    <td class="right">200</td>
-                                    <td class="right">5.000</td>
-                                    <td class="right">500.000</td>
-                                    <td class="right">100.000.000</td>
-                                </tr>
-                                <tr>
-                                    <td class="center">2</td>
-                                    <td class="right">200</td>
-                                    <td class="right">5.000</td>
-                                    <td class="right">500.000</td>
-                                    <td class="right">100.000.000</td>
-                                </tr>
-                                <tr>
-                                    <td class="center">3</td>
-                                    <td class="right">200</td>
-                                    <td class="right">5.000</td>
-                                    <td class="right">500.000</td>
-                                    <td class="right">100.000.000</td>
-                                </tr>
-                                <tr>
-                                    <td class="center">4</td>
-                                    <td class="right">200</td>
-                                    <td class="right">5.000</td>
-                                    <td class="right">500.000</td>
-                                    <td class="right">100.000.000</td>
-                                </tr>
-                                <tr>
-                                    <td class="center">5</td>
-                                    <td class="right">200</td>
-                                    <td class="right">5.000</td>
-                                    <td class="right">500.000</td>
-                                    <td class="right">100.000.000</td>
-                                </tr>
-                                <tr>
-                                    <td class="center">6</td>
-                                    <td class="right">200</td>
-                                    <td class="right">5.000</td>
-                                    <td class="right">500.000</td>
-                                    <td class="right">100.000.000</td>
-                                </tr>
-                                <tr>
-                                    <td class="center">7</td>
-                                    <td class="right">200</td>
-                                    <td class="right">5.000</td>
-                                    <td class="right">500.000</td>
-                                    <td class="right">100.000.000</td>
-                                </tr>
-                                
-                            </tbody>
+                            @*<tbody>
+                                    <tr>
+                                        <td class="center">1</td>
+                                        <td class="right">200</td>
+                                        <td class="right">5.000</td>
+                                        <td class="right">500.000</td>
+                                        <td class="right">100.000.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="center">2</td>
+                                        <td class="right">200</td>
+                                        <td class="right">5.000</td>
+                                        <td class="right">500.000</td>
+                                        <td class="right">100.000.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="center">3</td>
+                                        <td class="right">200</td>
+                                        <td class="right">5.000</td>
+                                        <td class="right">500.000</td>
+                                        <td class="right">100.000.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="center">4</td>
+                                        <td class="right">200</td>
+                                        <td class="right">5.000</td>
+                                        <td class="right">500.000</td>
+                                        <td class="right">100.000.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="center">5</td>
+                                        <td class="right">200</td>
+                                        <td class="right">5.000</td>
+                                        <td class="right">500.000</td>
+                                        <td class="right">100.000.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="center">6</td>
+                                        <td class="right">200</td>
+                                        <td class="right">5.000</td>
+                                        <td class="right">500.000</td>
+                                        <td class="right">100.000.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="center">7</td>
+                                        <td class="right">200</td>
+                                        <td class="right">5.000</td>
+                                        <td class="right">500.000</td>
+                                        <td class="right">100.000.000</td>
+                                    </tr>
+
+                                </tbody>*@
                         </table>
                     </div>
                 </div>
@@ -262,19 +263,19 @@
 
                                 <div id="salesSelectorItems" class="chart-data-selector-items mt-sm row">
                                     <!-- Flot: Sales JSOFT Admin -->
-                                    <div class="col-lg-6 col-md-6 col-xl-6">
+                                    <div class="col-lg-6 col-md-6 col-xl-6" style=" padding: 0px 0px 0px 35px;">
                                         <div class="text-center chart-custom">
                                             <label for="flotDashSales4">Số thành viên</label>
                                             <div class="chart chart-sm chart-active" data-sales-rel="JSOFT Admin" id="flotDashSales4"></div>
                                         </div>
-                                        
+
                                         <div class="text-center chart-custom">
                                             <label for="flotDashSales1">Điểm doanh số</label>
                                             <div class="chart chart-sm chart-active" data-sales-rel="JSOFT Admin" id="flotDashSales1"></div>
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-6 col-md-6 col-xl-6">
+                                    <div class="col-lg-6 col-md-6 col-xl-6 " style=" padding: 0px 0px 0px 35px;">
                                         <div class="text-center chart-custom">
                                             <label for="flotDashSales3">Số đơn hàng</label>
                                             <div class="chart chart-sm chart-active" data-sales-rel="JSOFT Admin" id="flotDashSales3"></div>
@@ -286,63 +287,6 @@
                                         </div>
                                     </div>
 
-                                    <script>
-                                        var flotDashSales1Data = [{
-                                            data: [
-                                                ["Jan", 200],
-                                                ["Feb", 200],
-                                                ["Mar", 190],
-                                                ["Apr", 140],
-                                                ["May", 250],
-                                                ["Jun", 320],
-                                                ["Jul", 270]
-                                                
-                                            ],
-                                            color: "#3f923f"
-                                        }];
-
-                                        var flotDashSales2Data = [{
-                                            data: [
-                                                ["Jan", 140],
-                                                ["Feb", 240],
-                                                ["Mar", 190],
-                                                ["Apr", 140],
-                                                ["May", 180],
-                                                ["Jun", 320],
-                                                ["Jul", 270]
-                                             
-                                            ],
-                                            color: "#e36159"
-                                        }];
-
-                                        var flotDashSales3Data = [{
-                                            data: [
-                                                ["Jan", 240],
-                                                ["Feb", 240],
-                                                ["Mar", 190],
-                                                ["Apr", 300],
-                                                ["May", 280],
-                                                ["Jun", 320],
-                                                ["Jul", 170]
-                                                
-                                            ],
-                                            color: "#2baab1"
-                                        }];
-
-                                        var flotDashSales4Data = [{
-                                            data: [
-                                                ["Jan", 240],
-                                                ["Feb", 240],
-                                                ["Mar", 190],
-                                                ["Apr", 300],
-                                                ["May", 280],
-                                                ["Jun", 320],
-                                                ["Jul", 170]
-                                                
-                                            ],
-                                            color: "#734ba9"
-                                        }];                                                                                                              // See: ~/Assets/javascripts/dashboard/examples.dashboard.js for more settings.
-                                    </script>
                                 </div>
 
                             </div>
@@ -372,8 +316,6 @@
     <script src="~/Assets/vendor/morris/morris.js"></script>
     <script src="~/Assets/vendor/gauge/gauge.js"></script>
     <script src="~/Assets/vendor/snap-svg/snap.svg.js"></script>
-    <script src="~/Assets/javascripts/dashboard/dashboard.js"></script>
-    <script>
 
-    </script>
+    <script src="~/Assets/javascripts/dashboard/dashboard.js"></script>
 }

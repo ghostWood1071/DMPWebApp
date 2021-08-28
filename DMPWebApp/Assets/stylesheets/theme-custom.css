@@ -1,9 +1,10 @@
 ﻿/* Add here all your CSS customizations */
 .chart-custom {
-    margin-top: 30px;
+    margin-bottom: 25px;
+    padding-right: 35px;
 }
 
-.mfp-content .modal-block .panel .panel-footer .row div button:first-child{
+.mfp-content .modal-block .panel .panel-footer .row div button:first-child {
     margin-right: 15px;
 }
 
@@ -12,12 +13,12 @@
     color: white;
 }
 
-.justify-content-center{
+.justify-content-center {
     display: flex;
     justify-content: center;
 }
 
-.form-change-password{
+.form-change-password {
     margin-top: 50px;
 }
 
@@ -26,7 +27,7 @@
     margin-bottom: 0px;
 }
 
-.control-config{
+.control-config {
     width: 32.5%;
     padding-top: 7px;
     padding-left: 10px;
@@ -35,15 +36,15 @@
     margin-top: 10px;
 }
 
-.control-config a:nth-child(2){
-    margin-left: 10px;
-}
+    .control-config a:nth-child(2) {
+        margin-left: 10px;
+    }
 
-.config-control-hidden{
+.config-control-hidden {
     display: none;
 }
 
-.justify-space-between{
+.justify-space-between {
     display: flex;
     justify-content: space-between;
 }
@@ -87,16 +88,16 @@
             background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
         }
 
-.edit-avatar{
-    position:absolute;
+.edit-avatar {
+    position: absolute;
     top: 40%;
     left: 30%;
 }
 
-.avartar-container img{
+.avartar-container img {
     width: 100%;
 }
 
-button{
+button {
     min-width: 100px;
 }
