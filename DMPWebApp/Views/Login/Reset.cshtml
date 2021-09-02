@@ -92,28 +92,9 @@
     <!-- Theme Initialization Files -->
     <script src="~/assets/javascripts/theme.init.js"></script>
     <script src="~/Assets/vendor/toast/toastr.min.js"></script>
-    <script>
-        http://localhost:57133/ChangePassWord?email=thinhquangshin%40gmail.com
-        $('.btn').click(function () {
-            if ($('.pass').val() == "") {
-                toastr.error("Email không được để trống");
-                return;
-            }
-            $.ajax({
-                url: `http://localhost:57133/ChangePassWord?email=${$('.pass').val().trim()}`,
-                type: 'PUT',
-                success: function (data) {
-                    toastr.success(data);
-                    
-                    setTimeout(function () {
-                        location.href = "/Login";
-                    }, 500);
-                },
-                error: function (error) {
-                    toastr.error(error);
-                }
-            })
-        })
+    <script src="~/Assets/javascripts/ResetPass.js">
+        
+        
     </script>
 </body>
 </html>

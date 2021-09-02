@@ -32,7 +32,7 @@
         // initialize
         var datatable = $table.dataTable({
             ajax: {
-                "url": `http://api.duocmyphamhaiduong.com/GetMembers`,
+                "url": `https://api.duocmyphamhaiduong.com/GetMembers`,
                 "dataSrc": ""
             },
             columns: [
@@ -89,7 +89,7 @@
                 $this.removeClass('fa-plus-square-o').addClass('fa-minus-square-o');
                 datatable.fnOpen(tr, fnFormatDetails(datatable, tr, id), 'details');
 
-                $.get(`http://localhost:57133/GetMember?id=${id}`).done(
+                $.get(`http://api.duocmyphamhaiduong.com/GetMember?id=${id}`).done(
                     function (details) {
                         $('#'+id).children()[0].textContent = details[0].Email;
                         $('#' + id).children()[2].textContent = details[0].ReferralID;

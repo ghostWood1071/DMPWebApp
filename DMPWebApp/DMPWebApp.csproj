@@ -131,10 +131,12 @@
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\SystemConfigController.cs" />
     <Compile Include="Extensions\Mailer.cs" />
+    <Compile Include="Extensions\VerifyRole.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\RoleFunction.cs" />
     <Compile Include="Models\UserResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -193,22 +195,31 @@
     <Content Include="Assets\images\projects\project-7.jpg" />
     <Content Include="Assets\images\projects\project.jpg" />
     <Content Include="Assets\images\widget-twitter-profile.jpg" />
-    <Content Include="Assets\javascripts\auth.js" />
+    <Content Include="Assets\javascripts\Config.js" />
     <Content Include="Assets\javascripts\dashboard\dashboard.js" />
+    <Content Include="Assets\javascripts\HistoryImport.js" />
     <Content Include="Assets\javascripts\jquery.validate.min.js" />
     <Content Include="Assets\javascripts\forms\examples.advanced.form.js" />
     <Content Include="Assets\javascripts\forms\examples.validation.js" />
     <Content Include="Assets\javascripts\forms\examples.wizard.js" />
+    <Content Include="Assets\javascripts\Login.js" />
     <Content Include="Assets\javascripts\maps\examples.gmap.js" />
     <Content Include="Assets\javascripts\maps\examples.map.builder.js" />
     <Content Include="Assets\javascripts\maps\examples.vector.maps.js" />
     <Content Include="Assets\javascripts\maps\snazzy.themes.js" />
+    <Content Include="Assets\javascripts\MemberStatistic.js" />
+    <Content Include="Assets\javascripts\MemberTree.js" />
+    <Content Include="Assets\javascripts\NotifyAdd.js" />
+    <Content Include="Assets\javascripts\NotifyDetail.js" />
+    <Content Include="Assets\javascripts\NotifyIndex.js" />
     <Content Include="Assets\javascripts\pages\decentralization.js" />
     <Content Include="Assets\javascripts\pages\examples.calendar.js" />
     <Content Include="Assets\javascripts\pages\examples.lockscreen.js" />
     <Content Include="Assets\javascripts\pages\examples.mediagallery.js" />
     <Content Include="Assets\javascripts\pages\examples.session.timeout.js" />
     <Content Include="Assets\javascripts\pages\examples.timeline.js" />
+    <Content Include="Assets\javascripts\Profile.js" />
+    <Content Include="Assets\javascripts\ResetPass.js" />
     <Content Include="Assets\javascripts\tables\memberpoint.databases.js" />
     <Content Include="Assets\javascripts\tables\product.handler.js" />
     <Content Include="Assets\javascripts\tables\examples.datatables.ajax.js" />
@@ -1980,9 +1991,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Tempt.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Member\Index.cshtml" />
@@ -1990,7 +1998,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Assets\avatar\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\javascripts\tables\member.with.detail.js" />
@@ -2011,6 +2018,7 @@
     <Content Include="Views\Login\Reset.cshtml" />
     <Content Include="Views\Order\ImpportHistory.cshtml" />
     <Content Include="Views\Member\MemberPoint.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

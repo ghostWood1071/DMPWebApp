@@ -14,6 +14,7 @@ namespace DMPWebApp.Controllers
             {
                 return Redirect("/Login");
             }
+            ViewData.Add("userfunc", "hello");
             return View();
         }
     }

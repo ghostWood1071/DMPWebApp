@@ -36,7 +36,6 @@
 
     <!-- Head Libs -->
     <script src="~/Assets/vendor/modernizr/modernizr.js"></script>
-
 </head>
 <body>
     <section class="body">
@@ -118,11 +117,11 @@
                 <div id="userbox" class="userbox">
                     <a href="#" data-toggle="dropdown">
                         <figure class="profile-picture">
-                            <img src="~/Assets/images/avt.jpg" alt="Joseph Doe" class="img-circle" data-lock-picture="~/Assets/images/!logged-user.jpg" />
+                            <img id="avatar-main" src="~/Assets/images/avt.jpg" alt="Joseph Doe" class="img-circle" data-lock-picture="~/Assets/images/!logged-user.jpg" />
                         </figure>
                         <div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
-                            <span class="name">Phạm Văn Thành</span>
-                            <span class="role">Chủ sở hữu</span>
+                            <span id="name-member" class="name">Phạm Văn Thành</span>
+                            <span id="role-member" class="role">Chủ sở hữu</span>
                         </div>
                         <i class="fa custom-caret"></i>
                     </a>
@@ -300,7 +299,7 @@
     <script src="~/Assets/vendor/select2/select2.js"></script>
     <script src="~/Assets/vendor/jquery-datatables/media/js/jquery.dataTables.js"></script>
     <script src="~/Assets/vendor/jquery-datatables-bs3/assets/js/datatables.js"></script>
-    <script src="~/Assets/vendor/jquery-datatables/media/js/dataTable.date.format.js"></script>
+    
     <script src="~/Assets/vendor/jquery-autosize/jquery.autosize.js"></script>
     <script src="~/Assets/vendor/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
     <script src="~/Assets/vendor/moment/moment.js"></script>
