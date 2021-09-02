@@ -3,7 +3,7 @@
 
     'use strict';
     var GetMemberDetail = function (id) {
-        $.get(`http://localhost:57133/GetMember?id=${id}`).done(
+        $.get(`http://api.duocmyphamhaiduong.com//GetMember?id=${id}`).done(
             function (details) {
                 $('#' + id).children()[0].textContent = details[0].Email;
                 $('#' + id).children()[2].textContent = details[0].ReferralID;
@@ -17,7 +17,7 @@
 
     var EditMember = function (member, callback) {
         $.ajax({
-            url: "http://localhost:57133/UpdateMember",
+            url: "http://api.duocmyphamhaiduong.com//UpdateMember",
             type: "PUT",
             contentType: "application/json;charset=utf-8",
             data: JSON.stringify(member),
@@ -34,7 +34,7 @@
 
     var AddMember = function (member, callback) {
         $.ajax({
-            url: "http://localhost:57133/api/Members",
+            url: "http://api.duocmyphamhaiduong.com//api/Members",
             type: "POST",
             contentType: "application/json;charset=utf-8",
             data: JSON.stringify(member),
@@ -52,7 +52,7 @@
     var DeleteMember = function (id, callback) {
         $('.details').remove();
         $.ajax({
-            url: "http://localhost:57133//api/Members/" + id,
+            url: "http://api.duocmyphamhaiduong.com//api/Members/" + id,
             type: "DELETE",
             contentType: "application/json",
             success: function () {
@@ -157,6 +157,10 @@
     $(document).ready(function () {
         name = "";
         $('#addToTablee').click(function () {
+            $.get(`http://api.duocmyphamhaiduong.com//GetNextMemberID`).done(
+                function (data) {
+                    ($('#fid')[0]).value = data;
+                });
             $('#dialogAddmember').show();
         });
 
@@ -299,11 +303,11 @@
 
 
         $(document).on('click', '.pas', function () {
-            var nodes = Array.prototype.slice.call(document.getElementById('ttable').children);
+            var nodes = Array.prototype.slice.call(document.getElementsByTagName('tbody')[0].children);
             var thistr = $(this).parent().parent().parent().parent().parent().parent('tr')[0]
 
             var index = nodes.indexOf(thistr);
-            var name = $($('#ttable').children()[index - 1]).find('td')[2].textContent
+            var name = $($($('tbody')[0]).children()[index - 1]).find('td')[2].textContent
             $('#sur span').text(name);
         });
 

@@ -234,6 +234,6 @@ $('#tableOrder').on('click', '.edit-row', function (e) {
     $('.order-id').text(orderID);
     console.log(orderID);
     ShowUpdateDialog();
-    putTable.ajax.url(`http://localhost:57133/GetDetails?memberID=${sessionStorage.getItem("userID")}&&orderID=${orderID}`).load().draw();
+    putTable.ajax.url(`http://api.duocmyphamhaiduong.com//GetDetails?memberID=${sessionStorage.getItem("userID")}&&orderID=${orderID}`).load().draw();
 });
 

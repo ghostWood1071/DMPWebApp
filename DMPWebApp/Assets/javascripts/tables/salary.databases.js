@@ -9,32 +9,41 @@
 
 		$('#default-table').dataTable({
 			ajax: {
-				"url": `http://api.duocmyphamhaiduong.com/GetSalary?id=${UserID}&year=${year}`,
+				"url": `http://api.duocmyphamhaiduong.com//GetSalary?id=${UserID}&year=${year}`,
 				"dataSrc":""
 			},
 			columns: [
 				{ data: "Month" }, 
 				{
-					data: "SalaryByLower", render: function (data, type, row) {
-						return data.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-					}},
+					data: "SalaryByLower", render: function (data, type, row) {	
+						if (data == null)
+							return 0;
+						return String(data).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+					}, className: 'right'},
 				{
 					data: "SalaryByImmediate", render: function (data, type, row) {
-						return data.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-					}},
+						if (data == null)
+							return 0;
+						return String(data).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+					}, className: 'right'},
 				{
 					data: "SalaryByManager", render: function (data, type, row) {
-						return data.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-					}},
+						if (data == null)
+							return 0;
+						return String(data).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+					}, className: 'right'},
 				{
 					data: "SumSalary", render: function (data, type, row) {
-						return data.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-					}}
+						if (data == null)
+							return 0;
+						return String(data).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+					}, className: 'right'}
 			],
 			"order": [[1, 'asc']],
 			"paging": false,
 			"ordering": false,
 			"info": false,
+			"searching": false,
 			"language": {
 				"lengthMenu": "Hiển thị _MENU_ bản ghi trên trang",
 				"zeroRecords": "Không có bản ghi nào",
@@ -48,7 +57,7 @@
 	$("#year").change(function () {
 		var year = $('#year')[0].value;
 		const table = $('#default-table').DataTable();
-		table.ajax.url(`http://localhost:57133/GetSalary?id=${UserID}&year=${year}`).load();
+		table.ajax.url(`http://api.duocmyphamhaiduong.com/GetSalary?id=${UserID}&year=${year}`).load();
 	});
 	$(function () {
 		datatableInit();

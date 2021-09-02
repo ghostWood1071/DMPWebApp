@@ -6,11 +6,11 @@
 
 		var year = $('#year')[0].value;
 		var key = ($('#month')[0]).value;
-		$.get(`http://localhost:57133//GetReportGenaral?id=${UserID}&year=${year}&key=${key}`).done(
+		$.get(`http://api.duocmyphamhaiduong.com//GetReportGenaral?id=${UserID}&year=${year}&key=${key}`).done(
 			function (table) {
 				$('#Accmulation')[0].textContent = table[0].Accmulation
-				$('#Salary')[0].textContent = table[0].Salary.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,') + " VNĐ"
-				$('#CountOrders')[0].textContent = table[0].CountOrders
+				$('#Salary')[0].textContent = String(table[0].Salary).replace(/\B(?=(\d{3})+(?!\d))/g, ',')+ " VNĐ"
+				$('#CountOrders')[0].textContent = table[0].CountOrders	
 				$('#CountLowerMembers')[0].textContent = table[0].CountLowerMembers
 			})
 
@@ -66,24 +66,26 @@
 
 			$('#default-table').dataTable({
 				ajax: {
-					"url": `http://localhost:57133//GetReportGenaral?id=${UserID}&year=${year}&key=${null}`,
+					"url": `http://api.duocmyphamhaiduong.com//GetReportGenaral?id=${UserID}&year=${year}&key=${null}`,
 					"dataSrc": ""
 				},
 				columns: [
-					{ data: "Month" },
+					{ data: "Month", className: 'right'},
 					{
-						data: "CountLowerMembers"
+						data: "CountLowerMembers", className: 'right'
 					},
 					{
-						data: "CountOrders"
+						data: "CountOrders", className: 'right'
 					},
 					{
-						data: "Accmulation"
+						data: "Accmulation", className: 'right'
 					},
 					{
 						data: "Salary", render: function (data, type, row) {
-							return data.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-						}
+							if (data == null)
+								return 0;
+							return String(data).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+						}, className: 'right'
 					}
 				],
 				"order": [[0, 'asc']],
@@ -107,10 +109,10 @@
 		$("#year").change(function () {
 			var year = $('#year')[0].value;
 			var key = ($('#month')[0]).value;
-			$.get(`http://localhost:57133//GetReportGenaral?id=${UserID}&year=${year}&key=${key}`).done(
+			$.get(`http://api.duocmyphamhaiduong.com//GetReportGenaral?id=${UserID}&year=${year}&key=${key}`).done(
 				function (table) {
 					$('#Accmulation')[0].textContent = table[0].Accmulation
-					$('#Salary')[0].textContent = table[0].Salary.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,') + " VNĐ"
+					$('#Salary')[0].textContent = String(table[0].Salary).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + " VNĐ"
 					$('#CountOrders')[0].textContent = table[0].CountOrders
 					$('#CountLowerMembers')[0].textContent = table[0].CountLowerMembers
 				})
@@ -122,11 +124,10 @@
 		$("#month").change(function () {
 			var year = $('#year')[0].value;
 			var key = ($('#month')[0]).value;
-			$.get(`http://localhost:57133//GetReportGenaral?id=${UserID}&year=${year}&key=${key}`).done(
+			$.get(`http://api.duocmyphamhaiduong.com//GetReportGenaral?id=${UserID}&year=${year}&key=${key}`).done(
 				function (table) {
-					console.log(table[0])
 					$('#Accmulation')[0].textContent = table[0].Accmulation
-					$('#Salary')[0].textContent = table[0].Salary.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,') + " VNĐ"
+					$('#Salary')[0].textContent = String(table[0].Salary).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + " VNĐ"
 					$('#CountOrders')[0].textContent = table[0].CountOrders
 					$('#CountLowerMembers')[0].textContent = table[0].CountLowerMembers
 				})
@@ -146,7 +147,7 @@
 		$('#salesSelector').themePluginMultiSelect().on('change', function () {
 			var year_chart = ($('#salesSelector')[0]).value;
 
-			$.get(`http://localhost:57133//GetReportGenaral?id=${UserID}&year=${year_chart}&key=${null}`).done(
+			$.get(`http://api.duocmyphamhaiduong.com//GetReportGenaral?id=${UserID}&year=${year_chart}&key=${null}`).done(
 				function (table) {
 					var Accmulation = [];
 					var Salary = [];
