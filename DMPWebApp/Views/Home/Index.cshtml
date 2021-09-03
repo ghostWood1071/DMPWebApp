@@ -263,7 +263,7 @@
 
                                 <div id="salesSelectorItems" class="chart-data-selector-items mt-sm row">
                                     <!-- Flot: Sales JSOFT Admin -->
-                                    <div class="col-lg-6 col-md-6 col-xl-6" style=" padding: 0px 0px 0px 35px;">
+                                    <div class="col-lg-6 col-md-6 col-xl-6" style=" padding: 0px 0px 0px 60px;">
                                         <div class="text-center chart-custom">
                                             <label for="flotDashSales4">Số thành viên</label>
                                             <div class="chart chart-sm chart-active" data-sales-rel="JSOFT Admin" id="flotDashSales4"></div>
@@ -275,7 +275,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-6 col-md-6 col-xl-6 " style=" padding: 0px 0px 0px 35px;">
+                                    <div class="col-lg-6 col-md-6 col-xl-6 " style=" padding: 0px 0px 0px 60px;">
                                         <div class="text-center chart-custom">
                                             <label for="flotDashSales3">Số đơn hàng</label>
                                             <div class="chart chart-sm chart-active" data-sales-rel="JSOFT Admin" id="flotDashSales3"></div>
@@ -301,6 +301,15 @@
 </section>
 
 @section script{
+    <script>
+        $.ajax({
+            url: "http://localhost:57133//InsertNewMemberPoints",
+            type: "POST",
+            error: function (x, e) {
+                alert('Failed');
+            }
+        });
+    </script>
     <script src="~/Assets/vendor/jquery-ui/js/jquery-ui-1.10.4.custom.js"></script>
     <script src="~/Assets/vendor/jquery-ui-touch-punch/jquery.ui.touch-punch.js"></script>
     <script src="~/Assets/vendor/jquery-appear/jquery.appear.js"></script>

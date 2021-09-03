@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="~/Assets/stylesheets/popup.css">
 }
 
+
+
+
+
 <section role="main" class="content-body">
     <header class="page-header">
         <h2>Quản lý điểm doanh số</h2>
@@ -34,9 +38,9 @@
             <h2 class="panel-title">Bảng điểm doanh số</h2>
         </header>
         <div class="panel-body">
-            <div class="form-group col-sm-3" style="display: flex;align-items: center;padding:0px; position:absolute;z-index:10">
+            <div class="form-group col-sm-3" style="display: flex;align-items: center;padding:0px;margin:0px;z-index:10">
                 <label class="form-control-label px-3">Năm</label>
-                <select id="year" class="selectpicker" style="margin-bottom:10px;">
+                <select id="year" class="selectpicker">
                     <option>2021</option>
                     <option>2020</option>
                     <option>2019</option>
@@ -50,16 +54,63 @@
                         <th>Điểm doanh số trực tiếp</th>
                         <th>Điểm doanh số gián tiếp</th>
                         <th>Điểm doanh số đã sử dụng</th>
-                        <th>Tổng điểm doanh số</th>
+                        <th>Điểm doanh số chưa sử dụng</th>
                     </tr>
                 </thead>
             </table>
         </div>
+        <div class="row" style="text-align: center; padding: 20px 0px; display: none;" id="case-1">
+            <strong style="color: #653744;">
+                Bạn đã đạt cấp cao nhất: <b style=" font-size: 14px; text-shadow: 1px 2px 3px #ccc; text-transform: uppercase; margin: 0px; padding: 9px 0px; font-weight: bold; " id="TPpos">Trưởng Phòng</b>. <br />
+                Hãy tiếp tục có gắng! <br />
+            </strong>
+        </div>
+
+        <div class="row" style="text-align: center; padding: 20px 0px; display: none; " id="case-2">
+            <strong style="color: #653744;">
+                Bạn đã đủ điểm để đề xuất thăng cấp lên <b style=" font-size: 14px; text-shadow: 1px 2px 3px #ccc; text-transform: uppercase; margin: 0px; padding: 9px 0px; font-weight: bold; " id="Newpos">Trưởng Phòng</b>! <br />
+                Bạn có đồng ý sử dụng điểm để thăng cấp không? <br />
+                <button class="btn btn-primary" id="accept">Đồng ý</button> | <button class="btn btn-primary" id="deny">Chưa sử dụng</button>
+            </strong>
+        </div>
+
+        <div class="row" style="text-align: center; padding: 20px 0px; display: none;" id="case-3">
+            <strong style="color: #653744;">
+                Bạn hãy cố gắng để đạt mốc tiếp theo <b style=" font-size: 14px; text-shadow: 1px 2px 3px #ccc; text-transform: uppercase; margin: 0px; padding: 9px 0px; font-weight: bold; " id="Nextpos">Trưởng Phòng</b>. <br />
+            </strong>
+        </div>
+
     </section>
     <!-- end: page -->
 </section>
 			</div>
 		</section>
+<div>
+
+</div>
+<div class="mx-auto workform" style="display: none;">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+            <div class="card">
+                <h3 class="text-center mb-4">Thăng cấp</h3>
+                <form class="form-card" id="frmadd">
+                    <div class="row">
+                        Bạn có chắc chắn thăng cấp? sau khi thăng cấp bạn sẽ mất 1 só điểm nhất định
+                    </div>
+                    <footer class="" style="padding: 15px 0px;">
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <button id="dialogConfirm" class="btn btn-primary  save" type="button">Lưu</button>
+                                <button id="dialogCancel" class="btn btn-default  exit" type="button">Đóng</button>
+                            </div>
+                        </div>
+                    </footer>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 @section script{
     <script src="~/Assets/javascripts/tables/memberpoint.databases.js"></script>
