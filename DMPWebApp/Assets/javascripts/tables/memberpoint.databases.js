@@ -9,7 +9,7 @@
 
 		$('#default-table').dataTable({
 			ajax: {
-				"url": `https://api.duocmyphamhaiduong.com/GetMemberPoint?id=${UserID}&year=${year}`,
+				"url": `http://localhost:57133//GetMemberPoint?id=${UserID}&year=${year}`,
 				"dataSrc": ""
 			},
 			columns: [
@@ -37,17 +37,17 @@
 	};
 
 	var GetPromotable = function (id) {
-		$.get(`http://api.duocmyphamhaiduong.com//GetPromotable?id=${id}`).done(
+		$.get(`http://localhost:57133///GetPromotable?id=${id}`).done(
 			function (data) {
 				if (data.NewPos == -1) {
-					$('#Nextpos').Textcontent=(data.Reason);
+					$($('#Nextpos')[0]).text(data.Reason);
 					$('#case-3').show();
 				}
 				else if (data.NewPos == -2) {
 					$('#case-1').show();
 				}
 				else {
-					$('#Newpos').Text(data.Reason);
+					$($('#Newpos')[0]).text(data.Reason)
 					$('#case-2').show();
 					
                 }
@@ -56,17 +56,59 @@
 		)
 	}
 
+	var UpdatePosPromote = function (id, callback) {
+		$.ajax({
+			url: "http://localhost:57133//UpdatePosPromote",
+			type: "PUT",
+			contentType: "application/json;charset=utf-8",
+			data: JSON.stringify(id),
+			dataType: "json",
+			success: function (response) {
+				callback()
+			},
+
+			error: function (x, e) {
+				alert('Failed');
+			}
+		});
+	}
+
 	$('#accept').click(function () {
-		alert('ngu')
+		$('#form1').show();
 	})
 
-	var UserID = sessionStorage.getItem("userID");
+	$('#dialogConfirm').click(function () {
+		UpdatePosPromote(UserID, () => {
+			$('#case-2').hide();
+			$('#form1').hide();
+		})
+		
+	})
+
+	$('#dialogCancel').click(function () {
+		$('#form1').hide();
+	})
+
+	$('#deny').click(function () {
+		$('#form2').show();
+	})
+
+	$('#dialogConfirm2').click(function () {
+		$('#form2').hide();
+	})
+
+	$('#dialogCancel2').click(function () {
+		$('#form2').hide();
+	})
+
+
+
 	GetPromotable(UserID)
 
 	$("#year").change(function () {
 		var year = $('#year')[0].value;
 		const table = $('#default-table').DataTable();
-		table.ajax.url(`http://api.duocmyphamhaiduong.com//GetMemberPoint?id=${UserID}&year=${year}`).load();
+		table.ajax.url(`http://localhost:57133//GetMemberPoint?id=${UserID}&year=${year}`).load();
 	});
 
 	$(function () {

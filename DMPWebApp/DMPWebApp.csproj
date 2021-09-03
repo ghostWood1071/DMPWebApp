@@ -2020,6 +2020,7 @@
     <Content Include="Views\Order\ImpportHistory.cshtml" />
     <Content Include="Views\Member\MemberPoint.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\SystemConfig\JobEachMonth.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

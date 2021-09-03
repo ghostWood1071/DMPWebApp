@@ -17,6 +17,14 @@ namespace DMPWebApp.Controllers
             }
             return View();
         }
+        public ActionResult JobEachMonth()
+        {
+            if (!Auth.Authenthicate(Session))
+            {
+                return Redirect("/Login");
+            }
+            return View();
+        }
 
         // GET: SystemConfig/Details/5
         public ActionResult Details(int id)

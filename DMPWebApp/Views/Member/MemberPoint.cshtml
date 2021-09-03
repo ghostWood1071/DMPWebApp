@@ -62,7 +62,7 @@
         <div class="row" style="text-align: center; padding: 20px 0px; display: none;" id="case-1">
             <strong style="color: #653744;">
                 Bạn đã đạt cấp cao nhất: <b style=" font-size: 14px; text-shadow: 1px 2px 3px #ccc; text-transform: uppercase; margin: 0px; padding: 9px 0px; font-weight: bold; " id="TPpos">Trưởng Phòng</b>. <br />
-                Hãy tiếp tục có gắng! <br />
+                Hãy tiếp tục cố gắng! <br />
             </strong>
         </div>
 
@@ -88,14 +88,37 @@
 <div>
 
 </div>
-<div class="mx-auto workform" style="display: none;">
+<div class="mx-auto workform" id="form2" style="display: none;margin-top:100px;">
     <div class="row d-flex justify-content-center">
         <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
             <div class="card">
                 <h3 class="text-center mb-4">Thăng cấp</h3>
-                <form class="form-card" id="frmadd">
+                <form class="form-card">
                     <div class="row">
-                        Bạn có chắc chắn thăng cấp? sau khi thăng cấp bạn sẽ mất 1 só điểm nhất định
+                        Bạn có chắc chắn chưa sử dụng điểm để thăng cấp? <br />
+                        Sau khi bạn ấn lưu, tháng sau bạn mới có thể yêu cầu thăng cấp!
+                    </div>
+                    <footer class="" style="padding: 15px 0px;">
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <button id="dialogConfirm2" class="btn btn-primary  save" type="button">Lưu</button>
+                                <button id="dialogCancel2" class="btn btn-default  exit" type="button">Đóng</button>
+                            </div>
+                        </div>
+                    </footer>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mx-auto workform" id="form1" style="display: none;margin-top:100px;">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+            <div class="card">
+                <h3 class="text-center mb-4">Thăng cấp</h3>
+                <form class="form-card">
+                    <div class="row">
+                        Bạn có chắc chắn thăng cấp? <br />Sau khi thăng cấp bạn sẽ mất 1 số điểm nhất định!
                     </div>
                     <footer class="" style="padding: 15px 0px;">
                         <div class="row">
@@ -110,6 +133,7 @@
         </div>
     </div>
 </div>
+
 
 
 @section script{

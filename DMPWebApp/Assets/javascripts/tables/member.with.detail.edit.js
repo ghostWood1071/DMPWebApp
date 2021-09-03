@@ -157,7 +157,7 @@
     $(document).ready(function () {
         name = "";
         $('#addToTablee').click(function () {
-            $.get(`http://api.duocmyphamhaiduong.com//GetNextMemberID`).done(
+            $.get(`http://localhost:57133//GetNextMemberID`).done(
                 function (data) {
                     ($('#fid')[0]).value = data;
                 });

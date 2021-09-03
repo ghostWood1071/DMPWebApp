@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Cập nhật hằng tháng";
+}
+@section css{
+    <link rel="stylesheet" href="~/Assets/stylesheets/popup.css">
+}
+
+<div class="mx-auto workform">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+            <div class="card">
+                <h3 class="text-center mb-4">Cập nhật bảng điểm</h3>
+                <form class="form-card" id="frmadd">
+                    <div class="row">
+                        Bạn phải cập nhật hằng tháng! Ưu tiên đầu tháng để cho phép các thành viên có thể xét thăng cấp sớm nhất!!
+                    </div>
+                    <footer class="" style="padding: 15px 0px;">
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <button id="dialogConfirm" class="btn btn-primary  save" type="button">Lưu</button>
+                                <button id="dialogCancel" class="btn btn-default  exit" type="button">Đóng</button>
+                            </div>
+                        </div>
+                    </footer>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section script{
+    <script>
+        $('#dialogConfirm').click(function(){
+            $.ajax({
+                url: "http://localhost:57133//InsertNewMemberPoints",
+                type: "POST",
+                success: function (response) {
+                    alert('Cập nhật thành công');
+                },
+                error: function (x, e) {
+                    alert('Failed');
+                }
+            });
+            $('.workform').hide();
+        });
+
+        $('#dialogCancel').click(function () {
+            $('.workform').hide();
+        });
+    </script>
+    
+}
