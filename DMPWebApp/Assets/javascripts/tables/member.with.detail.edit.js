@@ -3,7 +3,7 @@
 
     'use strict';
     var GetMemberDetail = function (id) {
-        $.get(`http://api.duocmyphamhaiduong.com//GetMember?id=${id}`).done(
+        $.get(`https://api.duocmyphamhaiduong.com/GetMember?id=${id}`).done(
             function (details) {
                 $('#' + id).children()[0].textContent = details[0].Email;
                 $('#' + id).children()[2].textContent = details[0].ReferralID;
@@ -91,7 +91,7 @@
         // initialize
         var datatable = $table.dataTable({
             ajax: {
-                "url": `http://api.duocmyphamhaiduong.com/GetMembers`,
+                "url": `https://api.duocmyphamhaiduong.com/GetMembers`,
                 "dataSrc": ""
             },
             columns: [
@@ -168,7 +168,7 @@
         $(document).on('click', '.editt-row', function () {
             var id = ($(this).parent().siblings()[1]).textContent
             var member = {};
-            $.get(`http://api.duocmyphamhaiduong.com/GetMember?id=${id}`).done(
+            $.get(`https://api.duocmyphamhaiduong.com/GetMember?id=${id}`).done(
                 function (data) {
                     ($('#efid')[0]).value = data[0].MemberID;
                     ($('#efname')[0]).value = data[0].FullName;

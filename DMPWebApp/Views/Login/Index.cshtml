@@ -96,7 +96,7 @@
                         <div class="row">
                             <div class="col-sm-8" style="float:left;">
                                 <div class="checkbox-custom checkbox-default">
-                                    <a href="/Login/Reset">Quên mật khẩu</a>
+                                    
                                 </div>
                             </div>
                             <div class="col-sm-4 text-right" style="float:right">
@@ -105,7 +105,7 @@
                             
                         </div>
                         <div class="row" style="text-align: center; padding-top: 10px;">
-                            <a href="#" style=""><label id="ForgetPas" >Quên mật khẩu?</label></a>
+                            <a href="/Login/Reset" style=""><label id="ForgetPas" >Quên mật khẩu?</label></a>
                         </div>
                     </div>
 
@@ -139,22 +139,8 @@
             }
         }
 
-
-        function login() {
-            var userID = $('.account').val().trim();
-            var password = $('.password').val().trim();
-            if (userID == "") {
-                toastr.error("Tên đăng nhập không được để trống");
-                return false;
-            }
-            if (password == "") {
-                toastr.error("Mật khẩu không được để trống");
-                return false;
-            }
-            sessionStorage.setItem("userID", userID);
-            return true;
-        }
     </script>
+    <script src="~/Assets/javascripts/Login.js"></script>
     
         
 </body>

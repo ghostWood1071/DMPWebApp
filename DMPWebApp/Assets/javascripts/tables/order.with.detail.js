@@ -63,7 +63,7 @@ var $table = $('#tableOrder');
 
 var fnFormatDetails = function (table, tr, orderID) {
     //ajax chỗ này nhé
-    $.get(`http://api.duocmyphamhaiduong.com/GetOrderDetails?orderID=${orderID}`)
+    $.get(`https://api.duocmyphamhaiduong.com/GetOrderDetails?orderID=${orderID}`)
         .done(function (details) {
             var data = getDetail(details);
             var subtable = `<table class="table mb-none">
@@ -89,7 +89,7 @@ var fnFormatDetails = function (table, tr, orderID) {
 
 var deleteOrder = function (orderID, callback) {
     $.ajax({
-        url: `http://api.duocmyphamhaiduong.com/api/Order?orderID=${orderID}`,
+        url: `https://api.duocmyphamhaiduong.com/api/Order?orderID=${orderID}`,
         type: 'DELETE',
         success: function () {
             
@@ -104,7 +104,7 @@ var deleteOrder = function (orderID, callback) {
 var datatable = $table.dataTable({
 
     ajax: {
-        url: 'http://api.duocmyphamhaiduong.com/api/Order',
+        url: 'https://api.duocmyphamhaiduong.com/api/Order',
         dataSrc: ''
 
     },
@@ -150,7 +150,7 @@ $table.on('click', 'i[data-toggle]', function () {
 });
 
 var getMembers = function () {
-    $.get(`http://api.duocmyphamhaiduong.com/GetMembers`)
+    $.get(`https://api.duocmyphamhaiduong.com/GetMembers`)
         .done(function (data) {
             var subData = data.map(x =>
             {
@@ -234,6 +234,6 @@ $('#tableOrder').on('click', '.edit-row', function (e) {
     $('.order-id').text(orderID);
     console.log(orderID);
     ShowUpdateDialog();
-    putTable.ajax.url(`http://api.duocmyphamhaiduong.com//GetDetails?memberID=${sessionStorage.getItem("userID")}&&orderID=${orderID}`).load().draw();
+    putTable.ajax.url(`https://api.duocmyphamhaiduong.com/GetDetails?memberID=${sessionStorage.getItem("userID")}&&orderID=${orderID}`).load().draw();
 });
 

@@ -1,5 +1,5 @@
 ﻿var userID = sessionStorage.getItem("userID");
-var link = `http://api.duocmyphamhaiduong.com/GetProducts?memberID=${userID}`;
+var link = `https://api.duocmyphamhaiduong.com/GetProducts?memberID=${userID}`;
 var header = $('.table th');
 $(header[0]).width("100px");
 $(header[1]).width("230px");
@@ -55,7 +55,7 @@ var optionCols = function (adding = false) {
 var editRow = function (info) {
     console.log(info);
     $.ajax({
-        url: `http://api.duocmyphamhaiduong.com/UpdateProduct`,
+        url: `https://api.duocmyphamhaiduong.com/UpdateProduct`,
         data: info,
         type: 'PUT',
         success: function () {
@@ -70,7 +70,7 @@ var editRow = function (info) {
 var deleteRow = function (id, callback) {
 
     var request = new XMLHttpRequest();
-    request.open("DELETE", `http://api.duocmyphamhaiduong.com/DeleteProduct?productID=${id}`);
+    request.open("DELETE", `https://api.duocmyphamhaiduong.com/DeleteProduct?productID=${id}`);
     request.send();
     request.onload = function () {
         if (request.status == 200) {
@@ -84,7 +84,7 @@ var deleteRow = function (id, callback) {
 }
 
 var addRow = function (info, row) {
-    $.post(`http://api.duocmyphamhaiduong.com/InsertProduct`, info)
+    $.post(`https://api.duocmyphamhaiduong.com/InsertProduct`, info)
         .done(function (data) {
             toastr.success("Thêm thông tin sản phẩm thành công");
             console.log(data);
@@ -106,7 +106,7 @@ var table = $("#table").DataTable(
     {
         ajax:
         {
-            url: `http://api.duocmyphamhaiduong.com/GetProducts?memberID=${userID}`,
+            url: `https://api.duocmyphamhaiduong.com/GetProducts?memberID=${userID}`,
             dataSrc: ''
         },
         columns: [

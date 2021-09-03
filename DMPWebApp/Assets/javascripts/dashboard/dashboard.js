@@ -6,7 +6,7 @@
 
 		var year = $('#year')[0].value;
 		var key = ($('#month')[0]).value;
-		$.get(`http://api.duocmyphamhaiduong.com//GetReportGenaral?id=${UserID}&year=${year}&key=${key}`).done(
+		$.get(`https://api.duocmyphamhaiduong.com/GetReportGenaral?id=${UserID}&year=${year}&key=${key}`).done(
 			function (table) {
 				$('#Accmulation')[0].textContent = table[0].Accmulation
 				$('#Salary')[0].textContent = String(table[0].Salary).replace(/\B(?=(\d{3})+(?!\d))/g, ',')+ " VNĐ"
@@ -66,7 +66,7 @@
 
 			$('#default-table').dataTable({
 				ajax: {
-					"url": `http://api.duocmyphamhaiduong.com//GetReportGenaral?id=${UserID}&year=${year}&key=${null}`,
+					"url": `https://api.duocmyphamhaiduong.com/GetReportGenaral?id=${UserID}&year=${year}&key=${null}`,
 					"dataSrc": ""
 				},
 				columns: [
@@ -109,7 +109,7 @@
 		$("#year").change(function () {
 			var year = $('#year')[0].value;
 			var key = ($('#month')[0]).value;
-			$.get(`http://api.duocmyphamhaiduong.com//GetReportGenaral?id=${UserID}&year=${year}&key=${key}`).done(
+			$.get(`https://api.duocmyphamhaiduong.com/GetReportGenaral?id=${UserID}&year=${year}&key=${key}`).done(
 				function (table) {
 					$('#Accmulation')[0].textContent = table[0].Accmulation
 					$('#Salary')[0].textContent = String(table[0].Salary).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + " VNĐ"
@@ -124,7 +124,7 @@
 		$("#month").change(function () {
 			var year = $('#year')[0].value;
 			var key = ($('#month')[0]).value;
-			$.get(`http://api.duocmyphamhaiduong.com//GetReportGenaral?id=${UserID}&year=${year}&key=${key}`).done(
+			$.get(`https://api.duocmyphamhaiduong.com/GetReportGenaral?id=${UserID}&year=${year}&key=${key}`).done(
 				function (table) {
 					$('#Accmulation')[0].textContent = table[0].Accmulation
 					$('#Salary')[0].textContent = String(table[0].Salary).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + " VNĐ"
@@ -147,7 +147,7 @@
 		$('#salesSelector').themePluginMultiSelect().on('change', function () {
 			var year_chart = ($('#salesSelector')[0]).value;
 
-			$.get(`http://api.duocmyphamhaiduong.com//GetReportGenaral?id=${UserID}&year=${year_chart}&key=${null}`).done(
+			$.get(`https://api.duocmyphamhaiduong.com/GetReportGenaral?id=${UserID}&year=${year_chart}&key=${null}`).done(
 				function (table) {
 					var Accmulation = [];
 					var Salary = [];

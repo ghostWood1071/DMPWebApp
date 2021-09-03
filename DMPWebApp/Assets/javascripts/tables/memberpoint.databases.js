@@ -9,7 +9,7 @@
 
 		$('#default-table').dataTable({
 			ajax: {
-				"url": `http://api.duocmyphamhaiduong.com//GetMemberPoint?id=${UserID}&year=${year}`,
+				"url": `https://api.duocmyphamhaiduong.com/GetMemberPoint?id=${UserID}&year=${year}`,
 				"dataSrc": ""
 			},
 			columns: [

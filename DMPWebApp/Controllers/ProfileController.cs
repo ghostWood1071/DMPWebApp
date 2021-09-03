@@ -79,7 +79,7 @@ namespace DMPWebApp.Controllers
                 HttpPostedFileBase file = Request.Files[0];
                 string folderName = Request.Form["personal"];
                 string fileName = file.FileName;
-                string url = Server.MapPath("~/Assets/avatar/")+folderName;
+                string url = "/Assets/images/"+folderName;
                 if (!Directory.Exists(url))
                     Directory.CreateDirectory(url);
 
@@ -89,15 +89,15 @@ namespace DMPWebApp.Controllers
                     fileName = file.FileName.Substring(0, file.FileName.LastIndexOf(".")) + size + file.FileName.Substring(file.FileName.LastIndexOf("."));
                 }
 
-                file.SaveAs(url + "/" + fileName);
+                file.SaveAs(url + "\\" + fileName);
 
-                return "/Assets/avatar/" +folderName+ "/" + fileName;
+                return "/Assets/images/" +folderName+ "/" + fileName;
 
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e.Message);
-                return "fail";
+                return e.Message;
             }
         }
 

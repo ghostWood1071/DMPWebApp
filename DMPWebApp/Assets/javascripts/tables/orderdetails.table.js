@@ -1,7 +1,7 @@
 ﻿$('#txtMemberIDAdd').on('input', function () {
     var val = $(this).val();
     if (val.length == 8) {
-        $.get(`http://api.duocmyphamhaiduong.com/GetMember?id=${val}`)
+        $.get(`https://api.duocmyphamhaiduong.com/GetMember?id=${val}`)
             .done(function (data) {
                 if (data != null) {
                     $("#txtFullNameAdd").val(data[0].FullName);
@@ -73,7 +73,7 @@ var addOrder = function (order) {
         toastr.error("Không có sản phẩm nào được chọn");
         return;
     }
-    $.post('http://localhost:57133/api/Order', order)
+    $.post('https://api.duocmyphamhaiduong.com/api/Order', order)
         .done(function (orderRel) {
             console.log(orderRel)
             addOrderDetails(orderRel, getDetailsFromTable("#table-add"));
@@ -97,7 +97,7 @@ var addOrderDetails = function (order ,orderDetails) {
     });
     console.log(data);
     if (data != null)
-        $.post(`http://api.duocmyphamhaiduong.com/InsertOrderDetails?memberID=${sessionStorage.getItem('userID')}`, { Details: data })
+        $.post(`https://api.duocmyphamhaiduong.com/InsertOrderDetails?memberID=${sessionStorage.getItem('userID')}`, { Details: data })
         .done(function () {
             addSalePoint(order, sumMark);
         }).fail(function () {
@@ -123,16 +123,32 @@ var addSalePoint = function (order, Mark) {
                 Discount: order.Discount,
                 action: optionCols()
             }, true)
+            addMail(order);
         })
         .fail(function () {
             toastr.error("Thêm đơn hàng thất bại, điểm không được tính");
         });
 }
 
+var addMail = function (order) {
+    var content = {
+        NotifyID: 0,
+        Sender: sessionStorage.getItem('userID'),
+        Title: "Công ty TNHH DMP Hải Dương - ĐẶT HÀNG",
+        Content: `Đơn hàng ${order.OrderID} đã được thêm`,
+        Receiver: order.MemberID,
+        IsSendAll: false,
+        CreateDate: (new Date()).toISOString()
+    }
+    $.post('http://localhost:57133/OrderMail', content, function (data) {
+        console.log(data);
+    });
+}
+
 var fixDetails = function (orderID, orderDetails) {
     var mark = getMark(orderDetails);
     $.ajax({
-        url: 'http://localhost:57133/api/OrderDetail',
+        url: 'https://api.duocmyphamhaiduong.com/api/OrderDetail',
         type: 'PUT',
         data: {
             OrderID: orderID,
@@ -151,7 +167,7 @@ var fixDetails = function (orderID, orderDetails) {
 
 var fixOrder = function (order, orderDetails) {
     $.ajax({
-        url: 'http://localhost:57133/PutOrder',
+        url: 'https://api.duocmyphamhaiduong.com/PutOrder',
         type: 'PUT',
         data: order,
         success: function () {
@@ -168,7 +184,7 @@ var addTable = $('#table-add').DataTable(
     {
         ajax:
         {
-            url: `http://api.duocmyphamhaiduong.com/GetProducts?memberID=${sessionStorage.getItem("userID")}`,
+            url: `https://api.duocmyphamhaiduong.com/GetProducts?memberID=${sessionStorage.getItem("userID")}`,
             dataSrc: ''
         },
         columns: [
@@ -229,7 +245,7 @@ $('.btnFixDetail').click(function () {
 var putTable = $('#table-put').DataTable({
     ajax:
     {
-        url: `http://localhost:57133/GetDetails?memberID=${sessionStorage.getItem("userID")}&&orderID='HD00000001'`,
+        url: `https://api.duocmyphamhaiduong.com/GetDetails?memberID=${sessionStorage.getItem("userID")}&&orderID='HD00000001'`,
         dataSrc: ''
     },
     columns: [
