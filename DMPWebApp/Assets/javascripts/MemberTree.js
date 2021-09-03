@@ -1,6 +1,6 @@
 ﻿$.get(`https://api.duocmyphamhaiduong.com/GetMember?id=${sessionStorage.getItem('userID')}`, function (boss) {
 
-    $.get(`https://api.duocmyphamhaiduong.com/GetOrg?memberID=TV000001`, function (employees) {
+    $.get(`https://api.duocmyphamhaiduong.com/GetOrg?memberID=${sessionStorage.getItem('userID')}`, function (employees) {
         console.log(boss);
         console.log(employees);
         employees.splice(0, 0, boss[0])
@@ -12,6 +12,7 @@
                 img: x.Avatar == null ? "https://image.flaticon.com/icons/svg/145/145867.svg" : x.Avatar
             }
         });
+        data[0].pid = null;
         console.log(data);
         var orgTree = new OrgTree();
         orgTree.init(data);

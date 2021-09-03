@@ -15,6 +15,5 @@ namespace DMPWebApp.Extensions
             this.password = password;
         }
 
-        public 
     }
 }
