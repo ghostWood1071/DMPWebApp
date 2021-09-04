@@ -35,7 +35,8 @@
         </header>
         <div class="panel-body">
             <div>
-                <button class="btn btn-primary" id="export">Xuất file Excel</button>
+                <button class="btn btn-primary" id="accept" style="display:none;">Duyệt bảng lương</button>
+                <button class="btn btn-primary" id="export" style="float:right;">Xuất file Excel</button>
             </div>
             <table class="table table-bordered table-striped mb-none" id="default-table">
                 <thead>
@@ -56,6 +57,28 @@
 			</div>
 		</section>
 
+<div class="mx-auto workform" id="form1" style="display: none;margin-top:100px;">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+            <div class="card">
+                <h3 class="text-center mb-4">Duyệt bảng lương</h3>
+                <form class="form-card">
+                    <div class="row">
+                        Bạn đã kiểm tra và xác nhận bảng lương là đúng?
+                    </div>
+                    <footer style="padding: 15px 0px;">
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <button id="dialogConfirm1" class="btn btn-primary  save" type="button">Đồng ý</button>
+                                <button id="dialogCancel1" class="btn btn-default  exit" type="button">Không đồng ý</button>
+                            </div>
+                        </div>
+                    </footer>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <div class="mx-auto workform" style="margin-top:100px;">

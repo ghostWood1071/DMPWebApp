@@ -15,6 +15,14 @@
 	$('h2.panel-title').text('Cập nhật lương tháng ' + previousMonth);
 	var year = today.getFullYear();
 
+	$.get(`http://localhost:57133//CheckSalaryUpdated`).done(
+		function (data) {
+			if (data.IsSalaryUpdated == 0) {
+				$('#accept').show();
+			}
+		}
+	)
+
 	var datatableInit = function () {
 
 		$('#default-table').DataTable({
@@ -97,6 +105,29 @@
 		$('.workform').hide();
 	});
 
+	$('#accept').click(function () {
+		$('#form1').show()
+    })
+
+	$('#dialogConfirm1').click(function () {
+		$.ajax({
+			url: "http://localhost:57133//InsertNewSalary",
+			type: "POST",
+			success: function (response) {
+				toastr.success('Cập nhật bảng lương thành công')
+				$('#accept').hide();
+			},
+			error: function (x, e) {
+				toastr.error('Cập nhật bảng lương thất bại')
+			}
+		});
+		$('.workform').hide();
+	});
+
+	$('#dialogCancel1').click(function () {
+		$('.workform').hide();
+	});
+
 	$(function () {
 		datatableInit();
 	});
@@ -109,4 +140,7 @@
 			
 		});
 	});
+
+
+
 }).apply(this, [jQuery]);
