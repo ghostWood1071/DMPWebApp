@@ -33,9 +33,12 @@
             <h2 class="panel-title">Cập nhật lương tháng</h2>
         </header>
         <div class="panel-body">
+            <div>
+                <button class="btn btn-primary" id="export">Xuất file Excel</button>
+            </div>
             <table class="table table-bordered table-striped mb-none" id="default-table">
                 <thead>
-                    <tr>
+                    <tr >
                         <th>Mã thành viên</th>
                         <th>Tiền chênh 1 cấp (VNĐ)</th>
                         <th>Tiền hoa hồng mua hàng (VNĐ)</th>
@@ -47,6 +50,7 @@
         </div>
     </section>
     <!-- end: page -->
+    
 </section>
 			</div>
 		</section>
@@ -77,13 +81,8 @@
 </div>
 
 @section script{
+    <script src="~/Assets/vendor/export_sheet/src/jquery.table2excel.js"></script>
     <script src="~/Assets/javascripts/tables/job.handler.js"></script>
 
-    <script>
-        
-    </script>
-    <script>
-        
-    </script>
 
 }
