@@ -1,4 +1,4 @@
-﻿var id = sessionStorage.getItem("userID");
+﻿var id = localStorage.getItem("userID");
 $.get(`https://api.duocmyphamhaiduong.com/ReportMemberQuantityByLevel?id=${id}`).done(
     function (res) {
         var level = res[0]

@@ -2,7 +2,7 @@
 (function ($) {
 	$(document).ready(function () {
 
-		var UserID = sessionStorage.getItem("userID");
+		var UserID = localStorage.getItem("userID");
 
 		var year = $('#year')[0].value;
 		var key = ($('#month')[0]).value;

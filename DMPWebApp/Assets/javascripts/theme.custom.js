@@ -1,7 +1,7 @@
 
 function loadPro() {
     return new Promise(function (resolve, reject) {
-        $.get(`https://api.duocmyphamhaiduong.com/GetMember?id=${sessionStorage.getItem('userID')}`)
+        $.get(`https://api.duocmyphamhaiduong.com/GetMember?id=${localStorage.getItem('userID')}`)
             .done(function (data) {
                 $('#name-member').text(data[0].FullName);
                 $('#role-member').text(data[0].PositionID);
@@ -16,7 +16,7 @@ function loadPro() {
 
 function loadLink() {
     return new Promise(function (resolve, reject) {
-        $.get(`http://localhost:57133/api/Role?memberID=${sessionStorage.getItem('userID')}`)
+        $.get(`http://localhost:57133/api/Role?memberID=${localStorage.getItem('userID')}`)
             .done(function (data) {
                 $('[data-link = "update"]').attr('href', data[data.length]);
                 $('[data-link = "product"]').attr('href', data[0]);
@@ -42,13 +42,13 @@ function loadLink() {
 
 async function main() {
     $('[data-link]').click(function (e) {
-        sessionStorage.setItem('page', $(this).attr('href'));
+        localStorage.setItem('page', $(this).attr('href'));
     });
 
     await loadLink();
     await loadPro();
 
-    var tab = sessionStorage.getItem('page');
+    var tab = localStorage.getItem('page');
     var a = $('a[href="' + tab + '"]');
     a.parents('.nav-parent').addClass('nav-expanded')
    

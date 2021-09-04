@@ -9,6 +9,6 @@
         toastr.error("Mật khẩu không được để trống");
         return false;
     }
-    sessionStorage.setItem("userID", userID);
+    localStorage.setItem("userID", userID);
     return true;
 }

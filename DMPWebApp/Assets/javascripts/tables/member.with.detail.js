@@ -6,7 +6,7 @@
 
 
     var datatableInit = function () {
-        var UserID = sessionStorage.getItem("userID");
+        var UserID = localStorage.getItem("userID");
 
         var $table = $('#datatable-details');
 

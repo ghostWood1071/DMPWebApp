@@ -9,7 +9,7 @@ var postNotify = function (title, content, receiver, isSendAll) {
         type: 'PUT',
         data: {
             NotifyID: id,
-            Sender: sessionStorage.getItem('userID'),
+            Sender: localStorage.getItem('userID'),
             Title: title,
             Content: content,
             Receiver: receiver,

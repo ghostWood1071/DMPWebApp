@@ -97,7 +97,7 @@ var addOrderDetails = function (order ,orderDetails) {
     });
     console.log(data);
     if (data != null)
-        $.post(`https://api.duocmyphamhaiduong.com/InsertOrderDetails?memberID=${sessionStorage.getItem('userID')}`, { Details: data })
+        $.post(`https://api.duocmyphamhaiduong.com/InsertOrderDetails?memberID=${localStorage.getItem('userID')}`, { Details: data })
         .done(function () {
             addSalePoint(order, sumMark);
         }).fail(function () {
@@ -133,7 +133,7 @@ var addSalePoint = function (order, Mark) {
 var addMail = function (order) {
     var content = {
         NotifyID: 0,
-        Sender: sessionStorage.getItem('userID'),
+        Sender: localStorage.getItem('userID'),
         Title: "Công ty TNHH DMP Hải Dương - ĐẶT HÀNG",
         Content: `Đơn hàng ${order.OrderID} đã được thêm`,
         Receiver: order.MemberID,
@@ -154,7 +154,7 @@ var fixDetails = function (orderID, orderDetails) {
             OrderID: orderID,
             Details: orderDetails,
             Mark: mark,
-            MemberID: sessionStorage.getItem('userID')
+            MemberID: localStorage.getItem('userID')
         },
         success: function () {
             toastr.success("sửa thông tin đơn hàng thành công");
@@ -184,7 +184,7 @@ var addTable = $('#table-add').DataTable(
     {
         ajax:
         {
-            url: `https://api.duocmyphamhaiduong.com/GetProducts?memberID=${sessionStorage.getItem("userID")}`,
+            url: `https://api.duocmyphamhaiduong.com/GetProducts?memberID=${localStorage.getItem("userID")}`,
             dataSrc: ''
         },
         columns: [
@@ -245,7 +245,7 @@ $('.btnFixDetail').click(function () {
 var putTable = $('#table-put').DataTable({
     ajax:
     {
-        url: `https://api.duocmyphamhaiduong.com/GetDetails?memberID=${sessionStorage.getItem("userID")}&&orderID='HD00000001'`,
+        url: `https://api.duocmyphamhaiduong.com/GetDetails?memberID=${localStorage.getItem("userID")}&&orderID='HD00000001'`,
         dataSrc: ''
     },
     columns: [

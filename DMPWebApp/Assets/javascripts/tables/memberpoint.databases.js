@@ -2,7 +2,7 @@
 (function ($) {
 
 	'use strict';
-	var UserID = sessionStorage.getItem("userID");
+	var UserID = localStorage.getItem("userID");
 	var datatableInit = function () {
 		
 		var year = $('#year')[0].value;

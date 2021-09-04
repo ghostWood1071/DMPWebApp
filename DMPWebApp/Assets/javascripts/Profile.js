@@ -1,4 +1,4 @@
-﻿var userID = sessionStorage.getItem('userID');
+﻿var userID = localStorage.getItem('userID');
 
 var uploadImg = function (memberID) {
 
@@ -25,7 +25,7 @@ var uploadImg = function (memberID) {
 }
 
 var loadInfo = function () {
-    $.get(`https://api.duocmyphamhaiduong.com/GetMember?id=${sessionStorage.getItem('userID')}`, function (data) {
+    $.get(`https://api.duocmyphamhaiduong.com/GetMember?id=${localStorage.getItem('userID')}`, function (data) {
         var profile = data[0];
         $('#name').val(profile.FullName);
         $('#birth').val(profile.Birthday);
@@ -43,7 +43,7 @@ var loadInfo = function () {
         $('#avatar').attr('src', profile.Avatar);
         $('#img-name').text(profile.FullName);
         $('#pos').text(profile.PositionID);
-        $('#userID').val(sessionStorage.getItem('userID'));
+        $('#userID').val(localStorage.getItem('userID'));
         console.log(profile);
     })
 }
@@ -144,7 +144,7 @@ async function saveprofile() {
 }
 
 async function chagnePass() {
-    var uid = sessionStorage.getItem('userID');
+    var uid = localStorage.getItem('userID');
     var oldPass = $('#old-pass').val().trim();
     var newPass = $('#new-pass').val().trim();
     var repasss = $('#re-pass').val().trim();

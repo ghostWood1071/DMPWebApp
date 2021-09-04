@@ -159,7 +159,7 @@ var getMembers = function () {
                     FullName: x.FullName
                 }
             });
-            sessionStorage.setItem("members", JSON.stringify(subData));
+            localStorage.setItem("members", JSON.stringify(subData));
         })
         .fail(function () {
 
@@ -234,6 +234,6 @@ $('#tableOrder').on('click', '.edit-row', function (e) {
     $('.order-id').text(orderID);
     console.log(orderID);
     ShowUpdateDialog();
-    putTable.ajax.url(`https://api.duocmyphamhaiduong.com/GetDetails?memberID=${sessionStorage.getItem("userID")}&&orderID=${orderID}`).load().draw();
+    putTable.ajax.url(`https://api.duocmyphamhaiduong.com/GetDetails?memberID=${localStorage.getItem("userID")}&&orderID=${orderID}`).load().draw();
 });
 

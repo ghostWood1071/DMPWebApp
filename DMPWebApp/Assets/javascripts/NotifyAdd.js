@@ -1,7 +1,7 @@
 ﻿var postNotify = function (title, content, receiver, isSendAll) {
     var content = {
         NotifyID: 0,
-        Sender: sessionStorage.getItem('userID'),
+        Sender: localStorage.getItem('userID'),
         Title: title,
         Content: content,
         Receiver: receiver,

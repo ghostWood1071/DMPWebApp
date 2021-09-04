@@ -1,6 +1,6 @@
 ﻿$('#table').DataTable({
     ajax: {
-        url: `https://api.duocmyphamhaiduong.com/GetOrders?memberID=${sessionStorage.getItem('userID')}`,
+        url: `https://api.duocmyphamhaiduong.com/GetOrders?memberID=${localStorage.getItem('userID')}`,
         dataSrc: ''
     },
     columns: [

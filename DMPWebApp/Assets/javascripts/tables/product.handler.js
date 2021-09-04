@@ -1,4 +1,4 @@
-﻿var userID = sessionStorage.getItem("userID");
+﻿var userID = localStorage.getItem("userID");
 var link = `https://api.duocmyphamhaiduong.com/GetProducts?memberID=${userID}`;
 var header = $('.table th');
 $(header[0]).width("100px");
@@ -14,7 +14,7 @@ var getRowData = function (row, isPut = false) {
     if (!isPut)
         return {
             ProductID: $(cells[0]).text(),
-            MemberID: sessionStorage.getItem("userID"),
+            MemberID: localStorage.getItem("userID"),
             ProductName: $(cells[1]).text(),
             OriginPrice: Number($(cells[2]).text()),
             BasePrice: Number($(cells[3]).text()),
@@ -23,7 +23,7 @@ var getRowData = function (row, isPut = false) {
             Quantity: Number($(cells[6]).text())
         }
     return {
-        MemberID: sessionStorage.getItem("userID"),
+        MemberID: localStorage.getItem("userID"),
         ProductName: $(cells[1]).text(),
         OriginPrice: Number($(cells[2]).text()),
         BasePrice: Number($(cells[3]).text()),

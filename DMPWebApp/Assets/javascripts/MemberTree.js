@@ -1,6 +1,6 @@
-﻿$.get(`https://api.duocmyphamhaiduong.com/GetMember?id=${sessionStorage.getItem('userID')}`, function (boss) {
+﻿$.get(`https://api.duocmyphamhaiduong.com/GetMember?id=${localStorage.getItem('userID')}`, function (boss) {
 
-    $.get(`https://api.duocmyphamhaiduong.com/GetOrg?memberID=${sessionStorage.getItem('userID')}`, function (employees) {
+    $.get(`https://api.duocmyphamhaiduong.com/GetOrg?memberID=${localStorage.getItem('userID')}`, function (employees) {
         console.log(boss);
         console.log(employees);
         employees.splice(0, 0, boss[0])
