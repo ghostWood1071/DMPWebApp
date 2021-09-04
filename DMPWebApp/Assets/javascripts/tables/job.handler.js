@@ -17,7 +17,7 @@
 
 	var datatableInit = function () {
 
-		$('#default-table').dataTable({
+		$('#default-table').DataTable({
 			ajax: {
 				"url": `http://localhost:57133//GetSalary?month=${month}&year=${year}`,
 				"dataSrc": ""
@@ -101,4 +101,12 @@
 		datatableInit();
 	});
 
+	$("#export").click(function () {
+		$("#default-table").table2excel({
+			name: "Worksheet Name",
+			filename: $('h2.panel-title').text(), //do not include extension
+			fileext: ".xlsx", // file extension,
+			
+		});
+	});
 }).apply(this, [jQuery]);

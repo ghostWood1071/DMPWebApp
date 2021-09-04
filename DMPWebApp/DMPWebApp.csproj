@@ -18,12 +18,9 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>
-    </IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>
-    </IISExpressWindowsAuthentication>
+    <IISExpressSSLPort>44351</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
@@ -617,6 +614,12 @@
     <Content Include="Assets\vendor\dropzone\dropzone.min.js" />
     <Content Include="Assets\vendor\dropzone\images\spritemap%402x.png" />
     <Content Include="Assets\vendor\dropzone\images\spritemap.png" />
+    <Content Include="Assets\vendor\export_sheet\.gitignore" />
+    <Content Include="Assets\vendor\export_sheet\demo\index.html" />
+    <Content Include="Assets\vendor\export_sheet\dist\jquery.table2excel.js" />
+    <Content Include="Assets\vendor\export_sheet\dist\jquery.table2excel.min.js" />
+    <Content Include="Assets\vendor\export_sheet\Gruntfile.js" />
+    <Content Include="Assets\vendor\export_sheet\src\jquery.table2excel.js" />
     <Content Include="Assets\vendor\flot-tooltip\jquery.flot.tooltip.js" />
     <Content Include="Assets\vendor\flot\examples\ajax\index.html" />
     <Content Include="Assets\vendor\flot\examples\annotating\index.html" />
@@ -2005,6 +2008,19 @@
     <Content Include="Assets\javascripts\tables\member.with.detail.js" />
     <Content Include="Assets\javascripts\tables\notify.with.detail.js" />
     <Content Include="Assets\vendor\toast\toastr.js.map" />
+    <Content Include="Assets\vendor\export_sheet\.editorconfig" />
+    <Content Include="Assets\vendor\export_sheet\.gitpod.yml" />
+    <Content Include="Assets\vendor\export_sheet\.jshintrc" />
+    <Content Include="Assets\vendor\export_sheet\.travis.yml" />
+    <Content Include="Assets\vendor\export_sheet\bower.json" />
+    <Content Include="Assets\vendor\export_sheet\CHANGELOG.md" />
+    <Content Include="Assets\vendor\export_sheet\CONTRIBUTING.md" />
+    <Content Include="Assets\vendor\export_sheet\demo\download.xls" />
+    <Content Include="Assets\vendor\export_sheet\package.json" />
+    <Content Include="Assets\vendor\export_sheet\README.md" />
+    <Content Include="Assets\vendor\export_sheet\serve.json" />
+    <Content Include="Assets\vendor\export_sheet\table2excel.jquery.json" />
+    <Content Include="Assets\vendor\export_sheet\yarn.lock" />
     <None Include="packages.config" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
