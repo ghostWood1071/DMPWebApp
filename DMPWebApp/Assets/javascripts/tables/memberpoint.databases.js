@@ -78,12 +78,13 @@
 	})
 
 	$('#dialogConfirm').click(function () {
-		//UpdatePosPromote(UserID, () => {
-			
-		//})
 		$('#case-2').hide();
 		$('#form1').hide();
-		$('#form3').show();
+		UpdatePosPromote(UserID, () => {
+			$('#form3').show();
+		})
+		
+		
 	})
 	$('#dialogCancel3').click(function () {
 		$('#form3').hide();
