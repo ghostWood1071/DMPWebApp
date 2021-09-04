@@ -49,7 +49,7 @@
 				else {
 					$($('#Newpos')[0]).text(data.Reason)
 					$('#case-2').show();
-					
+					$($('#pos')[0]).text(data.Reason)
                 }
 				console.log(data);
 			}
@@ -78,11 +78,15 @@
 	})
 
 	$('#dialogConfirm').click(function () {
-		UpdatePosPromote(UserID, () => {
-			$('#case-2').hide();
-			$('#form1').hide();
-		})
-		
+		//UpdatePosPromote(UserID, () => {
+			
+		//})
+		$('#case-2').hide();
+		$('#form1').hide();
+		$('#form3').show();
+	})
+	$('#dialogCancel3').click(function () {
+		$('#form3').hide();
 	})
 
 	$('#dialogCancel').click(function () {
@@ -95,6 +99,7 @@
 
 	$('#dialogConfirm2').click(function () {
 		$('#form2').hide();
+		$('#case-2').hide();
 	})
 
 	$('#dialogCancel2').click(function () {
