@@ -8,8 +8,11 @@
 	today.setDate(today.getMonth() - 1);
 
 	var month = (today.getMonth())
-	$('.page-header h2').text('Cập nhật lương tháng ' + month);
-	$('h2.panel-title').text('Cập nhật lương tháng ' + month);
+
+	var previousMonth = month - 1
+	
+	$('.page-header h2').text('Cập nhật lương tháng ' + previousMonth);
+	$('h2.panel-title').text('Cập nhật lương tháng ' + previousMonth);
 	var year = today.getFullYear();
 
 	var datatableInit = function () {
@@ -67,9 +70,13 @@
 	};
 
 	var today = new Date();
-	var date = (today.getMonth() + 1)
-	$('.page-header h2').text('Cập nhật lương tháng ' + date);
-	$('h2.panel-title').text('Cập nhật lương tháng ' + date);
+
+	today.setDate(today.getMonth() - 1);
+
+	var month = (today.getMonth())
+
+	$('.page-header h2').text('Cập nhật lương tháng ' + month);
+	$('h2.panel-title').text('Cập nhật lương tháng ' + month);
 
 
 	$('#dialogConfirm').click(function () {
@@ -77,10 +84,10 @@
 			url: "http://localhost:57133//InsertNewMemberPoints",
 			type: "POST",
 			success: function (response) {
-				alert('Cập nhật thành công');
+				toastr.success('Cập nhật bảng điểm thành công')
 			},
 			error: function (x, e) {
-				alert('Failed');
+				toastr.error('Cập nhật bảng điểm thất bại')
 			}
 		});
 		$('.workform').hide();
