@@ -136,11 +136,6 @@
 		})
 
 
-
-
-
-
-
 		/*
 		Sales Selector
 		*/

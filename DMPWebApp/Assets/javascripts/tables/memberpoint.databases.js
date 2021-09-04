@@ -14,9 +14,9 @@
 			},
 			columns: [
 				{ data: "Month", className: 'right'},
-				{ data: "AccumulatedMark", className: 'right'},
 				{ data: "ImmediateMark", className: 'right' },
-				{ data: "MediateMark", className: 'right'},
+				{ data: "MediateMark", className: 'right' },
+				{ data: "AccumulatedMark", className: 'right' },
 				{ data: "UsedMark", className: 'right'},
 				{ data: "UnUsedMark", className: 'right'}
 			],

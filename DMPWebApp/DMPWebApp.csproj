@@ -223,6 +223,7 @@
     <Content Include="Assets\javascripts\pages\examples.timeline.js" />
     <Content Include="Assets\javascripts\Profile.js" />
     <Content Include="Assets\javascripts\ResetPass.js" />
+    <Content Include="Assets\javascripts\tables\job.handler.js" />
     <Content Include="Assets\javascripts\tables\memberpoint.databases.js" />
     <Content Include="Assets\javascripts\tables\product.handler.js" />
     <Content Include="Assets\javascripts\tables\examples.datatables.ajax.js" />

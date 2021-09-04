@@ -2,42 +2,53 @@
 (function ($) {
 
 	'use strict';
-	var UserID = sessionStorage.getItem("userID");
+
+	var today = new Date();
+
+	today.setDate(today.getMonth() - 1);
+
+	var month = (today.getMonth())
+	$('.page-header h2').text('Cập nhật lương tháng ' + month);
+	$('h2.panel-title').text('Cập nhật lương tháng ' + month);
+	var year = today.getFullYear();
+
 	var datatableInit = function () {
-		
-		var year = $('#year')[0].value;
 
 		$('#default-table').dataTable({
 			ajax: {
-				"url": `http://localhost:57133//GetSalaryForMember?id=${UserID}&year=${year}`,
-				"dataSrc":""
+				"url": `http://localhost:57133//GetSalary?month=${month}&year=${year}`,
+				"dataSrc": ""
 			},
 			columns: [
-				{ data: "Month" }, 
+				{ data: "MemberID" },
 				{
-					data: "SalaryByLower", render: function (data, type, row) {	
+					data: "SalaryByLower", render: function (data, type, row) {
 						if (data == null)
 							return 0;
 						return String(data).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-					}, className: 'right'},
+					}, className: 'right'
+				},
 				{
 					data: "SalaryByImmediate", render: function (data, type, row) {
 						if (data == null)
 							return 0;
 						return String(data).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-					}, className: 'right'},
+					}, className: 'right'
+				},
 				{
 					data: "SalaryByManager", render: function (data, type, row) {
 						if (data == null)
 							return 0;
 						return String(data).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-					}, className: 'right'},
+					}, className: 'right'
+				},
 				{
 					data: "SumSalary", render: function (data, type, row) {
 						if (data == null)
 							return 0;
 						return String(data).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-					}, className: 'right'}
+					}, className: 'right'
+				}
 			],
 			"order": [[1, 'asc']],
 			"paging": false,
@@ -54,11 +65,31 @@
 		});
 
 	};
-	$("#year").change(function () {
-		var year = $('#year')[0].value;
-		const table = $('#default-table').DataTable();
-		table.ajax.url(`http://localhost:57133//GetSalaryForMember?id=${UserID}&year=${year}`).load();
+
+	var today = new Date();
+	var date = (today.getMonth() + 1)
+	$('.page-header h2').text('Cập nhật lương tháng ' + date);
+	$('h2.panel-title').text('Cập nhật lương tháng ' + date);
+
+
+	$('#dialogConfirm').click(function () {
+		$.ajax({
+			url: "http://localhost:57133//InsertNewMemberPoints",
+			type: "POST",
+			success: function (response) {
+				alert('Cập nhật thành công');
+			},
+			error: function (x, e) {
+				alert('Failed');
+			}
+		});
+		$('.workform').hide();
 	});
+
+	$('#dialogCancel').click(function () {
+		$('.workform').hide();
+	});
+
 	$(function () {
 		datatableInit();
 	});

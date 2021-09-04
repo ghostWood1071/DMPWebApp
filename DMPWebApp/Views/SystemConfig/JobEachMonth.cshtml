@@ -6,7 +6,54 @@
     <link rel="stylesheet" href="~/Assets/stylesheets/popup.css">
 }
 
-<div class="mx-auto workform">
+
+<section role="main" class="content-body">
+    <header class="page-header">
+        <h2>Cập nhật lương tháng</h2>
+        <div class="right-wrapper pull-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li><span>Cập nhật lương tháng</span></li>
+            </ol>
+
+            <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
+        </div>
+    </header>
+
+    <!-- start: page -->
+    <section class="panel">
+        <header class="panel-heading">
+            <div class="panel-actions">
+                <a href="#" class="fa fa-caret-down"></a>
+            </div>
+            <h2 class="panel-title">Cập nhật lương tháng</h2>
+        </header>
+        <div class="panel-body">
+            <table class="table table-bordered table-striped mb-none" id="default-table">
+                <thead>
+                    <tr>
+                        <th>Mã thành viên</th>
+                        <th>Tiền chênh 1 cấp (VNĐ)</th>
+                        <th>Tiền hoa hồng mua hàng (VNĐ)</th>
+                        <th>Hoa hồng thành tích lãnh đạo (VNĐ)</th>
+                        <th>Tổng lương (VNĐ)</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </section>
+    <!-- end: page -->
+</section>
+			</div>
+		</section>
+
+
+
+<div class="mx-auto workform" style="margin-top:100px;">
     <div class="row d-flex justify-content-center">
         <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
             <div class="card">
@@ -30,24 +77,13 @@
 </div>
 
 @section script{
-    <script>
-        $('#dialogConfirm').click(function(){
-            $.ajax({
-                url: "http://localhost:57133//InsertNewMemberPoints",
-                type: "POST",
-                success: function (response) {
-                    alert('Cập nhật thành công');
-                },
-                error: function (x, e) {
-                    alert('Failed');
-                }
-            });
-            $('.workform').hide();
-        });
+    <script src="~/Assets/javascripts/tables/job.handler.js"></script>
 
-        $('#dialogCancel').click(function () {
-            $('.workform').hide();
-        });
+    <script>
+        
     </script>
-    
+    <script>
+        
+    </script>
+
 }
