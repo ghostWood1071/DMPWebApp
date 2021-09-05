@@ -15,7 +15,7 @@
         toastr.error("Thêm thông thất bại");
     });
 
-    $.post('http://localhost:57133/OrderMail', content, function (data) {
+    $.post('https://api.duocmyphamhaiduong.com/OrderMail', content, function (data) {
         console.log(data);
     });
 }

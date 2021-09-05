@@ -15,7 +15,7 @@
 	$('h2.panel-title').text('Cập nhật lương tháng ' + previousMonth);
 	var year = today.getFullYear();
 
-	$.get(`http://localhost:57133//CheckSalaryUpdated`).done(
+	$.get(`https://api.duocmyphamhaiduong.com/CheckSalaryUpdated`).done(
 		function (data) {
 			if (data.IsSalaryUpdated == 0) {
 				$('#accept').show();
@@ -27,7 +27,7 @@
 
 		$('#default-table').DataTable({
 			ajax: {
-				"url": `http://localhost:57133//GetSalary?month=${month}&year=${year}`,
+				"url": `https://api.duocmyphamhaiduong.com/GetSalary?month=${month}&year=${year}`,
 				"dataSrc": ""
 			},
 			columns: [
@@ -89,7 +89,7 @@
 
 	$('#dialogConfirm').click(function () {
 		$.ajax({
-			url: "http://localhost:57133//InsertNewMemberPoints",
+			url: "https://api.duocmyphamhaiduong.com/InsertNewMemberPoints",
 			type: "POST",
 			success: function (response) {
 				toastr.success('Cập nhật bảng điểm thành công')
@@ -111,7 +111,7 @@
 
 	$('#dialogConfirm1').click(function () {
 		$.ajax({
-			url: "http://localhost:57133//InsertNewSalary",
+			url: "https://api.duocmyphamhaiduong.com/InsertNewSalary",
 			type: "POST",
 			success: function (response) {
 				toastr.success('Cập nhật bảng lương thành công')

@@ -9,7 +9,7 @@
 
 		$('#default-table').dataTable({
 			ajax: {
-				"url": `http://localhost:57133//GetMemberPoint?id=${UserID}&year=${year}`,
+				"url": `https://api.duocmyphamhaiduong.com/GetMemberPoint?id=${UserID}&year=${year}`,
 				"dataSrc": ""
 			},
 			columns: [
@@ -37,7 +37,7 @@
 	};
 
 	var GetPromotable = function (id) {
-		$.get(`http://localhost:57133///GetPromotable?id=${id}`).done(
+		$.get(`https://api.duocmyphamhaiduong.com///GetPromotable?id=${id}`).done(
 			function (data) {
 				if (data.NewPos == -1) {
 					$($('#Nextpos')[0]).text(data.Reason);
@@ -73,7 +73,7 @@
 
 	var UpdatePosPromote = function (id, callback) {
 		$.ajax({
-			url: "http://localhost:57133//UpdatePosPromote",
+			url: "https://api.duocmyphamhaiduong.com//UpdatePosPromote",
 			type: "PUT",
 			contentType: "application/json;charset=utf-8",
 			data: JSON.stringify(id),
@@ -129,7 +129,7 @@
 	$("#year").change(function () {
 		var year = $('#year')[0].value;
 		const table = $('#default-table').DataTable();
-		table.ajax.url(`http://localhost:57133//GetMemberPoint?id=${UserID}&year=${year}`).load();
+		table.ajax.url(`https://api.duocmyphamhaiduong.com/GetMemberPoint?id=${UserID}&year=${year}`).load();
 	});
 
 	$(function () {

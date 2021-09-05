@@ -1,4 +1,5 @@
 ﻿
+
 (function ($) {
 
     'use strict';
@@ -17,7 +18,7 @@
 
     var EditMember = function (member, callback) {
         $.ajax({
-            url: "http://api.duocmyphamhaiduong.com//UpdateMember",
+            url: "http://api.duocmyphamhaiduong.com/UpdateMember",
             type: "PUT",
             contentType: "application/json;charset=utf-8",
             data: JSON.stringify(member),
@@ -34,7 +35,7 @@
 
     var AddMember = function (member, callback) {
         $.ajax({
-            url: "http://api.duocmyphamhaiduong.com//api/Members",
+            url: "http://api.duocmyphamhaiduong.com/api/Members",
             type: "POST",
             contentType: "application/json;charset=utf-8",
             data: JSON.stringify(member),
@@ -52,7 +53,7 @@
     var DeleteMember = function (id, callback) {
         $('.details').remove();
         $.ajax({
-            url: "http://api.duocmyphamhaiduong.com//api/Members/" + id,
+            url: "http://api.duocmyphamhaiduong.com/api/Members/" + id,
             type: "DELETE",
             contentType: "application/json",
             success: function () {
@@ -157,7 +158,7 @@
     $(document).ready(function () {
         name = "";
         $('#addToTablee').click(function () {
-            $.get(`http://localhost:57133//GetNextMemberID`).done(
+            $.get(`https://api.duocmyphamhaiduong.com/GetNextMemberID`).done(
                 function (data) {
                     ($('#fid')[0]).value = data;
                 });
@@ -367,8 +368,31 @@
         });
     });
 
+    function change(id) {
+        $.ajax({
+            url: `https://api.duocmyphamhaiduong.com/Change?id=${id}`,
+            type: 'PUT',
+            success: function (data) {
+                $.post('https://api.duocmyphamhaiduong.com/OrderMail', {
+                    NotifyID: 0,
+                    Sender: localStorage.getItem('userID'),
+                    Title: "Công ty TNHH DMP Hải Dương - ĐỔI MẬT KHẨU",
+                    Content: `Mật khẩu mới: ${data}`,
+                    Receiver: id,
+                    IsSendAll: false,
+                    CreateDate: (new Date()).toISOString()
+                }).success(function () {
+                    toastr.success("Đổi mật khẩu thành công");
+                });
+            },
+            error: function () {
 
-    $(document).on('click', '.pas', function () {
+            }
+        })
+    }
+
+    $(document).on('click', '.pas', function (e) {
+        e.preventDefault();
         var _self = {
             $cancel: $('#dialogCancel1'),
             $confirm: $("#dialogConfirm1"),
@@ -376,10 +400,8 @@
         };
         var row = $('.editt-row').parent().parent().children('td')[1];
         var hang = $(this).parent().parent()
-        var data = $(row).text();
-        // $.post("./google.com", data ,function(response){
-
-        // }, 'json')
+        var data = $($(this).parent().parent().parent().parent().parent().parent().prev().children()[1]).text()
+        
         $.magnificPopup.open({
             items: {
                 src: '#dialog2',
@@ -391,7 +413,7 @@
                 change: function () {
                     _self.$confirm.on('click', function (e) {
                         e.preventDefault();
-                        //ajax
+                        change(data);
                         $.magnificPopup.close();
                     });
 
@@ -420,5 +442,7 @@
     $('#datepick').click(function () {
         $('.datepicker').css('z-index', '10000000000');
     })
+
+    
 
 }).apply(this, [jQuery]);
