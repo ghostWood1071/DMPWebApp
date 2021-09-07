@@ -5,7 +5,7 @@
 }
 @media (max-width: 500px) {
     #company-name{
-        display:none;
+        display:none;   
     }
 }
 .mfp-content .modal-block .panel .panel-footer .row div button:first-child {
