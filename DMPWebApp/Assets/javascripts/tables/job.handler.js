@@ -17,7 +17,8 @@
 
 	$.get(`https://api.duocmyphamhaiduong.com/CheckSalaryUpdated`).done(
 		function (data) {
-			if (data.IsSalaryUpdated == 0) {
+			var row1=data[0]
+			if (row1.IsSalaryUpdated == 0) {
 				$('#accept').show();
 			}
 		}
@@ -62,7 +63,6 @@
 				}
 			],
 			"order": [[1, 'asc']],
-			"paging": false,
 			"ordering": false,
 			"info": false,
 			"searching": false,
@@ -85,42 +85,59 @@
 
 	$('.page-header h2').text('Cập nhật lương tháng ' + month);
 	$('h2.panel-title').text('Cập nhật lương tháng ' + month);
+		
+	//$('#dialogConfirm').click(function () {
+	//	$.ajax({
+	//		url: "https://api.duocmyphamhaiduong.com/InsertNewMemberPoints",
+	//		type: "POST",
+	//		success: function (response) {
+	//			toastr.success('Cập nhật bảng điểm thành công')
+	//		},
+	//		error: function (x, e) {
+	//			toastr.error('Cập nhật bảng điểm thất bại')
+	//		}
+	//	});
+	//	$('.workform').hide();
+	//});
 
-
-	$('#dialogConfirm').click(function () {
-		$.ajax({
-			url: "https://api.duocmyphamhaiduong.com/InsertNewMemberPoints",
-			type: "POST",
-			success: function (response) {
-				toastr.success('Cập nhật bảng điểm thành công')
-			},
-			error: function (x, e) {
-				toastr.error('Cập nhật bảng điểm thất bại')
-			}
-		});
-		$('.workform').hide();
-	});
-
-	$('#dialogCancel').click(function () {
-		$('.workform').hide();
-	});
+	//$('#dialogCancel').click(function () {
+	//	$('.workform').hide();
+	//});
 
 	$('#accept').click(function () {
 		$('#form1').show()
     })
 
 	$('#dialogConfirm1').click(function () {
-		$.ajax({
-			url: "https://api.duocmyphamhaiduong.com/InsertNewSalary",
-			type: "POST",
-			success: function (response) {
-				toastr.success('Cập nhật bảng lương thành công')
-				$('#accept').hide();
-			},
-			error: function (x, e) {
-				toastr.error('Cập nhật bảng lương thất bại')
-			}
-		});
+		if ($('#salary')[0].checked == true) {
+			//Cập nhật lương
+			$.ajax({
+				url: "https://api.duocmyphamhaiduong.com/InsertNewSalary",
+				type: "POST",
+				success: function (response) {
+					toastr.success('Cập nhật bảng lương thành công')
+					$('#accept').hide();
+				},
+				error: function (x, e) {
+					toastr.error('Cập nhật bảng lương thất bại')
+				}
+			});
+
+			//cập nhật bảng điểm
+			$.ajax({
+				url: "https://api.duocmyphamhaiduong.com/InsertNewMemberPoints",
+				type: "POST",
+				success: function (response) {
+					toastr.success('Cập nhật bảng điểm thành công')
+				},
+				error: function (x, e) {
+					toastr.error('Cập nhật bảng điểm thất bại')
+				}
+			});
+		}
+		else {
+			toastr.error('Cập nhật bảng lương thất bại')
+        }
 		$('.workform').hide();
 	});
 

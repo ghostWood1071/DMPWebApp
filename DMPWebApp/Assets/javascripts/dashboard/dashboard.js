@@ -1,8 +1,58 @@
 ﻿
 (function ($) {
+
+	
+
 	$(document).ready(function () {
 
+		//Giáng cấp
+		//nếu status not null
+		//xuất lên màn hình bạn đã bị giáng cấpackage
+		//nếu ko có thì thôi
+
 		var UserID = localStorage.getItem("userID");
+		var GetStatus = function (id) {
+			$.get(`https://api.duocmyphamhaiduong.com/GetStatus?id=${id}`).done(
+				function (data) {
+					row = data[0]
+					//Nếu bị giáng cấp
+					if (row.Status != null) {
+					    if (row.Status == 'các thành viên cấp dưới có TP sẽ bị chuyển') {
+					        $('#alert').html('Bạn vẫn giữ được cấp bậc <strong>Trưởng Phòng</strong> <br/> Tuy nhiên, toàn bộ các nhánh tuyến dưới có TP sẽ chuyển lên TP tuyến trên liền kề của bạn.')
+					    }
+					    else if (row.Status == 'trưởng phòng đã bị giáng cấp xuống thành viên') {
+					        $('#alert').html('Bạn đã bị giáng cấp xuống cấp bậc<strong>Thành Viên</strong> <br/> Đồng thời, nhánh tuyến dưới có TP của bạn sẽ được chuyển lên cho TP tuyến trên liền kề của bạn')
+					    }
+					    else {
+					        $('#alert').html('Bạn đã bị giáng cấp xuống cấp bậc<strong>Thành Viên</strong> <br/> Đồng thời, mất tất cả các đặc quyền TRƯỞNG NHÓM của bạn')
+					    }
+					    $('#form1').show()
+					}
+				}
+			)
+		}
+
+		var EditStatus = function (id) {
+			$.ajax({
+				url: "https://api.duocmyphamhaiduong.com/UpdateStatus",
+				type: "PUT",
+				contentType: "application/json;charset=utf-8",
+				data: JSON.stringify(id),
+				dataType: "json",
+				success: function (response) {
+				},
+				error: function (x, e) {
+					alert('Failed');
+				}
+			});
+		}
+
+		$('#dialogCancel').click(function () {
+			$('#form1').hide()
+			//Cập nhật lại status = null
+			EditStatus(UserID)
+		})
+		GetStatus(UserID)
 
 		var year = $('#year')[0].value;
 		var key = ($('#month')[0]).value;
@@ -69,6 +119,7 @@
 					"url": `https://api.duocmyphamhaiduong.com/GetReportGenaral?id=${UserID}&year=${year}&key=${null}`,
 					"dataSrc": ""
 				},
+				responsive: true,
 				columns: [
 					{ data: "Month", className: 'right'},
 					{
@@ -191,6 +242,7 @@
 		$(function () {
 			datatableInit();
 		});
+
 	})
 	
 }).apply(this, [jQuery]);
