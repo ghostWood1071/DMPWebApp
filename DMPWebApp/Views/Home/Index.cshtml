@@ -26,7 +26,7 @@
     <!-- start: page -->
     <div class="row">
         <!--part 1-->
-        <div class="col-md-6 col-lg-12 col-xl-6">
+        <div class="col-md-12 col-lg-12 col-xl-12">
             <div class="row" style="padding: 0 15px 15px 15px;">
                 <header class="panel-heading">
                     <h3>Thời gian</h3>
@@ -167,7 +167,7 @@
         </div>
 
         <!--part 2-->
-        <div class="col-md-6 col-lg-12 col-xl-6">
+        <div class="col-md-12 col-lg-12 col-xl-12">
             <section class="panel">
                 <header class="panel-heading">
                     <h2 class="panel-title">Thống kê</h2>
@@ -243,7 +243,7 @@
         </div>
 
         <!--part 3-->
-        <div class="col-md-6 col-lg-12 col-xl-6">
+        <div class="col-md-12 col-lg-12 col-xl-12">
             <section class="panel">
                 <div class="panel-body">
                     <div class="row">
@@ -325,54 +325,7 @@
 
 @section script{
     <script>
-        //Giáng cấp
-        //nếu status not null
-        //xuất lên màn hình bạn đã bị giáng cấpackage
-        //nếu ko có thì thôi
-
-        var UserID = sessionStorage.getItem("userID");
-        var GetStatus = function (id) {
-            $.get(`http://localhost:57133//GetStatus?id=${id}`).done(
-                function (data) {
-                    row = data[0]
-                    //Nếu bị giáng cấp
-                    if (row.Status != null) {
-                        if (row.Status == 'các thành viên cấp dưới có TP sẽ bị chuyển') {
-                            $('#alert').html('Bạn vẫn giữ được cấp bậc <strong>Trưởng Phòng</strong> <br/> Tuy nhiên, toàn bộ các nhánh tuyến dưới có TP sẽ chuyển lên TP tuyến trên liền kề của bạn.')
-                        }
-                        else if (row.Status == 'trưởng phòng đã bị giáng cấp xuống thành viên') {
-                            $('#alert').html('Bạn đã bị giáng cấp xuống cấp bậc<strong>Thành Viên</strong> <br/> Đồng thời, nhánh tuyến dưới có TP của bạn sẽ được chuyển lên cho TP tuyến trên liền kề của bạn')
-                        }
-                        else {
-                            $('#alert').html('Bạn đã bị giáng cấp xuống cấp bậc<strong>Thành Viên</strong> <br/> Đồng thời, mất tất cả các đặc quyền TRƯỞNG NHÓM của bạn')
-                        }
-                        $('#form1').show()
-                    }
-                }
-            )
-        }
-
-        var EditStatus = function (id) {
-            $.ajax({
-                url: "http://localhost:57133//UpdateStatus",
-                type: "PUT",
-                contentType: "application/json;charset=utf-8",
-                data: JSON.stringify(id),
-                dataType: "json",
-                success: function (response) {
-                },
-                error: function (x, e) {
-                    alert('Failed');
-                }
-            });
-        }
-
-        $('#dialogCancel').click(function () {
-            $('#form1').hide()
-            //Cập nhật lại status = null
-            EditStatus(UserID)
-        })
-        GetStatus(UserID)
+        
     </script>
     <script src="~/Assets/vendor/jquery-ui/js/jquery-ui-1.10.4.custom.js"></script>
     <script src="~/Assets/vendor/jquery-ui-touch-punch/jquery.ui.touch-punch.js"></script>
