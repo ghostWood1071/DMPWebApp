@@ -11,8 +11,8 @@
 
 	var previousMonth = month - 1
 	
-	$('.page-header h2').text('Cập nhật lương tháng ' + previousMonth);
-	$('h2.panel-title').text('Cập nhật lương tháng ' + previousMonth);
+	$('.page-header h2').text('Cập nhật lương tháng ' + previousMonth + 'Năm' );
+	$('h2.panel-title').text('Cập nhật lương tháng ' + previousMonth + 'Năm' );
 	var year = today.getFullYear();
 
 	$.get(`https://api.duocmyphamhaiduong.com/CheckSalaryUpdated`).done(
@@ -33,6 +33,7 @@
 			},
 			columns: [
 				{ data: "MemberID" },
+				{ data: "FullName" },
 				{
 					data: "SalaryByLower", render: function (data, type, row) {
 						if (data == null)
@@ -82,9 +83,9 @@
 	today.setDate(today.getMonth() - 1);
 
 	var month = (today.getMonth())
-
-	$('.page-header h2').text('Cập nhật lương tháng ' + month);
-	$('h2.panel-title').text('Cập nhật lương tháng ' + month);
+	var year = (today.getFullYear());
+	$('.page-header h2').text('Cập nhật lương tháng ' + month + 'năm ' + year);
+	$('h2.panel-title').text('Cập nhật lương tháng ' + month + 'năm ' + year);
 		
 	//$('#dialogConfirm').click(function () {
 	//	$.ajax({
