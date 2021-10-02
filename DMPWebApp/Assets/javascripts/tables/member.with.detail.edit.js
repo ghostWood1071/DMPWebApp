@@ -216,7 +216,7 @@
             var IDCard_DateIssue = (new Date(($('#eIDCard_DateIssue')[0]).value)).toISOString()
             var password = ($('#epassword')[0]).value
             var position = ($('#eposition')[0]).value
-            if (position == "Chủ sở hữu") { position = 0 } else if (position == "Trưởng phòng") { position = 1 } else if (position == "Trưởng phòng dự bị") { position = 2 } else if (position == "Trưởng nhóm") { position = 3 } else if (position == "Thành viên đạt chuẩn") { position = 4 } else if (position == "Thành viên tích cực") { position = 5 } else if (position == "Thành viên 300") { position = 6 } else position = 7
+            if (position == "Trưởng phòng") { position = 1 } else if (position == "Trưởng phòng dự bị") { position = 2 } else if (position == "Trưởng nhóm") { position = 3 } else if (position == "Thành viên đạt chuẩn") { position = 4 } else if (position == "Thành viên tích cực") { position = 5 } else if (position == "Thành viên 300") { position = 6 } else position = 7
             var role = ($('#erole')[0]).value
             if (role = "Thành viên") role = 3; else if (role = "Quản trị viên") role = 2; else role = 1;
             var isactive = ($('#eisactive')[0]).value
@@ -267,7 +267,7 @@
             var IDCard_DateIssue = ($('#IDCard_DateIssue')[0]).value
             var password = ($('#password')[0]).value
             var position = ($('#position')[0]).value
-            if (position == "Chủ sở hữu") { position = 0 } else if (position == "Trưởng phòng") { position = 1 } else if (position == "Trưởng phòng dự bị") { position = 2 } else if (position == "Trưởng nhóm") { position = 3 } else if (position == "Thành viên đạt chuẩn") { position = 4 } else if (position == "Thành viên tích cực") { position = 5 } else if (position == "Thành viên 300") { position = 6 } else position = 7
+            if (position == "Trưởng phòng") { position = 1 } else if (position == "Trưởng phòng dự bị") { position = 2 } else if (position == "Trưởng nhóm") { position = 3 } else if (position == "Thành viên đạt chuẩn") { position = 4 } else if (position == "Thành viên tích cực") { position = 5 } else if (position == "Thành viên 300") { position = 6 } else position = 7
             var role = ($('#role')[0]).value
             if (role = "Thành viên") role = 3; else if (role = "Quản trị viên") role = 2; else role = 1;
             var isactive = ($('#isactive')[0]).value

@@ -84,8 +84,8 @@
 
 	var month = (today.getMonth())
 	var year = (today.getFullYear());
-	$('.page-header h2').text('Cập nhật lương tháng ' + month + 'năm ' + year);
-	$('h2.panel-title').text('Cập nhật lương tháng ' + month + 'năm ' + year);
+	$('.page-header h2').text('Cập nhật lương tháng ' + month + ' - ' + year);
+	$('h2.panel-title').text('Cập nhật lương tháng ' + month + ' - ' + year);
 		
 	//$('#dialogConfirm').click(function () {
 	//	$.ajax({

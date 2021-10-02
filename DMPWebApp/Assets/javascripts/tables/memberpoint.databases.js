@@ -18,7 +18,9 @@
 				{ data: "MediateMark", className: 'right' },
 				{ data: "AccumulatedMark", className: 'right' },
 				{ data: "UsedMark", className: 'right'},
-				{ data: "UnUsedMark", className: 'right'}
+				{ data: "UnUsedMark", className: 'right' },
+				{ data: "TotalSales", className: 'right' },
+				{ data: "NetPoint", className: 'right' }
 			],
 			"order": [[1, 'asc']],
 			"paging": false,
@@ -35,6 +37,13 @@
 		});
 
 	};
+
+	$("#year").change(function () {
+		var year = $('#year')[0].value;
+		const table = $('#default-table').DataTable();
+		table.ajax.url(`https://api.duocmyphamhaiduong.com/GetMemberPoint?id=${UserID}&year=${year}`).load();
+	});
+
 
 	var GetPromotable = function (id) {
 		$.get(`https://api.duocmyphamhaiduong.com///GetPromotable?id=${id}`).done(
@@ -66,7 +75,6 @@
 					$('#case-2').show();
 					$($('#pos')[0]).text(data.Reason)
                 }
-				console.log(data);
 			}
 		)
 	}
@@ -126,11 +134,7 @@
 
 	GetPromotable(UserID)
 
-	$("#year").change(function () {
-		var year = $('#year')[0].value;
-		const table = $('#default-table').DataTable();
-		table.ajax.url(`https://api.duocmyphamhaiduong.com/GetMemberPoint?id=${UserID}&year=${year}`).load();
-	});
+	
 
 	$(function () {
 		datatableInit();
