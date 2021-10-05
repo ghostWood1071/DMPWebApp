@@ -45,37 +45,14 @@
             <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
         </div>
     </header>
-     
+
     <!-- start: page -->
     <section class="panel">
         <header class="panel-heading" style="display: flex; align-items:center">
             <div class="panel-actions">
                 <a href="#" class="fa fa-caret-down"></a>
             </div>
-            <h2 class="panel-title" style="margin-right: 10px">Cập nhật lương tháng</h2>
-            <div>
-                <select id="month">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                </select>
-            </div>
-            <h2 class="panel-title" style="margin-right: 20px; margin-left: 20px">-</h2>
-            <h2 class="panel-title" style="margin-right: 10px; ">năm</h2>
-            <div>
-                <select id="year">
-                    
-                </select>
-            </div>
+            <h2 id="title-h2" class="panel-title" style="margin-right: 10px">Cập nhật lương tháng</h2>
         </header>
         <div class="panel-body">
             <div style="margin:0px 0px 17px 0px;">
@@ -96,11 +73,57 @@
             </table>
         </div>
     </section>
+    <section class="panel">
+        <header class="panel-heading" style="display: flex; align-items:center">
+            <div class="panel-actions">
+                <a href="#" class="fa fa-caret-down"></a>
+            </div>
+            <h2 class="panel-title" style="margin-right: 10px">Lương tháng</h2>
+            <div>
+                <select id="month">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+            </div>
+            <h2 class="panel-title" style="margin-right: 20px; margin-left: 20px">-</h2>
+            <h2 class="panel-title" style="margin-right: 10px; ">năm</h2>
+            <div>
+                <select id="year">
+                </select>
+            </div>
+        </header>
+        <div class="panel-body">
+            <div style="margin:0px 0px 17px 0px;">
+                <button class="btn btn-primary" id="export2" style="float:right;">Xuất file Excel</button>
+            </div>
+            <table class="table table-bordered table-striped mb-none" id="static-table">
+                <thead>
+                    <tr>
+                        <th>Mã thành viên</th>
+                        <th>Tên thành viên</th>
+                        <th>Tiền chênh 1 cấp (VNĐ)</th>
+                        <th>Tiền hoa hồng mua hàng (VNĐ)</th>
+                        <th>Hoa hồng thành tích lãnh đạo (VNĐ)</th>
+                        <th>Tổng lương (VNĐ)</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </section>
     <!-- end: page -->
-    
+
 </section>
-			</div>
-		</section>
+		
 
 <div class="mx-auto workform" id="form1" style="display: none;margin-top:100px;">
     <div class="row d-flex justify-content-center">
