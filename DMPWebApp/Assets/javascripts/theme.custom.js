@@ -18,7 +18,7 @@ function loadLink() {
     return new Promise(function (resolve, reject) {
         $.get(`https://api.duocmyphamhaiduong.com/api/Role?memberID=${localStorage.getItem('userID')}`)
             .done(function (data) {
-                $('[data-link = "update"]').attr('href', data[data.length]);
+                $('[data-link = "update"]').attr('href', data[data.length-1]);
                 $('[data-link = "product"]').attr('href', data[0]);
                 $('[data-link = "member"]').attr('href', data[1]);
                 $('[data-link = "order"]').attr('href', data[2]);

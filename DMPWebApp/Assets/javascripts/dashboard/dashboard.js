@@ -5,6 +5,33 @@
 
 	$(document).ready(function () {
 
+		
+		$.get(`https://api.duocmyphamhaiduong.com/GetYears?memberID=${localStorage.getItem('userID')}`).done(function (data) {
+			var selector = $('#year');
+			var selectPlot = $('#salesSelector');
+			for (var i = 0; i < data.length; i++) {
+				if (i == 0) {
+					selector.append(`<option value = "${data[i]}" selected>Năm ${data[i]}</option>`);
+					selectPlot.append(`<option value = "${data[i]}" selected>${data[i]}</option>`);
+				}
+				else {
+					selector.append(`<option value = "${data[i]}>Năm ${data[i]}</option>`);
+					selectPlot.append(`<option value = "${data[i]}>${data[i]}</option>`);
+				}
+
+            }
+		});
+
+		var optMonths = $('#month').children('option');
+		for (var i = 0; i < optMonths.length; i++) {
+			var month = 'T' + (new Date()).getMonth();
+			if (month == $(optMonths[i]).val()) {
+				$(optMonths[i]).prop('selected', true);
+				break;
+			}
+        }
+
+
 		//Giáng cấp
 		//nếu status not null
 		//xuất lên màn hình bạn đã bị giáng cấpackage
@@ -54,8 +81,8 @@
 		})
 		GetStatus(UserID)
 
-		var year = $('#year')[0].value;
-		var key = ($('#month')[0]).value;
+		var year = (new Date()).getFullYear(); //$('#year')[0].value;
+		var key = "T"+(new Date()).getMonth(); //($('#month')[0]).value;
 		$.get(`https://api.duocmyphamhaiduong.com/GetReportGenaral?id=${UserID}&year=${year}&key=${key}`).done(
 			function (table) {
 				$('#Accmulation')[0].textContent = table[0].Accmulation
@@ -112,7 +139,7 @@
 
 		var datatableInit = function () {
 
-			var year = $('#year')[0].value;
+			var year = (new Date()).getFullYear();
 
 			$('#default-table').dataTable({
 				ajax: {
@@ -157,7 +184,7 @@
 
 
 
-		$("#year").change(function () {
+		$(document).on("change","#year",function () {
 			var year = $('#year')[0].value;
 			var key = ($('#month')[0]).value;
 			$.get(`https://api.duocmyphamhaiduong.com/GetReportGenaral?id=${UserID}&year=${year}&key=${key}`).done(
@@ -166,15 +193,17 @@
 					$('#Salary')[0].textContent = String(table[0].Salary).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + " VNĐ"
 					$('#CountOrders')[0].textContent = table[0].CountOrders
 					$('#CountLowerMembers')[0].textContent = table[0].CountLowerMembers
+					
 				})
-
+			
 
 		})
 
 
-		$("#month").change(function () {
+		$(document).on("change", "#month", function () {
 			var year = $('#year')[0].value;
 			var key = ($('#month')[0]).value;
+	
 			$.get(`https://api.duocmyphamhaiduong.com/GetReportGenaral?id=${UserID}&year=${year}&key=${key}`).done(
 				function (table) {
 					$('#Accmulation')[0].textContent = table[0].Accmulation
@@ -190,9 +219,9 @@
 		/*
 		Sales Selector
 		*/
-		$('#salesSelector').themePluginMultiSelect().on('change', function () {
-			var year_chart = ($('#salesSelector')[0]).value;
-
+		$(document).on('change', '#salesSelector', function () {
+			var year_chart = ($('#salesSelector')[0]).value == "" ? (new Date()).getFullYear():($('#salesSelector')[0]).value ;
+			console.log(year_chart);
 			$.get(`https://api.duocmyphamhaiduong.com/GetReportGenaral?id=${UserID}&year=${year_chart}&key=${null}`).done(
 				function (table) {
 					var Accmulation = [];
@@ -234,7 +263,7 @@
 		});
 
 
-		$('#salesSelector').trigger('change');
+		$(document).find('#salesSelector').trigger('change');
 
 
 		$('#salesSelectorWrapper').addClass('ready');
