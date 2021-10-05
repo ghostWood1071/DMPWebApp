@@ -50,10 +50,10 @@
 			function (data) {
 				if (data.NewPos == -1) {
 					$($('#Nextpos')[0]).text(data.Reason);
-					if (data.Reason = 'cần tái đạt chuẩn Trưởng Phòng') {
+					if (data.Reason == 'cần tái đạt chuẩn Trưởng Phòng') {
 						$('#case-3 strong').html(`Bạn cần tái đạt chuẩn vị trí <b style=" font-size: 14px; text-shadow: 1px 2px 3px #ccc; text-transform: uppercase; margin: 0px; padding: 9px 0px; font-weight: bold; " id="Nextpos">Trưởng Phòng</b>. <br />`)
 					}
-					else if (data.Reason = 'cần tái đạt chuẩn Trưởng Nhóm') {
+					else if (data.Reason == 'cần tái đạt chuẩn Trưởng Nhóm') {
 						$('#case-3 strong').html(`Bạn cần tái đạt chuẩn vị trí <b style=" font-size: 14px; text-shadow: 1px 2px 3px #ccc; text-transform: uppercase; margin: 0px; padding: 9px 0px; font-weight: bold; " id="Nextpos">Trưởng Nhóm</b>. <br />`)
                     }
 					$('#case-3').show();
@@ -62,18 +62,21 @@
 					$('#case-1').show();
 				}
 				else {
-					if (data.Reason = 'đã tái đạt chuẩn Trưởng Phòng') {
+					if (data.Reason == 'đã tái đạt chuẩn Trưởng Phòng') {
 						$('#case-2 strong').html(`Bạn đã đủ điều kiện để đạt tái vị trí<b style=" font-size: 14px; text-shadow: 1px 2px 3px #ccc; text-transform: uppercase; margin: 0px; padding: 9px 0px; font-weight: bold; " id="Newpos">Trưởng Phòng</b>! <br />
                 Bạn có đồng ý sử dụng điểm để thăng cấp không? <br />
                 <button class="btn btn-primary" id="accept">Đồng ý</button> | <button class="btn btn-primary" id="deny">Chưa sử dụng</button>`)
 					}
-					else if (data.Reason = 'đã tái đạt chuẩn Trưởng Nhóm') {
+					else if (data.Reason == 'đã tái đạt chuẩn Trưởng Nhóm') {
 						$('#case-2 strong').html(`Bạn đã đủ điều kiện để đạt tái vị trí<b style=" font-size: 14px; text-shadow: 1px 2px 3px #ccc; text-transform: uppercase; margin: 0px; padding: 9px 0px; font-weight: bold; " id="Newpos">Trưởng Nhóm</b>! <br />
                 Bạn có đồng ý sử dụng điểm để thăng cấp không? <br />
-                <button class="btn btn-primary" id="accept">Đồng ý</button> | <button class="btn btn-primary" id="deny">Chưa sử dụng</button>`)}
-					$($('#Newpos')[0]).text(data.Reason)
-					$('#case-2').show();
-					$($('#pos')[0]).text(data.Reason)
+                <button class="btn btn-primary" id="accept">Đồng ý</button> | <button class="btn btn-primary" id="deny">Chưa sử dụng</button>`)
+					}
+					else {
+						$($('#Newpos')[0]).text(data.Reason)
+						$('#case-2').show();
+						$($('#pos')[0]).text(data.Reason)
+                    }
                 }
 			}
 		)
@@ -106,8 +109,6 @@
 		UpdatePosPromote(UserID, () => {
 			$('#form3').show();
 		})
-		
-		
 	})
 	$('#dialogCancel3').click(function () {
 		$('#form3').hide();
