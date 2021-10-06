@@ -19,6 +19,7 @@
 				{ data: "AccumulatedMark", className: 'right' },
 				{ data: "UsedMark", className: 'right'},
 				{ data: "UnUsedMark", className: 'right' },
+				{ data: "PersonalPoint", className: 'right' },
 				{ data: "TotalSales", className: 'right' },
 				{ data: "NetPoint", className: 'right' }
 			],
@@ -50,10 +51,10 @@
 			function (data) {
 				if (data.NewPos == -1) {
 					$($('#Nextpos')[0]).text(data.Reason);
-					if (data.Reason = 'cần tái đạt chuẩn Trưởng Phòng') {
+					if (data.Reason == 'cần tái đạt chuẩn Trưởng Phòng') {
 						$('#case-3 strong').html(`Bạn cần tái đạt chuẩn vị trí <b style=" font-size: 14px; text-shadow: 1px 2px 3px #ccc; text-transform: uppercase; margin: 0px; padding: 9px 0px; font-weight: bold; " id="Nextpos">Trưởng Phòng</b>. <br />`)
 					}
-					else if (data.Reason = 'cần tái đạt chuẩn Trưởng Nhóm') {
+					else if (data.Reason == 'cần tái đạt chuẩn Trưởng Nhóm') {
 						$('#case-3 strong').html(`Bạn cần tái đạt chuẩn vị trí <b style=" font-size: 14px; text-shadow: 1px 2px 3px #ccc; text-transform: uppercase; margin: 0px; padding: 9px 0px; font-weight: bold; " id="Nextpos">Trưởng Nhóm</b>. <br />`)
                     }
 					$('#case-3').show();
@@ -62,18 +63,37 @@
 					$('#case-1').show();
 				}
 				else {
-					if (data.Reason = 'đã tái đạt chuẩn Trưởng Phòng') {
+					var newpos = data.NewPos;
+					var pointneed = 0;
+					if (newpos == 6)
+						pointneed = 300
+					else if (newpos == 5)
+						pointneed = 500
+					else if (newpos == 4)
+						pointneed = 1000
+					else if (newpos == 3)
+						pointneed = 3000
+					else if (newpos == 2)
+						pointneed = 5000
+					else
+						pointneed = 0
+					$('#form1 .row strong').text(pointneed + ' điểm doanh số')
+
+					if (data.Reason == 'đã tái đạt chuẩn Trưởng Phòng') {
 						$('#case-2 strong').html(`Bạn đã đủ điều kiện để đạt tái vị trí<b style=" font-size: 14px; text-shadow: 1px 2px 3px #ccc; text-transform: uppercase; margin: 0px; padding: 9px 0px; font-weight: bold; " id="Newpos">Trưởng Phòng</b>! <br />
-                Bạn có đồng ý sử dụng điểm để thăng cấp không? <br />
-                <button class="btn btn-primary" id="accept">Đồng ý</button> | <button class="btn btn-primary" id="deny">Chưa sử dụng</button>`)
-					}
-					else if (data.Reason = 'đã tái đạt chuẩn Trưởng Nhóm') {
-						$('#case-2 strong').html(`Bạn đã đủ điều kiện để đạt tái vị trí<b style=" font-size: 14px; text-shadow: 1px 2px 3px #ccc; text-transform: uppercase; margin: 0px; padding: 9px 0px; font-weight: bold; " id="Newpos">Trưởng Nhóm</b>! <br />
-                Bạn có đồng ý sử dụng điểm để thăng cấp không? <br />
-                <button class="btn btn-primary" id="accept">Đồng ý</button> | <button class="btn btn-primary" id="deny">Chưa sử dụng</button>`)}
-					$($('#Newpos')[0]).text(data.Reason)
-					$('#case-2').show();
-					$($('#pos')[0]).text(data.Reason)
+						Bạn có đồng ý sử dụng điểm để thăng cấp không? <br />
+						<button class="btn btn-primary" id="accept">Đồng ý</button> | <button class="btn btn-primary" id="deny">Chưa sử dụng</button>`)
+							}
+							else if (data.Reason == 'đã tái đạt chuẩn Trưởng Nhóm') {
+								$('#case-2 strong').html(`Bạn đã đủ điều kiện để đạt tái vị trí<b style=" font-size: 14px; text-shadow: 1px 2px 3px #ccc; text-transform: uppercase; margin: 0px; padding: 9px 0px; font-weight: bold; " id="Newpos">Trưởng Nhóm</b>! <br />
+						Bạn có đồng ý sử dụng điểm để thăng cấp không? <br />
+						<button class="btn btn-primary" id="accept">Đồng ý</button> | <button class="btn btn-primary" id="deny">Chưa sử dụng</button>`)
+							}
+					else {
+						$($('#Newpos')[0]).text(data.Reason)
+						$('#case-2').show();
+						$($('#pos')[0]).text(data.Reason)
+                    }
                 }
 			}
 		)
@@ -106,11 +126,11 @@
 		UpdatePosPromote(UserID, () => {
 			$('#form3').show();
 		})
-		
-		
 	})
 	$('#dialogCancel3').click(function () {
 		$('#form3').hide();
+		const table = $('#default-table').DataTable();
+		table.ajax.reload(null, false);
 	})
 
 	$('#dialogCancel').click(function () {
