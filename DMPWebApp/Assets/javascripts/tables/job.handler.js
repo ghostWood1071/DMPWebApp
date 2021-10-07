@@ -7,12 +7,14 @@
 
 	today.setDate(today.getMonth() - 1);
 
-	var month = (today.getMonth())
+	var month = (today.getMonth())-2
 
 	var previousMonth = month - 1
 	
 	$('.page-header h2').text('Cập nhật lương tháng ' + previousMonth + 'Năm' );
 	var year = today.getFullYear();
+
+	console.log(month);
 
 	$.get('https://api.duocmyphamhaiduong.com/GetCurentYears').done(function (data) {
 		var selector = $('#year');
@@ -31,7 +33,7 @@
 	});
 
 	for (var i = 0; i < $("#month option").length; i++) {
-		var thismonth = (new Date()).getMonth();
+		var thismonth = (new Date()).getMonth()-2;
 		if (thismonth == $('#month option')[i].value) {
 			$($('#month option')[i]).prop('selected', true);
 			break;
