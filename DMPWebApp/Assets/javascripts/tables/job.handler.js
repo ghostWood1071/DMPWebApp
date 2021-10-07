@@ -33,8 +33,9 @@
 	});
 
 	for (var i = 0; i < $("#month option").length; i++) {
-		var thismonth = (new Date()).getMonth()-2;
-		if (thismonth == $('#month option')[i].value) {
+		var thismonth = (new Date()).getMonth();
+		var prethismonth = thismonth - 1;
+		if (prethismonth == $('#month option')[i].value) {
 			$($('#month option')[i]).prop('selected', true);
 			break;
 		}
@@ -51,7 +52,7 @@
 
 	var firstable = $('#default-table').DataTable({
 		ajax: {
-			"url": `https://api.duocmyphamhaiduong.com/GetSalary?month=${month}&year=${year}`,
+			"url": `https://api.duocmyphamhaiduong.com/GetPrepareSalaryInMonthYear?month=${month}&year=${year}`,
 			"dataSrc": ""
 		},
 		columns: [
@@ -162,13 +163,13 @@
 
 	$('#accept').click(function () {
 		$('#form1').show()
-    })
+	})
 
 	$('#dialogConfirm1').click(function () {
 		if ($('#salary')[0].checked == true) {
 			//Cập nhật lương
 			$.ajax({
-				url: "https://api.duocmyphamhaiduong.com/InsertNewSalary",
+				url: "https://api.duocmyphamhaiduong.com/InsertNewSalary?month=${month}&year=${year}",
 				type: "POST",
 				success: function (response) {
 					toastr.success('Cập nhật bảng lương thành công')
@@ -179,9 +180,16 @@
 				}
 			});
 
+				const date = new Date();
+				const additionOfMonths = 1;
+				date.setMonth(date.getMonth() + additionOfMonths); // For subtract use minus (-)
+
+				TMPMonth = date.getMonth()
+				TMPYear = date.getYear()
+
 			//cập nhật bảng điểm
 			$.ajax({
-				url: "https://api.duocmyphamhaiduong.com/InsertNewMemberPoints",
+				url: "https://api.duocmyphamhaiduong.com/InsertNewMemberPoints?month=${monthTMP}&year={yearTMP}",
 				type: "POST",
 				success: function (response) {
 					toastr.success('Cập nhật bảng điểm thành công')
