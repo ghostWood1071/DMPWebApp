@@ -7,14 +7,12 @@
 
 	today.setDate(today.getMonth() - 1);
 
-	var month = (today.getMonth())-2
+	var month = (today.getMonth())-1;
 
-	var previousMonth = month - 1
+	var previousMonth = month;
 	
-	$('.page-header h2').text('Cập nhật lương tháng ' + previousMonth + 'Năm' );
+	$('.page-header h2').text('Cập nhật lương tháng ' + previousMonth);
 	var year = today.getFullYear();
-
-	console.log(month);
 
 	$.get('https://api.duocmyphamhaiduong.com/GetCurentYears').done(function (data) {
 		var selector = $('#year');
@@ -34,7 +32,7 @@
 
 	for (var i = 0; i < $("#month option").length; i++) {
 		var thismonth = (new Date()).getMonth();
-		var prethismonth = thismonth - 1;
+		var prethismonth = thismonth;
 		if (prethismonth == $('#month option')[i].value) {
 			$($('#month option')[i]).prop('selected', true);
 			break;
@@ -180,16 +178,17 @@
 				}
 			});
 
-				const date = new Date();
-				const additionOfMonths = 1;
-				date.setMonth(date.getMonth() + additionOfMonths); // For subtract use minus (-)
+			const date = new Date();
+			const additionOfMonths = 1;
+			date.setMonth(date.getMonth() + additionOfMonths); // For subtract use minus (-)
 
-				TMPMonth = date.getMonth()
-				TMPYear = date.getYear()
+			var TMPMonth = date.getMonth()
+			var TMPYear = date.getFullYear();
+			
 
 			//cập nhật bảng điểm
 			$.ajax({
-				url: "https://api.duocmyphamhaiduong.com/InsertNewMemberPoints?month=${monthTMP}&year={yearTMP}",
+				url: "https://api.duocmyphamhaiduong.com/InsertNewMemberPoints?month=${TMPMonth}&year={TMPYear}",
 				type: "POST",
 				success: function (response) {
 					toastr.success('Cập nhật bảng điểm thành công')
