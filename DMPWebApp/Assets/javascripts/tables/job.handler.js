@@ -32,7 +32,8 @@
 
 	for (var i = 0; i < $("#month option").length; i++) {
 		var thismonth = (new Date()).getMonth();
-		var prethismonth = thismonth;
+		var prethismonth = thismonth - 1;
+		if (prethismonth == 0) { prethismonth=12 }
 		if (prethismonth == $('#month option')[i].value) {
 			$($('#month option')[i]).prop('selected', true);
 			break;
@@ -47,56 +48,6 @@
 			}
 		}
 	)
-
-	var firstable = $('#default-table').DataTable({
-		ajax: {
-			"url": `https://api.duocmyphamhaiduong.com/GetPrepareSalaryInMonthYear?month=${month}&year=${year}`,
-			"dataSrc": ""
-		},
-		columns: [
-			{ data: "MemberID" },
-			{ data: "FullName" },
-			{
-				data: "SalaryByLower", render: function (data, type, row) {
-					if (data == null)
-						return 0;
-					return String(data).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-				}, className: 'right'
-			},
-			{
-				data: "SalaryByImmediate", render: function (data, type, row) {
-					if (data == null)
-						return 0;
-					return String(data).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-				}, className: 'right'
-			},
-			{
-				data: "SalaryByManager", render: function (data, type, row) {
-					if (data == null)
-						return 0;
-					return String(data).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-				}, className: 'right'
-			},
-			{
-				data: "SumSalary", render: function (data, type, row) {
-					if (data == null)
-						return 0;
-					return String(data).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-				}, className: 'right'
-			}
-		],
-		"order": [[1, 'asc']],
-		"ordering": false,
-		"info": false,
-		"searching": false,
-		"language": {
-			"lengthMenu": "Hiển thị _MENU_ bản ghi trên trang",
-			"zeroRecords": "Không có bản ghi nào",
-			"info": "Trang _PAGE_ trong _PAGES_ trang",
-			"infoEmpty": "Không có bản ghi nào",
-			"infoFiltered": "(lọc từ _MAX_ bản ghi)"
-		}
-	});
 
 	var table = $('#static-table').DataTable({
 		ajax: {
@@ -149,7 +100,6 @@
 	});
 
 	 
-
 	var today = new Date();
 
 	today.setDate(today.getMonth() - 1);
@@ -163,11 +113,62 @@
 		$('#form1').show()
 	})
 
+
+	var firstable = $('#default-table').DataTable({
+		ajax: {
+			"url": `https://api.duocmyphamhaiduong.com/GetPrepareSalaryInMonthYear?month=${month}&year=${year}`,
+			"dataSrc": ""
+		},
+		columns: [
+			{ data: "MemberID" },
+			{ data: "FullName" },
+			{
+				data: "SalaryByLower", render: function (data, type, row) {
+					if (data == null)
+						return 0;
+					return String(data).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+				}, className: 'right'
+			},
+			{
+				data: "SalaryByImmediate", render: function (data, type, row) {
+					if (data == null)
+						return 0;
+					return String(data).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+				}, className: 'right'
+			},
+			{
+				data: "SalaryByManager", render: function (data, type, row) {
+					if (data == null)
+						return 0;
+					return String(data).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+				}, className: 'right'
+			},
+			{
+				data: "SumSalary", render: function (data, type, row) {
+					if (data == null)
+						return 0;
+					return String(data).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+				}, className: 'right'
+			}
+		],
+		"order": [[1, 'asc']],
+		"ordering": false,
+		"info": false,
+		"searching": false,
+		"language": {
+			"lengthMenu": "Hiển thị _MENU_ bản ghi trên trang",
+			"zeroRecords": "Không có bản ghi nào",
+			"info": "Trang _PAGE_ trong _PAGES_ trang",
+			"infoEmpty": "Không có bản ghi nào",
+			"infoFiltered": "(lọc từ _MAX_ bản ghi)"
+		}
+	});
+
 	$('#dialogConfirm1').click(function () {
 		if ($('#salary')[0].checked == true) {
 			//Cập nhật lương
 			$.ajax({
-				url: "https://api.duocmyphamhaiduong.com/InsertNewSalary?month=${month}&year=${year}",
+				url: `https://api.duocmyphamhaiduong.com/InsertNewSalary?month=${month}&year=${year}`,
 				type: "POST",
 				success: function (response) {
 					toastr.success('Cập nhật bảng lương thành công')
@@ -185,10 +186,9 @@
 			var TMPMonth = date.getMonth()
 			var TMPYear = date.getFullYear();
 			
-
 			//cập nhật bảng điểm
 			$.ajax({
-				url: "https://api.duocmyphamhaiduong.com/InsertNewMemberPoints?month=${TMPMonth}&year={TMPYear}",
+				url: `https://api.duocmyphamhaiduong.com/InsertNewMemberPoints?month=${TMPMonth}&year=${TMPYear}`,
 				type: "POST",
 				success: function (response) {
 					toastr.success('Cập nhật bảng điểm thành công')
